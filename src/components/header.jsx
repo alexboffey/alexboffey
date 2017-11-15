@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 
 export default () =>
-    <header className="header">
+    <header className="header header--edges">
         <div className="header__branding">
             <Link className="u-link-unstyled" to="/">Alex Boffey</Link>
         </div>
