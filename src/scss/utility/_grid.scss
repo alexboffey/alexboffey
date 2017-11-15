@@ -1,0 +1,200 @@
+/**
+ * Grid
+ ************************/
+
+.grid,
+%grid {
+    @include grid;
+}
+
+
+/**
+ * Grid Gutter X
+ ************************/
+
+.g-gutter-x,
+%g-gutter-x {
+    @include grid-gutter-x;
+}
+
+
+/**
+ * Grid Gutter Y
+ ************************/
+
+.g-gutter-y,
+%g-gutter-y {
+    @include grid-gutter-y;
+}
+
+
+/**
+ * Grid Gutter
+ ************************/
+
+@each $key, $value in $gutters {
+    @if $key == base {
+        .g-gutter-x,
+        %g-gutter-x {
+            @include grid-gutter-x($value);
+        }
+    } @else {
+        .g-gutter-x-#{$key},
+        %g-gutter-x-#{$key} {
+            @include grid-gutter-x($value);
+        }
+    }
+    @if $key == base {
+        .g-gutter-y,
+        %g-gutter-y {
+            @include grid-gutter-y($value);
+        }
+    } @else {
+        .g-gutter-y-#{$key},
+        %g-gutter-y-#{$key} {
+            @include grid-gutter-y($value);
+        }
+    }
+    @if $key == base {
+        .g-gutter,
+        %g-gutter {
+            @extend %g-gutter-x;
+            @extend %g-gutter-y;
+        }
+    } @else {
+        .g-gutter-#{$key},
+        %g-gutter-#{$key} {
+            @extend %g-gutter-x-#{$key};
+            @extend %g-gutter-y-#{$key};
+        }
+    }
+}
+
+
+/**
+ * Grid Center X
+ ************************/
+
+.g-center-x,
+%g-center-x {
+    @include justify-content(center);
+}
+
+
+/**
+ * Grid Center Y
+ ************************/
+
+.g-center-y,
+%g-center-y {
+    @include align-items(center);
+}
+
+
+/**
+ * Grid Center
+ ************************/
+
+.g-center,
+%g-center {
+    @include justify-content(center);
+    @include align-items(center);
+}
+
+
+/**
+ * Grid Baseline
+ ************************/
+
+.g-baseline,
+%g-baseline {
+    @include align-items(flex-end);
+}
+
+
+/**
+ * Grid Space
+ ************************/
+
+.g-space,
+%g-space {
+    @include justify-content(space-between);
+}
+
+
+/**
+ * Grid Reverse
+ ************************/
+
+.g-reverse,
+%g-reverse {
+    @include flex-direction(row-reverse);
+}
+
+
+/**
+ * Grid Collapse
+ ************************/
+
+.g-collapse,
+%g-collapse {
+    > * {
+        width: auto;
+    }
+}
+
+
+/**
+ * Grid Stretch
+ ************************/
+
+.g-stretch-first,
+%g-stretch-first {
+    @extend %g-collapse;
+    @include flex-wrap(nowrap);
+
+    > *:first-child {
+        flex-grow: 1;
+    }
+    > *:last-child {
+        flex-shrink: 0;
+    }
+}
+
+.g-stretch-last,
+%g-stretch-last {
+    @extend %g-collapse;
+    @include flex-wrap(nowrap);
+
+    > *:first-child {
+        flex-shrink: 0;
+    }
+    > *:last-child {
+        flex-grow: 1;
+    }
+}
+
+
+/**
+ * Grid Cols
+ ************************/
+
+@each $screen, $value in $screens {
+    @if $screen == xs {
+        @for $i from 1 through 12 {
+            .g-col-#{$screen}-#{$i},
+            %g-col-#{$screen}-#{$i} {
+                @include grid-col($i of 12);
+            }
+        }
+    } @else {
+        @include breakpoint(screen($screen)) {
+            @for $i from 1 through 12 {
+                .g-col-#{$screen}-#{$i},
+                %g-col-#{$screen}-#{$i} {
+                    @include grid-col($i of 12);
+                }
+            }
+        }
+    }
+}

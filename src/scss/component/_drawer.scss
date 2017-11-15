@@ -1,0 +1,33 @@
+/**
+ * Drawer
+ ************************/
+
+.drawer__dialog {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 90%;
+    max-width: 30em;
+    background: color(neutral, white);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/**
+ * Drawer Positioning
+ ************************/
+
+.drawer--left .drawer__dialog {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.drawer--right .drawer__dialog {
+    right: 0;
+    transform: translateX(100%);
+}
+
+.is-active.drawer .drawer__dialog {
+    transform: translateX(0);
+}

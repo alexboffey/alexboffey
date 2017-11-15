@@ -1,0 +1,13 @@
+/**
+ * Title
+ ************************/
+
+.title,
+%title {
+    > *:not(:last-child) {
+        margin-bottom: 0;
+    }
+    > *:not(:first-child) {
+        margin-top: 0;
+    }
+}

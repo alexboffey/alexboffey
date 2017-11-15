@@ -1,0 +1,168 @@
+/**
+ * Form
+ ************************/
+
+input,
+label,
+select,
+textarea {
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+label {
+    margin-bottom: spacing(xs);
+
+    &.required::after {
+        content: "*";
+    }
+}
+
+input,
+textarea,
+select[multiple=multiple] {
+    background-color: color(neutral, white);
+    border: 1px solid color(neutral, dark);
+    border-radius: 0;
+    padding: spacing(xs) spacing(sm);
+    width: 100%;
+    color: color(neutral, dark);
+
+    &:focus {
+        border-color: color(contextual, success);
+        box-shadow: 0 0 5px 0 rgba(color(neutral, black),.3);
+        outline: none;
+    }
+}
+
+label input {
+    width: auto;
+}
+
+select {
+    max-width: 100%;
+    width: auto;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="search"] {
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: inline;
+    width: auto;
+    vertical-align: text-top;
+}
+
+input[type="file"] {
+    width: 100%;
+    border-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+input[type="color"] {
+    padding: 0;
+    max-width: 10rem;
+}
+
+input[type="range"] {
+    padding-left: 0;
+    padding-right: 0;
+    border: 0;
+
+    &::-moz-focus-outer {
+        border: 0;
+    }
+}
+
+input[type="number"] {
+    appearance: none;
+     -moz-appearance: textfield;
+}
+
+
+// Button Padding Fix
+input[type="submit"].btn {
+    vertical-align: bottom;
+}
+
+
+/**
+ * Fieldsets
+ ************************/
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    margin-bottom: 2rem;
+}
+legend {
+    @extend %h5;
+}
+
+
+/**
+ * Option Group
+ ************************/
+
+optgroup {
+    font-weight: $bold;
+}
+
+
+/**
+ * Validation
+ ************************/
+
+.error,
+abbr[title="Required"],
+.required em {
+    color: color(contextual, error);
+}
+
+.required::after {
+    content: "*";
+    color: color(contextual, error);
+    margin-left: spacing(xs);
+}
+
+.valid,
+%valid {
+    color: color(contextual, success);
+}
+
+.is-error,
+%is-error {
+    border-color: color(contextual, error);
+}
+
+.is-valid,
+%is-valid {
+    border-color: color(contextual, success);
+}
+
+.validation-advice {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-top: 0.2rem;
+    > * {
+        margin: 0;
+    }
+}
+
+.has-error .validation-advice {
+    background-color: color(contextual, error-light);
+    border-color: color(contextual, error);
+}
+

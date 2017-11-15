@@ -1,0 +1,32 @@
+/**
+ * Card
+ ************************/
+
+.card,
+%card {
+    border: seperator(base, width) seperator(base, style) seperator(base, color);
+    background-color: color(neutral, white);
+    border-radius: $border-radius;
+
+    > [class*="__header"] {
+        border-bottom: seperator(base, width) seperator(base, style) seperator(base, color);
+
+        > * {
+            margin-bottom: 0;
+        }
+    }
+
+    > [class*="__body"] > *:last-child {
+        margin-bottom: 0;
+    }
+
+    > [class*="__header"],
+    > [class*="__body"],
+    > [class*="__footer"] {
+        padding: spacing(lg);
+    }
+
+    > [class*="__footer"] {
+        border-top: seperator(base, width) seperator(base, style) seperator(base, color);
+    }
+}

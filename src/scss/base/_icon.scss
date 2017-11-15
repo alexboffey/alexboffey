@@ -1,0 +1,52 @@
+/**
+ * Icon
+ ************************/
+
+.icon,
+%icon {
+    height: spacing();
+    width: spacing();
+}
+
+
+/**
+ * Icon Small
+ ************************/
+
+.icon--sm,
+%icon--sm {
+    height: spacing(sm);
+    width: spacing(sm);
+ }
+
+
+/**
+ * Icon Large
+ ************************/
+
+.icon--lg,
+%icon--lg {
+    height: spacing(lg);
+    width: spacing(lg);
+}
+
+
+/**
+ * Icon Card
+ ************************/
+
+.icon--card,
+%icon--card {
+    width: 5em;
+    height: 3em;
+
+    &.icon--sm {
+        width: 3em;
+        height: 2em;
+    }
+
+    &.icon--lg {
+        width: 6em;
+        height: 4em;
+    }
+}

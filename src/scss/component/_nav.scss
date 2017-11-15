@@ -1,0 +1,100 @@
+/**
+ * Nav
+ ************************/
+
+.nav,
+%nav {
+    @extend %u-list-unstyled;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+
+/**
+ * Nav Pills
+ ************************/
+
+.nav--pills,
+%nav--pills {
+    a {
+        display: block;
+        padding: spacing(xs) spacing(sm);
+    }
+}
+
+
+/**
+ * Nav Inline
+ ************************/
+
+.nav--inline,
+%nav--inline {
+    @include flex;
+    @include flex-wrap(wrap);
+    white-space: nowrap;
+}
+
+
+/**
+ * Nav Space
+ ************************/
+
+.nav--space,
+%nav--space {
+    &:not(.nav--inline) > * {
+        margin-bottom: spacing(sm);
+    }
+
+    &.nav--inline > * {
+        margin-right: spacing(sm);
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+
+/**
+ * Nav Multi Level
+ ************************/
+
+.nav--multi-level,
+%nav--multi-level {
+    li {
+        position: relative;
+    }
+
+    // All levels
+    ul,
+    ol {
+        @extend %nav;
+        display: none;
+        position: absolute;
+    }
+
+    // Just Level 0
+    > ul,
+    > ol {
+        top: 100%;
+    }
+
+    ul ul,
+    ol ol,
+    ul ol,
+    ol ul {
+        top: 0;
+        left: 100%;
+    }
+
+    li:hover > ul,
+    li:hover > ol {
+        display: block;
+    }
+
+    a {
+        white-space: nowrap;
+    }
+}

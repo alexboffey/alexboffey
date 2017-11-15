@@ -1,0 +1,145 @@
+/**
+ * Color
+ ************************/
+
+
+$colors: (
+
+    primary: (
+        pink            : #F42D8C
+    ),
+
+    neutral: (
+        black         : #000,
+        white         : #fff,
+        darkest         : #222,
+        darker          : #444,
+        dark            : #666,
+        light           : #999,
+        lighter         : #ccc,
+        lightest        : #f4f4f4
+    ),
+
+    contextual: (
+        success         : #4caf50,
+        success-light   : #c8e6c9,
+        warning         : #ffeb3b,
+        warning-light   : #fff59d,
+        error           : #f44336,
+        error-light     : #ffcdd2,
+        info            : #4b68b3,
+        info-light      : #e5eef9
+    ),
+
+    social: (
+        twitter         : #55acee,
+        facebook        : #32639f,
+        google          : #d34836,
+        pinterest       : #cb2028,
+        instagram       : #517fa4,
+        vimeo           : #1ab7ea,
+        linkedin        : #4875b4,
+        youtube         : #bb0000,
+        tumblr          : #36465D
+    ),
+);
+
+
+/**
+ * Font
+ ************************/
+
+$font-family            : -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+
+$font-size              : 90%;
+$font-size-sm           : 0.85em;
+$font-size-lg           : 1.2em;
+
+$bold                   : 600;
+
+$line-height            : 1.6;
+$line-height-sm         : 1.2;
+
+
+/**
+ * Heading
+ * Calculated from type scales http://type-scale.com/
+ ************************/
+
+$heading-font-family    : $font-family;
+
+$typescale: (
+    min                 : 1.125,
+    max                 : 1.2
+);
+
+
+/**
+ * Z indexing
+ ************************/
+
+$z-0                    : 0;
+$z-1                    : 10;
+$z-2                    : 20;
+$z-3                    : 30;
+$z-4                    : 40;
+$z-5                    : 50;
+$z-6                    : 60;
+$z-7                    : 70;
+$z-8                    : 80;
+$z-9                    : 90;
+$z-10                   : 100;
+
+
+/**
+ * Border Radius
+ ************************/
+
+$border-radius          : 0.3em;
+
+
+/**
+ * Breakpoint
+ ************************/
+
+$screens: (
+    xs: (
+        base            : 28em,
+        max             : 35em - 0.01em
+    ),
+    sm: (
+        base            : 35em,
+        max             : 48em - 0.01em
+    ),
+    md: (
+        base            : 48em,
+        max             : 62em - 0.01em
+    ),
+    lg: (
+        base            : 62em,
+        max             : 82em - 0.01em
+    ),
+    xl: (
+        base            : 82em
+    )
+);
+
+
+/**
+ * Spacing (Block and space utilities)
+ ************************/
+
+$spacing: (
+    base                : 1em,
+    xs                  : .56em,
+    sm                  : .75em,
+    lg                  : 1.3em,
+    xl                  : 1.8em
+);
+
+
+/**
+ * Animation speed
+ ************************/
+
+$animation-speed        : .2s;

@@ -1,0 +1,121 @@
+/**
+ * Visibility Utility
+ *
+ * Loops through an array of screen values set in _var.scss.
+ * Each value is given a class `u-visible-*` where * is the
+ * key for that value in the array.
+ *
+ * @var $visibility
+ * @since 1.0.0
+ * @link http://goo.gl/l2mymR
+ ************************/
+
+$screen-min: nth(map-keys($screens),1);
+$screen-max: nth( map-keys($screens), length($screens) );
+
+[class*="u-visible-"],
+%u-visible {
+    display: none !important;
+}
+
+@each $screen, $value in $screens {
+
+    $media-query: screen($screen) screen($screen,max);
+
+    @if $screen == $screen-min {
+        $media-query: max-width screen($screen,max);
+    } @else if $screen == $screen-max {
+        $media-query: screen($screen);
+
+    }
+
+    @include breakpoint($media-query) {
+        @each $visible in $visibility {
+
+            $class: #{$screen}-#{$visible};
+            @if $visible == block {
+                $class: #{$screen};
+            }
+
+            .u-visible-#{$class},
+            %u-visible-#{$class} {
+                display: #{$visible} !important;
+            }
+        }
+    }
+}
+
+
+/**
+ * Responsive Hidden Utility
+ *
+ * @since 1.0.0
+ ************************/
+
+@each $screen, $value in $screens {
+    $media-query: screen($screen) screen($screen,max);
+    @if $screen == $screen-min {
+        $media-query: max-width screen($screen,max);
+    } @else if $screen == $screen-max {
+        $media-query: screen($screen);
+    }
+
+    @include breakpoint($media-query) {
+        .u-hidden-#{$screen},
+        %u-hidden-#{$screen} {
+            display: none !important;
+        }
+    }
+}
+
+
+/**
+ * Visible Display Utility
+ *
+ * @since 1.0.0
+ ************************/
+
+@each $visible in $visibility {
+    $class: '.u-visible-#{$visible}, %u-visible-#{$visible}';
+
+    @if $visible == block {
+        $class: '.u-visible, %u-visible';
+    }
+
+    #{$class} {
+        display: #{$visible} !important;
+    }
+}
+
+
+/**
+ * Hidden Utility
+ *
+ * @since 1.0.0
+ ************************/
+
+.u-hidden,
+%u-hidden {
+    display: none !important;
+}
+
+
+/**
+ * Visually Hidden Utility
+ *
+ * Provides an screen reader aware, accessible way to hide content.
+ *
+ * @since 1.0.0
+ * @link https://goo.gl/6nUkqa
+ ************************/
+
+.u-visually-hidden,
+%u-visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+}
