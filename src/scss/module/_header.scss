@@ -1,4 +1,9 @@
 .header {
+    &__wrapper {
+        padding: spacing();
+        margin-bottom: spacing();
+    }
+
     &--edges {
         @extend %u-flex--edges;
     }

@@ -16,12 +16,23 @@ only screen and ( min-resolution: 1.25dppx) {
     }
 }
 
+/**
+ * Selection
+ ************************/
+
+%selection::selection {
+    background: color(primary, turquoise);
+    color: color(neutral, white);
+}
+
 
 /**
  * Typography
  ************************/
 
 html {
+    @extend %selection;
+    
     font-size: $font-size;
     font-family: $font-family;
     line-height: $line-height;
@@ -29,6 +40,8 @@ html {
 }
 
 ul, ol, p {
+    @extend %selection;
+    
     margin-top: 0;
     margin-bottom: spacing();
 }
@@ -40,16 +53,22 @@ ul, ol {
 }
 
 strong, b {
+    @extend %selection;
+    
     font-weight: $bold;
 }
 
 dfn, em, i, cite {
+    @extend %selection;
+    
     font-style: italic;
 }
 
 sub,
 sup,
 small {
+    @extend %selection;
+
     font-size: $font-size-sm;
 }
 
@@ -57,10 +76,14 @@ code,
 kbd,
 pre,
 samp {
+    @extend %selection;
+    
     font-size: $font-size;
 }
 
 code {
+    @extend %selection;
+    
     padding: 2px 4px;
     font-size: $font-size-sm;
     color: color(contextual, error);
@@ -69,8 +92,21 @@ code {
 }
 
 mark {
+    @extend %selection;
+    
     background: color(contextual, error);
     color: color(neutral, black);
+}
+
+
+/**
+ * Headings
+ ************************/
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+%h1, %h2, %h3, %h4, %h5, %h6 {
+    @extend %selection;
 }
 
 
@@ -81,11 +117,13 @@ mark {
 a,
 .link,
 %link {
+    @extend %selection;
+    
     color: color(neutral, black);
     touch-action: manipulation;
 
     &:hover {
-        color: color(neutral, dark);
+        color: color(primary, turquoise);
     }
 }
 
