@@ -8,10 +8,10 @@ import React from 'react'
 import Header from '../components/header'
 
 export default ({ children }) =>
-    <div className="page-wrapper">
+    <div className="page__wrapper">
         <Header />
-    
-        <main className="u-container-md">
+
+        <main className="page__main">
             {children()}
         </main>
     </div>

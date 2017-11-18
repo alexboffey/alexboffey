@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default () =>
-    <div>
+    <div className="u-container u-center">
         <h1>Home</h1>
         <p>Hell of irony trust fund keytar fingerstache hashtag wayfarers post-ironic leggings four dollar toast gastropub cliche messenger bag pug. Raclette flexitarian jean shorts, portland gluten-free lo-fi skateboard hammock cloud bread brooklyn edison bulb XOXO sriracha pickled kogi.</p>
         <p>Twee vice dreamcatcher VHS sartorial, succulents distillery art party fingerstache yr pitchfork master cleanse ramps banjo artisan. Pok pok shoreditch hell of cold-pressed authentic everyday carry man braid prism neutra cred truffaut raclette hoodie cronut.</p>

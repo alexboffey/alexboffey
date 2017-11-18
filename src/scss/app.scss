@@ -9,8 +9,15 @@
  * Global Variables
  ************************/
 
-@import "var";
+@import "var/global";
 @import "helper/variable-function";
+
+
+/**
+ * Config Variables
+ ************************/
+
+@import "var/layout";
 
 
 /**
@@ -75,6 +82,7 @@
 @import "base/html";
 @import "base/icon";
 @import "base/image";
+@import "base/page";
 @import "base/table";
 @import "base/tag";
 @import "base/text";

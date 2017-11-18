@@ -10,6 +10,7 @@
   "dependencies": {
     "gatsby": "^1.9.110",
     "gatsby-link": "^1.6.27",
+    "gatsby-plugin-react-helmet": "^1.0.8",
     "gatsby-plugin-sass": "^1.0.13"
   }
 }

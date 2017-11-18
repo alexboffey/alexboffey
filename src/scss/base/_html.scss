@@ -1,15 +1,18 @@
 /**
+ * Reset Body / Html
+ ************************/
+
+html,
+body {
+    margin: 0;
+}
+
+
+/**
  * Box Sizing
  ************************/
 
 *,
 input, textarea, button {
     box-sizing: border-box;
-}
-
-
-
-html,
-body {
-    margin: 0;
 }

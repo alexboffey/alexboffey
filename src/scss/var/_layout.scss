@@ -1,0 +1,10 @@
+/**
+ * Header
+ ************************/
+
+$header-height: 2 * spacing();
+$header-padding: spacing();
+$header-background: rgba(color(neutral, white), .8);
+$header-text: color(neutral, dark);
+
+$logo-height: 36px;
