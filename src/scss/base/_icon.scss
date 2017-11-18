@@ -6,6 +6,12 @@
 %icon {
     height: spacing();
     width: spacing();
+    margin: spacing();
+    display: inline-block;
+
+    object {
+        pointer-events: none;
+    }
 }
 
 
@@ -50,3 +56,17 @@
         height: 4em;
     }
 }
+
+
+/**
+ * Icon Hover
+ ************************/
+
+ .icon--hover,
+ %icon--hover {
+     &:hover {
+         svg {
+             fill: pink;
+         }
+     }
+ }

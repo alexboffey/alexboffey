@@ -2,7 +2,7 @@
  * Fonts
  ************************/
 
-@import url('https://fonts.googleapis.com/css?family=Oswald:200');
+@import url('https://fonts.googleapis.com/css?family=Poppins:700');
 
 
 /**
@@ -24,7 +24,7 @@
  * Settings for specific components and utilities
  ************************/
 
-@import "setting";
+@import "var/setting";
 @import "helper/setting-function";
 
 /**
@@ -94,14 +94,15 @@
 
 @import "component/accordion";
 @import "component/alert";
-@import "component/button";
+@import "component/border-block";
 @import "component/breadcrumb";
+@import "component/button";
 @import "component/card";
 @import "component/card-group";
 @import "component/checkbox";
 @import "component/drawer";
 @import "component/field-group";
-@import "component/title";
+@import "component/hero";
 @import "component/modal";
 @import "component/nav";
 @import "component/overlay";
@@ -111,6 +112,7 @@
 @import "component/single-form";
 @import "component/tabs";
 @import "component/table";
+@import "component/title";
 @import "component/toggle-icon";
 @import "component/responsive-table";
 

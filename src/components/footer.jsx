@@ -1,10 +1,19 @@
 import React from 'react'
 
+import instagram from '../img/vector/social/instagram.svg'
+import linkedin from '../img/vector/social/linkedin.svg'
+import twitter from '../img/vector/social/twitter.svg'
+
 const year = (new Date).getFullYear()
 
 export default () =>
     <footer className="page-footer u-fill-neutral-lightest u-block-xxl u-section-top">
-        <div className="u-container u-center u-text-center u-block-xxl">
-            <small className="micro">&copy;{year} Alex Boffey</small>
+        <div className="u-container u-center u-text-center">
+            <div className="u-section-xs">
+                <a href="https://www.instagram.com/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover icon--lg"><object data={instagram} type="image/svg+xml"></object></a>
+                <a href="https://www.linkedin.com/in/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover icon--lg"><object data={linkedin} type="image/svg+xml"></object></a>
+                <a href="https://www.linkedin.com/in/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover icon--lg"><object data={twitter} type="image/svg+xml"></object></a>
+            </div>
+            <p className="micro">&copy;{year} Alex Boffey</p>
         </div>
     </footer>

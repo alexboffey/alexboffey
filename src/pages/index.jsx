@@ -2,9 +2,12 @@ import React from 'react'
 
 export default () =>
     <div className="u-container u-center">
-        <h1>Home</h1>
+        <header className="hero border-block u-section">
+            <h1 className="title">Alex Boffey</h1>
+            <h3 className="subtitle">Front End Developer</h3>
+        </header>
 
-        <article>
+        <article className="u-center">
             <h2>Lorem ipsum dolor amet scenester vaporware 8-bit</h2>
             <p>Edison bulb occupy, truffaut pickled you probably haven't heard of them flannel. Enamel pin lumbersexual ramps, irony crucifix letterpress YOLO palo santo sustainable kickstarter quinoa next level. Taxidermy bitters vaporware pok pok enamel pin raw denim migas chillwave literally etsy lyft. Locavore cliche brooklyn wolf ramps craft beer irony swag enamel pin raw denim tumeric copper mug chia. Copper mug narwhal hashtag, bespoke poke intelligentsia taiyaki lo-fi hammock selfies craft beer try-hard. Meditation street art typewriter, swag bespoke ennui kinfolk poke disrupt. Af farm-to-table hell of prism lyft.</p>
             <p>YOLO craft beer tofu thundercats paleo small batch. Scenester four dollar toast man bun, fingerstache heirloom shoreditch listicle kitsch gastropub cold-pressed single-origin coffee truffaut pickled echo park. Roof party jean shorts edison bulb leggings 3 wolf moon offal shoreditch paleo try-hard tumeric pickled farm-to-table tacos banjo. Mixtape photo booth direct trade, slow-carb man bun affogato unicorn cray tofu. Snackwave tattooed coloring book 8-bit hashtag fingerstache next level slow-carb ramps whatever.</p>
