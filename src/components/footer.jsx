@@ -10,9 +10,9 @@ const Footer = () =>
     <footer className="page-footer u-fill-neutral-lightest u-block-xxl u-section-top">
         <div className="u-container u-center u-text-center">
             <div className="u-section-xs">
-                <a href="https://www.instagram.com/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover icon--lg"><object data={instagram} type="image/svg+xml"></object></a>
+                <a href="https://www.twitter.com/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover icon--lg"><object data={twitter} type="image/svg+xml"></object></a>
                 <a href="https://www.linkedin.com/in/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover icon--lg"><object data={linkedin} type="image/svg+xml"></object></a>
-                <a href="https://www.linkedin.com/in/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover icon--lg"><object data={twitter} type="image/svg+xml"></object></a>
+                <a href="https://www.instagram.com/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover icon--lg"><object data={instagram} type="image/svg+xml"></object></a>
             </div>
             <p className="micro">&copy;{year} Alex Boffey</p>
         </div>
