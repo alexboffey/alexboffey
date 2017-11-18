@@ -4,6 +4,6 @@
 
 @if $header-fixed {
     .page__main {
-        margin-top: $header-height + ( 2 * $header-padding);
+        padding-top: $header-height + ( 2 * $header-padding);
     }
 }
