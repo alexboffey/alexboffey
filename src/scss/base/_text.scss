@@ -83,12 +83,11 @@ samp {
 
 code {
     @extend %selection;
-    
-    padding: 2px 4px;
-    font-size: $font-size-sm;
+    display: block;
+    padding: spacing();
+    font-size: $font-size-lg;
     color: color(contextual, error);
-    background-color: color(neutral, lighter);
-    border-radius: $border-radius;
+    background-color: color(neutral, lightest);
 }
 
 mark {
@@ -119,7 +118,7 @@ a,
 %link {
     @extend %selection;
     
-    color: color(neutral, black);
+    color: color(branding, orange);
     touch-action: manipulation;
 
     &:hover {

@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 
 import logo from '../img/logo/logo-main.png'
 
-export default () =>
+const Header = () =>
     <header className="header__wrapper">
         <div className="u-container">
             <div className="header header--edges">
@@ -24,3 +24,5 @@ export default () =>
             </div>
         </div>
     </header>
+
+export default Header

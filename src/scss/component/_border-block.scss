@@ -1,0 +1,15 @@
+/**
+ * Border Block
+ ************************/
+
+.border-block,
+%border-block {
+    &::after {
+        content: "";
+        display: block;
+        width: 36px;
+        height: 12px;
+        margin-top: 8px;
+        background-color: color(branding, orange);
+    }
+}

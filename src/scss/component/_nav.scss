@@ -8,6 +8,10 @@
 
     a {
         text-decoration: none;
+
+        &:not(:hover) {
+            color: color(neutral, darker);
+        }
     }
 }
 

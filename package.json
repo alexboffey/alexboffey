@@ -8,9 +8,11 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "code-prettify": "^0.1.0",
     "gatsby": "^1.9.110",
     "gatsby-link": "^1.6.27",
     "gatsby-plugin-react-helmet": "^1.0.8",
-    "gatsby-plugin-sass": "^1.0.13"
+    "gatsby-plugin-sass": "^1.0.13",
+    "prop-types": "^15.6.0"
   }
 }

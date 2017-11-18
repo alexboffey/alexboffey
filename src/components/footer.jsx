@@ -6,7 +6,7 @@ import twitter from '../img/vector/social/twitter.svg'
 
 const year = (new Date).getFullYear()
 
-export default () =>
+const Footer = () =>
     <footer className="page-footer u-fill-neutral-lightest u-block-xxl u-section-top">
         <div className="u-container u-center u-text-center">
             <div className="u-section-xs">
@@ -17,3 +17,5 @@ export default () =>
             <p className="micro">&copy;{year} Alex Boffey</p>
         </div>
     </footer>
+
+export default Footer

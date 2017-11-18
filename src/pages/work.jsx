@@ -1,6 +1,8 @@
 import React from 'react'
 
+import Hero from '../components/hero'
+
 export default () =>
-    <div className="u-container u-center">
-        <h1>Work</h1>
+    <div className="content__wrapper">
+        <Hero title="Work" subtitle="Take a look at some of my past projects." />
     </div>

@@ -4,10 +4,11 @@
 
 .title,
 %title {
-    > *:not(:last-child) {
-        margin-bottom: 0;
-    }
-    > *:not(:first-child) {
-        margin-top: 0;
+    font-family: 'Poppins', $font-family;
+    font-weight: 700;
+    font-size: $heading-max * 1.25;
+
+    &--lg {
+        font-size: $heading-max * 1.5;
     }
 }

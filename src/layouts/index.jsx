@@ -8,7 +8,7 @@ import React from 'react'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
-export default ({ children }) =>
+const Layout = ({ children }) =>
     <div className="page__wrapper">
         <Header />
 
@@ -18,3 +18,5 @@ export default ({ children }) =>
 
         <Footer />
     </div>
+
+export default Layout
