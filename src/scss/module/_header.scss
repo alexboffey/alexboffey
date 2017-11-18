@@ -5,15 +5,19 @@
 
 .header {
     height: $header-height;
+
     &__wrapper {
         padding: $header-padding;
         background: $header-background;
+        box-shadow: $header-box-shadow;
 
-        position: fixed;
-        top: 0;
-        width: 100%;
-        box-shadow: 0 .75em 1.5em -1em rgba(color(neutral, dark), 0.3);
+        @if $header-fixed {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
     }
+
     &--edges {
         @extend %u-flex--edges;
     }

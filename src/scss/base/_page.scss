@@ -2,6 +2,8 @@
  * Fixed Header
  ************************/
 
- .page__main {
-     margin-top: $header-height + ( 2 * $header-padding );
- }
+@if $header-fixed {
+    .page__main {
+        margin-top: $header-height + ( 2 * $header-padding);
+    }
+}

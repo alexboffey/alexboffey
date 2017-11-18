@@ -3,13 +3,16 @@
  ************************/
 
 $colors: (
+    branding: (
+        orange         : #f79421,
+        orange-darker    : #f15d2a
+    ),
 
     primary: (
         night            : #0B132B,
-        sea              : #1C2541,
-        blue           : #3A506B,
-        turquoise      : #5BC0BE,
-        turquoise-bright : #6FFFE9
+        navy           : #1C2541,
+        sea              : #3A506B,
+        turquoise      : #5BC0BE
     ),
 
     neutral: (
@@ -32,19 +35,7 @@ $colors: (
         error-light     : #ffcdd2,
         info            : #4b68b3,
         info-light      : #e5eef9
-    ),
-
-    social: (
-        twitter         : #55acee,
-        facebook        : #32639f,
-        google          : #d34836,
-        pinterest       : #cb2028,
-        instagram       : #517fa4,
-        vimeo           : #1ab7ea,
-        linkedin        : #4875b4,
-        youtube         : #bb0000,
-        tumblr          : #36465D
-    ),
+    )   
 );
 
 
