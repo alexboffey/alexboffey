@@ -11,7 +11,7 @@ export default ({ data }) => {
             <Helmet title={`Alex Boffey | ${post.frontmatter.title}`} />
 
             <header className="post__meta">
-                <Hero title={post.frontmatter.title} subtitle={post.frontmatter.subtitle} />
+                <Hero title={post.frontmatter.title} subtitle={post.frontmatter.subtitle} hasBorderBlock />
             </header>
 
             <div className="grid u-container-lg">
