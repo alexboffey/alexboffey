@@ -8,12 +8,11 @@ export default ({ data }) => {
     return (
         <div className="content__wrapper u-container-lg">
             <Hero title="Alex Boffey, front end developer."
-                isLanderTitle
                 hasBorder />
 
             <section className="post__index u-container-lg u-section-xl-bottom">
                 {
-                    data.allMarkdownRemark.edges.map(post =>
+                    data.allMarkdownRemark.edges.map(post => 
                         <Excerpt key={post.node.id}
                             title={post.node.frontmatter.title}
                             date={post.node.frontmatter.date}

@@ -1,5 +1,5 @@
 ---
-path: '/pickled-cornhole'
+path: '/hoodie-yuccie'
 title: 'Hoodie yuccie single-origin coffee'
 subtitle: 'Cloud bread mumblecore flannel selfies.'
 date: '19-11-2017'

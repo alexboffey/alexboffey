@@ -21,8 +21,8 @@ const Header = () =>
                 </Link>
             </div>
             <nav className="header__nav">
-                <ul className="nav nav--space nav--inline">
-                    <li><Link to="/">Home</Link></li>
+                <ul className="nav nav--inline">
+                    <li><Link to="/">Blog</Link></li>
                     <li><Link to="/work">Work</Link></li>
                     <li><Link to="/about">About</Link></li>
                 </ul>

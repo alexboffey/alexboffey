@@ -40,7 +40,11 @@
     }
 
     @include breakpoint(screen(md)) {
-        max-width: 50%;
+        @if $header-sidebar {
+            max-width: 52%;
+        } @else {
+            max-width: 50%;
+        }
     }
 
     @include breakpoint(screen(lg)) {
