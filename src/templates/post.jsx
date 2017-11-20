@@ -8,7 +8,7 @@ export default ({ data }) => {
 
     return (
         <section className="post u-container-lg">
-            <Helmet title={`Alex Boffey | ${post.frontmatter.title}`} />
+            <Helmet title={`${data.site.siteMetadata.title} | ${post.frontmatter.title}`} />
 
             <header className="post__meta">
                 <Hero title={post.frontmatter.title}
@@ -34,6 +34,11 @@ export const postQuery = graphql`
                 path
                 title
                 subtitle
+            }
+        }
+        site {
+            siteMetadata {
+                title
             }
         }
     }
