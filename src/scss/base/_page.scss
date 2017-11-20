@@ -7,3 +7,18 @@
         padding-top: $header-height + ( 2 * $header-padding);
     }
 }
+
+
+/**
+ * Sidebar Header
+ ************************/
+
+ @if $header-sidebar {
+     .page__main {
+         width: 100%;
+
+        @include breakpoint(screen(lg)) {
+            margin-left: $header-sidebar-width;
+        }
+     }
+ }

@@ -43,33 +43,33 @@
     }
 }
 
-.header__wrapper {
-    @include breakpoint(screen(lg)) {
-        width: 180px;
-        height: 100%;
-        box-shadow: rgba(102, 102, 102, 0.3) .75em 0 1.5em -1em;
+@if $header-sidebar {
 
-       
-        .header {
+    .header__wrapper {
+        @include breakpoint(screen(lg)) {
+            width: $header-sidebar-width;
+            height: 100%;
+            box-shadow: rgba(102, 102, 102, 0.3) .75em 0 1.5em -1em;
+        }
+    }
+
+    .header {
+        @include breakpoint(screen(lg)) {
             flex-direction: column;
             justify-content: center;
             height: 100%;
-
-            .header__branding {
-                margin-bottom: spacing(xl);
-            }
-
-            .nav {
-                flex-direction: column;
-            }
         }
     }
-}
 
-.page__main {
-    width: 100%;
+    .header__branding {
+        @include breakpoint(screen(lg)) {
+            margin-bottom: spacing(xl);
+        }
+    }
 
-    @include breakpoint(screen(lg)) {
-        margin-left: 180px;
+    .nav {
+        @include breakpoint(screen(lg)) {
+            flex-direction: column;
+        }
     }
 }
