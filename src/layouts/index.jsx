@@ -8,23 +8,26 @@ import Favicon from '../img/logo/favicon.png'
 
 import '../scss/app.scss'
 
-export default ({ children, data }) =>
-    <div className="page__wrapper">
-        <Helmet>
-            <meta charSet="utf-8" />
-            <title>{ data.site.siteMetadata.title }</title>
-            <link rel="shortcut icon" href={Favicon}/>
-        </Helmet>
+export default ({ children, data }) => {
 
-        <Header />
+    return (
+        <div className="page__wrapper">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{data.site.siteMetadata.title}</title>
+                <link rel="shortcut icon" href={Favicon} />
+            </Helmet>
 
-        <main className="page__main">
-            {children()}
-        </main>
-        
-        <Footer />
-    </div>
+            <Header />
 
+            <main className="page__main">
+                {children()}
+
+                <Footer />
+            </main>
+        </div>
+    )
+}
 export const query = graphql`
     query LayoutQuery {
         site {

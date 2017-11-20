@@ -11,7 +11,7 @@ const Excerpt = (props) =>
 
         <div className="u-section-xs">
             <div className="grid">
-                <div className="g-col-sm-9 g-col-md-8">
+                <div className="g-col-sm-10">
                     <p className="u-block u-fill-neutral-lightest">{props.excerpt}</p>
                 </div>
             </div>

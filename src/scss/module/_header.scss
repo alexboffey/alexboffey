@@ -33,3 +33,43 @@
         height: $logo-height;
     }
 }
+
+
+
+.page__wrapper {
+    @include breakpoint(screen(lg)) {
+        display: flex;
+        flex-direction: row nowrap;
+    }
+}
+
+.header__wrapper {
+    @include breakpoint(screen(lg)) {
+        width: 180px;
+        height: 100%;
+        box-shadow: rgba(102, 102, 102, 0.3) .75em 0 1.5em -1em;
+
+       
+        .header {
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+
+            .header__branding {
+                margin-bottom: spacing(xl);
+            }
+
+            .nav {
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+.page__main {
+    width: 100%;
+
+    @include breakpoint(screen(lg)) {
+        margin-left: 180px;
+    }
+}
