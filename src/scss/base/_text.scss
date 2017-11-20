@@ -35,6 +35,7 @@ html {
     
     font-size: $font-size;
     font-family: $font-family;
+    font-weight: $font-weight;
     line-height: $line-height;
     color: color(neutral, darker);
 }
@@ -55,7 +56,7 @@ ul, ol {
 strong, b {
     @extend %selection;
     
-    font-weight: $bold;
+    font-weight: $font-weight-bold;
 }
 
 dfn, em, i, cite {
@@ -118,11 +119,11 @@ a,
 %link {
     @extend %selection;
     
-    color: color(branding, orange);
+    color: color(primary, turquoise);
     touch-action: manipulation;
 
     &:hover {
-        color: color(primary, turquoise);
+        color: lighten(color(primary, turquoise), 10%);
     }
 }
 

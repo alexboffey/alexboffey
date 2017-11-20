@@ -5,11 +5,13 @@
 .hero {
     overflow: auto;
 
-    .title {
-        margin-bottom: 0;
-    }
-    
     .subtitle {
-        margin-top: 0;
+        margin-top: spacing(xxs);
+    }
+
+    &.has-subtitle {
+        .title {
+            margin-bottom: 0;
+        }
     }
 }

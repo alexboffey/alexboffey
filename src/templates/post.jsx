@@ -4,14 +4,16 @@ import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 
 export default ({ data }) => {
-    const { markdownRemark: post } = data;
+    const { markdownRemark: post } = data
 
     return (
         <section className="post u-container-lg">
             <Helmet title={`Alex Boffey | ${post.frontmatter.title}`} />
 
             <header className="post__meta">
-                <Hero title={post.frontmatter.title} subtitle={post.frontmatter.subtitle} hasBorderBlock />
+                <Hero title={post.frontmatter.title}
+                    subtitle={post.frontmatter.subtitle}
+                    hasBorder />
             </header>
 
             <div className="grid u-container-lg">

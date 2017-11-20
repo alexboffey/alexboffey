@@ -18,7 +18,7 @@ const Header = () =>
                 <nav className="header__nav">
                     <ul className="nav nav--space nav--inline">
                         <li><Link to="/work">Work</Link></li>
-                        <li><Link to="/bio">Bio</Link></li>
+                        <li><Link to="/about">About</Link></li>
                     </ul>
                 </nav>
             </div>

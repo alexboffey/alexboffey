@@ -5,15 +5,15 @@ import Hero from '../components/hero'
 
 export default ({ data }) =>
     <div className="content__wrapper u-container-lg">
-        <Helmet title={`${data.site.siteMetadata.title} | Work`} />
-        
-        <Hero title="Work"
+        <Helmet title={`${data.site.siteMetadata.title} | About`} />
+
+        <Hero title="About"
             isLanderTitle
             hasBorder />
     </div>
 
 export const query = graphql`
-    query WorkQuery {
+    query AboutQuery {
         site {
             siteMetadata {
                 title
