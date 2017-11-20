@@ -21,7 +21,7 @@
 
 .title,
 %title {
-    @include title-size(1.4);
+    @include title-size(1.8);
 
     font-weight: $font-weight;
 }
@@ -31,15 +31,8 @@
     font-weight: $font-weight-bold;
 }
 
-.title--lg,
-%title--lg {
-    @include title-size(1.4)
-}
-
 .title--lander,
 %title--lander {
-    @include title-size(1.8);
-
     max-width: 87%;
 
     @include breakpoint(screen(xs)) {
@@ -54,12 +47,3 @@
         max-width: 40%;
     }
 }
-
-
-/**
- * Title
- ************************/
- .subtitle,
- %subtitle {
-     margin-top: 0;
- }

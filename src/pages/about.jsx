@@ -8,7 +8,6 @@ export default ({ data }) =>
         <Helmet title={`${data.site.siteMetadata.title} | About`} />
 
         <Hero title="About"
-            isLanderTitle
             hasBorder />
     </div>
 
