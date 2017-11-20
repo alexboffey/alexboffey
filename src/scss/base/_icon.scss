@@ -10,6 +10,8 @@
     display: inline-block;
 
     object {
+        height: spacing();
+        width: spacing();
         pointer-events: none;
     }
 }
