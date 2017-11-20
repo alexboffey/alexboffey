@@ -44,9 +44,7 @@
     }
 
     @include breakpoint(screen(lg)) {
-        @if $header-sidebar {
-            max-width: 45%;
-        } @else {
+        @if $header-sidebar != true {
             max-width: 40%;
         }
     }

@@ -10,3 +10,14 @@
     @include justify-content(space-between);
     @include align-items(center);
 }
+
+
+/**
+ * Flex Balancer
+ *
+ ************************/
+
+ .u-flex-balancer,
+ %u-flex-balancer {
+     @extend %u-visually-hidden;
+ }

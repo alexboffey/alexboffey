@@ -3,6 +3,12 @@ import Link from 'gatsby-link'
 
 import logo from '../img/logo/logo-main.png'
 
+import instagram from '../img/vector/social/instagram.svg'
+import linkedin from '../img/vector/social/linkedin.svg'
+import twitter from '../img/vector/social/twitter.svg'
+
+const year = (new Date).getFullYear()
+
 const Header = () =>
     <header className="header__wrapper">
         <div className="header header--edges u-container">
@@ -16,10 +22,12 @@ const Header = () =>
             </div>
             <nav className="header__nav">
                 <ul className="nav nav--space nav--inline">
+                    <li><Link to="/">Home</Link></li>
                     <li><Link to="/work">Work</Link></li>
                     <li><Link to="/about">About</Link></li>
                 </ul>
             </nav>
+            <span className="u-hidden-xs u-hidden-sm u-hidden-md flex__balancer"></span>
         </div>
     </header>
 

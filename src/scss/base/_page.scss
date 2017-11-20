@@ -18,6 +18,7 @@
          width: 100%;
 
         @include breakpoint(screen(lg)) {
+            margin-top: spacing();
             margin-left: $header-sidebar-width;
         }
      }
