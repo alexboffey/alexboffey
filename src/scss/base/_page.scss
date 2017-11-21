@@ -18,7 +18,7 @@
          width: 100%;
 
         @include breakpoint(screen(lg)) {
-            margin-top: spacing();
+            padding-top: spacing(xl);
             margin-left: $header-sidebar-width;
         }
      }

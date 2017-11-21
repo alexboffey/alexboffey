@@ -111,7 +111,9 @@
 
 
 /**
- * Module
+ * Layout
  ************************/
 
- @import "module/header";
+@import "layout/excerpt";
+@import "layout/header";
+@import "layout/post";

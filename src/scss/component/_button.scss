@@ -8,7 +8,7 @@
     border-radius: 0;
     font-size: inherit;
     font-family: inherit;
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight;
     line-height: inherit;
     text-decoration: none;
     border: 1px solid transparent;
@@ -19,6 +19,8 @@
     white-space: nowrap;
     width: auto;
     fill: currentColor;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing;
 
     &::moz-focus-inner {
         border: 0;

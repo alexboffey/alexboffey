@@ -7,9 +7,14 @@
     &::after {
         content: "";
         display: block;
-        width: 36px;
+        width: 42px;
         height: 12px;
         margin-top: 8px;
         background-color: color(branding, orange);
+    }
+
+    &--alt::after {
+        width: 32px;
+        height: 8px;
     }
 }

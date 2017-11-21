@@ -7,8 +7,6 @@ import github from '../img/vector/social/github.svg'
 import linkedin from '../img/vector/social/linkedin.svg'
 import twitter from '../img/vector/social/twitter.svg'
 
-const year = (new Date).getFullYear()
-
 const Header = () =>
     <header className="header__wrapper">
         <div className="header header--edges u-container">

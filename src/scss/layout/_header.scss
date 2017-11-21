@@ -1,10 +1,10 @@
-
 /**
- * Header Layout
+ * Header
  ************************/
 
 .header {
     height: $header-height;
+    overflow: visible;
 
     &__wrapper {
         padding: $header-padding 0;
@@ -64,9 +64,15 @@
         }
     }
 
+    .header__branding {
+        @include breakpoint(screen(lg)) {
+            margin-top: spacing(xs);
+        }
+    }
+
     .header__logo {
         @include breakpoint(screen(lg)) {
-            height: 1.25 * $logo-height;
+            height: 1.5 * $logo-height;
         }
     }
 

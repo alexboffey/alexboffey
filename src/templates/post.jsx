@@ -1,28 +1,26 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import Content from '../layouts/content'
 import Hero from '../components/hero'
 
 export default ({ data }) => {
     const { markdownRemark: post } = data
 
     return (
-        <section className="post u-container-lg">
+        <div className="content__wrapper">
             <Helmet title={`${data.site.siteMetadata.title} | ${post.frontmatter.title}`} />
 
-            <header className="post__meta">
-                <Hero title={post.frontmatter.title}
-                    subtitle={post.frontmatter.subtitle}
-                    hasBorder />
-            </header>
+            <Hero title={post.frontmatter.title}
+                subtitle={post.frontmatter.subtitle}
+                hasBorder />
 
-            <div className="grid u-container-lg">
-                <div className="g-col-md-10">
-                    <article className="post__content" dangerouslySetInnerHTML={{ __html: post.html }} />
+            <Content>
+                <div className="post__wrapper">
+                    <article className="post" dangerouslySetInnerHTML={{ __html: post.html }} />
                 </div>
-            </div>
-
-        </section>
+            </Content>
+        </div>
     )
 }
 

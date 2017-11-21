@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const Hero = (props) => {
     const subtitle = props.subtitle ? <h3 className="subtitle">{props.subtitle}</h3> : ''
     const borderBlock = props.hasBorder ? 'border-block' : ''
-    const heroClass = `hero ${props.subtitle ? 'has-subtitle' : ''}`
+    const heroClass = `hero u-container-lg ${props.subtitle ? 'has-subtitle' : ''}`
 
     return (
         <header className={heroClass}>

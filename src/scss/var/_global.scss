@@ -18,6 +18,7 @@ $colors: (
     neutral: (
         black         : #000,
         white         : #fff,
+        readable        : #fbfaf9,
         darkest         : #222,
         darker          : #444,
         dark            : #666,
@@ -52,6 +53,8 @@ $font-size-lg           : 1.2em;
 
 $font-weight            : 400;
 $font-weight-bold       : 700;
+
+$letter-spacing         : .05em;
 
 $line-height            : 1.6;
 $line-height-sm         : 1.2;
@@ -127,7 +130,7 @@ $screens: (
 
 $spacing: (
     base                : 1em,
-    xxs                 : .42em,
+    xxs                 : .48em,
     xs                  : .56em,
     sm                  : .75em,
     lg                  : 1.3em,
