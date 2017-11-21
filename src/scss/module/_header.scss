@@ -70,13 +70,5 @@
         }
     }
 
-    .nav {
-        @include breakpoint(screen(lg)) {
-            flex-direction: column;
 
-            a {
-                font-size: $font-size-lg;
-            }
-        }
-    }
 }

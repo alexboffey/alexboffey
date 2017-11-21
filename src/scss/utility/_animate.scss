@@ -1,15 +1,13 @@
 /**
  * Spin
- *
- * @since 3.0.0
  ************************/
 
 .u-spin,
 %u-spin {
-    animation: spin 0.3s infinite linear;
+    animation: Spin $animation-speed infinite linear;
 }
 
-@keyframes spin {
+@keyframes Spin {
     from {
         transform: rotate(0deg);
     }
@@ -17,3 +15,29 @@
         transform: rotate(359deg);
     }
 }
+
+
+/**
+ * Bounce
+ ************************/
+
+ .u-bounce,
+ %u-bounce {
+    &:hover {
+        animation: Bounce $animation-speed ease;
+    }
+ }
+
+ @keyframes Bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-.2em);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+ }

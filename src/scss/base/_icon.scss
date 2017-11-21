@@ -13,6 +13,7 @@
         height: spacing();
         width: spacing();
         pointer-events: none;
+
     }
 }
 
@@ -25,6 +26,11 @@
 %icon--sm {
     height: spacing(sm);
     width: spacing(sm);
+
+    object {
+        height: spacing(sm);
+        width: spacing(sm);
+    }
  }
 
 
@@ -36,6 +42,11 @@
 %icon--lg {
     height: spacing(lg);
     width: spacing(lg);
+
+    object {
+        height: spacing(lg);
+        width: spacing(lg);
+    }
 }
 
 

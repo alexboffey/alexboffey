@@ -8,6 +8,9 @@
 
     a {
         text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        // font-weight: $font-weight-bold;
 
         &:not(:hover) {
             color: color(neutral, darker);
@@ -102,3 +105,20 @@
         white-space: nowrap;
     }
 }
+
+
+/**
+ * Nav Sidebar
+ ************************/
+
+ @if $header-sidebar {
+    .nav {
+        @include breakpoint(screen(lg)) {
+            flex-direction: column;
+            text-align: right;
+            a {
+                font-size: $font-size-lg;
+            }
+        }
+    }
+ }
