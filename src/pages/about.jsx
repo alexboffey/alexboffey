@@ -1,18 +1,19 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import Wrapper from '../layouts/wrapper'
 import Content from '../layouts/content'
+
 import Hero from '../components/hero'
 
 export default ({ data }) =>
-    <div className="content__wrapper">
+    <Wrapper>
         <Helmet title={`${data.site.siteMetadata.title} | About`} />
 
-        <Hero title="About"
-            hasBorder />
+        <Hero title="About" hasBorder />
 
         <Content></Content>
-    </div>
+    </Wrapper>
 
 export const query = graphql`
     query AboutQuery {

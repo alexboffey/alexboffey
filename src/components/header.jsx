@@ -1,11 +1,9 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-import logo from '../img/logo/logo-main.png'
+import Icons from './social-icons'
 
-import github from '../img/vector/social/github.svg'
-import linkedin from '../img/vector/social/linkedin.svg'
-import twitter from '../img/vector/social/twitter.svg'
+import logo from '../img/logo/logo-main.png'
 
 const Header = () =>
     <header className="header__wrapper">
@@ -26,9 +24,7 @@ const Header = () =>
                 </ul>
             </nav>
             <footer className="u-hidden-xs u-hidden-sm u-hidden-md u-section-xs-bottom">
-                <a href="https://www.github.com/alexboffey" target="_blank" rel="noopener noregerrer" className="icon icon--hover u-bounce"><object data={github} type="image/svg+xml"></object></a>
-                <a href="https://www.twitter.com/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover u-bounce"><object data={twitter} type="image/svg+xml"></object></a>
-                <a href="https://www.linkedin.com/in/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover u-bounce"><object data={linkedin} type="image/svg+xml"></object></a>
+                <Icons />
             </footer>
         </div>
     </header>

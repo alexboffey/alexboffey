@@ -1,8 +1,8 @@
 ---
-path: '/hoodie-yuccie'
 title: 'Hoodie yuccie single-origin coffee'
 subtitle: 'Cloud bread mumblecore flannel selfies.'
 date: '19-11-2017'
+post_type: 'blog'
 ---
 
 Hoodie yuccie single-origin coffee gochujang, cloud bread mumblecore flannel selfies. Typewriter pinterest bitters waistcoat pork belly taiyaki. Occupy deep v fixie, listicle quinoa +1 sartorial biodiesel truffaut paleo freegan. Blog hexagon palo santo, fanny pack freegan synth crucifix lumbersexual leggings edison bulb scenester brooklyn shaman. Schlitz keytar venmo pabst asymmetrical, poutine +1. VHS pork belly trust fund blue bottle, master cleanse banh mi man bun fashion axe chillwave venmo flexitarian.

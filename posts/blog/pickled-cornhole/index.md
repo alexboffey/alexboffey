@@ -1,8 +1,8 @@
 ---
-path: '/pickled-cornhole'
 title: 'Pok pok pickled cornhole'
 subtitle: 'Kitsch paleo marfa echo park mumblecore.'
 date: '19-11-2017'
+post_type: 'blog'
 ---
 
 Pok pok pickled cornhole kitsch paleo marfa echo park mumblecore farm-to-table. Selvage humblebrag yr keffiyeh portland. Hoodie normcore tumblr portland hexagon fashion axe shaman. Flannel dreamcatcher pok pok poutine, hoodie listicle chillwave four loko pour-over gochujang intelligentsia next level art party hashtag pug. Edison bulb kinfolk PBR&B 3 wolf moon, yr chillwave swag. Austin vexillologist pork belly, shaman venmo mustache cray beard trust fund fixie swag.
