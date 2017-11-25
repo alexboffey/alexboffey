@@ -7,10 +7,10 @@ import twitter from '../img/vector/social/twitter.svg'
 
 const Social = (
     <span>
-        <a href="https://www.linkedin.com/in/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover">
-            <object alt="LinkedIn" data={linkedin} type="image/svg+xml"></object></a>
         <a href="https://www.twitter.com/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover">
             <object alt="Twitter" data={twitter} type="image/svg+xml"></object></a>
+        <a href="https://www.linkedin.com/in/alexboffey/" target="_blank" rel="noopener noreferrer" className="icon icon--hover">
+            <object alt="LinkedIn" data={linkedin} type="image/svg+xml"></object></a>
     </span>
 )
 
