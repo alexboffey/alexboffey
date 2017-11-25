@@ -12,7 +12,7 @@ npm i
 ```
 
 ## Move public dir contents
-Move contents of public to public/alexboffey. This is a workaround for the live pathPrefic being different to the local.
+Move contents of public to public/alexboffey. This is a workaround for the live pathPrefix being different to the local.
 ```
 cd public
 
