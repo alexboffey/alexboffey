@@ -24,8 +24,6 @@ export default ({ data }) => {
                     </header>
 
                     <article className="post" dangerouslySetInnerHTML={{ __html: post.html }} />
-
-                    <div className="u-section"></div>
                 </div>
             </Content>
         </Wrapper>

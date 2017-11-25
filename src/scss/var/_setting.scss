@@ -58,6 +58,10 @@ $gutters: (
  ************************/
 
 $sections: (
+    xxs: (
+        min            : .6em,
+        max            : .9em
+    ),
     xs: (
         min            : 1.3em,
         max            : 1.5em

@@ -10,7 +10,7 @@
     box-shadow: 0em 1em 3em -1em rgba(color(neutral, dark), .4);
 
     > [class*="__header"] {
-        border-bottom: seperator(base, width) seperator(base, style) seperator(base, color);
+        // border-bottom: seperator(base, width) seperator(base, style) seperator(base, color);
 
         > * {
             margin-bottom: 0;

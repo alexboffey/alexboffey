@@ -16,11 +16,14 @@ export default ({ data }) => {
             <Content>
                 {
                     data.allMarkdownRemark.edges.map(post =>
-                        <SingleBlog key={post.node.id}
-                            title={post.node.frontmatter.title}
-                            date={post.node.frontmatter.date}
-                            excerpt={post.node.excerpt}
-                            slug={post.node.fields.slug} />
+                        <div className="grid g-col-xs-12">
+                            <SingleBlog key={post.node.id}
+                                title={post.node.frontmatter.title}
+                                subtitle={post.node.frontmatter.subtitle}
+                                date={post.node.frontmatter.date}
+                                excerpt={post.node.excerpt}
+                                slug={post.node.fields.slug} />
+                        </div>
                     )
                 }
             </Content>
@@ -38,6 +41,7 @@ export const query = graphql`
                         excerpt
                         frontmatter {
                             title
+                            subtitle
                             date
                             post_type
                         }

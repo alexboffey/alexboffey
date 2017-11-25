@@ -12,10 +12,6 @@
 [class*="u-block"],
 %u-block-base {
     display: block;
-    
-    > *:last-child {
-        margin-bottom: 0;
-    }
 }
 
 
