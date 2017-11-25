@@ -8,17 +8,18 @@ import Styled from 'styled-components'
 
 const SingleBlog = ({ title, subtitle, date, excerpt, slug }) =>
     <article className="blog-single card u-section-sm-bottom u-block-xl">
-        <header className="blog-single__header border-block border-block--alt u-section-xs-bottom">
+        <header className="blog-single__header border-block border-block--alt">
             <h2 className="h1">{title}</h2>
             <p>{subtitle}</p>
-            <div className="u-section-xxs">
-                <p className="micro">{date}</p>
-            </div>
         </header>
 
-        <div className="blog-single__content u-section-xs">
+        <div className="blog-single__content u-section-xxs-top">
             <div className="grid">
                 <div className="g-col-sm-10">
+                    <header className="u-secion-xxs-bottom">
+                        <p className="micro">{date}</p>
+                    </header>
+                    
                     <p>{excerpt}</p>
                 </div>
             </div>
