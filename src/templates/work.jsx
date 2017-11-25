@@ -19,13 +19,13 @@ export default ({ data }) => {
 
             <Content>
                 <div className="post__wrapper">
-                    <header className="post__meta">
-                        <p className="micro">{post.frontmatter.date}</p>
+                    <header className="u-section-xs-top u-section-sm-bottom">
+                        <img src={post.frontmatter.featured_image} alt={post.frontmatter.title} />
                     </header>
 
-                    <div className="u-section-xs-top u-section-sm-bottom">
-                        <img src={post.frontmatter.featured_image} alt={post.frontmatter.title} />
-                    </div>
+                    <section className="post__meta u-section-xs">
+                        <p className="micro">{post.frontmatter.date}</p>
+                    </section>
 
                     <article className="post u-section-xs" dangerouslySetInnerHTML={{ __html: post.html }} />
                 </div>

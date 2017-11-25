@@ -17,7 +17,7 @@ export default ({ data }) =>
             <div className="g-gutter grid">
                 {
                     data.allMarkdownRemark.edges.map(post =>
-                        <div className="g-col-md-6 g-col-lg-4">
+                        <div className="g-col-md-6 g-col-xl-4">
                             <SingleWork key={post.node.id}
                                 title={post.node.frontmatter.title}
                                 subtitle={post.node.frontmatter.subtitle}

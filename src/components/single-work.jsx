@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 
 const SingleWork = ({ title, subtitle, date, featuredImage, slug }) =>
-    <article className="work card u-block ">
+    <article className="work card u-block">
 
         <Link to={slug} className="u-link-unstyled">
             <img src={featuredImage} alt={`${title} featured image`} />
