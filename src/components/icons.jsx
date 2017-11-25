@@ -24,7 +24,7 @@ const SocialIcons = ({ hasSocials }) => {
         
             <a href="https://www.github.com/alexboffey" target="_blank" rel="noopener noregerrer" className="icon icon--hover">
                 <object alt="Github" data={github} type="image/svg+xml"></object></a>
-            <a href="https://www.codepen.com/alexboffey" target="_blank" rel="noopener noregerrer" className="icon icon--hover">
+            <a href="https://www.codepen.io/alexboffey" target="_blank" rel="noopener noregerrer" className="icon icon--hover">
                 <object alt="Codepen" data={codepen} type="image/svg+xml"></object></a>
         </div>
     )
