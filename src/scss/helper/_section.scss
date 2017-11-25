@@ -8,6 +8,7 @@ $screen-max: screen( nth( map-keys($screens), length($screens) ) );
 @mixin section($key) {
     margin-top: section($key, min);
     margin-bottom: section($key, min);
+    overflow: auto;
 
     &-top {
         margin-top: section($key, min);

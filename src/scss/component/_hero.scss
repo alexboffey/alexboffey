@@ -3,16 +3,14 @@
  ************************/
 
 .hero {
-    overflow: auto;
+    &.has-subtitle {
+        .title {
+            margin-bottom: 0;
+        }
+    }
 
     .subtitle {
         margin-top: spacing(xxs);
         margin-bottom: spacing();
-    }
-
-    &.has-subtitle {
-        .title {
-            margin-bottom: spacing(xxs);
-        }
     }
 }

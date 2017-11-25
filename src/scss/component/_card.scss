@@ -7,6 +7,7 @@
     border: seperator(base, width) seperator(base, style) seperator(base, color);
     background-color: color(neutral, white);
     border-radius: $border-radius;
+    box-shadow: 0em 1em 3em -1em rgba(color(neutral, dark), .4);
 
     > [class*="__header"] {
         border-bottom: seperator(base, width) seperator(base, style) seperator(base, color);
@@ -23,7 +24,7 @@
     > [class*="__header"],
     > [class*="__body"],
     > [class*="__footer"] {
-        padding: spacing(lg);
+        padding: spacing(lg) 0;
     }
 
     > [class*="__footer"] {

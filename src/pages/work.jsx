@@ -14,15 +14,17 @@ export default ({ data }) =>
         <Hero title="Work" hasBorder />
 
         <Content isFullWidth>
-            <div className="grid">
+            <div className="g-gutter grid">
                 {
                     data.allMarkdownRemark.edges.map(post =>
-                        <SingleWork key={post.node.id}
-                            title={post.node.frontmatter.title}
-                            subtitle={post.node.frontmatter.subtitle}
-                            date={post.node.frontmatter.date}
-                            featuredImage={post.node.frontmatter.featured_image}
-                            slug={post.node.fields.slug} />
+                        <div className="g-col-md-6 g-col-lg-4">
+                            <SingleWork key={post.node.id}
+                                title={post.node.frontmatter.title}
+                                subtitle={post.node.frontmatter.subtitle}
+                                date={post.node.frontmatter.date}
+                                featuredImage={post.node.frontmatter.featured_image}
+                                slug={post.node.fields.slug} />
+                        </div>
                     )
                 }
             </div>
