@@ -11,9 +11,12 @@
         text-transform: uppercase;
         letter-spacing: .05em;
         font-size: $font-size;
+        position: relative;
+        color: color(neutral, dark);
 
-        &:not(:hover) {
-            color: color(neutral, darker);
+        &:hover,
+        &.is-active {
+            color: color(primary, turquoise);
         }
     }
 }
