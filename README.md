@@ -11,6 +11,16 @@ cd alexboffey
 npm i
 ```
 
+## Move public dir contents
+Move contents of public to public/alexboffey. This is a workaround for the live pathPrefic being different to the local.
+```
+cd public
+
+mkdir alexboffey
+
+mv * alexboffey
+```
+
 ## Running in development
 Start local dev server
 ```
