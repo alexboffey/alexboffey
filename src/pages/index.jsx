@@ -14,10 +14,9 @@ export default ({ data }) => {
                 hasBorder />
 
             <Content isFullWidth>
-                <div className="grid">
                 {
                     data.allMarkdownRemark.edges.map(post =>
-                        <div className="g-col-md-10 g-col-xl-8">
+                        <div className="grid g-col-md-10 g-col-xl-8">
                             <SingleBlog key={post.node.id}
                                 title={post.node.frontmatter.title}
                                 subtitle={post.node.frontmatter.subtitle}
@@ -27,7 +26,6 @@ export default ({ data }) => {
                         </div>
                     )
                 }
-                </div>
             </Content>
         </Wrapper>
     )
