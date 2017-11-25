@@ -8,7 +8,7 @@ import Favicon from '../img/logo/favicon.png'
 
 import '../scss/app.scss'
 
-export default ({ children, data, location }) => {
+export default ({ children, data }) => {
     return (
         <div className="page__wrapper">
             <Helmet>
@@ -17,7 +17,7 @@ export default ({ children, data, location }) => {
                 <link rel="shortcut icon" href={Favicon} />
             </Helmet>
 
-            <Header activePath={location.pathname} />
+            <Header />
 
             <main className="page__main">
                 {children()}

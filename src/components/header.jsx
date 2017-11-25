@@ -6,20 +6,7 @@ import Icons from './icons'
 
 import logo from '../img/logo/logo-main.png'
 
-const LinkWrapper = ({ children, to, activePath }) => {
-    let linkClass = activePath.includes(to) ? 'is-active' : ''
-
-    if (to === '/' && activePath !== '/') {
-        linkClass = ''
-    }
-
-    return (
-        <Link to={to} className={linkClass}>{children}</Link>
-    )
-}
-
-const Header = ({ activePath }) => {
-    
+const Header = () => {
     return (
         <header className="header__wrapper">
             <div className="header header--edges u-container">
@@ -33,9 +20,9 @@ const Header = ({ activePath }) => {
                 </div>
                 <nav className="header__nav">
                     <ul className="nav nav--pills nav--inline">
-                        <li><LinkWrapper to="/" activePath={activePath}>Blog</LinkWrapper></li>
-                        <li><LinkWrapper to="/work" activePath={activePath}>Work</LinkWrapper></li>
-                        <li><LinkWrapper to="/about" activePath={activePath}>About</LinkWrapper></li>
+                        <li><Link to="/">Blog</Link></li>
+                        <li><Link to="/work">Work</Link></li>
+                        <li><Link to="/about" >About</Link></li>
                     </ul>
                 </nav>
                 <footer className="u-hidden-xs u-hidden-sm u-hidden-md u-section-xs-bottom">
@@ -45,10 +32,5 @@ const Header = ({ activePath }) => {
         </header>
     )
 }
-
-Header.propTypes = {
-    activePath: PropTypes.string.isRequired
-}
-
 
 export default Header
