@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-import Icons from './social-icons'
+import Icons from './icons'
 
 import logo from '../img/logo/logo-main.png'
 

@@ -2,19 +2,22 @@
  * Icon
  ************************/
 
-.icon,
-%icon {
-    height: spacing();
-    width: spacing();
-    margin: spacing();
+@mixin icon($size: 'base') {
+    height: spacing($size);
+    width: spacing($size);
+    margin: spacing($size);
     display: inline-block;
 
     object {
-        height: spacing();
-        width: spacing();
+        height: spacing($size);
+        width: spacing($size);
         pointer-events: none;
-
     }
+}
+
+.icon,
+%icon {
+    @include icon();
 }
 
 
@@ -24,13 +27,7 @@
 
 .icon--sm,
 %icon--sm {
-    height: spacing(sm);
-    width: spacing(sm);
-
-    object {
-        height: spacing(sm);
-        width: spacing(sm);
-    }
+    @include icon(sm);
  }
 
 
@@ -40,13 +37,7 @@
 
 .icon--lg,
 %icon--lg {
-    height: spacing(lg);
-    width: spacing(lg);
-
-    object {
-        height: spacing(lg);
-        width: spacing(lg);
-    }
+    @include icon(lg)
 }
 
 

@@ -1,14 +1,14 @@
 import React from 'react'
 
-import Icons from './social-icons'
+import Icons from './icons'
 
 const year = (new Date).getFullYear()
 
 const Footer = () =>
     <footer className="page-footer">
         <div className="u-container u-center u-section-sm u-text-center">
-            <div className="u-section-xs u-hidden-lg u-hidden-xl">
-                <Icons />
+            <div className="u-section-xs">
+                <Icons hasSocials />
             </div>
 
             <footer className="u-section-xs">

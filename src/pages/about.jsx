@@ -5,7 +5,6 @@ import Wrapper from '../layouts/wrapper'
 import Content from '../layouts/content'
 
 import Hero from '../components/hero'
-import Icons from '../components/social-icons'
 
 export default ({ data }) =>
     <Wrapper>
