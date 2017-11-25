@@ -2,10 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 
-import Styled from 'styled-components'
-
-
-
 const SingleBlog = ({ title, subtitle, date, excerpt, slug }) =>
     <article className="blog-single card u-section-sm-bottom u-block-xl">
         <header className="blog-single__header border-block border-block--alt">

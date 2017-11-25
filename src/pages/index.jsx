@@ -13,10 +13,11 @@ export default ({ data }) => {
             <Hero title="Alex Boffey, front end developer."
                 hasBorder />
 
-            <Content>
+            <Content isFullWidth>
+                <div className="grid">
                 {
                     data.allMarkdownRemark.edges.map(post =>
-                        <div className="grid g-col-xs-12">
+                        <div className="g-col-md-10 g-col-xl-8">
                             <SingleBlog key={post.node.id}
                                 title={post.node.frontmatter.title}
                                 subtitle={post.node.frontmatter.subtitle}
@@ -26,6 +27,7 @@ export default ({ data }) => {
                         </div>
                     )
                 }
+                </div>
             </Content>
         </Wrapper>
     )

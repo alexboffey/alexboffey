@@ -20,7 +20,7 @@ export default ({ data }) => {
             <Content>
                 <div className="post__wrapper">
                     <header className="u-section-xs-top u-section-sm-bottom">
-                        <img src={post.frontmatter.featured_image} alt={post.frontmatter.title} />
+                        <img src={__PATH_PREFIX__ + post.frontmatter.featured_image} alt={post.frontmatter.title} />
                     </header>
 
                     <section className="post__meta u-section-xs">

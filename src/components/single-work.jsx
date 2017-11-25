@@ -6,7 +6,7 @@ const SingleWork = ({ title, subtitle, date, featuredImage, slug }) =>
     <article className="work__single card u-block-xl">
         <header className="work__header u-section-xs-bottom">
             <Link to={slug} className="u-link-unstyled">
-                <img src={featuredImage} alt={`${title} featured image`} />
+                <img src={__PATH_PREFIX__ + featuredImage} alt={`${title} featured image`} />
             </Link>
         </header>
 
