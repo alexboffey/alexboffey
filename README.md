@@ -1,10 +1,24 @@
-# gatsby-starter-hello-world
-Starter with the bare essentials needed for a [Gatsby](https://www.gatsbyjs.org/) site
+# Alex Boffey Personal Site
+Built using Gatsby JS
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
+## Get local copy
+Clone the repository
 ```
-gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
+git clone git@github.com:alexboffey/alexboffey.git
+
+cd alexboffey
+
+npm i
 ```
 
 ## Running in development
-`gatsby develop`
+Start local dev server
+```
+gatsby develop
+```
+
+## Deployment
+Builds production version of site & pushes to gh-pages branch
+```
+npm run deploy
+```
