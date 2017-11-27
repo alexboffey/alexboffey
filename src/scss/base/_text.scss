@@ -73,9 +73,7 @@ small {
     font-size: $font-size-sm;
 }
 
-code,
 kbd,
-pre,
 samp {
     @extend %selection;
     
