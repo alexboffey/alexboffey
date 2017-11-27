@@ -3,10 +3,32 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 
 import Icons from './icons'
-
 import logo from '../img/logo/logo-main.png'
 
-const Header = () => {
+const NavLink = ({ to, activePath, children }) => {
+    let linkClass = ''
+
+    // Messy logic to determine active path
+    if ( to === '/' ) {
+        if ( activePath === to || activePath === `${__PATH_PREFIX__}${to}` || activePath.includes('/blog') ) {
+            linkClass = 'is-active'
+        }
+    } else if ( to === '/work' ) {
+        if ( activePath.includes('/work') ) {
+            linkClass = 'is-active'
+        }
+    } else if ( to === '/about' ) {
+        if ( activePath.includes('/about') ) {
+            linkClass = 'is-active'
+        }
+    }
+
+    return (
+        <Link className={linkClass} to={to}>{children}</Link>
+    )
+}
+
+const Header = ({ activePath }) => {
     return (
         <header className="header__wrapper">
             <div className="header header--edges u-container">
@@ -20,9 +42,9 @@ const Header = () => {
                 </div>
                 <nav className="header__nav">
                     <ul className="nav nav--pills nav--inline">
-                        <li><Link to="/">Blog</Link></li>
-                        <li><Link to="/work">Work</Link></li>
-                        <li><Link to="/about" >About</Link></li>
+                        <li><NavLink to="/" activePath={activePath}>Blog</NavLink></li>
+                        <li><NavLink to="/work" activePath={activePath}>Work</NavLink></li>
+                        <li><NavLink to="/about" activePath={activePath}>About</NavLink></li>
                     </ul>
                 </nav>
                 <footer className="u-hidden-xs u-hidden-sm u-hidden-md u-section-xs-bottom">
@@ -31,6 +53,10 @@ const Header = () => {
             </div>
         </header>
     )
+}
+
+Header.propTypes = {
+    activePath: PropTypes.string.isRequired
 }
 
 export default Header
