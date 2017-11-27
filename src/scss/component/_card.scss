@@ -7,7 +7,7 @@
     border: seperator(base, width) seperator(base, style) seperator(base, color);
     background-color: color(neutral, white);
     border-radius: $border-radius;
-    box-shadow: 0em 1em 3em -1em rgba(color(neutral, dark), .4);
+    box-shadow: 0em 1em 3em -1.5em rgba(color(neutral, dark), .3);
 
     > [class*="__header"] {
         // border-bottom: seperator(base, width) seperator(base, style) seperator(base, color);

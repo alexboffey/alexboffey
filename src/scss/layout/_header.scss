@@ -52,7 +52,7 @@
         @include breakpoint(screen(lg)) {
             width: $header-sidebar-width;
             height: 100%;
-            box-shadow: rgba(102, 102, 102, 0.3) .75em 0 1.5em -1em;
+            box-shadow: $header-sidebar-box-shadow;
             background: $header-sidebar-background;
         }
     }
