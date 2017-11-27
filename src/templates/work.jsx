@@ -5,7 +5,7 @@ import Wrapper from '../layouts/wrapper'
 import Content from '../layouts/content'
 import Hero from '../components/hero'
 
-import 'prism-themes/themes/prism-duotone-dark.css' 
+import 'prism-themes/themes/prism-hopscotch.css'
 
 export default ({ data }) => {
     const { markdownRemark: post } = data
