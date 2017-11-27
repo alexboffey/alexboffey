@@ -8,7 +8,14 @@ module.exports = {
         'gatsby-plugin-catch-links',
         'gatsby-plugin-offline',
         'gatsby-plugin-sass',
-        'gatsby-transformer-remark',
+        {
+            resolve: 'gatsby-transformer-remark',
+            options: {
+                plugins: [
+                    'gatsby-remark-prismjs'
+                ]
+            }
+        },
         {
             resolve: 'gatsby-source-filesystem',
             options: {
