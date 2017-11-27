@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 
 import Wrapper from '../layouts/wrapper'
 import Content from '../layouts/content'
-
 import Hero from '../components/hero'
 
-export default ({ data }) => {
-    const { markdownRemark: post } = data
+import 'prism-themes/themes/prism-duotone-dark.css' 
+
+export default () => {
+    const { markdownRemark: post } = this.props.data
 
     return (
         <Wrapper>

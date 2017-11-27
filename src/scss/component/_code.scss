@@ -1,0 +1,20 @@
+/**
+ * Code
+ ************************/
+
+.gatsby-highlight {
+    margin-bottom: spacing(xxl);
+
+    pre {
+        padding: spacing();
+        box-shadow: 0 1em 3em -.75em rgba(color(neutral, dark), 0.4);
+    }
+
+    code {
+        display: block;
+        padding: spacing();
+        font-size: $font-size * 1.1 !important;
+        line-height: 2 !important;
+        overflow: scroll;
+    }
+}
