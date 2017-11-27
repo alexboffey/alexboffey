@@ -12,6 +12,8 @@
     "code-prettify": "^0.1.0",
     "gatsby": "^1.9.110",
     "gatsby-link": "^1.6.27",
+    "gatsby-plugin-catch-links": "^1.0.9",
+    "gatsby-plugin-offline": "^1.0.10",
     "gatsby-plugin-react-helmet": "^1.0.8",
     "gatsby-plugin-sass": "^1.0.13",
     "gatsby-source-filesystem": "^1.5.8",
