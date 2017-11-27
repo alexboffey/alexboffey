@@ -23,9 +23,6 @@ pre[class*="language-"] {
     -ms-hyphens: none;
     hyphens: none;
     white-space: pre;
-    white-space: pre-wrap;
-    word-break: break-all;
-    word-wrap: break-word;
     background: #322931;
     color: #b9b5b8;
 }
@@ -131,6 +128,10 @@ pre>code.highlight {
     outline-offset: .4em;
 }
 
+pre>code * {
+    background-color: transparent !important;
+    padding: 0 !important;
+}
 
 /**
  * Code Override
