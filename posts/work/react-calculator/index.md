@@ -1,7 +1,7 @@
 ---
 title: 'React Calculator'
 subtitle: 'A calculator built with React.'
-date: '22-11-2017'
+date: '2017-11-22T00:00:00.000Z'
 post_type: 'work'
 featured_image: '/img/react-calculator/featured.png'
 ---
