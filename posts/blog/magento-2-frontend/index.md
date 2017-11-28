@@ -9,7 +9,7 @@ CMS static blocks are blocks of content that can be that can be created and edit
 
 Demonstrated below are three different methods for outputting them in Magento 2 projects.
 
-## In a layout file
+## In a layout file.
 
 ```xml
 <block class="Magento\Cms\Block\Block" name="block.name" as="blockName">
@@ -19,7 +19,7 @@ Demonstrated below are three different methods for outputting them in Magento 2 
 </block>
 ```
 
-## In a template
+## In a template.
 
 ```php
 <?php echo $block->getLayout()
@@ -28,7 +28,7 @@ Demonstrated below are three different methods for outputting them in Magento 2 
             ->toHtml(); ?>
 ```
 
-## In the CMS editor
+## In the CMS editor.
 
 ```
 {{block class="Magento\\Cms\\Block\\Block" block_id="block_id"}}

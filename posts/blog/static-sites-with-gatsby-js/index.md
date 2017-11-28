@@ -12,7 +12,7 @@ It has an excellent developer experience, (assuming you like React), backed up b
 
 So after browsing through the [docs](https://www.gatsbyjs.org/docs/), which are an excellent resource that you should check out! I decided to rebuild my personal (this) site using Gatsby and document my experience.
 
-## Initial setup
+## Initial setup.
 Gatsby has a CLI which is used to scaffold new projects. We first need to install it which will allow us to create our project.
 
 ```
