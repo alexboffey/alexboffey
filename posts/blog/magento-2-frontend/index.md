@@ -5,11 +5,11 @@ date: '2017-11-28T00:00:00.000Z'
 post_type: 'blog'
 ---
 
-CMS static blocks are blocks of content that can be edited inside the Magento admin area. They're perfect for use as banners, promotions, return policies or any other type of content which may change regularly.
+CMS static blocks are blocks of content that can be that can be created and edited inside the Magento admin area. They're perfect for use as banners, promotions, return policies or any other type of content which may change regularly.
 
-Demonstrated below are three different techniques for outputting them in a Magento 2 project.
+Demonstrated below are three different methods for outputting them in Magento 2 projects.
 
-## From a layout file.
+## In a layout file
 
 ```xml
 <block class="Magento\Cms\Block\Block" name="block.name" as="blockName">
@@ -19,7 +19,7 @@ Demonstrated below are three different techniques for outputting them in a Magen
 </block>
 ```
 
-## From a phtml template.
+## In a template
 
 ```php
 <?php echo $block->getLayout()
@@ -28,7 +28,7 @@ Demonstrated below are three different techniques for outputting them in a Magen
             ->toHtml(); ?>
 ```
 
-## From a CMS page.
+## In the CMS editor
 
 ```
 {{block class="Magento\\Cms\\Block\\Block" block_id="block_id"}}
