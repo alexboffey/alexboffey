@@ -146,11 +146,14 @@ pre>code * {
         box-shadow: 0 1em 3em -.75em rgba(color(neutral, dark), 0.3);
     }
 
-    code {
+    code{
         display: block;
         padding: spacing();
-        font-size: $font-size !important;
-        line-height: 2 !important;
         overflow: scroll;
+
+        & * {
+            font-size: $font-size !important;
+            line-height: 2 !important;
+        }
     }
 }

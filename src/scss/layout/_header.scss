@@ -54,6 +54,10 @@
             height: 100%;
             box-shadow: $header-sidebar-box-shadow;
             background: $header-sidebar-background;
+
+            .nav {
+                align-content: center;
+            }
         }
     }
 
