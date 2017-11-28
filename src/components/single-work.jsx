@@ -11,7 +11,7 @@ const SingleWork = ({ title, subtitle, date, featuredImage, slug }) =>
         </header>
 
         <section className="work__content u-section-xs">
-            <h3 className="h1">{title}</h3>
+            <Link to={slug} className="u-link-unstyled"><h2 className="h1">{title}</h2></Link>
             <p>{subtitle}</p>
         </section>
 
