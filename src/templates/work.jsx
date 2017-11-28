@@ -40,7 +40,7 @@ export const postQuery = graphql`
             frontmatter {
                 title
                 subtitle
-                date
+                date(formatString: "DD-MM-YYYY")
                 featured_image
             }
         }

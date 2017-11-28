@@ -32,7 +32,10 @@ export default ({ data }) =>
 
 export const query = graphql`
     query WorkQuery {
-        allMarkdownRemark(filter: { frontmatter: { post_type: { eq: "work" } } }) {
+        allMarkdownRemark(
+            filter: { frontmatter: { post_type: { eq: "work" } } }
+            sort: { order: DESC, fields: [frontmatter___date] }
+        ) {
             totalCount
                 edges {
                     node {
@@ -41,7 +44,7 @@ export const query = graphql`
                         frontmatter {
                             title
                             subtitle
-                            date
+                            date(formatString: "DD-MM-YYYY")
                             post_type
                             featured_image
                         }
