@@ -151,8 +151,7 @@ pre>code * {
         padding: spacing();
         overflow: scroll;
 
-        & * {
-            font-size: $font-size !important;
+        &, * {
             line-height: 2 !important;
         }
     }
