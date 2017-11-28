@@ -20,7 +20,6 @@ export default ({ data }) =>
                         <div key={post.node.id} className="g-col-md-6 g-col-xl-4 u-section-sm-bottom">
                             <SingleWork title={post.node.frontmatter.title}
                                 subtitle={post.node.frontmatter.subtitle}
-                                date={post.node.frontmatter.date}
                                 featuredImage={post.node.frontmatter.featured_image}
                                 slug={post.node.fields.slug} />
                         </div>

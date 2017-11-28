@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 
-const SingleWork = ({ title, subtitle, date, featuredImage, slug }) =>
+const SingleWork = ({ title, subtitle, featuredImage, slug }) =>
     <article className="work__single card u-block-xl u-section-sm-bottom">
         <header className="work__header u-section-xs-bottom">
             <Link to={slug} className="u-link-unstyled">
@@ -22,7 +22,6 @@ const SingleWork = ({ title, subtitle, date, featuredImage, slug }) =>
 
 SingleWork.propTypes = {
     slug: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     featuredImage: PropTypes.string.isRequired
