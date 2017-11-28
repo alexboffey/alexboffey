@@ -21,8 +21,13 @@ only screen and ( min-resolution: 1.25dppx) {
  ************************/
 
 %selection::selection {
-    background: color(primary, turquoise);
+    background: color(accent);
     color: color(neutral, white);
+    text-decoration-color: color(neutral, white);
+}
+
+* {
+    @extend %selection;
 }
 
 
@@ -31,8 +36,6 @@ only screen and ( min-resolution: 1.25dppx) {
  ************************/
 
 html {
-    @extend %selection;
-    
     font-size: $font-size;
     font-family: $font-family;
     font-weight: $font-weight;
@@ -41,8 +44,6 @@ html {
 }
 
 ul, ol, p {
-    @extend %selection;
-    
     margin-top: 0;
     margin-bottom: spacing();
 }
@@ -54,48 +55,27 @@ ul, ol {
 }
 
 strong, b {
-    @extend %selection;
-    
     font-weight: $font-weight-bold;
 }
 
 dfn, em, i, cite {
-    @extend %selection;
-    
     font-style: italic;
 }
 
 sub,
 sup,
 small {
-    @extend %selection;
-
     font-size: $font-size-sm;
 }
 
 kbd,
 samp {
-    @extend %selection;
-    
     font-size: $font-size;
 }
 
 mark {
-    @extend %selection;
-    
     background: color(contextual, error);
     color: color(neutral, black);
-}
-
-
-/**
- * Headings
- ************************/
-
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6,
-%h1, %h2, %h3, %h4, %h5, %h6 {
-    @extend %selection;
 }
 
 
@@ -106,14 +86,12 @@ h1, h2, h3, h4, h5, h6,
 a,
 .link,
 %link {
-    @extend %selection;
-    
-    color: color(primary, turquoise);
+    color: color(accent);
     touch-action: manipulation;
     transition: color $animation-speed ease;
 
     &:hover {
-        color: lighten(color(primary, turquoise), 10%);
+        color: lighten(color(accent), 10%);
     }
 }
 

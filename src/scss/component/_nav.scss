@@ -16,7 +16,7 @@
 
         &:hover,
         &.is-active {
-            color: color(primary, turquoise);
+            color: lighten(color(primary), 10%);
         }
     }
 }

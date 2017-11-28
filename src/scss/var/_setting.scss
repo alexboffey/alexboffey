@@ -18,12 +18,12 @@ $buttons: (
     primary: (
         default: (
             background          : color(neutral, white),
-            border-color        : color(neutral, turquoise),
+            border-color        : color(accent),
             color               : color(neutral, white)
         ),
         hover: (
-            background          : darken(color(primary, turquoise), 20%),
-            border-color        : darken(color(primary, turquoise), 20%),
+            background          : darken(color(accent), 20%),
+            border-color        : darken(color(accent), 20%),
             color               : color(neutral, white)
         )
     )
