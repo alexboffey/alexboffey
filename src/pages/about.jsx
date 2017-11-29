@@ -17,11 +17,19 @@ export default ({ data }) =>
                 <h2 className="h1">Hello, my name is Alex.</h2>
             </header>
             <section>
-                <p>Chambray cliche kogi af man braid actually. Freegan authentic banh mi intelligentsia mustache health goth knausgaard butcher squid ennui tofu sriracha. Brooklyn next level blue bottle deep v affogato skateboard hella craft beer, irony prism intelligentsia poke readymade blog ramps. Mixtape migas scenester cray, freegan pickled cardigan taiyaki put a bird on it pork belly deep v pour-over selfies four dollar toast meh. Fam helvetica health goth la croix everyday carry banh mi. Readymade intelligentsia knausgaard, farm-to-table umami single-origin coffee messenger bag polaroid mumblecore salvia.</p>
-                <p>Selfies kale chips health goth fashion axe locavore gochujang. Selvage cardigan chillwave meggings adaptogen brunch heirloom synth lyft. Irony street art woke snackwave lo-fi. You probably haven't heard of them trust fund synth, gochujang pickled disrupt cred palo santo live-edge direct trade XOXO listicle gastropub aesthetic. Migas fixie direct trade trust fund.</p>
+                <p>I'm a front-end developer living in Staffordshire, UK.</p>
+                <p>After graduating from University, I started as an intern at <a href="https://www.iweb.co.uk/" rel="noopener noreferrer" target="_blank">iWeb</a> where I now currently work full time. As part of the development team in a digital agency environment, my role as a front-end developer contributes to the maintenance and development of a wide array of <i>Magento</i> &amp; <i>Wordpress</i> projects.</p>
+                <p>My skillset centres around the cornerstones of the front-end web:</p>
+                <ul>
+                    <li>Semantic, accessible markup</li>
+                    <li>Robust, structured styles</li>
+                    <li>Intuitive user experiences</li>
+                    <li>Efficient, performant client-side scripting</li>
+                </ul>
+                <p>My interests span outside of the front-end, they include the likes of <i>Laravel</i>, <i>Node</i> and <i>React Native</i>. However, I'm especially interested in <i>maintainable CSS architecture</i>, <i>new approaches CSS</i> as well as <i>the modern JavaScript world.</i></p>
             </section>
             <footer className="u-section-xs">
-                <p>If you're interested in working together or just fancy saying hello, feel free to contact me via <a href="mailto:alex@alexboffey.co.uk" title="My email">Email</a>, <a href="https://www.twitter.com/alexboffey" title="My Twitter">Twitter</a> or <a href="https://www.linkedin.com/in/alexboffey/" title="My LinkedIn">LinkedIn</a>.</p>
+                <p>If you fancy a chat, feel free to contact me via <a href="mailto:alex@alexboffey.co.uk" title="My email">Email</a>, <a href="https://www.twitter.com/alexboffey" title="My Twitter">Twitter</a> or <a href="https://www.linkedin.com/in/alexboffey/" title="My LinkedIn">LinkedIn</a>.</p>
             </footer>
         </Content>
     </Wrapper>
