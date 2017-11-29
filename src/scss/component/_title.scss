@@ -33,15 +33,15 @@
 
 .title--lander,
 %title--lander {
-    max-width: 87%;
+    max-width: 100%;
 
     @include breakpoint(screen(xs)) {
-        max-width: 70%;
+        max-width: 77%;
     }
 
     @include breakpoint(screen(md)) {
         @if $header-sidebar {
-            max-width: 52%;
+            max-width: 56%;
         } @else {
             max-width: 50%;
         }
