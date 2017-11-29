@@ -47,11 +47,11 @@
         }
     }
 
-    @include breakpoint(screen(lg)) {
-        @if $header-sidebar {
-            max-width: 46%;
-        } @else {
-            max-width: 40%;
-        }
-    }
+    // @include breakpoint(screen(lg)) {
+    //     @if $header-sidebar {
+    //         max-width: 46%;
+    //     } @else {
+    //         max-width: 40%;
+    //     }
+    // }
 }
