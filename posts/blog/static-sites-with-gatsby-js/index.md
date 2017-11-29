@@ -3,6 +3,7 @@ title: 'Building static sites with Gatsby'
 subtitle: 'Gatsby is a static site generator for React.'
 date: '2017-11-27T00:00:00.000Z'
 post_type: 'blog'
+published: 'false'
 ---
 
 ## So what's the deal with Gatsby?

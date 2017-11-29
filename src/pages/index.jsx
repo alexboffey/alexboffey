@@ -10,8 +10,7 @@ import SingleBlog from '../components/single-blog'
 export default ({ data }) => {
     return (
         <Wrapper>
-            <Hero title="Alex Boffey, front end developer."
-                hasBorder />
+            <Hero title="Alex Boffey, front end developer." hasBorder />
 
             <Content isFullWidth>
                 <div className="grid">
@@ -20,6 +19,7 @@ export default ({ data }) => {
                             <div key={post.node.id} className="g-col-md-10 g-col-xl-8 u-section-sm-bottom">
                                 <SingleBlog title={post.node.frontmatter.title}
                                     subtitle={post.node.frontmatter.subtitle}
+                                    date={post.node.frontmatter.date}
                                     excerpt={post.node.excerpt}
                                     slug={post.node.fields.slug} />
                             </div>
@@ -34,8 +34,16 @@ export default ({ data }) => {
 export const query = graphql`
     query IndexQuery {
         allMarkdownRemark(
-            filter: { frontmatter: { post_type: { eq: "blog" } } }
-            sort: { order: DESC, fields: [frontmatter___date] }
+            filter: {
+                frontmatter: {
+                    post_type: { eq: "blog" },
+                    published: { eq: "true" }
+                } 
+            }
+            sort: {
+                order: DESC,
+                fields: [ frontmatter___date ]
+            }
         ) {
             totalCount
                 edges {
@@ -47,6 +55,7 @@ export const query = graphql`
                             subtitle
                             date(formatString: "DD-MM-YYYY")
                             post_type
+                            published
                         }
                         fields {
                             slug

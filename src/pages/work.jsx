@@ -32,7 +32,12 @@ export default ({ data }) =>
 export const query = graphql`
     query WorkQuery {
         allMarkdownRemark(
-            filter: { frontmatter: { post_type: { eq: "work" } } }
+            filter: {
+                frontmatter: {
+                    post_type: { eq: "work" },
+                    published: { eq: "true" }
+                }
+            }
             sort: { order: DESC, fields: [frontmatter___date] }
         ) {
             totalCount
@@ -46,6 +51,7 @@ export const query = graphql`
                             date(formatString: "DD-MM-YYYY")
                             post_type
                             featured_image
+                            published
                         }
                         fields {
                             slug
