@@ -29,3 +29,21 @@ $ gatsby develop
 After running these four commands, we will have a local development server running our newly created project.
 
 Note: Gatsby includes Webpack which allows for hot module reloading (which will now be already set up for us). So any time we save a change in our project it will be injected straight into our active browser session.
+
+### Deployment
+
+A nice solution for deployment using Gatsby is to use Github pages. It's free, it's served over https and we use gh-pages to make deployment as simple as running an npm script.
+
+```JSON
+...
+"scripts": {
+    ...
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    ...
+}
+...
+```
+
+An issue I found with this deployment process arose when I configured Github pages to use a custom domain. When I ran the deployment script which pushed a new commit to the gh-pages branch of the repo, it would remove the cname DNS record which associates the Github pages server to my custom domain.
+
+An easy fix to this was to add a CNAME file containing the custom domain to the static directory. This is then pushed to the gh-pages branch on deployment where it would usually be overwritten.
