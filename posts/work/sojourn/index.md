@@ -7,8 +7,8 @@ featured_image: '/img/sojourn/featured.png'
 published: 'true'
 ---
 
-## Real time travel guide.
-The design idea behind the project was an app that would allow tourists to find their way around a new place and find local attractions while roaming.
+## Real-time travel guide.
+The design idea behind the project was an app that would guide tourists around a new place and find local attractions while roaming.
 
 The resulting project locates a user and displays their position on a map, surrounded by markers indicating nearby attractions that they can interact with. All of which updates in real time.
 
@@ -24,7 +24,7 @@ Using these API's together allowed Sojourn to:
 - Find nearby places and display them on the map for the user to interact with.
 
 ## Progressive web app optimised for mobile.
-Due to it's requirements & scope, Sojourn was designed and built to be optimal for use on mobile devices.
+Due to its requirements & scope, Sojourn was designed and built to be optimal for use on mobile devices.
 
 As well as responsive design, this included incorporating progressive web app features such as:
 
