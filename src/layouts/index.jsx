@@ -15,6 +15,7 @@ export default ({ children, data, location }) => {
                 <meta charSet="utf-8" />
                 <title>{data.site.siteMetadata.title}</title>
                 <link rel="shortcut icon" href={Favicon} />
+                <html lang="en" />
             </Helmet>
 
             <Header activePath={location.pathname} />
