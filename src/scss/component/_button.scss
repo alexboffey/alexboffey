@@ -21,6 +21,7 @@
     fill: currentColor;
     text-transform: uppercase;
     letter-spacing: $letter-spacing;
+    transition: color $animation-speed ease, border-color $animation-speed ease;
 
     &::moz-focus-inner {
         border: 0;
