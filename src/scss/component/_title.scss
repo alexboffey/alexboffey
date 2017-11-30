@@ -23,6 +23,7 @@
 %title {
     @include title-size(1.8);
 
+    font-family: $header-font-family;
     font-weight: $font-weight;
 }
 
@@ -33,10 +34,10 @@
 
 .title--lander,
 %title--lander {
-    max-width: 100%;
+    max-width: 90%;
 
     @include breakpoint(screen(xs)) {
-        max-width: 77%;
+        max-width: 70%;
     }
 
     @include breakpoint(screen(md)) {
@@ -47,11 +48,11 @@
         }
     }
 
-    // @include breakpoint(screen(lg)) {
-    //     @if $header-sidebar {
-    //         max-width: 46%;
-    //     } @else {
-    //         max-width: 40%;
-    //     }
-    // }
+    @include breakpoint(screen(lg)) {
+        @if $header-sidebar {
+            max-width: 50%;
+        } @else {
+            max-width: 40%;
+        }
+    }
 }
