@@ -3,7 +3,7 @@ title: 'React Calculator'
 subtitle: 'A calculator built with React.'
 date: '2017-11-22T00:00:00.000Z'
 post_type: 'work'
-featured_image: '/img/react-calculator/featured.png'
+featured_image: '/img/react-calculator/featured.jpg'
 published: 'true'
 ---
 
