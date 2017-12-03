@@ -1,7 +1,7 @@
 ---
 title: 'First Estate'
 subtitle: 'Property finder web application built as a Wordpress theme.'
-date: '2017-11-22T00:30:00.000Z'
+date: '2017-11-22T00:00:00.000Z'
 post_type: 'work'
 featured_image: '/img/firstestate/featured.jpg'
 published: 'true'
