@@ -1,6 +1,6 @@
 ---
 title: 'Sojourn'
-subtitle: 'A travel guide web application.'
+subtitle: 'Real-time travel guide web application built with vanilla JavaScript'
 date: '2017-11-22T01:00:00.000Z'
 post_type: 'work'
 featured_image: '/img/sojourn/featured.jpg'
