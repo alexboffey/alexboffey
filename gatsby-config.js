@@ -8,6 +8,13 @@ module.exports = {
         'gatsby-plugin-offline',
         'gatsby-plugin-sass',
         {
+            resolve: 'gatsby-plugin-google-analytics',
+            options: {
+                trackingId: 'UA-74503764-1',
+                anonymize: true
+            }
+        },
+        {
             resolve: 'gatsby-transformer-remark',
             options: {
                 plugins: [
