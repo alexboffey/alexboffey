@@ -11,7 +11,9 @@ export default ({ data }) => {
 
     return (
         <Wrapper>
-            <Helmet title={`${data.site.siteMetadata.title} | ${post.frontmatter.title}`} />
+            <Helmet title={`${data.site.siteMetadata.title} | ${post.frontmatter.title}`}>
+                <meta name="description" content={`${post.frontmatter.title}, ${data.site.siteMetadata.title}.`} />
+            </Helmet>
 
             <Hero title={post.frontmatter.title}
                 subtitle={post.frontmatter.subtitle}

@@ -12,10 +12,10 @@ export default ({ children, data, location }) => {
     return (
         <div className="page__wrapper">
             <Helmet>
-                <meta charSet="utf-8" />
+                <html lang="en" />
+                <meta name="description" content={`${data.site.siteMetadata.title}. Blog, portfolio & about.`} />
                 <title>{data.site.siteMetadata.title}</title>
                 <link rel="shortcut icon" href={Favicon} />
-                <html lang="en" />
             </Helmet>
 
             <Header activePath={location.pathname} />
