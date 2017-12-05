@@ -74,13 +74,13 @@ In this file were simply pulling in some templates that we have created and stor
 ### features.phtml
 This is an example of a template file where its content is populated with data from product attributes. We're using attributes to display a title, a description, content and to set a background image on the element.
 
-Note the use of conditional statements which won't allow any markup to be output if any attributes are missing.
+Note that this example is using a custom helper method to get the image url from an attribute.
 
 ```php
 <?php $_product = $block->getProduct(); ?>
 <?php if ($_product->getFeaturesTitle() && $_product->getFeaturesDescription()) : ?>
     <div class="features"
-        style="<?php echo ($_product->getFeaturesBackgroundImage() ? 'background-image:' . $_product->getFeaturesBackgroundImage() . ';' : ''); ?>">
+        style="background-image: url(<?php echo $this->helper('Askelite\Product\Helper\Data')->getMediaUrl($_product->getData('features_background_image')); ?>);">
         <header class="features__header">
             <h3><?php echo $_product->getFeaturesTitle(); ?></h3>
             <p><?php echo $_product->getFeaturesDescription(); ?></p>
