@@ -1,0 +1,134 @@
+---
+title: 'Lazyload embedded YouTube videos'
+subtitle: 'A technique for cleaner, more user-friendly YouTube embeds.'
+date: '2017-12-15T00:00:00.000Z'
+post_type: 'blog'
+published: 'true'
+---
+
+It's inevitable that one day you or a client will want to add a video to their site, and with YouTube being the main video platform on the web it's very likely that they will provide the video through it.
+
+Now, landing on a page with a blank box where an embedded YouTube video is currently being loaded looks truly horrible. This following technique offers a nice workaround for this issue.
+
+## HTML
+Instead of putting an iframe into our markup and loading it straight away, were just using a div with the id of the desired YouTube video in the *data-id* attribute.
+```html
+<div class="ll-youtube-embed" data-id="vhO72LufsKQ">
+```
+
+## JavaScript
+Basically, what were doing here is taking the video id from the data attribtue on our embed element and inserting the cover image of the video and a play button into it.
+
+Then we create and insert the iframe when the play button is clicked.
+```js
+document.addEventListener("DOMContentLoaded", function () {
+    var div, n, v = document.getElementsByClassName("ll-youtube-embed");
+
+    for (n = 0; n < v.length; n++) {
+        div = document.createElement("div");
+        div.setAttribute("data-id", v[n].dataset.id);
+        div.innerHTML = thumb(v[n].dataset.id);
+        div.onclick = iframe;
+        v[n].appendChild(div);
+    }
+});
+
+function thumb(id) {
+    var thumb = '<img class="u-center" src="https://i.ytimg.com/vi/ID/hqdefault.jpg">',
+        play = '<div class="play"></div>';
+    return thumb.replace("ID", id) + play;
+}
+
+function iframe() {
+    var iframe = document.createElement("iframe");
+    var embed = "https://www.youtube.com/embed/ID?autoplay=1";
+    iframe.setAttribute("src", embed.replace("ID", this.dataset.id));
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("allowfullscreen", "1");
+    iframe.setAttribute("width", "640");
+    iframe.setAttribute("height", "400");
+    this.parentNode.replaceChild(iframe, this);
+}
+```
+
+## CSS
+Another win with this approach is having control of the styles of the image and play button which we wouldn't get if we rendered an iframe straight away.
+```scss
+.ll-youtube-embed {
+    position: relative;
+    padding-bottom: 56.23%;
+    /* Use 75% for 4:3 videos */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin: 5px;
+}
+
+.ll-youtube-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: transparent;
+}
+
+.ll-youtube-embed img {
+    bottom: 0;
+    display: block;
+    left: 0;
+    margin: auto;
+    max-width: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    height: auto;
+    cursor: pointer;
+    -webkit-transition: .4s all;
+    -moz-transition: .4s all;
+    transition: .4s all;
+}
+
+.ll-youtube-embed img:hover {
+    -webkit-filter: brightness(75%);
+}
+
+.ll-youtube-embed .play {
+    height: 72px;
+    width: 72px;
+    left: 50%;
+    top: 50%;
+    margin-left: -36px;
+    margin-top: -36px;
+    position: absolute;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: .5em .5em 2.5em -.5em rgba(68, 68, 68, .7);
+    transition: transform .3s ease;
+}
+
+.ll-youtube-embed .play::after {
+    content: "Click to play video";
+    font-size: 0;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent;
+    border-left: 26.25px solid #854da9;
+    margin-left: -10px;
+    margin-top: -15px;
+}
+
+.ll-youtube-embed .play:hover {
+    transform: scale(1.05);
+}
+```
