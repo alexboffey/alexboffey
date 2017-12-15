@@ -17,7 +17,7 @@ $colors: (
         readable        : #f9f9f9,
         darkest         : #222,
         darker          : #444,
-        dark            : #666,
+        dark            : #5e5e5e,
         light           : #999,
         lighter         : #ccc,
         lightest        : #f4f4f4
@@ -42,10 +42,10 @@ $colors: (
 
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
-$font-family             : Helvetica, Arial, sans-serif;
+$font-family             : Helvetica, Arial , sans-serif;
 $header-font-family      : 'Karla', $font-family;
 
-$font-size              : 95%;
+$font-size              : 96%;
 $font-size-sm           : 0.85em;
 $font-size-lg           : 1.2em;
 
@@ -54,7 +54,7 @@ $font-weight-bold       : 700;
 
 $letter-spacing         : .05em;
 
-$line-height            : 1.6;
+$line-height            : 1.75;
 $line-height-sm         : 1.2;
 
 
