@@ -5,21 +5,13 @@ date: '2017-12-15T00:00:00.000Z'
 post_type: 'blog'
 published: 'true'
 ---
-
-It's inevitable that one day you or a client will want to add a video to their site, and with YouTube being the main video platform on the web it's very likely that they will provide the video through it.
-
-Now, landing on a page with a blank box where an embedded YouTube video is currently being loaded looks truly horrible. This following technique offers a nice workaround for this issue.
-
+Replace the typical iframe which is used to embed a YouTube video with a div with a data-id attribute. This attribute will contain the embed code for the iframe which is injected into the div.
 ## HTML
-Instead of putting an iframe into our markup and loading it straight away, were just using a div with the id of the desired YouTube video in the *data-id* attribute.
 ```html
 <div class="ll-youtube-embed" data-id="vhO72LufsKQ">
 ```
 
 ## JavaScript
-Basically, what were doing here is taking the video id from the data attribtue on our embed element and inserting the cover image of the video and a play button into it.
-
-Then we create and insert the iframe when the play button is clicked.
 ```js
 document.addEventListener("DOMContentLoaded", function () {
     var div, n, v = document.getElementsByClassName("ll-youtube-embed");
@@ -52,7 +44,6 @@ function iframe() {
 ```
 
 ## CSS
-Another win with this approach is having control of the styles of the image and play button which we wouldn't get if we rendered an iframe straight away.
 ```scss
 .ll-youtube-embed {
     position: relative;
