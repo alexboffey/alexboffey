@@ -11,6 +11,10 @@
         background: $header-background;
         box-shadow: $header-box-shadow;
 
+        @include breakpoint(max-width screen(md, max)) {
+            -webkit-backdrop-filter: blur(.125em);
+        }
+
         @if $header-fixed {
             position: fixed;
             top: 0;
