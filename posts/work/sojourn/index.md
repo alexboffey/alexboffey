@@ -15,9 +15,9 @@ The resulting project locates a user and displays their position on a map, surro
 You can view the source code [here](https://github.com/alexboffey/sojourn "Sojourn source code").
 
 ## Google Maps API Integration.
-To develop Sojourn, it required heavy API integration using Google Maps, Google Places and HTML Geolocation.
+The app makes use of the Google Maps, Google Places and HTML Geolocation APIs to provide data to a JavaScript front end.
 
-Using these API's together allowed Sojourn to:
+Using these APIs allowed Sojourn to:
 
 - Find and watch a users geolocation.
 - Display and update that geolocation on a map marker.
