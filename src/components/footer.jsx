@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 
-import Icons from './icons'
+import Icons from "./icons";
 
-const year = (new Date).getFullYear()
+const year = new Date().getFullYear();
 
-const Footer = () =>
+const Footer = () => (
     <footer className="page-footer">
         <div className="u-container u-center u-section-sm u-text-center">
             <div className="u-section-xs">
@@ -16,5 +16,6 @@ const Footer = () =>
             </footer>
         </div>
     </footer>
+);
 
-export default Footer
+export default Footer;
