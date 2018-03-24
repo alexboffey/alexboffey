@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
-
 import Icons from "./icons";
 import logo from "../img/logo/logo-main.png";
 
