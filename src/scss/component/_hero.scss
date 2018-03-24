@@ -2,7 +2,8 @@
  * Hero
  ************************/
 
-.hero {
+.hero,
+%hero {
     &.has-subtitle {
         .title {
             margin-bottom: 0;
