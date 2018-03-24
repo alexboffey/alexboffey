@@ -1,9 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-
 import Wrapper from '../layouts/wrapper'
 import Content from '../layouts/content'
-
 import Hero from '../components/hero'
 import SingleWork from '../components/single-work' 
 
@@ -20,7 +18,7 @@ export default ({ data }) =>
                         <div key={post.node.id} className="g-col-md-6 g-col-xl-4 u-section-sm-bottom">
                             <SingleWork title={post.node.frontmatter.title}
                                 subtitle={post.node.frontmatter.subtitle}
-                                featuredImage={post.node.frontmatter.featured_image}
+                                thumb={post.node.frontmatter.thumb}
                                 slug={post.node.fields.slug} />
                         </div>
                     )
@@ -50,7 +48,7 @@ export const query = graphql`
                             subtitle
                             date(formatString: "DD-MM-YYYY")
                             post_type
-                            featured_image
+                            thumb
                             published
                         }
                         fields {
