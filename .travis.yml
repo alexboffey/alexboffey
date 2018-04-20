@@ -13,5 +13,4 @@ deploy:
   local_dir: public
   on:
     branch: master
- notifications:
-         slack: alexboffey:ubDziJlE1ZIrfY7AuFWPwWPU
+    
