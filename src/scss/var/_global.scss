@@ -40,10 +40,15 @@ $colors: (
  * Font
  ************************/
 
-@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
+@import url('https://fonts.googleapis.com/css?family=Karla:400|Noto+Serif');
 
-$font-family             : Helvetica, Arial , sans-serif;
-$header-font-family      : 'Karla', $font-family;
+$sans-serif-fonts        : 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$serif-fonts             : Helvetica, Arial , sans-serif;
+
+$font-family             : 'Noto Serif', $sans-serif-fonts;
+$header-font-family      : 'Karla', $serif-fonts;
+
+
 
 $font-size              : 96%;
 $font-size-sm           : 0.85em;

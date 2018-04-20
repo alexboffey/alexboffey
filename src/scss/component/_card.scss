@@ -8,12 +8,7 @@
     background-color: color(neutral, white);
     border-radius: $border-radius;
     box-shadow: 0em 1em 3em -1.5em rgba(color(neutral, dark), .3);
-    transition: transform $animation-speed ease, box-shadow $animation-speed ease;
-
-    &:hover {
-        transform: translateY(-.25em);
-        box-shadow: 0em 1.5em 3em -1.5em rgba(color(neutral, dark), .3);
-    }
+    transition: box-shadow $animation-speed ease;
 
     > [class*="__header"] {
         > * {
