@@ -18,15 +18,6 @@ export default ({ data }) =>
             </header>
             <section>
                 <p>Currently working as a front end developer at <a href="https://www.iweb.co.uk/">iWeb</a> on Magento 2 and WordPress projects.</p>
-                <p>My skills and interest include:</p>
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS / SASS</li>
-                    <li>JavaScript</li>
-                    <li>Node</li>
-                    <li>PHP</li>
-                    <li>Git</li>
-                </ul>
             </section>
             <footer className="u-section-xs">
                 <p>You can connect with me via <a href="mailto:alex@alexboffey.co.uk" title="My email">Email</a>, <a href="https://www.twitter.com/alexboffey" title="My Twitter">Twitter</a> or <a href="https://www.linkedin.com/in/alexboffey/" title="My LinkedIn">LinkedIn</a>.</p>
