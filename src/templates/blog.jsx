@@ -21,9 +21,18 @@ export default ({ data }) => {
 
             <Content>
                 <div className="post__wrapper">
-                    <header className="post__meta u-section-xs-bottom">
+                    {
+                        // Inline conditional
+                        post.frontmatter.featured_image && 
+                            <header className="u-section-xs-top u-section-sm-bottom">
+                                <img src={__PATH_PREFIX__ + post.frontmatter.featured_image}
+                                    alt={`An image of the ${post.frontmatter.title} project.`} />
+                            </header>
+                    }
+
+                    <section className="post__meta u-section-xs-bottom">
                         <p className="micro">{post.frontmatter.date}</p>
-                    </header>
+                    </section>
 
                     <article className="post" dangerouslySetInnerHTML={{ __html: post.html }} />
                 </div>
@@ -40,6 +49,7 @@ export const postQuery = graphql`
                 title
                 subtitle
                 date(formatString: "DD-MM-YYYY")
+                featured_image
             }
         }
         site {
