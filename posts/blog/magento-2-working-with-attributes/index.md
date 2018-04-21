@@ -11,7 +11,7 @@ Attributes are used in Magento as individual pieces of meta data that apply to a
 However, a recent Magento project I have been involved with required a lot of custom content to be added to the product view and we opted to use product attributes to let our client customise this content on an individual product basis.
 
 ## Using Magento's attribute template.
-Magneto ships with an attribute template in its core which we can use this to output any attribute from a layout file. This technique is ideal for outputting simple things like small banners or blocks of text which require little or no modification to their markup.
+Magento ships with an attribute template in its core which we can use this to output any attribute from a layout file. This technique is ideal for outputting simple things like small banners or blocks of text which require little or no modification to their markup.
 
 Magento's naming convention for attributes is that each word of the attribute name is capitalised and that each word of the attribute code is lower case connected with an underscore.
 
@@ -33,7 +33,7 @@ Note the at_call argument is calling a method named *getProductMessages*, this i
 From the example above, for the attribute named *Product Messages* a product object will have the method *getProductMessages()* attached to it by Magento.
 
 ## Attributes in custom templates.
-As touched on above, Magneto will supply the product object with a get method for the attributes attached to that product. This can be utilised to build custom content blocks on a product view where the content can be managed by a store admin.
+As touched on above, Magento will supply the product object with a get method for the attributes attached to that product. This can be utilised to build custom content blocks on a product view where the content can be managed by a store admin.
 
 To continue with the above example we could output our *Product Messages* attribute like so:
 
