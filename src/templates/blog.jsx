@@ -32,11 +32,13 @@ export default ({ data }) => {
 
             <Content>
                 <div className="post__wrapper">
-                    <header className="u-section-bottom">
+                    <header>
                         <h2 className="subtitle h1">
                             {post.frontmatter.subtitle}
                         </h2>
                         {post.frontmatter.featured_image && ( // Inline Conditional!
+                            <div className="u-section-xs-bottom">
+
                             <img
                                 src={
                                     __PATH_PREFIX__ +
@@ -46,6 +48,8 @@ export default ({ data }) => {
                                     post.frontmatter.title
                                 } project.`}
                             />
+                            </div>
+
                         )}
                     </header>
 

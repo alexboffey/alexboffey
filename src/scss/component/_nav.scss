@@ -14,11 +14,6 @@
         font-size: $font-size;
         position: relative;
         color: color(neutral, dark);
-
-        &:hover,
-        &.is-active {
-            color: lighten(color(primary), 10%);
-        }
     }
 }
 
@@ -126,3 +121,16 @@
         }
     }
  }
+
+
+/**
+ * Nav Hover Styles
+ ************************/
+
+.nav a {
+    &.is-active,
+    &:hover,
+    &:focus {
+        color: color(primary);
+    }
+}
