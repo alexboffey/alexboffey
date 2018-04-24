@@ -1,45 +1,67 @@
-import React from 'react'
-import Helmet from 'react-helmet'
+import React from "react";
+import Helmet from "react-helmet";
 
-import Wrapper from '../layouts/wrapper'
-import Content from '../layouts/content'
+import Wrapper from "../layouts/wrapper";
+import Content from "../layouts/content";
 
-import Hero from '../components/hero'
+import Hero from "../components/hero";
 
 export default ({ data }) => {
-    const { markdownRemark: post } = data
+    const { markdownRemark: post } = data;
 
     return (
         <Wrapper>
-            <Helmet title={`${data.site.siteMetadata.title} | ${post.frontmatter.title}`}>
-                <meta name="description" content={`${post.frontmatter.title}, ${data.site.siteMetadata.title}.`} />
+            <Helmet
+                title={`${data.site.siteMetadata.title} | ${
+                    post.frontmatter.title
+                }`}
+            >
+                <meta
+                    name="description"
+                    content={`${post.frontmatter.title}, ${
+                        data.site.siteMetadata.title
+                    }.`}
+                />
             </Helmet>
 
-            <Hero title={post.frontmatter.title}
-                subtitle={post.frontmatter.subtitle}
-                hasBorder />
+            <Hero
+                title={post.frontmatter.title}
+                // subtitle={post.frontmatter.subtitle}
+                hasBorder
+            />
 
             <Content>
                 <div className="post__wrapper">
-                    {
-                        // Inline conditional
-                        post.frontmatter.featured_image && 
-                            <header className="u-section-xs-top u-section-sm-bottom">
-                                <img src={__PATH_PREFIX__ + post.frontmatter.featured_image}
-                                    alt={`An image of the ${post.frontmatter.title} project.`} />
-                            </header>
-                    }
+                    <header className="u-section-bottom">
+                        <h2 className="subtitle h1">
+                            {post.frontmatter.subtitle}
+                        </h2>
+                        {post.frontmatter.featured_image && ( // Inline Conditional!
+                            <img
+                                src={
+                                    __PATH_PREFIX__ +
+                                    post.frontmatter.featured_image
+                                }
+                                alt={`An image of the ${
+                                    post.frontmatter.title
+                                } project.`}
+                            />
+                        )}
+                    </header>
 
-                    <section className="post__meta u-section-xs-bottom">
+                    <section className="post__meta">
                         <p className="micro">{post.frontmatter.date}</p>
                     </section>
 
-                    <article className="post" dangerouslySetInnerHTML={{ __html: post.html }} />
+                    <article
+                        className="post"
+                        dangerouslySetInnerHTML={{ __html: post.html }}
+                    />
                 </div>
             </Content>
         </Wrapper>
-    )
-}
+    );
+};
 
 export const postQuery = graphql`
     query BlogPostByPath($slug: String!) {
@@ -58,4 +80,4 @@ export const postQuery = graphql`
             }
         }
     }
-`
+`;
