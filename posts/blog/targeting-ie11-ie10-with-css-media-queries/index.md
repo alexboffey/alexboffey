@@ -15,7 +15,7 @@ Fortunately, as both IE10 and IE11 support the `-ms-high-contrast` media query, 
 ## Media query to target IE10 and IE11
 
 ```css
-@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     ..//
 }
 ```
