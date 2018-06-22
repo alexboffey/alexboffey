@@ -14,8 +14,7 @@ Another potential use case for this would be to implement a fallback when primar
 
 Fortunately, as both IE10 and IE11 support the `-ms-high-contrast` media query, we can use it to target them and apply specific styles to work around any styling issues that come up.
 
-## Media query to target IE10 and IE11
-
+## Snippet
 ```css
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     /* Some CSS */
