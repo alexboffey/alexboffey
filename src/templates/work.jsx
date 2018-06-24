@@ -7,9 +7,6 @@ import Hero from "../components/hero";
 
 export default ({ data }) => {
     const { markdownRemark: post } = data;
-
-    console.log(post);
-
     return (
         <Wrapper>
             <Helmet
