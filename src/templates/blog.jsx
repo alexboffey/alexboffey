@@ -36,21 +36,6 @@ export default ({ data }) => {
                         <h2 className="subtitle h1">
                             {post.frontmatter.subtitle}
                         </h2>
-                        {post.frontmatter.featured_image && ( // Inline Conditional!
-                            <div className="u-section-xs-bottom">
-
-                            <img
-                                src={
-                                    __PATH_PREFIX__ +
-                                    post.frontmatter.featured_image
-                                }
-                                alt={`An image of the ${
-                                    post.frontmatter.title
-                                } project.`}
-                            />
-                            </div>
-
-                        )}
                     </header>
 
                     <section className="post__meta">
@@ -75,7 +60,6 @@ export const postQuery = graphql`
                 title
                 subtitle
                 date(formatString: "DD-MM-YYYY")
-                featured_image
             }
         }
         site {
