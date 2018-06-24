@@ -3,8 +3,8 @@ title: 'Sojourn'
 subtitle: 'Real-time travel guide web application built with vanilla JavaScript.'
 date: '2017-11-22T01:00:00.000Z'
 post_type: 'work'
-featured_image: '/img/sojourn/featured.jpg'
-thumb: '/img/sojourn/thumb.jpg'
+featured_image: './featured.jpg'
+thumb: './thumb.jpg'
 published: 'true'
 ---
 

@@ -3,8 +3,8 @@ title: 'React Calculator'
 subtitle: 'Functional calculator front end application built with React.'
 date: '2017-11-22T00:30:00.000Z'
 post_type: 'work'
-featured_image: '/img/react-calculator/featured.jpg'
-thumb: '/img/react-calculator/thumb.jpg'
+featured_image: './featured.jpg'
+thumb: './thumb.jpg'
 published: 'true'
 ---
 

@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-
+import Img from "gatsby-image";
 import Wrapper from "../layouts/wrapper";
 import Content from "../layouts/content";
 import Hero from "../components/hero";
 
 export default ({ data }) => {
     const { markdownRemark: post } = data;
+
+    console.log(post);
 
     return (
         <Wrapper>
@@ -35,21 +37,13 @@ export default ({ data }) => {
                         <h2 className="subtitle h1">
                             {post.frontmatter.subtitle}
                         </h2>
-                        {post.frontmatter.featured_image && ( // Inline Conditional
-                            <div className="u-section-xs-bottom">
-
-                            <img
-                                src={
-                                    __PATH_PREFIX__ +
-                                    post.frontmatter.featured_image
+                        <div className="u-section-xs-bottom">
+                            <Img
+                                sizes={
+                                    post.frontmatter.featured_image.childImageSharp.sizes
                                 }
-                                alt={`An image of the ${
-                                    post.frontmatter.title
-                                } project.`}
                             />
-                            </div>
-
-                        )}
+                        </div>
                     </header>
 
                     <section className="post__meta">
@@ -74,7 +68,13 @@ export const postQuery = graphql`
                 title
                 subtitle
                 date(formatString: "DD-MM-YYYY")
-                featured_image
+                featured_image {
+                    childImageSharp {
+                        sizes(maxWidth: 820, quality: 75) {
+                            ...GatsbyImageSharpSizes_noBase64
+                          }
+                    }
+                }
             }
         }
         site {
