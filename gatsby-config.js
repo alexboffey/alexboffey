@@ -7,6 +7,8 @@ module.exports = {
         "gatsby-plugin-catch-links",
         "gatsby-plugin-offline",
         "gatsby-plugin-sass",
+        "gatsby-transformer-sharp",
+        "gatsby-plugin-sharp",
         {
             resolve: "gatsby-plugin-google-analytics",
             options: {
