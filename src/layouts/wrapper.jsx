@@ -1,6 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export default ({ children }) =>
+export default ({ children }) => (
     <section className="content__wrapper u-fill-neutral-white">
         {children}
     </section>
+);

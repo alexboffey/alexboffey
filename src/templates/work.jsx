@@ -37,7 +37,8 @@ export default ({ data }) => {
                         <div className="u-section-xs-bottom">
                             <Img
                                 sizes={
-                                    post.frontmatter.featured_image.childImageSharp.sizes
+                                    post.frontmatter.featured_image
+                                        .childImageSharp.sizes
                                 }
                             />
                         </div>
@@ -69,7 +70,7 @@ export const postQuery = graphql`
                     childImageSharp {
                         sizes(maxWidth: 820, quality: 75) {
                             ...GatsbyImageSharpSizes_noBase64
-                          }
+                        }
                     }
                 }
             }

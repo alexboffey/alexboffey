@@ -1,11 +1,8 @@
-import React from 'react'
-import Link from 'gatsby-link'
-
-import Wrapper from '../layouts/wrapper'
-import Content from '../layouts/content'
-
-import Hero from '../components/hero'
-import SingleBlog from '../components/single-blog'
+import React from "react";
+import Wrapper from "../layouts/wrapper";
+import Content from "../layouts/content";
+import Hero from "../components/hero";
+import SingleBlog from "../components/single-blog";
 
 export default ({ data }) => {
     return (
@@ -14,54 +11,54 @@ export default ({ data }) => {
 
             <Content isFullWidth>
                 <div className="grid">
-                    {
-                        data.allMarkdownRemark.edges.map(post =>
-                            <div key={post.node.id} className="g-col-md-10 g-col-xl-8 u-section-sm-bottom">
-                                <SingleBlog title={post.node.frontmatter.title}
-                                    subtitle={post.node.frontmatter.subtitle}
-                                    date={post.node.frontmatter.date}
-                                    excerpt={post.node.excerpt}
-                                    slug={post.node.fields.slug} />
-                            </div>
-                        )
-                    }
+                    {data.allMarkdownRemark.edges.map(post => (
+                        <div
+                            key={post.node.id}
+                            className="g-col-md-10 g-col-xl-8 u-section-sm-bottom"
+                        >
+                            <SingleBlog
+                                title={post.node.frontmatter.title}
+                                subtitle={post.node.frontmatter.subtitle}
+                                date={post.node.frontmatter.date}
+                                excerpt={post.node.excerpt}
+                                slug={post.node.fields.slug}
+                            />
+                        </div>
+                    ))}
                 </div>
             </Content>
         </Wrapper>
-    )
-}
+    );
+};
 
 export const query = graphql`
     query IndexQuery {
         allMarkdownRemark(
             filter: {
                 frontmatter: {
-                    post_type: { eq: "blog" },
+                    post_type: { eq: "blog" }
                     published: { eq: "true" }
-                } 
+                }
             }
-            sort: {
-                order: DESC,
-                fields: [ frontmatter___date ]
-            }
+            sort: { order: DESC, fields: [frontmatter___date] }
         ) {
             totalCount
-                edges {
-                    node {
-                        id
-                        excerpt
-                        frontmatter {
-                            title
-                            subtitle
-                            date(formatString: "DD-MM-YYYY")
-                            post_type
-                            published
-                        }
-                        fields {
-                            slug
-                        }
+            edges {
+                node {
+                    id
+                    excerpt
+                    frontmatter {
+                        title
+                        subtitle
+                        date(formatString: "DD-MM-YYYY")
+                        post_type
+                        published
                     }
+                    fields {
+                        slug
+                    }
+                }
             }
         }
     }
-`
+`;

@@ -21,7 +21,10 @@ export default ({ data }) => (
                         <SingleWork
                             title={post.node.frontmatter.title}
                             subtitle={post.node.frontmatter.subtitle}
-                            thumb={post.node.frontmatter.thumb.childImageSharp.sizes}
+                            thumb={
+                                post.node.frontmatter.thumb.childImageSharp
+                                    .sizes
+                            }
                             slug={post.node.fields.slug}
                         />
                     </div>
@@ -56,7 +59,7 @@ export const query = graphql`
                             childImageSharp {
                                 sizes(maxWidth: 650, quality: 75) {
                                     ...GatsbyImageSharpSizes_noBase64
-                                  }
+                                }
                             }
                         }
                         published
