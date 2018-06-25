@@ -15,12 +15,12 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
     }
 };
 
-exports.createPages = ({ boundActionCreators, graphql }) => {
+exports.createPages = async ({ boundActionCreators, graphql }) => {
     const { createPage } = boundActionCreators;
     const Blog = path.resolve("src/templates/blog.jsx");
     const Work = path.resolve("src/templates/work.jsx");
 
-    return graphql(`
+    const result = await graphql(`
         {
             allMarkdownRemark {
                 edges {
@@ -37,32 +37,32 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
                 }
             }
         }
-    `).then(result => {
-        if (result.errors) {
-            return Promise.reject(result.errors);
+    `);
+
+    const posts = result.data.allMarkdownRemark.edges;
+
+    posts.map(({ node }, index) => {
+        let Template = null;
+
+        // Select template based on post type
+        switch (node.frontmatter.post_type) {
+            case "work":
+                Template = Work;
+                break;
+
+            default:
+                Template = Blog;
+                break;
         }
 
-        result.data.allMarkdownRemark.edges.map(({ node }) => {
-            let Template = null;
-
-            // Select template based on post type
-            switch (node.frontmatter.post_type) {
-                case "work":
-                    Template = Work;
-                    break;
-
-                default:
-                    Template = Blog;
-                    break;
+        createPage({
+            path: node.fields.slug,
+            component: Template,
+            context: {
+                slug: node.fields.slug
             }
-
-            createPage({
-                path: node.fields.slug,
-                component: Template,
-                context: {
-                    slug: node.fields.slug
-                }
-            });
         });
     });
+
+    return result;
 };
