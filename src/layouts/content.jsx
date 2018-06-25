@@ -1,15 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Styled from "styled-components";
-
-const Section = Styled.section`
-    animation: Fade 300ms ease;
-
-    @keyframes Fade {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-    }
-`;
 
 const Content = ({ children, isFullWidth }) => {
     const columnsClass = isFullWidth
