@@ -20,6 +20,14 @@ export default ({ data }) => {
                         data.site.siteMetadata.title
                     }.`}
                 />
+                <meta
+                    name="tags"
+                    content={
+                        post.frontmatter.tags
+                            ? post.frontmatter.tags + ",Alex Boffey,Portfolio"
+                            : "Alex Boffey,Portfolio"
+                    }
+                />
             </Helmet>
 
             <Hero
@@ -66,6 +74,7 @@ export const postQuery = graphql`
                 title
                 subtitle
                 date(formatString: "DD-MM-YYYY")
+                tags
                 featured_image {
                     childImageSharp {
                         sizes(maxWidth: 820, quality: 75) {

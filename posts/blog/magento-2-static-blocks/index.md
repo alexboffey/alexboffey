@@ -3,6 +3,7 @@ title: 'Static blocks in Magento 2'
 subtitle: '3 different ways to output static blocks.'
 date: '2017-11-28T00:00:00.000Z'
 post_type: 'blog'
+tags: 'Magento,Magento 2,Static Block,CMS Block,layout XML,phtml template'
 published: 'true'
 ---
 

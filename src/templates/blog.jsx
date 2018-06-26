@@ -20,6 +20,14 @@ export default ({ data }) => {
                         data.site.siteMetadata.title
                     }.`}
                 />
+                <meta
+                    name="tags"
+                    content={
+                        post.frontmatter.tags
+                            ? post.frontmatter.tags + ",Alex Boffey,Blog"
+                            : "Alex Boffey,Blog"
+                    }
+                />
             </Helmet>
 
             <Hero
@@ -58,6 +66,7 @@ export const postQuery = graphql`
                 title
                 subtitle
                 date(formatString: "DD-MM-YYYY")
+                tags
             }
         }
         site {

@@ -5,6 +5,7 @@ date: '2017-11-22T00:30:00.000Z'
 post_type: 'work'
 featured_image: './featured.jpg'
 thumb: './thumb.jpg'
+tags: 'JavaScript,CSS,React,Calculator,Web Development'
 published: 'true'
 ---
 

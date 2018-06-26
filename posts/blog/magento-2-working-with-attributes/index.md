@@ -3,6 +3,7 @@ title: 'Working with attributes in Magento 2'
 subtitle: 'How attributes can be used to construct complex product views.'
 date: '2017-12-03T00:00:00.000Z'
 post_type: 'blog'
+tags: 'Magento,Magento 2,Attributes,layout XML,phtml template'
 published: 'true'
 ---
 
@@ -50,7 +51,7 @@ To continue with the above example we could output our *Product Messages* attrib
         </p>
     </div>
 <?php ?>
-``` 
+```
 
 This is a simple example, but as product attributes have many different input types including *images* and *WYSIWYG content*, we can use them build larger content blocks which we can combine to form part of more complex, customisable product views.
 
