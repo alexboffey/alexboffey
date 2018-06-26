@@ -41,28 +41,32 @@ exports.createPages = async ({ boundActionCreators, graphql }) => {
 
     const posts = result.data.allMarkdownRemark.edges;
 
-    posts.map(({ node }, index) => {
-        let Template = null;
+    createPageByPostType(posts, Work, "work", createPage);
+    createPageByPostType(posts, Blog, "blog", createPage);
 
-        // Select template based on post type
-        switch (node.frontmatter.post_type) {
-            case "work":
-                Template = Work;
-                break;
+    return result;
+};
 
-            default:
-                Template = Blog;
-                break;
-        }
+/**
+ * Helper to create pages by post type
+ *
+ * @param posts
+ * @param template
+ * @param frontmatterString
+ * @param createPage
+ */
+function createPageByPostType(posts, template, frontmatterString, createPage) {
+    const filteredPosts = posts.filter(
+        ({ node }) => node.frontmatter.post_type === frontmatterString
+    );
 
+    filteredPosts.map(({ node }) => {
         createPage({
             path: node.fields.slug,
-            component: Template,
+            component: template,
             context: {
                 slug: node.fields.slug
             }
         });
     });
-
-    return result;
-};
+}
