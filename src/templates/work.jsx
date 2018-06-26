@@ -65,7 +65,7 @@ export default class Work extends Component {
 
                         <footer className="post__footer">
                             <header className="post__footer__header">
-                                <h3>More work:</h3>
+                                <h3 className="h2">More work:</h3>
                             </header>
 
                             <nav className="post__footer__links">

@@ -55,7 +55,7 @@ export default class Blog extends Component {
 
                         <footer className="post__footer">
                             <header className="post__footer__header">
-                                <h3>More blog posts:</h3>
+                                <h3 className="h2">More blog posts:</h3>
                             </header>
 
                             <nav className="post__footer__links">
