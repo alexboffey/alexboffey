@@ -32,6 +32,8 @@ exports.createPages = async ({ boundActionCreators, graphql }) => {
                         }
                         frontmatter {
                             post_type
+                            title
+                            published
                         }
                     }
                 }
@@ -57,15 +59,25 @@ exports.createPages = async ({ boundActionCreators, graphql }) => {
  */
 function createPageByPostType(posts, template, frontmatterString, createPage) {
     const filteredPosts = posts.filter(
-        ({ node }) => node.frontmatter.post_type === frontmatterString
+        ({ node }) =>
+            node.frontmatter.post_type === frontmatterString &&
+            node.frontmatter.published === "true"
     );
 
-    filteredPosts.map(({ node }) => {
+    filteredPosts.map(({ node }, index) => {
+        const previous =
+            index === filteredPosts.length - 1
+                ? null
+                : filteredPosts[index + 1].node;
+        const next = index === 0 ? null : filteredPosts[index - 1].node;
+
         createPage({
             path: node.fields.slug,
             component: template,
             context: {
-                slug: node.fields.slug
+                slug: node.fields.slug,
+                previous,
+                next
             }
         });
     });
