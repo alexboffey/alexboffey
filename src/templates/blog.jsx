@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Helmet from "react-helmet";
 import Wrapper from "../layouts/wrapper";
 import Content from "../layouts/content";
 import Hero from "../components/hero";
+import PostHead from "../components/post-head";
 import PostFooter from "../components/post-footer";
 
 export default class Blog extends Component {

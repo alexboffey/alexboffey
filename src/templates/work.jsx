@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Helmet from "react-helmet";
 import Img from "gatsby-image";
 import Wrapper from "../layouts/wrapper";
 import Content from "../layouts/content";
