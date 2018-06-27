@@ -63,12 +63,12 @@ export default class Work extends Component {
                             dangerouslySetInnerHTML={{ __html: post.html }}
                         />
 
-                        <footer className="post__footer">
-                            <header className="post__footer__header">
+                        <footer className="post-footer card u-block-xl">
+                            <header className="post-footer__header">
                                 <h3 className="h2">More work:</h3>
                             </header>
 
-                            <nav className="post__footer__links">
+                            <nav className="post-footer__links">
                                 {previous && (
                                     <Link
                                         className="btn btn--sm btn--ghost"

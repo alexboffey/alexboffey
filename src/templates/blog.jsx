@@ -37,14 +37,14 @@ export default class Blog extends Component {
                 <Hero title={post.frontmatter.title} hasBorder />
 
                 <Content>
-                    <div className="post__wrapper">
+                    <div className="post-wrapper">
                         <header>
                             <h2 className="subtitle h1">
                                 {post.frontmatter.subtitle}
                             </h2>
                         </header>
 
-                        <section className="post__meta">
+                        <section className="post-meta">
                             <p className="micro">{post.frontmatter.date}</p>
                         </section>
 
@@ -53,12 +53,12 @@ export default class Blog extends Component {
                             dangerouslySetInnerHTML={{ __html: post.html }}
                         />
 
-                        <footer className="post__footer">
-                            <header className="post__footer__header">
+                        <footer className="post-footer card u-block-xl">
+                            <header className="post-footer__header">
                                 <h3 className="h2">More blog posts:</h3>
                             </header>
 
-                            <nav className="post__footer__links">
+                            <nav className="post-footer__links">
                                 {previous && (
                                     <Link
                                         className="btn btn--sm btn--ghost"

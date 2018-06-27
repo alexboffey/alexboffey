@@ -5,14 +5,7 @@
 .post {
     @extend %u-section-sm-bottom;
 
-    &__footer {
-        border-top: 1px solid color(neutral, lighter);
-        padding-top: spacing(xl);
-
-        &__header {
-            @extend %u-section-xs-bottom;
-        }
-
+    &-footer {
         &__links {
             display: flex;
             justify-content: space-between;
