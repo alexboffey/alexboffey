@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import Wrapper from "../layouts/wrapper";
 import Content from "../layouts/content";
 import Hero from "../components/hero";
-import Link from "gatsby-link";
+import PostFooter from "../components/post-footer";
 
 export default class Blog extends Component {
     render() {
@@ -13,26 +13,11 @@ export default class Blog extends Component {
 
         return (
             <Wrapper>
-                <Helmet
-                    title={`${data.site.siteMetadata.title} | ${
-                        post.frontmatter.title
-                    }`}
-                >
-                    <meta
-                        name="description"
-                        content={`${post.frontmatter.title}, ${
-                            data.site.siteMetadata.title
-                        }.`}
-                    />
-                    <meta
-                        name="tags"
-                        content={
-                            post.frontmatter.tags
-                                ? post.frontmatter.tags + ",Alex Boffey,Blog"
-                                : "Alex Boffey,Blog"
-                        }
-                    />
-                </Helmet>
+                <PostHead
+                    data={data}
+                    post={post}
+                    defaultTags="Alex Boffey,Blog"
+                />
 
                 <Hero title={post.frontmatter.title} hasBorder />
 
@@ -53,32 +38,12 @@ export default class Blog extends Component {
                             dangerouslySetInnerHTML={{ __html: post.html }}
                         />
 
-                        <footer className="post-footer card u-block-xl">
-                            <header className="post-footer__header">
-                                <h3 className="h2">More blog posts:</h3>
-                            </header>
-
-                            <nav className="post-footer__links">
-                                {previous && (
-                                    <Link
-                                        className="btn btn--sm btn--ghost"
-                                        to={previous.fields.slug}
-                                        title={previous.fields.slug}
-                                    >
-                                        ←&nbsp;{previous.frontmatter.title}
-                                    </Link>
-                                )}
-                                {next && (
-                                    <Link
-                                        className="btn btn--sm btn--ghost"
-                                        to={next.fields.slug}
-                                        title={next.fields.slug}
-                                    >
-                                        {next.frontmatter.title}&nbsp;→
-                                    </Link>
-                                )}
-                            </nav>
-                        </footer>
+                        <PostFooter
+                            previous={previous}
+                            next={next}
+                            post={post}
+                            title="More blog posts"
+                        />
                     </div>
                 </Content>
             </Wrapper>
