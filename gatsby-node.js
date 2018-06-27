@@ -22,7 +22,9 @@ exports.createPages = async ({ boundActionCreators, graphql }) => {
 
     const result = await graphql(`
         {
-            allMarkdownRemark {
+            allMarkdownRemark(
+                sort: { order: DESC, fields: [frontmatter___date] }
+            ) {
                 edges {
                     node {
                         html
@@ -34,6 +36,7 @@ exports.createPages = async ({ boundActionCreators, graphql }) => {
                             post_type
                             title
                             published
+                            date(formatString: "DD-MM-YYYY")
                         }
                     }
                 }
