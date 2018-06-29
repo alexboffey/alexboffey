@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Link from "gatsby-link";
 import PropTypes from "prop-types";
+import { Tag } from "../style"
 
 export default class PostFooter extends Component {
     propTypes = {
@@ -45,17 +46,13 @@ export default class PostFooter extends Component {
                 {post.frontmatter.tags && (
                     <section>
                         <header>
-                            <h3>Tags:</h3>
+                            <h3>Tags</h3>
                         </header>
                         <nav className="post-footer__tags">
                             {post.frontmatter.tags.split(",").map(tag => (
-                                <span
-                                    key={tag}
-                                    className="btn btn--ghost btn--sm"
-                                    style={{ cursor: "default" }}
-                                >
+                                <Tag key={tag}>
                                     {tag}
-                                </span>
+                                </Tag>
                             ))}
                         </nav>
                     </section>
