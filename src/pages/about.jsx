@@ -16,12 +16,17 @@ export default ({ data }) => (
             </header>
             <section>
                 <p>
-                    Currently working at Concentra Analytics as a Junior Developer. I love all things JavaScript, CSS and music too!
+                    Currently working at{" "}
+                    <a href="https://www.concentra.co.uk/">
+                        Concentra Analytics
+                    </a>{" "}
+                    in London as a Junior Developer. I love all things
+                    JavaScript, CSS and music too!
                 </p>
             </section>
             <footer className="u-section-xs">
                 <p>
-                    You can connect with me via{" "}
+                    If you want to say hello, you can connect with me via{" "}
                     <a href="mailto:alex@alexboffey.co.uk" title="My email">
                         Email
                     </a>,{" "}
