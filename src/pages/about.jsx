@@ -16,9 +16,7 @@ export default ({ data }) => (
             </header>
             <section>
                 <p>
-                    Currently working as a front end developer at{" "}
-                    <a href="https://www.iweb.co.uk/">iWeb</a> on Magento 2 and
-                    WordPress projects.
+                    Currently working at Concentra Analytics as a Junior Developer. I love all things JavaScript, CSS and music too!
                 </p>
             </section>
             <footer className="u-section-xs">
