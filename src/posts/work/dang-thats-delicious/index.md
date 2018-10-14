@@ -14,6 +14,8 @@ So far along my web development journey I have mainly focussed solely on the fro
 
 This application is actually what I built along with [Wes Bos' Learn Node course](https://learnnode.com/), which I would highly reccomend for anyone who is looking to well... learn Node js!
 
+If you want to see the deployed application, here is the [link](https://dang-thats-delicious-rtpuctuozb.now.sh/).
+
 ## Application Features
 To give an overview of what the application can do, users of the application can review, favourite and upload restaurants, bars, cafes and the like so other users of the application can browse and discover them.
 
