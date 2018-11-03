@@ -2,54 +2,52 @@ const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
-    const { createNodeField } = boundActionCreators;
+  const { createNodeField } = boundActionCreators;
 
-    if (node.internal.type === `MarkdownRemark`) {
-        const slug = createFilePath({ node, getNode, basePath: `posts` });
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `posts` });
 
-        createNodeField({
-            node,
-            name: `slug`,
-            value: slug
-        });
-    }
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug
+    });
+  }
 };
 
 exports.createPages = async ({ boundActionCreators, graphql }) => {
-    const { createPage } = boundActionCreators;
-    const Blog = path.resolve("src/templates/blog.jsx");
-    const Work = path.resolve("src/templates/work.jsx");
+  const { createPage } = boundActionCreators;
+  const Blog = path.resolve("src/templates/blog.jsx");
+  const Work = path.resolve("src/templates/work.jsx");
 
-    const result = await graphql(`
-        {
-            allMarkdownRemark(
-                sort: { order: DESC, fields: [frontmatter___date] }
-            ) {
-                edges {
-                    node {
-                        html
-                        id
-                        fields {
-                            slug
-                        }
-                        frontmatter {
-                            post_type
-                            title
-                            published
-                            date(formatString: "DD-MM-YYYY")
-                        }
-                    }
-                }
+  const result = await graphql(`
+    {
+      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+        edges {
+          node {
+            html
+            id
+            fields {
+              slug
             }
+            frontmatter {
+              post_type
+              title
+              published
+              date(formatString: "DD-MM-YYYY")
+            }
+          }
         }
-    `);
+      }
+    }
+  `);
 
-    const posts = result.data.allMarkdownRemark.edges;
+  const posts = result.data.allMarkdownRemark.edges;
 
-    createPageByPostType(posts, Work, "work", createPage);
-    createPageByPostType(posts, Blog, "blog", createPage);
+  createPageByPostType(posts, Work, "work", createPage);
+  createPageByPostType(posts, Blog, "blog", createPage);
 
-    return result;
+  return result;
 };
 
 /**
@@ -61,27 +59,25 @@ exports.createPages = async ({ boundActionCreators, graphql }) => {
  * @param createPage
  */
 function createPageByPostType(posts, template, frontmatterString, createPage) {
-    const filteredPosts = posts.filter(
-        ({ node }) =>
-            node.frontmatter.post_type === frontmatterString &&
-            node.frontmatter.published === "true"
-    );
+  const filteredPosts = posts.filter(
+    ({ node }) =>
+      node.frontmatter.post_type === frontmatterString &&
+      node.frontmatter.published === "true"
+  );
 
-    filteredPosts.map(({ node }, index) => {
-        const previous =
-            index === filteredPosts.length - 1
-                ? null
-                : filteredPosts[index + 1].node;
-        const next = index === 0 ? null : filteredPosts[index - 1].node;
+  filteredPosts.map(({ node }, index) => {
+    const previous =
+      index === filteredPosts.length - 1 ? null : filteredPosts[index + 1].node;
+    const next = index === 0 ? null : filteredPosts[index - 1].node;
 
-        createPage({
-            path: node.fields.slug,
-            component: template,
-            context: {
-                slug: node.fields.slug,
-                previous,
-                next
-            }
-        });
+    createPage({
+      path: node.fields.slug,
+      component: template,
+      context: {
+        slug: node.fields.slug,
+        previous,
+        next
+      }
     });
+  });
 }
