@@ -1,13 +1,12 @@
 import React from "react";
-import { StaticQuery, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import Layout from "../components/layout";
-import Wrapper from "../layouts/wrapper";
-import Content from "../layouts/content";
+import Content from "../components/content";
 import Hero from "../components/hero";
 import SingleWork from "../components/single-work";
 
-const WorkQuery = graphql`
+export const pageQuery = graphql`
   query WorkQuery {
     allMarkdownRemark(
       filter: {
@@ -48,37 +47,28 @@ const WorkQuery = graphql`
   }
 `;
 
-const Work = ({ data, location }) => (
+export default ({ data, location }) => (
   <Layout location={location}>
-    <Wrapper>
-      <Helmet title={`${data.site.siteMetadata.title} | Work`} />
+    <Helmet title={`${data.site.siteMetadata.title} | Work`} />
 
-      <Hero title="Work" hasBorder />
+    <Hero title="Work" hasBorder />
 
-      <Content isFullWidth>
-        <div className="g-gutter grid">
-          {data.allMarkdownRemark.edges.map(post => (
-            <div
-              key={post.node.id}
-              className="g-col-md-6 g-col-xl-4 u-section-sm-bottom"
-            >
-              <SingleWork
-                title={post.node.frontmatter.title}
-                subtitle={post.node.frontmatter.subtitle}
-                thumb={post.node.frontmatter.thumb.childImageSharp.sizes}
-                slug={post.node.fields.slug}
-              />
-            </div>
-          ))}
-        </div>
-      </Content>
-    </Wrapper>
+    <Content isFullWidth>
+      <div className="g-gutter grid">
+        {data.allMarkdownRemark.edges.map(post => (
+          <div
+            key={post.node.id}
+            className="g-col-md-6 g-col-xl-4 u-section-sm-bottom"
+          >
+            <SingleWork
+              title={post.node.frontmatter.title}
+              subtitle={post.node.frontmatter.subtitle}
+              thumb={post.node.frontmatter.thumb.childImageSharp.sizes}
+              slug={post.node.fields.slug}
+            />
+          </div>
+        ))}
+      </div>
+    </Content>
   </Layout>
-);
-
-export default ({ location }) => (
-  <StaticQuery
-    query={WorkQuery}
-    render={data => <Work data={data} location={location} />}
-  />
 );

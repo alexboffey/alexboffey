@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import { Tag } from "../style";
 
@@ -17,7 +17,8 @@ const PostFooter = ({ previous, next, post, title }) => (
             to={previous.fields.slug}
             title={previous.fields.slug}
           >
-            ←&nbsp;{previous.frontmatter.title}
+            ←&nbsp;
+            {previous.frontmatter.title}
           </Link>
         )}
         {next && (
@@ -26,7 +27,8 @@ const PostFooter = ({ previous, next, post, title }) => (
             to={next.fields.slug}
             title={next.fields.slug}
           >
-            {next.frontmatter.title}&nbsp;→
+            {next.frontmatter.title}
+            &nbsp;→
           </Link>
         )}
       </nav>
@@ -38,9 +40,9 @@ const PostFooter = ({ previous, next, post, title }) => (
           <h3>Tags</h3>
         </header>
         <nav className="post-footer__tags">
-          {post.frontmatter.tags
-            .split(",")
-            .map(tag => <Tag key={tag}>{tag}</Tag>)}
+          {post.frontmatter.tags.split(",").map(tag => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
         </nav>
       </section>
     )}

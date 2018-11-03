@@ -1,19 +1,38 @@
 import React, { Component } from "react";
 import { graphql } from "gatsby";
-import Wrapper from "../layouts/wrapper";
-import Content from "../layouts/content";
+import Layout from "../components/layout";
+import Content from "../components/content";
 import Hero from "../components/hero";
 import PostHead from "../components/post-head";
 import PostFooter from "../components/post-footer";
 
-export default class Blog extends Component {
+export const pageQuery = graphql`
+  query BlogPostQuery($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+        subtitle
+        date(formatString: "DD-MM-YYYY")
+        tags
+      }
+    }
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;
+
+export default class BlogPost extends Component {
   render() {
     const data = this.props.data;
     const { markdownRemark: post } = data;
-    const { previous, next } = this.props.pathContext;
+    const { previous, next } = this.props.pageContext;
 
     return (
-      <Wrapper>
+      <Layout>
         <PostHead data={data} post={post} defaultTags="Alex Boffey,Blog" />
 
         <Hero title={post.frontmatter.title} hasBorder />
@@ -41,26 +60,8 @@ export default class Blog extends Component {
             />
           </div>
         </Content>
-      </Wrapper>
+      </Layout>
     );
   }
 }
 
-export const postQuery = graphql`
-  query BlogPostByPath($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        subtitle
-        date(formatString: "DD-MM-YYYY")
-        tags
-      }
-    }
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;

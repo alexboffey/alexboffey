@@ -29,7 +29,9 @@ const Layout = ({ data, children, location }) => (
     </Helmet>
     <Header activePath={location.pathname} />
     <main className="page__main">
-      {children}
+      <section className="content__wrapper u-fill-neutral-white">
+        {children}
+      </section>
       <Footer />
     </main>
   </div>
