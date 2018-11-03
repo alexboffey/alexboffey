@@ -38,12 +38,11 @@ const SocialIcons = ({ hasSocials }) => {
   return (
     <div className="social-icons">
       {socials}
-
       <a
         title="Github"
         href="https://www.github.com/alexboffey"
         target="_blank"
-        rel="noopener noregerrer"
+        rel="noopener noreferrer"
         className="icon icon--hover"
       >
         <object alt="Github" data={github} type="image/svg+xml">
@@ -54,7 +53,7 @@ const SocialIcons = ({ hasSocials }) => {
         title="Codepen"
         href="https://www.codepen.io/alexboffey"
         target="_blank"
-        rel="noopener noregerrer"
+        rel="noopener noreferrer"
         className="icon icon--hover"
       >
         <object alt="Codepen" data={codepen} type="image/svg+xml">
