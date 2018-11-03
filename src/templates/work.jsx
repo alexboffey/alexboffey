@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import Wrapper from "../layouts/wrapper";
 import Content from "../layouts/content";

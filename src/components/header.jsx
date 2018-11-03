@@ -7,24 +7,24 @@ import logo from "../img/logo/logo.svg";
 const NavLink = ({ to, activePath, children }) => {
   let linkClass = "";
 
-  // Messy logic to determine active path
-  if (to === "/") {
-    if (
-      activePath === to ||
-      activePath === `${__PATH_PREFIX__}${to}` ||
-      activePath.includes("/blog")
-    ) {
-      linkClass = "is-active";
-    }
-  } else if (to === "/work") {
-    if (activePath.includes("/work")) {
-      linkClass = "is-active";
-    }
-  } else if (to === "/about") {
-    if (activePath.includes("/about")) {
-      linkClass = "is-active";
-    }
-  }
+  // // Messy logic to determine active path
+  // if (to === "/") {
+  //   if (
+  //     activePath === to ||
+  //     activePath === `${__PATH_PREFIX__}${to}` ||
+  //     activePath.includes("/blog")
+  //   ) {
+  //     linkClass = "is-active";
+  //   }
+  // } else if (to === "/work") {
+  //   if (activePath.includes("/work")) {
+  //     linkClass = "is-active";
+  //   }
+  // } else if (to === "/about") {
+  //   if (activePath.includes("/about")) {
+  //     linkClass = "is-active";
+  //   }
+  // }
 
   return (
     <Link className={linkClass} to={to}>
