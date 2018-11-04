@@ -18,9 +18,9 @@ const AboutPage = ({ data, location }) => (
         <p>
           Currently working at{" "}
           <a href="https://www.concentra.co.uk/">Concentra Analytics</a> in
-          London as a Junior Developer.
+          London as a Junior Developer. I'm into all things JavaScript, CSS and
+          Music too!
         </p>
-        <p>I'm into all things JavaScript, CSS and Music too!</p>
       </section>
       <footer className="u-section-xs">
         <p>
