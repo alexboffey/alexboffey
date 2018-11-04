@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import Layout from "../components/layout";
@@ -7,7 +8,7 @@ import Hero from "../components/hero";
 import PostHead from "../components/post-head";
 import PostFooter from "../components/post-footer";
 
-export default class WorkPost extends Component {
+class WorkPost extends Component {
   render() {
     const data = this.props.data;
     const { markdownRemark: post } = data;
@@ -55,6 +56,14 @@ export default class WorkPost extends Component {
     );
   }
 }
+
+WorkPost.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired
+};
+
+export default WorkPost;
 
 export const pageQuery = graphql`
   query WorkPostQuery($slug: String!) {

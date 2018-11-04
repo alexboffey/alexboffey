@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Content from "../components/content";
 import Hero from "../components/hero";
 import SingleBlog from "../components/single-blog";
 
-export default ({ data, location }) => (
+const IndexPage = ({ data, location }) => (
   <Layout location={location}>
     <Hero title="Alex Boffey, front end developer." hasBorder />
     <Content isFullWidth>
@@ -28,6 +29,13 @@ export default ({ data, location }) => (
     </Content>
   </Layout>
 );
+
+IndexPage.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
+};
+
+export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexQuery {

@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import Layout from "../components/layout";
 import Content from "../components/content";
 import Hero from "../components/hero";
 
-export default ({ data, location }) => (
+const AboutPage = ({ data, location }) => (
   <Layout location={location}>
     <Helmet title={`${data.site.siteMetadata.title} | About`} />
     <Hero title="About" hasBorder />
@@ -41,6 +42,13 @@ export default ({ data, location }) => (
     </Content>
   </Layout>
 );
+
+AboutPage.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
+};
+
+export default AboutPage;
 
 export const pageQuery = graphql`
   query AboutQuery {

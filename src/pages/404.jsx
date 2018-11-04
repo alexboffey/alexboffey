@@ -1,10 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import Layout from "../components/layout";
 import Content from "../components/content";
 import Hero from "../components/hero";
 
-export default ({ location }) => (
+const NotFound = ({ location }) => (
   <Layout location={location}>
     <Hero
       title="404"
@@ -19,3 +20,10 @@ export default ({ location }) => (
     </Content>
   </Layout>
 );
+
+NotFound.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
+};
+
+export default NotFound;

@@ -26,7 +26,7 @@ NavLink.propTypes = {
   to: PropTypes.string.isRequired,
   pathName: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
-}
+};
 
 const Header = ({ pathName }) => (
   <header className="header__wrapper">

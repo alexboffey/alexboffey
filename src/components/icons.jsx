@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import github from "../img/vector/social/github.svg";
 import codepen from "../img/vector/social/codepen.svg";
 import linkedin from "../img/vector/social/linkedin.svg";
@@ -61,6 +62,10 @@ const SocialIcons = ({ hasSocials }) => {
       </a>
     </div>
   );
+};
+
+SocialIcons.propTypes = {
+  hasSocials: PropTypes.bool
 };
 
 export default SocialIcons;

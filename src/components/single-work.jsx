@@ -29,8 +29,8 @@ const SingleWork = ({ title, subtitle, slug, thumb }) => (
 SingleWork.propTypes = {
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired
-  // thumb: PropTypes.string.isRequired
+  subtitle: PropTypes.string.isRequired,
+  thumb: PropTypes.object.isRequired
 };
 
 export default SingleWork;

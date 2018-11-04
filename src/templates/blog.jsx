@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Content from "../components/content";
@@ -6,7 +7,7 @@ import Hero from "../components/hero";
 import PostHead from "../components/post-head";
 import PostFooter from "../components/post-footer";
 
-export default class BlogPost extends Component {
+class BlogPost extends Component {
   render() {
     const data = this.props.data;
     const { markdownRemark: post } = data;
@@ -43,6 +44,14 @@ export default class BlogPost extends Component {
     );
   }
 }
+
+BlogPost.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired
+};
+
+export default BlogPost;
 
 export const pageQuery = graphql`
   query BlogPostQuery($slug: String!) {

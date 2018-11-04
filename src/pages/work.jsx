@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import Layout from "../components/layout";
@@ -6,7 +7,7 @@ import Content from "../components/content";
 import Hero from "../components/hero";
 import SingleWork from "../components/single-work";
 
-export default ({ data, location }) => (
+const WorkPage = ({ data, location }) => (
   <Layout location={location}>
     <Helmet title={`${data.site.siteMetadata.title} | Work`} />
     <Hero title="Work" hasBorder />
@@ -29,6 +30,13 @@ export default ({ data, location }) => (
     </Content>
   </Layout>
 );
+
+WorkPage.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
+};
+
+export default WorkPage;
 
 export const pageQuery = graphql`
   query WorkQuery {

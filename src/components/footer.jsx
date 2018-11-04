@@ -1,8 +1,6 @@
 import React from "react";
 import Icons from "./icons";
 
-const year = new Date().getFullYear();
-
 const Footer = () => (
   <footer className="footer page-footer">
     <div className="u-container u-center u-section-sm u-text-center">
@@ -11,7 +9,9 @@ const Footer = () => (
       </div>
 
       <footer className="u-section-xs">
-        <p className="micro footer__copy">&copy; {year} Alex Boffey.</p>
+        <p className="micro footer__copy">
+          &copy; {new Date().getFullYear()} Alex Boffey.
+        </p>
       </footer>
     </div>
   </footer>
