@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 import Img from "gatsby-image";
 
 const SingleWork = ({ title, subtitle, slug, thumb }) => (
@@ -29,8 +29,8 @@ const SingleWork = ({ title, subtitle, slug, thumb }) => (
 SingleWork.propTypes = {
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired
-  // thumb: PropTypes.string.isRequired
+  subtitle: PropTypes.string.isRequired,
+  thumb: PropTypes.object.isRequired
 };
 
 export default SingleWork;

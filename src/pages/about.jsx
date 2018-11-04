@@ -1,15 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
-import Wrapper from "../layouts/wrapper";
-import Content from "../layouts/content";
+import Layout from "../components/layout";
+import Content from "../components/content";
 import Hero from "../components/hero";
 
-export default ({ data }) => (
-  <Wrapper>
+const AboutPage = ({ data, location }) => (
+  <Layout location={location}>
     <Helmet title={`${data.site.siteMetadata.title} | About`} />
-
     <Hero title="About" hasBorder />
-
     <Content>
       <header>
         <h2 className="h1">Hi, I'm Alex.</h2>
@@ -18,30 +18,39 @@ export default ({ data }) => (
         <p>
           Currently working at{" "}
           <a href="https://www.concentra.co.uk/">Concentra Analytics</a> in
-          London as a Junior Developer. I love all things JavaScript, CSS and
-          music too!
+          London as a Junior Developer. I'm into all things JavaScript, CSS and
+          Music too!
         </p>
       </section>
       <footer className="u-section-xs">
         <p>
-          If you want to say hello, you can connect with me via{" "}
+          If you want to say hi, feel free to contact me via{" "}
           <a href="mailto:alex@alexboffey.co.uk" title="My email">
             Email
-          </a>,{" "}
+          </a>
+          ,{" "}
           <a href="https://www.twitter.com/alexboffey" title="My Twitter">
             Twitter
           </a>{" "}
           or{" "}
           <a href="https://www.linkedin.com/in/alexboffey/" title="My LinkedIn">
             LinkedIn
-          </a>.
+          </a>
+          .
         </p>
       </footer>
     </Content>
-  </Wrapper>
+  </Layout>
 );
 
-export const query = graphql`
+AboutPage.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
+};
+
+export default AboutPage;
+
+export const pageQuery = graphql`
   query AboutQuery {
     site {
       siteMetadata {

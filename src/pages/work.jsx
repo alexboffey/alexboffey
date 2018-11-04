@@ -1,16 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
-import Wrapper from "../layouts/wrapper";
-import Content from "../layouts/content";
+import Layout from "../components/layout";
+import Content from "../components/content";
 import Hero from "../components/hero";
 import SingleWork from "../components/single-work";
 
-export default ({ data }) => (
-  <Wrapper>
+const WorkPage = ({ data, location }) => (
+  <Layout location={location}>
     <Helmet title={`${data.site.siteMetadata.title} | Work`} />
-
     <Hero title="Work" hasBorder />
-
     <Content isFullWidth>
       <div className="g-gutter grid">
         {data.allMarkdownRemark.edges.map(post => (
@@ -28,10 +28,17 @@ export default ({ data }) => (
         ))}
       </div>
     </Content>
-  </Wrapper>
+  </Layout>
 );
 
-export const query = graphql`
+WorkPage.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
+};
+
+export default WorkPage;
+
+export const pageQuery = graphql`
   query WorkQuery {
     allMarkdownRemark(
       filter: {

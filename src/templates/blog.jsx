@@ -1,22 +1,22 @@
 import React, { Component } from "react";
-import Wrapper from "../layouts/wrapper";
-import Content from "../layouts/content";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import Content from "../components/content";
 import Hero from "../components/hero";
 import PostHead from "../components/post-head";
 import PostFooter from "../components/post-footer";
 
-export default class Blog extends Component {
+class BlogPost extends Component {
   render() {
     const data = this.props.data;
     const { markdownRemark: post } = data;
-    const { previous, next } = this.props.pathContext;
+    const { previous, next } = this.props.pageContext;
 
     return (
-      <Wrapper>
+      <Layout location={this.props.location}>
         <PostHead data={data} post={post} defaultTags="Alex Boffey,Blog" />
-
         <Hero title={post.frontmatter.title} hasBorder />
-
         <Content>
           <div className="post-wrapper">
             <header>
@@ -40,13 +40,21 @@ export default class Blog extends Component {
             />
           </div>
         </Content>
-      </Wrapper>
+      </Layout>
     );
   }
 }
 
-export const postQuery = graphql`
-  query BlogPostByPath($slug: String!) {
+BlogPost.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired
+};
+
+export default BlogPost;
+
+export const pageQuery = graphql`
+  query BlogPostQuery($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {

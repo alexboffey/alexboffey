@@ -1,11 +1,12 @@
 import React from "react";
-import Link from "gatsby-link";
-import Wrapper from "../layouts/wrapper";
-import Content from "../layouts/content";
+import PropTypes from "prop-types";
+import { Link } from "gatsby";
+import Layout from "../components/layout";
+import Content from "../components/content";
 import Hero from "../components/hero";
 
-export default () => (
-  <Wrapper>
+const NotFound = ({ location }) => (
+  <Layout location={location}>
     <Hero
       title="404"
       subtitle="Unfortunately, this page does not exist!"
@@ -17,5 +18,12 @@ export default () => (
         Here's a link back to the <Link to="/">front page</Link>.
       </p>
     </Content>
-  </Wrapper>
+  </Layout>
 );
+
+NotFound.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
+};
+
+export default NotFound;

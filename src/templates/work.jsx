@@ -1,19 +1,21 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
 import Img from "gatsby-image";
-import Wrapper from "../layouts/wrapper";
-import Content from "../layouts/content";
+import Layout from "../components/layout";
+import Content from "../components/content";
 import Hero from "../components/hero";
 import PostHead from "../components/post-head";
 import PostFooter from "../components/post-footer";
 
-export default class Work extends Component {
+class WorkPost extends Component {
   render() {
     const data = this.props.data;
     const { markdownRemark: post } = data;
-    const { previous, next } = this.props.pathContext;
+    const { previous, next } = this.props.pageContext;
 
     return (
-      <Wrapper>
+      <Layout location={this.props.location}>
         <PostHead
           data={data}
           post={post}
@@ -50,13 +52,21 @@ export default class Work extends Component {
             />
           </div>
         </Content>
-      </Wrapper>
+      </Layout>
     );
   }
 }
 
-export const postQuery = graphql`
-  query WorkPostByPath($slug: String!) {
+WorkPost.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired
+};
+
+export default WorkPost;
+
+export const pageQuery = graphql`
+  query WorkPostQuery($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {

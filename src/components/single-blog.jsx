@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 import { BlogHeader } from "../style";
 
-const SingleBlog = ({ title, subtitle, excerpt, slug, date }) => (
+const SingleBlog = ({ title, excerpt, slug, date }) => (
   <article className="blog-single card u-section-sm-bottom u-block-xl">
     <header className="blog-single__header border-block border-block--alt">
       <Link className="u-link-unstyled" to={slug}>
@@ -31,7 +31,6 @@ const SingleBlog = ({ title, subtitle, excerpt, slug, date }) => (
 SingleBlog.propTypes = {
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
   excerpt: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired
 };
