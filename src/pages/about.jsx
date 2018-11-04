@@ -5,22 +5,10 @@ import Layout from "../components/layout";
 import Content from "../components/content";
 import Hero from "../components/hero";
 
-export const pageQuery = graphql`
-  query AboutQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
-
 export default ({ data, location }) => (
   <Layout location={location}>
     <Helmet title={`${data.site.siteMetadata.title} | About`} />
-
     <Hero title="About" hasBorder />
-
     <Content>
       <header>
         <h2 className="h1">Hi, I'm Alex.</h2>
@@ -53,3 +41,13 @@ export default ({ data, location }) => (
     </Content>
   </Layout>
 );
+
+export const pageQuery = graphql`
+  query AboutQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;

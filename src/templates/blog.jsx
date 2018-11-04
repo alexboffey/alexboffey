@@ -6,25 +6,6 @@ import Hero from "../components/hero";
 import PostHead from "../components/post-head";
 import PostFooter from "../components/post-footer";
 
-export const pageQuery = graphql`
-  query BlogPostQuery($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        subtitle
-        date(formatString: "DD-MM-YYYY")
-        tags
-      }
-    }
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
-
 export default class BlogPost extends Component {
   render() {
     const data = this.props.data;
@@ -34,9 +15,7 @@ export default class BlogPost extends Component {
     return (
       <Layout location={this.props.location}>
         <PostHead data={data} post={post} defaultTags="Alex Boffey,Blog" />
-
         <Hero title={post.frontmatter.title} hasBorder />
-
         <Content>
           <div className="post-wrapper">
             <header>
@@ -65,3 +44,21 @@ export default class BlogPost extends Component {
   }
 }
 
+export const pageQuery = graphql`
+  query BlogPostQuery($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+        subtitle
+        date(formatString: "DD-MM-YYYY")
+        tags
+      }
+    }
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;

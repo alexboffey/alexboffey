@@ -5,6 +5,30 @@ import Content from "../components/content";
 import Hero from "../components/hero";
 import SingleBlog from "../components/single-blog";
 
+export default ({ data, location }) => (
+  <Layout location={location}>
+    <Hero title="Alex Boffey, front end developer." hasBorder />
+    <Content isFullWidth>
+      <div className="grid">
+        {data.allMarkdownRemark.edges.map(post => (
+          <div
+            key={post.node.id}
+            className="g-col-md-10 g-col-xl-8 u-section-sm-bottom"
+          >
+            <SingleBlog
+              title={post.node.frontmatter.title}
+              subtitle={post.node.frontmatter.subtitle}
+              date={post.node.frontmatter.date}
+              excerpt={post.node.excerpt}
+              slug={post.node.fields.slug}
+            />
+          </div>
+        ))}
+      </div>
+    </Content>
+  </Layout>
+);
+
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
@@ -33,28 +57,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-export default ({ data, location }) => (
-  <Layout location={location}>
-    <Hero title="Alex Boffey, front end developer." hasBorder />
-
-    <Content isFullWidth>
-      <div className="grid">
-        {data.allMarkdownRemark.edges.map(post => (
-          <div
-            key={post.node.id}
-            className="g-col-md-10 g-col-xl-8 u-section-sm-bottom"
-          >
-            <SingleBlog
-              title={post.node.frontmatter.title}
-              subtitle={post.node.frontmatter.subtitle}
-              date={post.node.frontmatter.date}
-              excerpt={post.node.excerpt}
-              slug={post.node.fields.slug}
-            />
-          </div>
-        ))}
-      </div>
-    </Content>
-  </Layout>
-);

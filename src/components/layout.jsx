@@ -7,16 +7,6 @@ import Footer from "./footer";
 import Favicon from "../img/logo/favicon.png";
 import "../scss/app.scss";
 
-const LayoutQuery = graphql`
-  query LayoutQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
-
 const Layout = ({ data, children, location }) => (
   <div className="page__wrapper">
     <Helmet>
@@ -42,7 +32,17 @@ Layout.propTypes = {
   data: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired
-}
+};
+
+const LayoutQuery = graphql`
+  query LayoutQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;
 
 export default ({ children, location }) => (
   <StaticQuery

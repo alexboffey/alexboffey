@@ -6,6 +6,30 @@ import Content from "../components/content";
 import Hero from "../components/hero";
 import SingleWork from "../components/single-work";
 
+export default ({ data, location }) => (
+  <Layout location={location}>
+    <Helmet title={`${data.site.siteMetadata.title} | Work`} />
+    <Hero title="Work" hasBorder />
+    <Content isFullWidth>
+      <div className="g-gutter grid">
+        {data.allMarkdownRemark.edges.map(post => (
+          <div
+            key={post.node.id}
+            className="g-col-md-6 g-col-xl-4 u-section-sm-bottom"
+          >
+            <SingleWork
+              title={post.node.frontmatter.title}
+              subtitle={post.node.frontmatter.subtitle}
+              thumb={post.node.frontmatter.thumb.childImageSharp.sizes}
+              slug={post.node.fields.slug}
+            />
+          </div>
+        ))}
+      </div>
+    </Content>
+  </Layout>
+);
+
 export const pageQuery = graphql`
   query WorkQuery {
     allMarkdownRemark(
@@ -46,29 +70,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-export default ({ data, location }) => (
-  <Layout location={location}>
-    <Helmet title={`${data.site.siteMetadata.title} | Work`} />
-
-    <Hero title="Work" hasBorder />
-
-    <Content isFullWidth>
-      <div className="g-gutter grid">
-        {data.allMarkdownRemark.edges.map(post => (
-          <div
-            key={post.node.id}
-            className="g-col-md-6 g-col-xl-4 u-section-sm-bottom"
-          >
-            <SingleWork
-              title={post.node.frontmatter.title}
-              subtitle={post.node.frontmatter.subtitle}
-              thumb={post.node.frontmatter.thumb.childImageSharp.sizes}
-              slug={post.node.fields.slug}
-            />
-          </div>
-        ))}
-      </div>
-    </Content>
-  </Layout>
-);

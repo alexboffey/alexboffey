@@ -7,32 +7,6 @@ import Hero from "../components/hero";
 import PostHead from "../components/post-head";
 import PostFooter from "../components/post-footer";
 
-export const pageQuery = graphql`
-  query WorkPostQuery($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        subtitle
-        date(formatString: "DD-MM-YYYY")
-        tags
-        featured_image {
-          childImageSharp {
-            sizes(maxWidth: 820, quality: 75) {
-              ...GatsbyImageSharpSizes_noBase64
-            }
-          }
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
-
 export default class WorkPost extends Component {
   render() {
     const data = this.props.data;
@@ -81,3 +55,29 @@ export default class WorkPost extends Component {
     );
   }
 }
+
+export const pageQuery = graphql`
+  query WorkPostQuery($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+        subtitle
+        date(formatString: "DD-MM-YYYY")
+        tags
+        featured_image {
+          childImageSharp {
+            sizes(maxWidth: 820, quality: 75) {
+              ...GatsbyImageSharpSizes_noBase64
+            }
+          }
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;
