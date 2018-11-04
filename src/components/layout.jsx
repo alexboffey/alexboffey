@@ -37,13 +37,11 @@ const Layout = ({ data, children, location }) => (
   </div>
 );
 
-export default ({ children, location }) => {
-  return (
-    <StaticQuery
-      query={LayoutQuery}
-      render={data => (
-        <Layout data={data} children={children} location={location} />
-      )}
-    />
-  );
-};
+export default ({ children, location }) => (
+  <StaticQuery
+    query={LayoutQuery}
+    render={data => (
+      <Layout data={data} children={children} location={location} />
+    )}
+  />
+);
