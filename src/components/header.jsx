@@ -4,36 +4,31 @@ import { Link } from "gatsby";
 import Icons from "./icons";
 import logo from "../img/logo/logo.svg";
 
-const NavLink = ({ to, activePath, children }) => {
-  let linkClass = "";
-
-  // Messy logic to determine active path
-  if (to === "/") {
-    if (
-      activePath === to ||
-      activePath === `${to}` ||
-      activePath.includes("/blog")
-    ) {
-      linkClass = "is-active";
-    }
-  } else if (to === "/work") {
-    if (activePath.includes("/work")) {
-      linkClass = "is-active";
-    }
-  } else if (to === "/about") {
-    if (activePath.includes("/about")) {
-      linkClass = "is-active";
-    }
+// Helper function to conditionally apply active class
+function isLinkActive(to, pathName) {
+  if (to === "/" && (pathName === to || pathName.includes("/blog"))) {
+    return true;
+  } else if (to === "/work" && pathName.includes("/work")) {
+    return true;
+  } else if (to === "/about" && pathName.includes("/about")) {
+    return true;
   }
+  return false;
+}
 
-  return (
-    <Link className={linkClass} to={to}>
-      {children}
-    </Link>
-  );
-};
+const NavLink = ({ to, pathName, children }) => (
+  <Link className={isLinkActive(to, pathName) ? "is-active" : ""} to={to}>
+    {children}
+  </Link>
+);
 
-const Header = ({ activePath }) => (
+NavLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  pathName: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired
+}
+
+const Header = ({ pathName }) => (
   <header className="header__wrapper">
     <div className="header header--edges u-container">
       <div className="header__branding">
@@ -50,17 +45,17 @@ const Header = ({ activePath }) => (
       <nav className="header__nav">
         <ul className="nav nav--pills nav--inline">
           <li>
-            <NavLink to="/" activePath={activePath}>
+            <NavLink to="/" pathName={pathName}>
               Blog
             </NavLink>
           </li>
           <li>
-            <NavLink to="/work" activePath={activePath}>
+            <NavLink to="/work" pathName={pathName}>
               Work
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" activePath={activePath}>
+            <NavLink to="/about" pathName={pathName}>
               About
             </NavLink>
           </li>
@@ -74,7 +69,7 @@ const Header = ({ activePath }) => (
 );
 
 Header.propTypes = {
-  activePath: PropTypes.string.isRequired
+  pathName: PropTypes.string.isRequired
 };
 
 export default Header;

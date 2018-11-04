@@ -18,7 +18,7 @@ const Layout = ({ data, children, location }) => (
       <title>{data.site.siteMetadata.title}</title>
       <link rel="shortcut icon" href={Favicon} />
     </Helmet>
-    <Header activePath={location.pathname} />
+    <Header pathName={location.pathname} />
     <main className="page__main">
       <section className="content__wrapper u-fill-neutral-white">
         {children}
