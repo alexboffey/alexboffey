@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql, StaticQuery } from "gatsby";
 import Header from "./header";
@@ -36,6 +37,12 @@ const Layout = ({ data, children, location }) => (
     </main>
   </div>
 );
+
+Layout.propTypes = {
+  data: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
+  location: PropTypes.object.isRequired
+}
 
 export default ({ children, location }) => (
   <StaticQuery

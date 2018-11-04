@@ -40,7 +40,7 @@ export default class WorkPost extends Component {
     const { previous, next } = this.props.pageContext;
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <PostHead
           data={data}
           post={post}

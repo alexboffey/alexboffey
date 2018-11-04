@@ -32,7 +32,7 @@ export default class BlogPost extends Component {
     const { previous, next } = this.props.pageContext;
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <PostHead data={data} post={post} defaultTags="Alex Boffey,Blog" />
 
         <Hero title={post.frontmatter.title} hasBorder />
