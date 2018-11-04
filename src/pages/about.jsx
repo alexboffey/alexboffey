@@ -17,13 +17,13 @@ export default ({ data, location }) => (
         <p>
           Currently working at{" "}
           <a href="https://www.concentra.co.uk/">Concentra Analytics</a> in
-          London as a Junior Developer. I love all things JavaScript, CSS and
-          music too!
+          London as a Junior Developer.
         </p>
+        <p>I'm into all things JavaScript, CSS and Music too!</p>
       </section>
       <footer className="u-section-xs">
         <p>
-          If you want to say hello, you can connect with me via{" "}
+          If you want to say hi, feel free to contact me via{" "}
           <a href="mailto:alex@alexboffey.co.uk" title="My email">
             Email
           </a>
