@@ -12,12 +12,13 @@ const AboutPage = ({ data, location }) => (
     <Hero title="About" hasBorder />
     <Content>
       <header>
-        <h2 className="h1">Hi, I'm Alex.</h2>
+        <h2 className="h1">Hi, I'm Alex. <span role="img" aria-label="Waving emoji.">👋</span></h2>
       </header>
       <section>
+        <p>Thanks for checking out my blog!</p>
         <p>
-          Currently working at{" "}
-          <a href="https://www.concentra.co.uk/">Concentra Analytics</a> in
+          I'm Currently working at{" "}
+          <a target="_blank" rel="noopener noreferrer" href="https://www.concentra.co.uk/">Concentra Analytics</a> in
           London as a Junior Developer. I'm into all things JavaScript, CSS and
           Music too!
         </p>
