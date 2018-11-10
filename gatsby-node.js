@@ -19,6 +19,8 @@ exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
   const Blog = path.resolve("src/templates/blog.jsx");
   const Work = path.resolve("src/templates/work.jsx");
+  const BlogList = path.resolve("src/templates/blog-list.jsx");
+  const WorkList = path.resolve("src/templates/work-list.jsx");
 
   const result = await graphql(`
     {
@@ -44,8 +46,8 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const posts = result.data.allMarkdownRemark.edges;
 
-  createPageByPostType(posts, Work, "work", createPage);
-  createPageByPostType(posts, Blog, "blog", createPage);
+  createPageByPostType(posts, Work, "work", createPage, WorkList);
+  createPageByPostType(posts, Blog, "blog", createPage, BlogList);
 
   return result;
 };
@@ -54,12 +56,22 @@ exports.createPages = async ({ actions, graphql }) => {
  * Helper to create pages by post type
  *
  * @param {Array} posts
- * @param {String} template
+ * @param {String} postTemplate
  * @param {String} frontmatterString
  * @param {Function} createPage
+ * @param {String} listTemplate
+ * @param {Number} postsPerPage
  * @returns {Null}
  */
-function createPageByPostType(posts, template, frontmatterString, createPage) {
+function createPageByPostType(
+  posts,
+  postTemplate,
+  frontmatterString,
+  createPage,
+  listTemplate,
+  listPathPrefix,
+  postsPerPage = 1
+) {
   posts
     .filter(
       ({ node }) =>
@@ -67,20 +79,38 @@ function createPageByPostType(posts, template, frontmatterString, createPage) {
         node.frontmatter.published === "true"
     )
     .forEach(({ node }, index, filteredPosts) => {
+      // Create blog / work post pages
       const previous =
         index === filteredPosts.length - 1
           ? null
           : filteredPosts[index + 1].node;
       const next = index === 0 ? null : filteredPosts[index - 1].node;
-
       createPage({
         path: node.fields.slug,
-        component: template,
+        component: postTemplate,
         context: {
           slug: node.fields.slug,
           previous,
           next
         }
+      });
+
+      // Create paginated list pages
+      const numberOfPages = Math.ceil(filteredPosts.length / postsPerPage);
+      Array.from({ length: numberOfPages }).forEach((el, index) => {
+        createPage({
+          path:
+            index === 0
+              ? `/${frontmatterString}`
+              : `/${frontmatterString}/${index + 1}`,
+          component: listTemplate,
+          context: {
+            limit: postsPerPage,
+            skip: index * postsPerPage,
+            numberOfPages,
+            currentPage: index + 1
+          }
+        });
       });
     });
 }
