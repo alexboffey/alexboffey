@@ -53,31 +53,34 @@ exports.createPages = async ({ actions, graphql }) => {
 /**
  * Helper to create pages by post type
  *
- * @param posts
- * @param template
- * @param frontmatterString
- * @param createPage
+ * @param {Array} posts
+ * @param {String} template
+ * @param {String} frontmatterString
+ * @param {Function} createPage
+ * @returns {Null}
  */
 function createPageByPostType(posts, template, frontmatterString, createPage) {
-  const filteredPosts = posts.filter(
-    ({ node }) =>
-      node.frontmatter.post_type === frontmatterString &&
-      node.frontmatter.published === "true"
-  );
+  posts
+    .filter(
+      ({ node }) =>
+        node.frontmatter.post_type === frontmatterString &&
+        node.frontmatter.published === "true"
+    )
+    .forEach(({ node }, index, filteredPosts) => {
+      const previous =
+        index === filteredPosts.length - 1
+          ? null
+          : filteredPosts[index + 1].node;
+      const next = index === 0 ? null : filteredPosts[index - 1].node;
 
-  filteredPosts.map(({ node }, index) => {
-    const previous =
-      index === filteredPosts.length - 1 ? null : filteredPosts[index + 1].node;
-    const next = index === 0 ? null : filteredPosts[index - 1].node;
-
-    createPage({
-      path: node.fields.slug,
-      component: template,
-      context: {
-        slug: node.fields.slug,
-        previous,
-        next
-      }
+      createPage({
+        path: node.fields.slug,
+        component: template,
+        context: {
+          slug: node.fields.slug,
+          previous,
+          next
+        }
+      });
     });
-  });
 }
