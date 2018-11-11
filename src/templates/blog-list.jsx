@@ -7,7 +7,7 @@ import Hero from "../components/hero";
 import SingleBlog from "../components/single-blog";
 import ListPagination from "../components/list-pagination";
 
-const IndexPage = ({ data, location, pathContext }) => (
+const IndexPage = ({ data, location, pageContext }) => (
   <Layout location={location}>
     <Hero title="Blog" hasBorder />
     <Content isFullWidth>
@@ -28,9 +28,9 @@ const IndexPage = ({ data, location, pathContext }) => (
         ))}
       </div>
       <ListPagination
-        currentPage={pathContext.currentPage}
-        numberOfPages={pathContext.numberOfPages}
-        path="/blog/"
+        currentPage={pageContext.currentPage}
+        numberOfPages={pageContext.numberOfPages}
+        path="/"
       />
     </Content>
   </Layout>
@@ -38,7 +38,8 @@ const IndexPage = ({ data, location, pathContext }) => (
 
 IndexPage.propTypes = {
   data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired
 };
 
 export default IndexPage;

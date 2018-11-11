@@ -46,8 +46,8 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const posts = result.data.allMarkdownRemark.edges;
 
-  createPageByPostType(posts, Work, "work", createPage, WorkList);
-  createPageByPostType(posts, Blog, "blog", createPage, BlogList);
+  createPageByPostType(posts, Work, "work", createPage, WorkList, "/work", 6);
+  createPageByPostType(posts, Blog, "blog", createPage, BlogList, "/blog", 3);
 
   return result;
 };
@@ -60,6 +60,7 @@ exports.createPages = async ({ actions, graphql }) => {
  * @param {String} frontmatterString
  * @param {Function} createPage
  * @param {String} listTemplate
+ * @param {String} listPagePath
  * @param {Number} postsPerPage
  * @returns {Null}
  */
@@ -69,8 +70,8 @@ function createPageByPostType(
   frontmatterString,
   createPage,
   listTemplate,
-  listPathPrefix,
-  postsPerPage = 1
+  listPagePath,
+  postsPerPage = 4
 ) {
   posts
     .filter(
@@ -98,11 +99,11 @@ function createPageByPostType(
       // Create paginated list pages
       const numberOfPages = Math.ceil(filteredPosts.length / postsPerPage);
       Array.from({ length: numberOfPages }).forEach((el, index) => {
+        const path =
+          index === 0 ? `${listPagePath}` : `${listPagePath}/${index + 1}`;
+
         createPage({
-          path:
-            index === 0
-              ? `/${frontmatterString}`
-              : `/${frontmatterString}/${index + 1}`,
+          path,
           component: listTemplate,
           context: {
             limit: postsPerPage,

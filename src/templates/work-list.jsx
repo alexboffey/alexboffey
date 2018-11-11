@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import Layout from "../components/layout";
 import Content from "../components/content";
@@ -39,7 +39,8 @@ const WorkPage = ({ data, location, pageContext }) => (
 
 WorkPage.propTypes = {
   data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired
 };
 
 export default WorkPage;
