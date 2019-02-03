@@ -47,7 +47,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const posts = result.data.allMarkdownRemark.edges;
 
   createPageByPostType(posts, Work, "work", createPage, WorkList, "/work", 6);
-  createPageByPostType(posts, Blog, "blog", createPage, BlogList, "/blog", 3);
+  createPageByPostType(posts, Blog, "blog", createPage, BlogList, "/blog", 4);
 
   return result;
 };
@@ -99,8 +99,15 @@ function createPageByPostType(
       // Create paginated list pages
       const numberOfPages = Math.ceil(filteredPosts.length / postsPerPage);
       Array.from({ length: numberOfPages }).forEach((el, index) => {
-        const path =
+        let path;
+
+        if (listPagePath === "/blog") {
+          path =
+            index === 0 ? `/` : `${listPagePath}/${index + 1}`;
+        } else {
+          path =
           index === 0 ? `${listPagePath}` : `${listPagePath}/${index + 1}`;
+        }
 
         createPage({
           path,

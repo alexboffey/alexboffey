@@ -9,7 +9,7 @@ import ListPagination from "../components/list-pagination";
 
 const IndexPage = ({ data, location, pageContext }) => (
   <Layout location={location}>
-    <Hero title="Blog" hasBorder />
+    <Hero title="Alex Boffey, front end developer" hasBorder />
     <Content isFullWidth>
       <div className="grid">
         {data.allMarkdownRemark.edges.map(post => (
@@ -26,12 +26,15 @@ const IndexPage = ({ data, location, pageContext }) => (
             />
           </div>
         ))}
+        <div className="g-col-md-10 g-col-xl-8">
+          <ListPagination
+            currentPage={pageContext.currentPage}
+            numberOfPages={pageContext.numberOfPages}
+            path="/blog/"
+            blog
+          />
+        </div>
       </div>
-      <ListPagination
-        currentPage={pageContext.currentPage}
-        numberOfPages={pageContext.numberOfPages}
-        path="/"
-      />
     </Content>
   </Layout>
 );

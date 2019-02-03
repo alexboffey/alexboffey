@@ -27,12 +27,14 @@ const WorkPage = ({ data, location, pageContext }) => (
             />
           </div>
         ))}
+        <div className="g-col-md-10 g-col-xl-8">
+          <ListPagination
+            numberOfPages={pageContext.numberOfPages}
+            currentPage={pageContext.currentPage}
+            path="/work/"
+          />
+        </div>
       </div>
-      <ListPagination
-        numberOfPages={pageContext.numberOfPages}
-        currentPage={pageContext.currentPage}
-        path="/work/"
-      />
     </Content>
   </Layout>
 );
