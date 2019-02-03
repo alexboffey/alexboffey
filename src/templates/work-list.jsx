@@ -6,8 +6,9 @@ import Layout from "../components/layout";
 import Content from "../components/content";
 import Hero from "../components/hero";
 import SingleWork from "../components/single-work";
+import ListPagination from "../components/list-pagination";
 
-const WorkPage = ({ data, location }) => (
+const WorkPage = ({ data, location, pageContext }) => (
   <Layout location={location}>
     <Helmet title={`${data.site.siteMetadata.title} | Work`} />
     <Hero title="Work" hasBorder />
@@ -26,6 +27,13 @@ const WorkPage = ({ data, location }) => (
             />
           </div>
         ))}
+        <div className="g-col-md-10 g-col-xl-8">
+          <ListPagination
+            numberOfPages={pageContext.numberOfPages}
+            currentPage={pageContext.currentPage}
+            path="/work/"
+          />
+        </div>
       </div>
     </Content>
   </Layout>
@@ -33,18 +41,21 @@ const WorkPage = ({ data, location }) => (
 
 WorkPage.propTypes = {
   data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired
 };
 
 export default WorkPage;
 
 export const pageQuery = graphql`
-  query WorkQuery {
+  query WorkListQuery($limit: Int!, $skip: Int!) {
     allMarkdownRemark(
       filter: {
         frontmatter: { post_type: { eq: "work" }, published: { eq: "true" } }
       }
       sort: { order: DESC, fields: [frontmatter___date] }
+      limit: $limit
+      skip: $skip
     ) {
       totalCount
       edges {

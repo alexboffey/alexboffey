@@ -19,6 +19,8 @@ exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
   const Blog = path.resolve("src/templates/blog.jsx");
   const Work = path.resolve("src/templates/work.jsx");
+  const BlogList = path.resolve("src/templates/blog-list.jsx");
+  const WorkList = path.resolve("src/templates/work-list.jsx");
 
   const result = await graphql(`
     {
@@ -44,8 +46,8 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const posts = result.data.allMarkdownRemark.edges;
 
-  createPageByPostType(posts, Work, "work", createPage);
-  createPageByPostType(posts, Blog, "blog", createPage);
+  createPageByPostType(posts, Work, "work", createPage, WorkList, "/work", 6);
+  createPageByPostType(posts, Blog, "blog", createPage, BlogList, "/blog", 4);
 
   return result;
 };
@@ -53,31 +55,70 @@ exports.createPages = async ({ actions, graphql }) => {
 /**
  * Helper to create pages by post type
  *
- * @param posts
- * @param template
- * @param frontmatterString
- * @param createPage
+ * @param {Array} posts
+ * @param {String} postTemplate
+ * @param {String} frontmatterString
+ * @param {Function} createPage
+ * @param {String} listTemplate
+ * @param {String} listPagePath
+ * @param {Number} postsPerPage
+ * @returns {Null}
  */
-function createPageByPostType(posts, template, frontmatterString, createPage) {
-  const filteredPosts = posts.filter(
-    ({ node }) =>
-      node.frontmatter.post_type === frontmatterString &&
-      node.frontmatter.published === "true"
-  );
+function createPageByPostType(
+  posts,
+  postTemplate,
+  frontmatterString,
+  createPage,
+  listTemplate,
+  listPagePath,
+  postsPerPage = 4
+) {
+  posts
+    .filter(
+      ({ node }) =>
+        node.frontmatter.post_type === frontmatterString &&
+        node.frontmatter.published === "true"
+    )
+    .forEach(({ node }, index, filteredPosts) => {
+      // Create blog / work post pages
+      const previous =
+        index === filteredPosts.length - 1
+          ? null
+          : filteredPosts[index + 1].node;
+      const next = index === 0 ? null : filteredPosts[index - 1].node;
+      createPage({
+        path: node.fields.slug,
+        component: postTemplate,
+        context: {
+          slug: node.fields.slug,
+          previous,
+          next
+        }
+      });
 
-  filteredPosts.map(({ node }, index) => {
-    const previous =
-      index === filteredPosts.length - 1 ? null : filteredPosts[index + 1].node;
-    const next = index === 0 ? null : filteredPosts[index - 1].node;
+      // Create paginated list pages
+      const numberOfPages = Math.ceil(filteredPosts.length / postsPerPage);
+      Array.from({ length: numberOfPages }).forEach((el, index) => {
+        let path;
 
-    createPage({
-      path: node.fields.slug,
-      component: template,
-      context: {
-        slug: node.fields.slug,
-        previous,
-        next
-      }
+        if (listPagePath === "/blog") {
+          path =
+            index === 0 ? `/` : `${listPagePath}/${index + 1}`;
+        } else {
+          path =
+          index === 0 ? `${listPagePath}` : `${listPagePath}/${index + 1}`;
+        }
+
+        createPage({
+          path,
+          component: listTemplate,
+          context: {
+            limit: postsPerPage,
+            skip: index * postsPerPage,
+            numberOfPages,
+            currentPage: index + 1
+          }
+        });
+      });
     });
-  });
 }
