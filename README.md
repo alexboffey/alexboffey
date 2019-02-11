@@ -1,23 +1,7 @@
-# Alex Boffey Personal Site
+# alexboffey.co.uk
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2d49db87-6d9e-490e-afd0-9077e51457cd/deploy-status)](https://app.netlify.com/sites/peaceful-johnson-6ddcd9/deploys)
 
-## Get local copy
-Clone the repository
-```
-git clone git@github.com:alexboffey/alexboffey.git
-
-cd alexboffey
-
-npm i
-```
-
-## Running in development
-Start local dev server
-```
-npm run dev
-```
+Personal blog / portfolio built with Gatsby.
 
 ## Deployment
-Builds production version of site & pushes to gh-pages branch
-```
-npm run deploy
-```
+Deployment is automated from pushes to `master` on Netlify!
