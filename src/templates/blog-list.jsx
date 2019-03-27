@@ -9,7 +9,7 @@ import ListPagination from "../components/list-pagination";
 
 const IndexPage = ({ data, location, pageContext }) => (
   <Layout location={location}>
-    <Hero title="Alex Boffey, front end developer" hasBorder />
+    <Hero title="Alex Boffey, JavaScript developer" hasBorder />
     <Content isFullWidth>
       <div className="grid">
         {data.allMarkdownRemark.edges.map(post => (
