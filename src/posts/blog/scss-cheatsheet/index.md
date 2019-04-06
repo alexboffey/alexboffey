@@ -7,7 +7,6 @@ tags: 'SCSS,CSS,Cheatsheet,front end development'
 published: 'true'
 ---
 
-# SCSS Cheatsheet
 This article aims to provide a list of the features of SCSS and show some of their use cases, limitations and how they could be used in practice. To go along with this article is a [Codepen project](https://codepen.io/alexboffey/project/editor/ZorbKG#) which further demonstrates these features in a practical environment.
 
 ## Variables
@@ -127,7 +126,7 @@ Also note the use of the `@content` directive within mixins to yield blocks of s
 ```
 
 ## Inheritance with the @extend directive
-Very similar to mixins but without the ability to *parameterise* the *reusable* code block. 
+Very similar to mixins but without the ability to *parameterise* the *reusable* code block.
 
 **Don't** use the `@extend` directive on classes! It bloats the CSS output as you will probably end up writing classes that are only used to extend.
 Instead use the placeholder syntax `%im-a-placeholder`, it can be thought of as a class that doesn't get output as CSS.
@@ -218,22 +217,22 @@ We can use the `@each` directive to iterate over each value within a map. Also n
          // Note the use of interpolation allowing us to create the class name from a variable
          %u-background-#{$color-group-key},
          .u-background-#{$color-group-key} {
-            background-color: $color-value !important;  
+            background-color: $color-value !important;
          }
-         
+
          %u-text-#{$color-group-key},
          .u-text-#{$color-group-key} {
-            color: $color-value !important;  
+            color: $color-value !important;
          }
       } @else {
          %u-background-#{$color-group-key}-#{$color-key},
          .u-background-#{$color-group-key}-#{$color-key} {
-            background-color: $color-value !important;   
+            background-color: $color-value !important;
          }
-   
+
          %u-text-#{$color-group-key}-#{$color-key},
          .u-text-#{$color-group-key}-#{$color-key} {
-            color: $color-value !important;   
+            color: $color-value !important;
          }
       }
    }
