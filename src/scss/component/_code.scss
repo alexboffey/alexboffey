@@ -10,7 +10,7 @@ code[class*="language-"],
 pre[class*="language-"] {
     color: #ffffff;
     font-family: Menlo, Monaco, "Lucida Console", "Courier New", Courier, monospace;
-    font-size: 16px;
+    font-size: 13px;
     line-height: 1.375;
     direction: ltr;
     text-align: left;
@@ -139,11 +139,11 @@ pre>code * {
 
 .gatsby-highlight {
     margin-bottom: spacing(xxl);
+    box-shadow: 0 .3em 1.3em -.3em rgba(color(neutral, dark), 0.3);
 
     pre {
         padding: spacing();
         border: 0 !important;
-        box-shadow: 0 1em 3em -.75em rgba(color(neutral, dark), 0.3);
     }
 
     code{
