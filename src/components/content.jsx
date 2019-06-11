@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 const Content = ({ children, isFullWidth = false }) => (
   <section className="content__main u-section u-fill-neutral-readable">
-    <div className="u-container-lg">
-      <div className="u-section u-block grid">
+    <div className="u-container-lg u-block-xxl-top u-block-xxl-bottom">
+      <div className="u-block-xxl-top u-block-xxl-bottom u-block grid">
         <div
           className={
             isFullWidth ? "g-col-xs-12" : "g-col-sm-10 g-col-lg-9 g-col-xl-8"
