@@ -22,7 +22,7 @@ const AboutPage = ({ data, location }) => (
           London as a JavaScript Developer.
         </p>
       </section>
-      <footer className="u-section-xs">
+      <footer className="u-section-xs-top">
         <p>
           If you want to say hi, feel free to contact me via{" "}
           <a href="mailto:alex@alexboffey.co.uk" title="My email">
