@@ -3,6 +3,7 @@
   "description": "Alex Boffey personal site",
   "license": "MIT",
   "scripts": {
+    "start": "gatsby develop",
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
