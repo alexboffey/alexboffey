@@ -2,34 +2,31 @@
  * Color
  ************************/
 
-@function color($color, $tone: 'base') {
-    @return map-get(map-get($colors, $color), $tone);
+@function color($color, $tone: "base") {
+  @return map-get(map-get($colors, $color), $tone);
 }
-
 
 /**
  * Screen
  ************************/
 
-@function screen($screen, $type: 'base') {
-    @return map-get(map-get($screens, $screen), $type);
+@function screen($screen, $type: "base") {
+  @return map-get(map-get($screens, $screen), $type);
 }
-
 
 /**
  * Generating typescale calculations
  ************************/
 
 $typescale-calc: (
-    min: 1 / map-get($typescale, min) * 1em,
-    max: 1 / map-get($typescale, max) * 1em
+  min: 1 / map-get($typescale, min) * 1em,
+  max: 1 / map-get($typescale, max) * 1em
 );
-
 
 /**
  * Spacing
  ************************/
 
-@function spacing($value: 'base') {
-    @return map-get($spacing, $value);
+@function spacing($value: "base") {
+  @return map-get($spacing, $value);
 }

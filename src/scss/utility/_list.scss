@@ -6,11 +6,10 @@
 
 .u-list-unstyled,
 %u-list-unstyled {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-
 
 /**
  * List Inline
@@ -20,15 +19,14 @@
 
 .u-list-inline,
 %u-list-inline {
-    padding-left: 0;
-    margin-left: 0;
-    list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  list-style: none;
 
-    > li {
-        display: inline-block;
-    }
+  > li {
+    display: inline-block;
+  }
 }
-
 
 /**
  * Ordered List
@@ -38,9 +36,8 @@
 
 .u-list-ordered,
 %u-list-ordered {
-    list-style: decimal;
+  list-style: decimal;
 }
-
 
 /**
  * Unordered List
@@ -50,5 +47,5 @@
 
 .u-list-unordered,
 %u-list-unordered {
-    list-style: disc;
+  list-style: disc;
 }

@@ -2,24 +2,23 @@
  * Icon
  ************************/
 
-@mixin icon($size: 'base') {
+@mixin icon($size: "base") {
+  height: spacing($size);
+  width: spacing($size);
+  margin: spacing($size);
+  display: inline-block;
+
+  object {
     height: spacing($size);
     width: spacing($size);
-    margin: spacing($size);
-    display: inline-block;
-
-    object {
-        height: spacing($size);
-        width: spacing($size);
-        pointer-events: none;
-    }
+    pointer-events: none;
+  }
 }
 
 .icon,
 %icon {
-    @include icon();
+  @include icon();
 }
-
 
 /**
  * Icon Small
@@ -27,9 +26,8 @@
 
 .icon--sm,
 %icon--sm {
-    @include icon(sm);
- }
-
+  @include icon(sm);
+}
 
 /**
  * Icon Large
@@ -37,9 +35,8 @@
 
 .icon--lg,
 %icon--lg {
-    @include icon(lg)
+  @include icon(lg);
 }
-
 
 /**
  * Icon Card
@@ -47,30 +44,29 @@
 
 .icon--card,
 %icon--card {
-    width: 5em;
-    height: 3em;
+  width: 5em;
+  height: 3em;
 
-    &.icon--sm {
-        width: 3em;
-        height: 2em;
-    }
+  &.icon--sm {
+    width: 3em;
+    height: 2em;
+  }
 
-    &.icon--lg {
-        width: 6em;
-        height: 4em;
-    }
+  &.icon--lg {
+    width: 6em;
+    height: 4em;
+  }
 }
-
 
 /**
  * Icon Hover
  ************************/
 
- .icon--hover,
- %icon--hover {
-     &:hover {
-         svg {
-             fill: pink;
-         }
-     }
- }
+.icon--hover,
+%icon--hover {
+  &:hover {
+    svg {
+      fill: pink;
+    }
+  }
+}

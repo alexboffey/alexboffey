@@ -3,103 +3,94 @@
  ************************/
 
 $buttons: (
-    base: (
-        default: (
-            background          : color(neutral, darker),
-            border-color        : color(neutral, darker),
-            color               : color(neutral, white)
-        ),
-        hover: (
-            background          : color(neutral, dark),
-            border-color        : color(neutral, dark),
-            color               : color(neutral, white)
-        )
+  base: (
+    default: (
+      background: color(neutral, darker),
+      border-color: color(neutral, darker),
+      color: color(neutral, white)
     ),
-    primary: (
-        default: (
-            background          : color(neutral, white),
-            border-color        : color(accent),
-            color               : color(neutral, white)
-        ),
-        hover: (
-            background          : darken(color(accent), 20%),
-            border-color        : darken(color(accent), 20%),
-            color               : color(neutral, white)
-        )
+    hover: (
+      background: color(neutral, dark),
+      border-color: color(neutral, dark),
+      color: color(neutral, white)
     )
+  ),
+  primary: (
+    default: (
+      background: color(neutral, white),
+      border-color: color(accent),
+      color: color(neutral, white)
+    ),
+    hover: (
+      background: darken(color(accent), 20%),
+      border-color: darken(color(accent), 20%),
+      color: color(neutral, white)
+    )
+  )
 );
-
 
 /**
  * Container
  ************************/
 
 $containers: (
-    sm                  : 52em,
-    md                  : 62em,
-    lg                  : 82em,
-    xl                  : 110em
+  sm: 52em,
+  md: 62em,
+  lg: 82em,
+  xl: 110em
 );
-
 
 /**
  * Grid Gutter
  ************************/
 
 $gutters: (
-    base                : 1em,
-    sm                  : 0.5em,
-    lg                  : 2%
+  base: 1em,
+  sm: 0.5em,
+  lg: 2%
 );
-
 
 /**
  * Section
  ************************/
 
 $sections: (
-    xxs: (
-        min            : .6em,
-        max            : .9em
-    ),
-    xs: (
-        min            : 1.3em,
-        max            : 1.5em
-    ),
-    sm: (
-        min            : 2em,
-        max            : 4em
-    ),
-    base: (
-        min            : 3em,
-        max            : 6em
-    ),
-    lg: (
-        min            : 4em,
-        max            : 8em
-    )
+  xxs: (
+    min: 0.6em,
+    max: 0.9em
+  ),
+  xs: (
+    min: 1.3em,
+    max: 1.5em
+  ),
+  sm: (
+    min: 2em,
+    max: 4em
+  ),
+  base: (
+    min: 3em,
+    max: 6em
+  ),
+  lg: (
+    min: 4em,
+    max: 8em
+  )
 );
-
 
 /**
  * Separator
  ************************/
 
 $separators: (
-    base: (
-        color                   : color(neutral, lightest),
-        style                   : solid,
-        width                   : 1px
-    )
+  base: (
+    color: color(neutral, lightest),
+    style: solid,
+    width: 1px
+  )
 );
-
 
 /**
  * Visibility
  ************************/
 
-$visibility: (
-    block,
-    inline,
-    inline-block
-);
+$visibility: (block, inline, inline-block);

@@ -6,17 +6,16 @@
 
 .u-img-responsive,
 %u-img-responsive {
-    display: block;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-
 figure {
-    margin: 0;
-    margin-bottom: spacing(lg);
+  margin: 0;
+  margin-bottom: spacing(lg);
 
-    img {
-        @extend %u-img-responsive;
-    }
+  img {
+    @extend %u-img-responsive;
+  }
 }

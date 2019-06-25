@@ -5,13 +5,11 @@
 @import "var/global";
 @import "helper/variable-function";
 
-
 /**
  * Config Variables
  ************************/
 
 @import "var/header";
-
 
 /**
  * Settings for specific components and utilities
@@ -34,7 +32,6 @@
 @import "helper/type";
 @import "helper/number";
 
-
 /**
  * Utilities
  ************************/
@@ -55,7 +52,6 @@
 @import "utility/visible";
 @import "utility/z-index";
 
-
 /**
  * Base
  ************************/
@@ -67,7 +63,6 @@
 @import "base/image";
 @import "base/page";
 @import "base/text";
-
 
 /**
  * Component
@@ -81,7 +76,6 @@
 @import "component/hero";
 @import "component/nav";
 @import "component/title";
-
 
 /**
  * Layout

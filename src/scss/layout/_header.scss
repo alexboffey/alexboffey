@@ -3,87 +3,83 @@
  ************************/
 
 .header {
-    height: $header-height;
-    overflow: visible;
+  height: $header-height;
+  overflow: visible;
 
-    &__wrapper {
-        padding: $header-padding 0;
-        background: $header-background;
-        box-shadow: $header-box-shadow;
+  &__wrapper {
+    padding: $header-padding 0;
+    background: $header-background;
+    box-shadow: $header-box-shadow;
 
-        @include breakpoint(max-width screen(md, max)) {
-            -webkit-backdrop-filter: blur(.125em);
-        }
-
-        @if $header-fixed {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: $z-1;
-        }
+    @include breakpoint(max-width screen(md, max)) {
+      -webkit-backdrop-filter: blur(0.125em);
     }
 
-    &--edges {
-        @extend %u-flex--edges;
+    @if $header-fixed {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: $z-1;
     }
+  }
+
+  &--edges {
+    @extend %u-flex--edges;
+  }
 }
-
 
 /**
  * Header Branding
  ************************/
 
 .header {
-    &__logo {
-        height: $logo-height;
-    }
+  &__logo {
+    height: $logo-height;
+  }
 }
-
 
 /**
  * Header Fixed
  ************************/
 
 .page__wrapper {
-    @include breakpoint(screen(lg)) {
-        display: flex;
-        flex-direction: row nowrap;
-    }
+  @include breakpoint(screen(lg)) {
+    display: flex;
+    flex-direction: row nowrap;
+  }
 }
 
 @if $header-sidebar {
-    .header__wrapper {
-        @include breakpoint(screen(lg)) {
-            width: $header-sidebar-width;
-            height: 100%;
-            box-shadow: $header-sidebar-box-shadow;
-            background: $header-sidebar-background;
+  .header__wrapper {
+    @include breakpoint(screen(lg)) {
+      width: $header-sidebar-width;
+      height: 100%;
+      box-shadow: $header-sidebar-box-shadow;
+      background: $header-sidebar-background;
 
-            .nav {
-                align-content: center;
-            }
-        }
+      .nav {
+        align-content: center;
+      }
     }
+  }
 
-    .header {
-        @include breakpoint(screen(lg)) {
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
+  .header {
+    @include breakpoint(screen(lg)) {
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
     }
+  }
 
-    .header__branding {
-        @include breakpoint(screen(lg)) {
-            margin-top: spacing(xs);
-        }
+  .header__branding {
+    @include breakpoint(screen(lg)) {
+      margin-top: spacing(xs);
     }
+  }
 
-    .header__logo {
-        @include breakpoint(screen(lg)) {
-            height: 1.5 * $logo-height;
-        }
+  .header__logo {
+    @include breakpoint(screen(lg)) {
+      height: 1.5 * $logo-height;
     }
-
-
+  }
 }

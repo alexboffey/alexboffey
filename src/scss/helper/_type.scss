@@ -2,24 +2,34 @@
  * Responsive Size
  ************************/
 
-$screen-min: screen( nth(map-keys($screens),2) );
-$screen-max: screen( nth( map-keys($screens), length($screens) ) );
+$screen-min: screen(nth(map-keys($screens), 2));
+$screen-max: screen(nth(map-keys($screens), length($screens)));
 
-@function responsive-size($min-size, $max-size, $min-media: $screen-min, $max-media: $screen-max) {
-	@return calc( #{$min-size} + #{(strip-unit($max-size) - strip-unit($min-size))} * ( 100vw - #{$min-media} ) / (#{strip-unit($max-media)} - #{strip-unit($min-media)}) )
+@function responsive-size(
+  $min-size,
+  $max-size,
+  $min-media: $screen-min,
+  $max-media: $screen-max
+) {
+  @return calc(
+    #{$min-size} + #{(strip-unit($max-size) - strip-unit($min-size))} * (
+        100vw - #{$min-media}
+      ) / (#{strip-unit($max-media)} - #{strip-unit($min-media)})
+  );
 }
-
 
 /**
  * Heading Scale
  ************************/
 
 @mixin heading-scale($scale: 1.2) {
-    $size: 1 / $scale * 1em;
-    @each $h in h6, h5, h4, h3, h2, h1 {
-        #{$h}, %#{$h}, .#{$h} {
-            font-size: $size;
-        }
-        $size: $size * $scale;
+  $size: 1 / $scale * 1em;
+  @each $h in h6, h5, h4, h3, h2, h1 {
+    #{$h},
+    %#{$h},
+    .#{$h} {
+      font-size: $size;
     }
+    $size: $size * $scale;
+  }
 }

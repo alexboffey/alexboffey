@@ -4,15 +4,16 @@
 
 html,
 body {
-    margin: 0;
+  margin: 0;
 }
-
 
 /**
  * Box Sizing
  ************************/
 
 *,
-input, textarea, button {
-    box-sizing: border-box;
+input,
+textarea,
+button {
+  box-sizing: border-box;
 }

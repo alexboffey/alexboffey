@@ -3,33 +3,32 @@
  ************************/
 
 .post {
-    @extend %u-section-sm-bottom;
+  @extend %u-section-sm-bottom;
 
-    &-footer {
-        @extend %u-block-xl;
+  &-footer {
+    @extend %u-block-xl;
 
-        &__links {
-            @extend %u-section-xs-bottom;
+    &__links {
+      @extend %u-section-xs-bottom;
 
-            display: flex;
-            justify-content: space-between;
-            flex-flow: row wrap;
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row wrap;
 
-            > * {
-                margin-bottom: spacing();
-                white-space: normal;
-            }
-        }
-
-        &__tags {
-            > * {
-                margin-bottom: spacing();
-
-                &:not(:last-child) {
-                    margin-right: spacing();
-                }
-            }
-        }
-
+      > * {
+        margin-bottom: spacing();
+        white-space: normal;
+      }
     }
+
+    &__tags {
+      > * {
+        margin-bottom: spacing();
+
+        &:not(:last-child) {
+          margin-right: spacing();
+        }
+      }
+    }
+  }
 }

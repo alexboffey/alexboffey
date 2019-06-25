@@ -4,33 +4,32 @@
 
 .btn,
 %btn {
-    padding: spacing(xs) spacing();
-    border-radius: 0;
-    font-size: inherit;
-    font-family: $header-font-family;
-    font-weight: $font-weight;
-    line-height: inherit;
-    text-decoration: none;
-    border: 1px solid transparent;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
-    white-space: nowrap;
-    width: auto;
-    fill: currentColor;
-    text-transform: uppercase;
-    letter-spacing: $letter-spacing;
-    transition: color $animation-speed ease, border-color $animation-speed ease;
+  padding: spacing(xs) spacing();
+  border-radius: 0;
+  font-size: inherit;
+  font-family: $header-font-family;
+  font-weight: $font-weight;
+  line-height: inherit;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
+  width: auto;
+  fill: currentColor;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing;
+  transition: color $animation-speed ease, border-color $animation-speed ease;
 
-    &::moz-focus-inner {
-        border: 0;
-        padding: 0;
-        margin-top: -2px;
-        margin-bottom: -2px;
-    }
+  &::moz-focus-inner {
+    border: 0;
+    padding: 0;
+    margin-top: -2px;
+    margin-bottom: -2px;
+  }
 }
-
 
 /**
  * Button Small
@@ -38,7 +37,7 @@
 
 .btn--sm,
 %btn--sm {
-    font-size: $font-size-sm;
+  font-size: $font-size-sm;
 }
 
 /**
@@ -47,9 +46,8 @@
 
 .btn--lg,
 %btn--lg {
-    font-size: $font-size-lg;
+  font-size: $font-size-lg;
 }
-
 
 /**
  * Button Block
@@ -57,74 +55,72 @@
 
 .btn--block,
 %btn--block {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
-
 
 /**
  * Button color variations
  ************************/
 
 @each $button-key, $button-value in $buttons {
-    $button-class: 'btn';
+  $button-class: "btn";
 
-    @if($button-key != 'base') {
-        $button-class: 'btn--' + $button-key;
-    }
+  @if ($button-key != "base") {
+    $button-class: "btn--" + $button-key;
+  }
 
-    .#{$button-class},
-    %#{$button-class} {
+  .#{$button-class},
+  %#{$button-class} {
+    @include button-colors($button-key, default);
+
+    @if (index(map-keys($button-value), "visited") != null) {
+      &:visited {
         @include button-colors($button-key, default);
-
-        @if(index(map-keys($button-value), 'visited') != null) {
-            &:visited {
-                @include button-colors($button-key, default);
-            }
-        }
-        @if(index(map-keys($button-value), 'hover') != null) {
-            &:hover {
-                @include button-colors($button-key, hover);
-            }
-        }
-        @if(index(map-keys($button-value), 'active') != null) {
-            &:active {
-                @include button-colors($button-key, active);
-            }
-        }
-        @if(index(map-keys($button-value), 'focus') != null) {
-            &:focus {
-                @include button-colors($button-key, focus);
-            }
-        }
-
-        &.btn--ghost {
-            @include button-ghost-colors($button-key, default);
-
-            @if(index(map-keys($button-value), 'visited') != null) {
-                &:visited {
-                    @include button-ghost-colors($button-key, default);
-                }
-            }
-            @if(index(map-keys($button-value), 'hover') != null) {
-                &:hover {
-                    @include button-ghost-colors($button-key, hover);
-                }
-            }
-            @if(index(map-keys($button-value), 'active') != null) {
-                &:active {
-                    @include button-ghost-colors($button-key, active);
-                }
-            }
-            @if(index(map-keys($button-value), 'focus') != null) {
-                &:focus {
-                    @include button-ghost-colors($button-key, focus);
-                }
-            }
-        }
+      }
     }
-}
+    @if (index(map-keys($button-value), "hover") != null) {
+      &:hover {
+        @include button-colors($button-key, hover);
+      }
+    }
+    @if (index(map-keys($button-value), "active") != null) {
+      &:active {
+        @include button-colors($button-key, active);
+      }
+    }
+    @if (index(map-keys($button-value), "focus") != null) {
+      &:focus {
+        @include button-colors($button-key, focus);
+      }
+    }
 
+    &.btn--ghost {
+      @include button-ghost-colors($button-key, default);
+
+      @if (index(map-keys($button-value), "visited") != null) {
+        &:visited {
+          @include button-ghost-colors($button-key, default);
+        }
+      }
+      @if (index(map-keys($button-value), "hover") != null) {
+        &:hover {
+          @include button-ghost-colors($button-key, hover);
+        }
+      }
+      @if (index(map-keys($button-value), "active") != null) {
+        &:active {
+          @include button-ghost-colors($button-key, active);
+        }
+      }
+      @if (index(map-keys($button-value), "focus") != null) {
+        &:focus {
+          @include button-ghost-colors($button-key, focus);
+        }
+      }
+    }
+  }
+}
 
 /**
  * Button Disabled
@@ -133,18 +129,17 @@
 .btn--disabled,
 %btn--disabled,
 .btn:disabled {
-    cursor: not-allowed;
-    background-color: color(neutral, lighter);
+  cursor: not-allowed;
+  background-color: color(neutral, lighter);
+  border-color: color(neutral, light);
+  color: color(neutral, dark);
+
+  &:hover,
+  &:focus {
     border-color: color(neutral, light);
     color: color(neutral, dark);
-
-    &:hover,
-    &:focus {
-        border-color: color(neutral, light);
-        color: color(neutral, dark);
-    }
+  }
 }
-
 
 /**
  * Button Text
@@ -152,23 +147,23 @@
 
 .btn--text,
 %btn--text {
-    @extend %link;
+  @extend %link;
+  background-color: transparent;
+  color: color(neutral, black);
+  font-weight: inherit;
+  text-decoration: underline;
+  border-color: transparent;
+
+  &:hover,
+  &:focus {
     background-color: transparent;
     color: color(neutral, black);
-    font-weight: inherit;
-    text-decoration: underline;
     border-color: transparent;
+    text-decoration: none;
+  }
 
-    &:hover,
-    &:focus {
-        background-color: transparent;
-        color: color(neutral, black);
-        border-color: transparent;
-        text-decoration: none;
-    }
-
-    &:disabled {
-        background-color: transparent;
-        color: color(neutral, dark);
-    }
+  &:disabled {
+    background-color: transparent;
+    color: color(neutral, dark);
+  }
 }

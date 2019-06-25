@@ -2,10 +2,10 @@
  * Link Unstyled
  ************************/
 
- .u-link-unstyled,
- %u-link-unstyled {
-     @extend %link;
-     
-     text-decoration: none;
-     color: color(neutral, darker) !important;
- }
+.u-link-unstyled,
+%u-link-unstyled {
+  @extend %link;
+
+  text-decoration: none;
+  color: color(neutral, darker) !important;
+}

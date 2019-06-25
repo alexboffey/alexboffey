@@ -3,17 +3,17 @@
  ************************/
 
 html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.25),
-only screen and ( min-device-pixel-ratio: 1.25),
-only screen and ( min-resolution: 200dpi),
-only screen and ( min-resolution: 1.25dppx) {
-    html {
-        -webkit-font-smoothing: subpixel-antialiased;
-    }
+  only screen and (min-device-pixel-ratio: 1.25),
+  only screen and (min-resolution: 200dpi),
+  only screen and (min-resolution: 1.25dppx) {
+  html {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
 }
 
 /**
@@ -21,64 +21,70 @@ only screen and ( min-resolution: 1.25dppx) {
  ************************/
 
 %selection::selection {
-    background: color(accent);
-    color: color(neutral, white);
-    text-decoration-color: color(neutral, white);
+  background: color(accent);
+  color: color(neutral, white);
+  text-decoration-color: color(neutral, white);
 }
 
 * {
-    @extend %selection;
+  @extend %selection;
 }
-
 
 /**
  * Typography
  ************************/
 
 html {
-    font-size: $font-size;
-    font-family: $font-family;
-    font-weight: $font-weight;
-    line-height: $line-height;
-    color: color(neutral, dark);
+  font-size: $font-size;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  color: color(neutral, dark);
 }
 
-ul, ol, p {
-    margin-top: 0;
-    margin-bottom: spacing();
+ul,
+ol,
+p {
+  margin-top: 0;
+  margin-bottom: spacing();
 }
 
-ul, ol {
-    ul, ol {
-        margin-bottom: 0;
-    }
+ul,
+ol {
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
 }
 
-strong, b {
-    font-weight: $font-weight-bold;
-    color: color(neutral, darker);
+strong,
+b {
+  font-weight: $font-weight-bold;
+  color: color(neutral, darker);
 }
 
-dfn, em, i, cite {
-    font-style: italic;
+dfn,
+em,
+i,
+cite {
+  font-style: italic;
 }
 
 sub,
 sup,
 small {
-    font-size: $font-size-sm;
+  font-size: $font-size-sm;
 }
 
 kbd,
 samp {
-    font-size: $font-size;
+  font-size: $font-size;
 }
 
 mark {
-    background: color(contextual, error);
-    color: color(neutral, black);
+  background: color(contextual, error);
+  color: color(neutral, black);
 }
-
 
 /**
  * Link
@@ -87,15 +93,14 @@ mark {
 a,
 .link,
 %link {
-    color: color(accent);
-    touch-action: manipulation;
-    transition: color $animation-speed ease;
+  color: color(accent);
+  touch-action: manipulation;
+  transition: color $animation-speed ease;
 
-    &:hover {
-        color: lighten(color(accent), 10%);
-    }
+  &:hover {
+    color: lighten(color(accent), 10%);
+  }
 }
-
 
 /**
  * Lead
@@ -103,9 +108,8 @@ a,
 
 .lead,
 %lead {
-    font-size: $font-size-lg;
+  font-size: $font-size-lg;
 }
-
 
 /**
  * Micro
@@ -113,5 +117,5 @@ a,
 
 .micro,
 %micro {
-    font-size: $font-size-sm;
+  font-size: $font-size-sm;
 }

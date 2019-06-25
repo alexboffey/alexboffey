@@ -3,41 +3,37 @@
  ************************/
 
 @mixin flex {
-    display: flex;
+  display: flex;
 }
-
 
 /**
  * Flex Wrap
  ************************/
 
 @mixin flex-wrap($value: nowrap) {
-    flex-wrap: $value;
+  flex-wrap: $value;
 }
-
 
 /**
  * Flex Direction
  ************************/
 
 @mixin flex-direction($value: row) {
-    flex-direction: $value;
+  flex-direction: $value;
 }
-
 
 /**
  * Align Items
  ************************/
 
 @mixin align-items($value: flex-start) {
-    align-items: $value;
+  align-items: $value;
 }
-
 
 /**
  * Justify Content
  ************************/
 
 @mixin justify-content($value: flex-start) {
-    justify-content: $value;
+  justify-content: $value;
 }

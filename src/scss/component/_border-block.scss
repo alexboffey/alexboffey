@@ -4,17 +4,17 @@
 
 .border-block,
 %border-block {
-    &::after {
-        content: "";
-        display: block;
-        width: 42px;
-        height: 12px;
-        margin-top: 8px;
-        background-color: color(primary);
-    }
+  &::after {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 12px;
+    margin-top: 8px;
+    background-color: color(primary);
+  }
 
-    &--alt::after {
-        width: 32px;
-        height: 8px;
-    }
+  &--alt::after {
+    width: 32px;
+    height: 8px;
+  }
 }

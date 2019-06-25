@@ -15,15 +15,15 @@
  ************************/
 
 @each $key, $value in $sections {
-    @if $key == base {
-        .u-section,
-        %u-section {
-            @include section($key);
-        }
-    } @else {
-        .u-section-#{$key},
-        %u-section-#{$key} {
-            @include section($key);
-        }
+  @if $key == base {
+    .u-section,
+    %u-section {
+      @include section($key);
     }
+  } @else {
+    .u-section-#{$key},
+    %u-section-#{$key} {
+      @include section($key);
+    }
+  }
 }

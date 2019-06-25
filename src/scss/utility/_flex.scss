@@ -4,13 +4,12 @@
 
 .u-flex--edges,
 %u-flex--edges {
-    @include flex;
-    @include flex-wrap;
-    @include flex-direction;
-    @include justify-content(space-between);
-    @include align-items(center);
+  @include flex;
+  @include flex-wrap;
+  @include flex-direction;
+  @include justify-content(space-between);
+  @include align-items(center);
 }
-
 
 /**
  * Flex Balancer

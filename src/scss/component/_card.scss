@@ -4,29 +4,30 @@
 
 .card,
 %card {
-    border: seperator(base, width) seperator(base, style) seperator(base, color);
-    background-color: color(neutral, white);
-    border-radius: $border-radius;
-    box-shadow: 0em 1em 3em -1.5em rgba(color(neutral, dark), .3);
-    transition: box-shadow $animation-speed ease;
+  border: seperator(base, width) seperator(base, style) seperator(base, color);
+  background-color: color(neutral, white);
+  border-radius: $border-radius;
+  box-shadow: 0em 1em 3em -1.5em rgba(color(neutral, dark), 0.3);
+  transition: box-shadow $animation-speed ease;
 
-    > [class*="__header"] {
-        > * {
-            margin-bottom: 0;
-        }
+  > [class*="__header"] {
+    > * {
+      margin-bottom: 0;
     }
+  }
 
-    > [class*="__body"] > *:last-child {
-        margin-bottom: 0;
-    }
+  > [class*="__body"] > *:last-child {
+    margin-bottom: 0;
+  }
 
-    > [class*="__header"],
-    > [class*="__body"],
-    > [class*="__footer"] {
-        padding: spacing(lg) 0;
-    }
+  > [class*="__header"],
+  > [class*="__body"],
+  > [class*="__footer"] {
+    padding: spacing(lg) 0;
+  }
 
-    > [class*="__footer"] {
-        border-top: seperator(base, width) seperator(base, style) seperator(base, color);
-    }
+  > [class*="__footer"] {
+    border-top: seperator(base, width) seperator(base, style)
+      seperator(base, color);
+  }
 }

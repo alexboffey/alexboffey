@@ -3,148 +3,135 @@
  ************************/
 
 $colors: (
-    primary: (
-        base            : #F59333
-    ),
-
-    accent: (
-        base            : #3E93A7
-    ),
-
-    neutral: (
-        black         : #000,
-        white         : #fff,
-        readable        : #f9f9f9,
-        darkest         : #222,
-        darker          : #444,
-        dark            : #5e5e5e,
-        light           : #999,
-        lighter         : #ccc,
-        lightest        : #f4f4f4
-    ),
-
-    contextual: (
-        success         : #4caf50,
-        success-light   : #c8e6c9,
-        warning         : #ffeb3b,
-        warning-light   : #fff59d,
-        error           : #f44336,
-        error-light     : #ffcdd2,
-        info            : #4b68b3,
-        info-light      : #e5eef9
-    )
+  primary: (
+    base: #f59333
+  ),
+  accent: (
+    base: #3e93a7
+  ),
+  neutral: (
+    black: #000,
+    white: #fff,
+    readable: #f9f9f9,
+    darkest: #222,
+    darker: #444,
+    dark: #5e5e5e,
+    light: #999,
+    lighter: #ccc,
+    lightest: #f4f4f4
+  ),
+  contextual: (
+    success: #4caf50,
+    success-light: #c8e6c9,
+    warning: #ffeb3b,
+    warning-light: #fff59d,
+    error: #f44336,
+    error-light: #ffcdd2,
+    info: #4b68b3,
+    info-light: #e5eef9
+  )
 );
-
 
 /**
  * Font
  ************************/
 
-@import url('https://fonts.googleapis.com/css?family=Karla:400:600');
+@import url("https://fonts.googleapis.com/css?family=Karla:400:600");
 
-$sans-serif-fonts        : 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-$serif-fonts             : Helvetica, Arial , sans-serif;
+$sans-serif-fonts: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$serif-fonts: Helvetica, Arial, sans-serif;
 
-$font-family             : 'Karla', $serif-fonts;
-$header-font-family      : $font-family;
+$font-family: "Karla", $serif-fonts;
+$header-font-family: $font-family;
 
+$font-size: 100%;
+$font-size-sm: 0.85em;
+$font-size-lg: 1.2em;
 
+$font-weight: 400;
+$font-weight-bold: 600;
 
-$font-size              : 100%;
-$font-size-sm           : 0.85em;
-$font-size-lg           : 1.2em;
+$letter-spacing: 0.05em;
 
-$font-weight            : 400;
-$font-weight-bold       : 600;
-
-$letter-spacing         : .05em;
-
-$line-height            : 1.75;
-$line-height-sm         : 1.2;
-
+$line-height: 1.75;
+$line-height-sm: 1.2;
 
 /**
  * Heading
  * Calculated from type scales http://type-scale.com/
  ************************/
 
-$heading-font-family    : $font-family;
+$heading-font-family: $font-family;
 
 $typescale: (
-    min                 : 1.125,
-    max                 : 1.2
+  min: 1.125,
+  max: 1.2
 );
-
 
 /**
  * Z indexing
  ************************/
 
-$z-0                    : 0;
-$z-1                    : 10;
-$z-2                    : 20;
-$z-3                    : 30;
-$z-4                    : 40;
-$z-5                    : 50;
-$z-6                    : 60;
-$z-7                    : 70;
-$z-8                    : 80;
-$z-9                    : 90;
-$z-10                   : 100;
-
+$z-0: 0;
+$z-1: 10;
+$z-2: 20;
+$z-3: 30;
+$z-4: 40;
+$z-5: 50;
+$z-6: 60;
+$z-7: 70;
+$z-8: 80;
+$z-9: 90;
+$z-10: 100;
 
 /**
  * Border Radius
  ************************/
 
-$border-radius          : .25em;
-
+$border-radius: 0.25em;
 
 /**
  * Breakpoint
  ************************/
 
 $screens: (
-    xs: (
-        base            : 28em,
-        max             : 35em - 0.01em
-    ),
-    sm: (
-        base            : 35em,
-        max             : 48em - 0.01em
-    ),
-    md: (
-        base            : 48em,
-        max             : 62em - 0.01em
-    ),
-    lg: (
-        base            : 62em,
-        max             : 82em - 0.01em
-    ),
-    xl: (
-        base            : 82em
-    )
+  xs: (
+    base: 28em,
+    max: 35em - 0.01em
+  ),
+  sm: (
+    base: 35em,
+    max: 48em - 0.01em
+  ),
+  md: (
+    base: 48em,
+    max: 62em - 0.01em
+  ),
+  lg: (
+    base: 62em,
+    max: 82em - 0.01em
+  ),
+  xl: (
+    base: 82em
+  )
 );
-
 
 /**
  * Spacing (Block and space utilities)
  ************************/
 
 $spacing: (
-    base                : 1em,
-    xxs                 : .48em,
-    xs                  : .56em,
-    sm                  : .75em,
-    lg                  : 1.3em,
-    xl                  : 1.8em,
-    xxl                 : 2.5em
+  base: 1em,
+  xxs: 0.48em,
+  xs: 0.56em,
+  sm: 0.75em,
+  lg: 1.3em,
+  xl: 1.8em,
+  xxl: 2.5em
 );
-
 
 /**
  * Animation speed
  ************************/
 
-$animation-speed        : .3s;
-
+$animation-speed: 0.3s;

@@ -3,23 +3,22 @@
  ************************/
 
 @if $header-fixed {
-    .page__main {
-        padding-top: $header-height + ( 2 * $header-padding);
-    }
+  .page__main {
+    padding-top: $header-height + (2 * $header-padding);
+  }
 }
-
 
 /**
  * Sidebar Header
  ************************/
 
- @if $header-sidebar {
-     .page__main {
-         width: 100%;
+@if $header-sidebar {
+  .page__main {
+    width: 100%;
 
-        @include breakpoint(screen(lg)) {
-            padding-top: spacing(xl);
-            margin-left: $header-sidebar-width;
-        }
-     }
- }
+    @include breakpoint(screen(lg)) {
+      padding-top: spacing(xl);
+      margin-left: $header-sidebar-width;
+    }
+  }
+}

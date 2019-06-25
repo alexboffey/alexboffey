@@ -4,14 +4,14 @@
 
 .hero,
 %hero {
-    &.has-subtitle {
-        .title {
-            margin-bottom: 0;
-        }
+  &.has-subtitle {
+    .title {
+      margin-bottom: 0;
     }
+  }
 
-    .subtitle {
-        margin-top: spacing(xxs);
-        margin-bottom: spacing();
-    }
+  .subtitle {
+    margin-top: spacing(xxs);
+    margin-bottom: spacing();
+  }
 }

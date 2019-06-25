@@ -3,17 +3,16 @@
  ************************/
 
 @mixin title-size($multiplier: 1) {
-    font-size: $heading-min * $multiplier;
+  font-size: $heading-min * $multiplier;
 
-    @include breakpoint($screen-min) {
-        font-size: $heading-max * $multiplier;
-    }
+  @include breakpoint($screen-min) {
+    font-size: $heading-max * $multiplier;
+  }
 
-    @include breakpoint($screen-max) {
-        font-size: $heading-max * ($multiplier * 1.25);
-    }
+  @include breakpoint($screen-max) {
+    font-size: $heading-max * ($multiplier * 1.25);
+  }
 }
-
 
 /**
  * Title
@@ -21,38 +20,38 @@
 
 .title,
 %title {
-    @include title-size(1.8);
+  @include title-size(1.8);
 
-    font-family: $header-font-family;
-    font-weight: $font-weight;
+  font-family: $header-font-family;
+  font-weight: $font-weight;
 }
 
 .title--bold,
 %title--bold {
-    font-weight: $font-weight-bold;
+  font-weight: $font-weight-bold;
 }
 
 .title--lander,
 %title--lander {
-    max-width: 90%;
+  max-width: 90%;
 
-    @include breakpoint(screen(xs)) {
-        max-width: 70%;
-    }
+  @include breakpoint(screen(xs)) {
+    max-width: 70%;
+  }
 
-    @include breakpoint(screen(md)) {
-        @if $header-sidebar {
-            max-width: 56%;
-        } @else {
-            max-width: 50%;
-        }
+  @include breakpoint(screen(md)) {
+    @if $header-sidebar {
+      max-width: 56%;
+    } @else {
+      max-width: 50%;
     }
+  }
 
-    @include breakpoint(screen(lg)) {
-        @if $header-sidebar {
-            max-width: 50%;
-        } @else {
-            max-width: 40%;
-        }
+  @include breakpoint(screen(lg)) {
+    @if $header-sidebar {
+      max-width: 50%;
+    } @else {
+      max-width: 40%;
     }
+  }
 }

@@ -1,9 +1,8 @@
 /**
  * Footer
- ************************/*
-
-.footer {
-    &__copy {
-        font-family: $header-font-family;
-    }
+ ************************/
+* .footer {
+  &__copy {
+    font-family: $header-font-family;
+  }
 }

@@ -4,19 +4,18 @@
 
 .nav,
 %nav {
-    @extend %u-list-unstyled;
+  @extend %u-list-unstyled;
 
-    a {
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: .05em;
-        font-family: $header-font-family;
-        font-size: $font-size;
-        position: relative;
-        color: color(neutral, dark);
-    }
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: $header-font-family;
+    font-size: $font-size;
+    position: relative;
+    color: color(neutral, dark);
+  }
 }
-
 
 /**
  * Nav Pills
@@ -24,12 +23,11 @@
 
 .nav--pills,
 %nav--pills {
-    a {
-        display: block;
-        padding: spacing(xs) spacing(sm);
-    }
+  a {
+    display: block;
+    padding: spacing(xs) spacing(sm);
+  }
 }
-
 
 /**
  * Nav Inline
@@ -37,11 +35,10 @@
 
 .nav--inline,
 %nav--inline {
-    @include flex;
-    @include flex-wrap(wrap);
-    white-space: nowrap;
+  @include flex;
+  @include flex-wrap(wrap);
+  white-space: nowrap;
 }
-
 
 /**
  * Nav Space
@@ -49,19 +46,18 @@
 
 .nav--space,
 %nav--space {
-    &:not(.nav--inline) > * {
-        margin-bottom: spacing(sm);
-    }
+  &:not(.nav--inline) > * {
+    margin-bottom: spacing(sm);
+  }
 
-    &.nav--inline > * {
-        margin-right: spacing(sm);
+  &.nav--inline > * {
+    margin-right: spacing(sm);
 
-        &:last-child {
-            margin-right: 0;
-        }
+    &:last-child {
+      margin-right: 0;
     }
+  }
 }
-
 
 /**
  * Nav Multi Level
@@ -69,68 +65,66 @@
 
 .nav--multi-level,
 %nav--multi-level {
-    li {
-        position: relative;
-    }
+  li {
+    position: relative;
+  }
 
-    // All levels
-    ul,
-    ol {
-        @extend %nav;
-        display: none;
-        position: absolute;
-    }
+  // All levels
+  ul,
+  ol {
+    @extend %nav;
+    display: none;
+    position: absolute;
+  }
 
-    // Just Level 0
-    > ul,
-    > ol {
-        top: 100%;
-    }
+  // Just Level 0
+  > ul,
+  > ol {
+    top: 100%;
+  }
 
-    ul ul,
-    ol ol,
-    ul ol,
-    ol ul {
-        top: 0;
-        left: 100%;
-    }
+  ul ul,
+  ol ol,
+  ul ol,
+  ol ul {
+    top: 0;
+    left: 100%;
+  }
 
-    li:hover > ul,
-    li:hover > ol {
-        display: block;
-    }
+  li:hover > ul,
+  li:hover > ol {
+    display: block;
+  }
 
-    a {
-        white-space: nowrap;
-    }
+  a {
+    white-space: nowrap;
+  }
 }
-
 
 /**
  * Nav Sidebar
  ************************/
 
- @if $header-sidebar {
-    .nav {
-        @include breakpoint(screen(lg)) {
-            flex-direction: column;
-            text-align: right;
-            a {
-                font-size: $font-size-lg;
-            }
-        }
+@if $header-sidebar {
+  .nav {
+    @include breakpoint(screen(lg)) {
+      flex-direction: column;
+      text-align: right;
+      a {
+        font-size: $font-size-lg;
+      }
     }
- }
-
+  }
+}
 
 /**
  * Nav Hover Styles
  ************************/
 
 .nav a {
-    &.is-active,
-    &:hover,
-    &:focus {
-        color: color(primary);
-    }
+  &.is-active,
+  &:hover,
+  &:focus {
+    color: color(primary);
+  }
 }

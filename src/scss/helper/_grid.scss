@@ -3,58 +3,55 @@
  ************************/
 
 @mixin grid {
-    @include flex;
-    @include flex-wrap(wrap);
+  @include flex;
+  @include flex-wrap(wrap);
 
-    > * {
-        width: 100%;
+  > * {
+    width: 100%;
 
-        > *:first-child {
-            margin-bottom: 0;
-        }
+    > *:first-child {
+      margin-bottom: 0;
     }
+  }
 }
-
 
 /**
  * Grid Gutter X
  ************************/
 
-@mixin grid-gutter-x($gap: gutter('base')) {
-    $half-gap: $gap / 2;
-    margin-left: -$half-gap;
-    margin-right: -$half-gap;
+@mixin grid-gutter-x($gap: gutter("base")) {
+  $half-gap: $gap / 2;
+  margin-left: -$half-gap;
+  margin-right: -$half-gap;
 
-    > * {
-        padding-left: $half-gap;
-        padding-right: $half-gap;
-    }
+  > * {
+    padding-left: $half-gap;
+    padding-right: $half-gap;
+  }
 }
-
 
 /**
  * Grid Gutter Y
  ************************/
 
-@mixin grid-gutter-y($gap: gutter('base'), $edge: spacing()) {
-    > * {
-        margin-bottom: $gap;
+@mixin grid-gutter-y($gap: gutter("base"), $edge: spacing()) {
+  > * {
+    margin-bottom: $gap;
 
-        @supports(-ms-accelerator:true) {
-            margin-bottom: $edge;
-        }
+    @supports (-ms-accelerator: true) {
+      margin-bottom: $edge;
     }
+  }
 }
-
 
 /**
  * Grid Col
  ************************/
 
 @mixin grid-col($col: 100%) {
-    @if length($col) > 1 {
-        width: (nth($col, 1) / nth($col, 3)) * 100%;
-    } @else {
-        width: $col;
-    }
+  @if length($col) > 1 {
+    width: (nth($col, 1) / nth($col, 3)) * 100%;
+  } @else {
+    width: $col;
+  }
 }

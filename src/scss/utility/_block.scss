@@ -11,48 +11,47 @@
 
 [class*="u-block"],
 %u-block-base {
-    display: block;
+  display: block;
 }
 
-
 @each $key, $value in $spacing {
-    @if $key == base {
-        .u-block,
-        %u-block {
-            padding: $value !important;
-            
-            &-top {
-                padding-top: $value !important;
-            }
-            &-bottom {
-                padding-bottom: $value !important;
-            }
-        }
-        %u-block {
-            &,
-            &-top,
-            &-bottom {
-                @extend %u-block-base;
-            }
-        }
-    } @else {
-        .u-block-#{$key},
-        %u-block-#{$key} {
-            padding: $value !important;
+  @if $key == base {
+    .u-block,
+    %u-block {
+      padding: $value !important;
 
-            &-top {
-                padding-top: $value !important;
-            }
-            &-bottom {
-                padding-bottom: $value !important;
-            }
-        }
-        %u-block-#{$key} {
-            &,
-            &-top,
-            &-bottom {
-                @extend %u-block-base;
-            }
-        }
+      &-top {
+        padding-top: $value !important;
+      }
+      &-bottom {
+        padding-bottom: $value !important;
+      }
     }
+    %u-block {
+      &,
+      &-top,
+      &-bottom {
+        @extend %u-block-base;
+      }
+    }
+  } @else {
+    .u-block-#{$key},
+    %u-block-#{$key} {
+      padding: $value !important;
+
+      &-top {
+        padding-top: $value !important;
+      }
+      &-bottom {
+        padding-bottom: $value !important;
+      }
+    }
+    %u-block-#{$key} {
+      &,
+      &-top,
+      &-bottom {
+        @extend %u-block-base;
+      }
+    }
+  }
 }

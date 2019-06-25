@@ -102,11 +102,10 @@ function createPageByPostType(
         let path;
 
         if (listPagePath === "/blog") {
-          path =
-            index === 0 ? `/` : `${listPagePath}/${index + 1}`;
+          path = index === 0 ? `/` : `${listPagePath}/${index + 1}`;
         } else {
           path =
-          index === 0 ? `${listPagePath}` : `${listPagePath}/${index + 1}`;
+            index === 0 ? `${listPagePath}` : `${listPagePath}/${index + 1}`;
         }
 
         createPage({
