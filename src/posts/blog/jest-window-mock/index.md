@@ -46,12 +46,12 @@ export const useWindowSize = () => {
 
 Hopefully, you'll walk away from reading this article knowing how to test similar components or hooks, you can also blindly copy and paste the code, both are cool!
 
-### Create a `customGlobal` object
+### Create a customGlobal object
 Firstly we use the `global` object in Jest if we want to mock `window` properties. We don't have access to a `window` object as we normally would in the browser.
 
 If you're using plain old JavaScript you can skip this part, but when using TypeScript we'll need to type the window properties we wish to mock!
 
-This first solution is a bit of an ugly workaround, but hey it works 🤷‍♂️and we're still getting value from testing. We can do this by giving `customGlobal` and `any` type.
+This first solution is a bit of an ugly workaround, but hey it works 🤷‍♂️and we're still getting value from testing. We can do this by giving `customGlobal` an `any` type.
 
 ```typescript
 // useWindowSize.test.ts
@@ -75,7 +75,7 @@ interface CustomGlobal extends Global {
 const customGlobal: CustomGlobal = global
 ```
 
-### Mocking `window` properties
+### Mocking window properties
 Now TypeScript is pleased with our `customGlobal` object, we can simply add the properties we wish to mock directly to it.
 
 This is so we can test that `useWindowSize` is correctly reading them from the `window` object.
@@ -93,7 +93,7 @@ describe("hooks/useWindowSize", () => {
 })
 ```
 
-### Firing `window` events
+### Firing window events
 As you can see in the `useWindowSize` hook above, it listens for `resize` events. We're going to want to test this too.
 
 ```typescript
