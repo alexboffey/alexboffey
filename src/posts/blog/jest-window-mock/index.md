@@ -1,9 +1,9 @@
- ---
+---
 title: 'Mocking window properties and events with Jest, React Testing Library and TypeScript'
 subtitle: 'A collection of code snippets to help when mocking window properties in Jest'
 date: '2020-04-12T00:00:00.000Z'
 post_type: 'blog'
-tags: 'javascript,typescript,testing,jest,react,react testing library,react hookssoftware development'
+tags: 'javascript,typescript,testing,jest,react,react testing library,react hooks,software development'
 published: 'true'
 ---
 Hey there 👋
