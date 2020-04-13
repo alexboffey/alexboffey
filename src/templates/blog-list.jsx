@@ -1,18 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
+import PropTypes from "prop-types";
+import React from "react";
+
 import Content from "../components/content";
 import Hero from "../components/hero";
-import SingleBlog from "../components/single-blog";
+import Layout from "../components/layout";
 import ListPagination from "../components/list-pagination";
+import SingleBlog from "../components/single-blog";
 
 const IndexPage = ({ data, location, pageContext }) => (
   <Layout location={location}>
     <Hero title="Alex Boffey, JavaScript developer" hasBorder />
     <Content isFullWidth>
       <div className="grid">
-        {data.allMarkdownRemark.edges.map(post => (
+        {data.allMarkdownRemark.edges.map((post) => (
           <div
             key={post.node.id}
             className="g-col-md-10 g-col-xl-8 u-section-sm-bottom"
@@ -42,7 +43,7 @@ const IndexPage = ({ data, location, pageContext }) => (
 IndexPage.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  pageContext: PropTypes.object.isRequired
+  pageContext: PropTypes.object.isRequired,
 };
 
 export default IndexPage;

@@ -7,7 +7,13 @@
     "dev": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "format": "prettier --write \"{,!(node_modules|.cache|public)/**/}*.{js,jsx,json,scss}\""
+    "lint": "yarn lint:eslint && yarn lint:prettier && yarn lint:tsc",
+    "lint:eslint": "eslint \"**/*.*\"",
+    "lint:prettier": "prettier --check \"**/*.*\"",
+    "lint:tsc": "tsc -p .",
+    "fix": "yarn fix:eslint && yarn fix:prettier",
+    "fix:eslint": "eslint \"**/*.*\" --fix",
+    "fix:prettier": "prettier --write \"**/*.*\""
   },
   "dependencies": {
     "gatsby": "^2.0.38",
@@ -33,8 +39,18 @@
     "styled-components": "^4.0.3"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "eslint": "^6.8.0",
-    "prettier": "^2.0.4"
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-json": "^2.1.1",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "eslint-plugin-simple-import-sort": "^5.0.2",
+    "prettier": "^2.0.4",
+    "typescript": "^3.8.3"
   },
   "resolutions": {
     "gatsby-remark-prismjs/**/prismjs": "1.6.0"
