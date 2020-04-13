@@ -20,7 +20,7 @@
 
 $typescale-calc: (
   min: 1 / map-get($typescale, min) * 1em,
-  max: 1 / map-get($typescale, max) * 1em
+  max: 1 / map-get($typescale, max) * 1em,
 );
 
 /**

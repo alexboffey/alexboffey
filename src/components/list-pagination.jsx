@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
-import styled from "styled-components";
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+import styled from "styled-components"
 
 const Pagination = styled.nav`
   & > a {
@@ -12,13 +12,13 @@ const Pagination = styled.nav`
       margin-left: 0.5em;
     }
   }
-`;
+`
 
 const WrappedLink = ({ disabled = false, children, className, ...props }) => (
   <React.Fragment>
     {disabled ? (
       <Link
-        onClick={disabled ? e => e.preventDefault() : null}
+        onClick={disabled ? (e) => e.preventDefault() : null}
         className={`${className} btn--disabled`}
         {...props}
       >
@@ -30,7 +30,13 @@ const WrappedLink = ({ disabled = false, children, className, ...props }) => (
       </Link>
     )}
   </React.Fragment>
-);
+)
+
+WrappedLink.propTypes = {
+  disabled: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 const ListPagination = ({ numberOfPages, currentPage, path, blog = false }) =>
   numberOfPages > 1 ? (
@@ -77,12 +83,13 @@ const ListPagination = ({ numberOfPages, currentPage, path, blog = false }) =>
         )}
       </Pagination>
     </footer>
-  ) : null;
+  ) : null
 
 ListPagination.propTypes = {
   numberOfPages: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
-  path: PropTypes.string.isRequired
-};
+  path: PropTypes.string.isRequired,
+  blog: PropTypes.bool,
+}
 
-export default ListPagination;
+export default ListPagination

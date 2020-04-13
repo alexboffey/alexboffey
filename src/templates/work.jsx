@@ -1,18 +1,19 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import Img from "gatsby-image";
-import Layout from "../components/layout";
-import Content from "../components/content";
-import Hero from "../components/hero";
-import PostHead from "../components/post-head";
-import PostFooter from "../components/post-footer";
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+
+import Content from "../components/content"
+import Hero from "../components/hero"
+import Layout from "../components/layout"
+import PostFooter from "../components/post-footer"
+import PostHead from "../components/post-head"
 
 class WorkPost extends Component {
   render() {
-    const data = this.props.data;
-    const { markdownRemark: post } = data;
-    const { previous, next } = this.props.pageContext;
+    const data = this.props.data
+    const { markdownRemark: post } = data
+    const { previous, next } = this.props.pageContext
 
     return (
       <Layout location={this.props.location}>
@@ -53,17 +54,17 @@ class WorkPost extends Component {
           </div>
         </Content>
       </Layout>
-    );
+    )
   }
 }
 
 WorkPost.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  pageContext: PropTypes.object.isRequired
-};
+  pageContext: PropTypes.object.isRequired,
+}
 
-export default WorkPost;
+export default WorkPost
 
 export const pageQuery = graphql`
   query WorkPostQuery($slug: String!) {
@@ -89,4 +90,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

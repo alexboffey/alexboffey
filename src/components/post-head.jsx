@@ -1,6 +1,6 @@
-import React from "react";
-import Helmet from "react-helmet";
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
+import React from "react"
+import Helmet from "react-helmet"
 
 const PostHead = ({ data, post, defaultTags }) => (
   <Helmet title={`${data.site.siteMetadata.title} | ${post.frontmatter.title}`}>
@@ -17,12 +17,12 @@ const PostHead = ({ data, post, defaultTags }) => (
       }
     />
   </Helmet>
-);
+)
 
 PostHead.propTypes = {
   data: PropTypes.object.isRequired,
   post: PropTypes.object.isRequired,
-  defaultTags: PropTypes.string
-};
+  defaultTags: PropTypes.string,
+}
 
-export default PostHead;
+export default PostHead

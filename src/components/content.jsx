@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
+import React from "react"
 
 const Content = ({ children, isFullWidth = false }) => (
   <section className="content__main u-section u-fill-neutral-readable">
@@ -15,11 +15,11 @@ const Content = ({ children, isFullWidth = false }) => (
       </div>
     </div>
   </section>
-);
+)
 
 Content.propTypes = {
   isFullWidth: PropTypes.bool,
-  children: PropTypes.node.isRequired
-};
+  children: PropTypes.node.isRequired,
+}
 
-export default Content;
+export default Content

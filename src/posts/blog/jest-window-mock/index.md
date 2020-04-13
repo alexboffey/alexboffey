@@ -1,11 +1,12 @@
 ---
-title: 'Mock window events and properties in Jest'
-subtitle: 'A collection of code snippets to help when mocking window properties in Jest'
-date: '2020-04-12T00:00:00.000Z'
-post_type: 'blog'
-tags: 'javascript,typescript,testing,jest,react,react testing library,react hooks,software development'
-published: 'true'
+title: "Mock window events and properties in Jest"
+subtitle: "A collection of code snippets to help when mocking window properties in Jest"
+date: "2020-04-12T00:00:00.000Z"
+post_type: "blog"
+tags: "javascript,typescript,testing,jest,react,react testing library,react hooks,software development"
+published: true
 ---
+
 Hey there 👋
 
 It's been a long time since I wrote a post to this blog and recently came across this problem, which will surely come across again so I deemed it _blog-worthy_.
@@ -47,6 +48,7 @@ export const useWindowSize = () => {
 Hopefully, you'll walk away from reading this article knowing how to test similar components or hooks, you can also blindly copy and paste the code, both are cool!
 
 ### Create a customGlobal object
+
 Firstly we use the `global` object in Jest if we want to mock `window` properties. We don't have access to a `window` object as we normally would in the browser.
 
 If you're using plain old JavaScript you can skip this part, but when using TypeScript we'll need to type the window properties we wish to mock!
@@ -60,7 +62,6 @@ const customGlobal: any = global
 ```
 
 If you really wanted to add better types to `customGlobal` we can achieve this by extending `NodeJS.Global` itself.
-
 
 ```typescript
 // useWindowSize.test.ts
@@ -76,6 +77,7 @@ const customGlobal: CustomGlobal = global
 ```
 
 ### Mocking window properties
+
 Now TypeScript is pleased with our `customGlobal` object, we can simply add the properties we wish to mock directly to it.
 
 This is so we can test that `useWindowSize` is correctly reading them from the `window` object.
@@ -94,6 +96,7 @@ describe("hooks/useWindowSize", () => {
 ```
 
 ### Firing window events
+
 As you can see in the `useWindowSize` hook above, it listens for `resize` events. We're going to want to test this too.
 
 ```typescript
@@ -107,18 +110,18 @@ describe("hooks/useWindowSize", () => {
   it("updates innerWidth and innerHeight values when window resizes", () => {
     // ..
 
-   act(() => {
+    act(() => {
       customGlobal.innerWidth = 1000
       customGlobal.innerHeight = 1000
 
       fireEvent(customGlobal, new Event("resize"))
     })
-
   })
 })
 ```
 
 ### Putting this all together
+
 Here is the final test suite testing that `useWindowSize` correctly reads from `window` and updates when a `resize` event happens on `window`.
 
 ```typescript

@@ -1,11 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Helmet from "react-helmet";
-import { graphql, StaticQuery } from "gatsby";
-import Header from "./header";
-import Footer from "./footer";
-import Favicon from "../img/logo/favicon.png";
-import "../scss/app.scss";
+import "../scss/app.scss"
+
+import { graphql, StaticQuery } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+import Helmet from "react-helmet"
+
+import Favicon from "../img/logo/favicon.png"
+import Footer from "./footer"
+import Header from "./header"
 
 const Layout = ({ data, children, location }) => (
   <div className="page__wrapper">
@@ -26,13 +28,13 @@ const Layout = ({ data, children, location }) => (
       <Footer />
     </main>
   </div>
-);
+)
 
 Layout.propTypes = {
   data: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
-  location: PropTypes.object.isRequired
-};
+  location: PropTypes.object.isRequired,
+}
 
 const LayoutQuery = graphql`
   query LayoutQuery {
@@ -42,13 +44,22 @@ const LayoutQuery = graphql`
       }
     }
   }
-`;
+`
 
-export default ({ children, location }) => (
+const WrappedLayout = ({ children, location }) => (
   <StaticQuery
     query={LayoutQuery}
-    render={data => (
-      <Layout data={data} children={children} location={location} />
+    render={(data) => (
+      <Layout data={data} location={location}>
+        {children}
+      </Layout>
     )}
   />
-);
+)
+
+WrappedLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+  location: PropTypes.object.isRequired,
+}
+
+export default WrappedLayout

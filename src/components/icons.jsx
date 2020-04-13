@@ -1,9 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import github from "../img/vector/social/github.svg";
-import codepen from "../img/vector/social/codepen.svg";
-import linkedin from "../img/vector/social/linkedin.svg";
-import twitter from "../img/vector/social/twitter.svg";
+import PropTypes from "prop-types"
+import React from "react"
+
+import codepen from "../img/vector/social/codepen.svg"
+import github from "../img/vector/social/github.svg"
+import linkedin from "../img/vector/social/linkedin.svg"
+import twitter from "../img/vector/social/twitter.svg"
 
 const Social = (
   <span>
@@ -30,10 +31,10 @@ const Social = (
       </object>
     </a>
   </span>
-);
+)
 
 const SocialIcons = ({ hasSocials }) => {
-  const socials = hasSocials ? Social : "";
+  const socials = hasSocials ? Social : ""
 
   return (
     <div className="social-icons">
@@ -61,11 +62,11 @@ const SocialIcons = ({ hasSocials }) => {
         </object>
       </a>
     </div>
-  );
-};
+  )
+}
 
 SocialIcons.propTypes = {
-  hasSocials: PropTypes.bool
-};
+  hasSocials: PropTypes.bool,
+}
 
-export default SocialIcons;
+export default SocialIcons

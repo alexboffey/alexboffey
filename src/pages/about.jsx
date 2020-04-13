@@ -1,10 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import Helmet from "react-helmet";
-import Layout from "../components/layout";
-import Content from "../components/content";
-import Hero from "../components/hero";
+import { graphql } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+import Helmet from "react-helmet"
+
+import Content from "../components/content"
+import Hero from "../components/hero"
+import Layout from "../components/layout"
 
 const AboutPage = ({ data, location }) => (
   <Layout location={location}>
@@ -13,7 +14,7 @@ const AboutPage = ({ data, location }) => (
     <Content>
       <header>
         <h2 className="h1">
-          Hi, I'm Alex.{" "}
+          Hi, I&apos;m Alex.{" "}
           <span role="img" aria-label="Waving emoji.">
             👋
           </span>
@@ -22,7 +23,7 @@ const AboutPage = ({ data, location }) => (
       <section>
         <p>Thanks for checking out my blog!</p>
         <p>
-          I'm Currently working at{" "}
+          I&apos;m Currently working at{" "}
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -52,14 +53,14 @@ const AboutPage = ({ data, location }) => (
       </footer>
     </Content>
   </Layout>
-);
+)
 
 AboutPage.propTypes = {
   data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
-};
+  location: PropTypes.object.isRequired,
+}
 
-export default AboutPage;
+export default AboutPage
 
 export const pageQuery = graphql`
   query AboutQuery {
@@ -69,4 +70,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

@@ -1,17 +1,18 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import Content from "../components/content";
-import Hero from "../components/hero";
-import PostHead from "../components/post-head";
-import PostFooter from "../components/post-footer";
+import { graphql } from "gatsby"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+
+import Content from "../components/content"
+import Hero from "../components/hero"
+import Layout from "../components/layout"
+import PostFooter from "../components/post-footer"
+import PostHead from "../components/post-head"
 
 class BlogPost extends Component {
   render() {
-    const data = this.props.data;
-    const { markdownRemark: post } = data;
-    const { previous, next } = this.props.pageContext;
+    const data = this.props.data
+    const { markdownRemark: post } = data
+    const { previous, next } = this.props.pageContext
 
     return (
       <Layout location={this.props.location}>
@@ -41,17 +42,17 @@ class BlogPost extends Component {
           </div>
         </Content>
       </Layout>
-    );
+    )
   }
 }
 
 BlogPost.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  pageContext: PropTypes.object.isRequired
-};
+  pageContext: PropTypes.object.isRequired,
+}
 
-export default BlogPost;
+export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostQuery($slug: String!) {
@@ -70,4 +71,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

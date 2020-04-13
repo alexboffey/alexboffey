@@ -1,9 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
-import { BlogHeader } from "../style";
+import { Link } from "gatsby"
+import React from "react"
 
-const SingleBlog = ({ title, excerpt, slug, date }) => (
+import { BlogHeader } from "../style"
+
+interface SingleBlogProps {
+  slug: string
+  title: string
+  excerpt: string
+  date: string
+}
+
+const SingleBlog: React.FC<SingleBlogProps> = ({
+  title,
+  excerpt,
+  slug,
+  date,
+}) => (
   <article className="blog-single card u-section-sm-bottom u-block-xl">
     <header className="blog-single__header border-block border-block--alt">
       <Link className="u-link-unstyled" to={slug}>
@@ -26,13 +38,6 @@ const SingleBlog = ({ title, excerpt, slug, date }) => (
       </Link>
     </footer>
   </article>
-);
+)
 
-SingleBlog.propTypes = {
-  slug: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  excerpt: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
-};
-
-export default SingleBlog;
+export default SingleBlog

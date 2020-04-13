@@ -1,5 +1,6 @@
-import React from "react";
-import Icons from "./icons";
+import React from "react"
+
+import Icons from "./icons"
 
 const Footer = () => (
   <footer className="footer page-footer">
@@ -15,6 +16,6 @@ const Footer = () => (
       </footer>
     </div>
   </footer>
-);
+)
 
-export default Footer;
+export default Footer

@@ -1,9 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
-import Layout from "../components/layout";
-import Content from "../components/content";
-import Hero from "../components/hero";
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+
+import Content from "../components/content"
+import Hero from "../components/hero"
+import Layout from "../components/layout"
 
 const NotFound = ({ location }) => (
   <Layout location={location}>
@@ -15,15 +16,15 @@ const NotFound = ({ location }) => (
 
     <Content>
       <p>
-        Here's a link back to the <Link to="/">front page</Link>.
+        Here&apos;s a link back to the <Link to="/">front page</Link>.
       </p>
     </Content>
   </Layout>
-);
+)
 
 NotFound.propTypes = {
   data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
-};
+  location: PropTypes.object.isRequired,
+}
 
-export default NotFound;
+export default NotFound

@@ -1,12 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import Helmet from "react-helmet";
-import Layout from "../components/layout";
-import Content from "../components/content";
-import Hero from "../components/hero";
-import SingleWork from "../components/single-work";
-import ListPagination from "../components/list-pagination";
+import { graphql } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+import Helmet from "react-helmet"
+
+import Content from "../components/content"
+import Hero from "../components/hero"
+import Layout from "../components/layout"
+import ListPagination from "../components/list-pagination"
+import SingleWork from "../components/single-work"
 
 const WorkPage = ({ data, location, pageContext }) => (
   <Layout location={location}>
@@ -14,7 +15,7 @@ const WorkPage = ({ data, location, pageContext }) => (
     <Hero title="Work" hasBorder />
     <Content isFullWidth>
       <div className="g-gutter grid">
-        {data.allMarkdownRemark.edges.map(post => (
+        {data.allMarkdownRemark.edges.map((post) => (
           <div
             key={post.node.id}
             className="g-col-md-6 g-col-xl-4 u-section-sm-bottom"
@@ -37,21 +38,21 @@ const WorkPage = ({ data, location, pageContext }) => (
       </div>
     </Content>
   </Layout>
-);
+)
 
 WorkPage.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  pageContext: PropTypes.object.isRequired
-};
+  pageContext: PropTypes.object.isRequired,
+}
 
-export default WorkPage;
+export default WorkPage
 
 export const pageQuery = graphql`
   query WorkListQuery($limit: Int!, $skip: Int!) {
     allMarkdownRemark(
       filter: {
-        frontmatter: { post_type: { eq: "work" }, published: { eq: "true" } }
+        frontmatter: { post_type: { eq: "work" }, published: { eq: true } }
       }
       sort: { order: DESC, fields: [frontmatter___date] }
       limit: $limit
@@ -88,4 +89,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
