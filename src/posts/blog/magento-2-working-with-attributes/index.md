@@ -30,7 +30,7 @@ So an attribute called _Product Messages_ would have the attribute code of _prod
 </block>
 ```
 
-Note the at_call argument is calling a method named _getProductMessages_, this is another naming convention surrounding product attributes.
+Note the at*call argument is calling a method named \_getProductMessages*, this is another naming convention surrounding product attributes.
 
 From the example above, for the attribute named _Product Messages_ a product object will have the method _getProductMessages()_ attached to it by Magento.
 

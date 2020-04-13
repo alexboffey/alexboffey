@@ -62,3 +62,12 @@ public
 yarn-error.log
 .DS_Store
 yarn.lock
+
+# not worth prettiering
+*.jpg
+*.png
+*.svg
+*.gif
+*.jpeg
+*.webp
+.*
