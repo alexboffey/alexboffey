@@ -21,9 +21,10 @@ const AboutPage = ({ data, location }) => (
         </h2>
       </header>
       <section>
-        <p>Thanks for checking out my blog!</p>
         <p>
-          I&apos;m Currently working at{" "}
+          Thanks for checking out my blog!
+          <br />
+          I&apos;m currently working at{" "}
           <a
             target="_blank"
             rel="noopener noreferrer"

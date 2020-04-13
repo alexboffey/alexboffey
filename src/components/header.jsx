@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-import logo from "../img/logo/logo.svg"
+import Logo from "../img/logo/logo.svg"
 import Icons from "./icons"
 
 // Helper function to conditionally apply active class
@@ -37,7 +37,7 @@ const Header = ({ pathName }) => (
           <span className="u-visually-hidden">Alex Boffey</span>
           <img
             className="header__logo"
-            src={logo}
+            src={Logo}
             alt="Logo"
             title="A link to the homepage."
           />
