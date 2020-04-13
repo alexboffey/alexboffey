@@ -1,7 +1,8 @@
-import React from "react";
-import { Link } from "gatsby";
-import PropTypes from "prop-types";
-import { Tag } from "../style";
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+
+import { Tag } from "../style"
 
 const PostFooter = ({ previous, next, post, title }) => (
   <footer className="post-footer card">
@@ -40,20 +41,20 @@ const PostFooter = ({ previous, next, post, title }) => (
           <h3>Tags</h3>
         </header>
         <nav className="post-footer__tags">
-          {post.frontmatter.tags.split(",").map(tag => (
+          {post.frontmatter.tags.split(",").map((tag) => (
             <Tag key={tag}>{tag}</Tag>
           ))}
         </nav>
       </section>
     )}
   </footer>
-);
+)
 
 PostFooter.propTypes = {
   previous: PropTypes.object,
   next: PropTypes.object,
   post: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired
-};
+  title: PropTypes.string.isRequired,
+}
 
-export default PostFooter;
+export default PostFooter

@@ -1,10 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import Helmet from "react-helmet";
-import Layout from "../components/layout";
-import Content from "../components/content";
-import Hero from "../components/hero";
+import { graphql } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+import Helmet from "react-helmet"
+
+import Content from "../components/content"
+import Hero from "../components/hero"
+import Layout from "../components/layout"
 
 const AboutPage = ({ data, location }) => (
   <Layout location={location}>
@@ -52,14 +53,14 @@ const AboutPage = ({ data, location }) => (
       </footer>
     </Content>
   </Layout>
-);
+)
 
 AboutPage.propTypes = {
   data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
-};
+  location: PropTypes.object.isRequired,
+}
 
-export default AboutPage;
+export default AboutPage
 
 export const pageQuery = graphql`
   query AboutQuery {
@@ -69,4 +70,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

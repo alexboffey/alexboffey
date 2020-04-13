@@ -1,7 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
-import { BlogHeader } from "../style";
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+
+import { BlogHeader } from "../style"
 
 const SingleBlog = ({ title, excerpt, slug, date }) => (
   <article className="blog-single card u-section-sm-bottom u-block-xl">
@@ -26,13 +27,13 @@ const SingleBlog = ({ title, excerpt, slug, date }) => (
       </Link>
     </footer>
   </article>
-);
+)
 
 SingleBlog.propTypes = {
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   excerpt: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
-};
+  date: PropTypes.string.isRequired,
+}
 
-export default SingleBlog;
+export default SingleBlog

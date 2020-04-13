@@ -1,32 +1,33 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
-import Icons from "./icons";
-import logo from "../img/logo/logo.svg";
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+
+import logo from "../img/logo/logo.svg"
+import Icons from "./icons"
 
 // Helper function to conditionally apply active class
 function isLinkActive(to, pathName) {
   if (to === "/" && (pathName === to || pathName.includes("/blog"))) {
-    return true;
+    return true
   } else if (to === "/work" && pathName.includes("/work")) {
-    return true;
+    return true
   } else if (to === "/about" && pathName.includes("/about")) {
-    return true;
+    return true
   }
-  return false;
+  return false
 }
 
 const NavLink = ({ to, pathName, children }) => (
   <Link className={isLinkActive(to, pathName) ? "is-active" : ""} to={to}>
     {children}
   </Link>
-);
+)
 
 NavLink.propTypes = {
   to: PropTypes.string.isRequired,
   pathName: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
-};
+  children: PropTypes.node.isRequired,
+}
 
 const Header = ({ pathName }) => (
   <header className="header__wrapper">
@@ -66,10 +67,10 @@ const Header = ({ pathName }) => (
       </footer>
     </div>
   </header>
-);
+)
 
 Header.propTypes = {
-  pathName: PropTypes.string.isRequired
-};
+  pathName: PropTypes.string.isRequired,
+}
 
-export default Header;
+export default Header

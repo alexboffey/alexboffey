@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
-import Img from "gatsby-image";
+import { Link } from "gatsby"
+import Img from "gatsby-image"
+import PropTypes from "prop-types"
+import React from "react"
 
 const SingleWork = ({ title, subtitle, slug, thumb }) => (
   <article className="work__single card u-block-xl u-section-sm-bottom">
@@ -24,13 +24,13 @@ const SingleWork = ({ title, subtitle, slug, thumb }) => (
       </Link>
     </footer>
   </article>
-);
+)
 
 SingleWork.propTypes = {
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  thumb: PropTypes.object.isRequired
-};
+  thumb: PropTypes.object.isRequired,
+}
 
-export default SingleWork;
+export default SingleWork

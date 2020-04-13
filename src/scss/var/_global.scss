@@ -4,10 +4,10 @@
 
 $colors: (
   primary: (
-    base: #f59333
+    base: #f59333,
   ),
   accent: (
-    base: #3e93a7
+    base: #3e93a7,
   ),
   neutral: (
     black: #000,
@@ -18,7 +18,7 @@ $colors: (
     dark: #5e5e5e,
     light: #999,
     lighter: #ccc,
-    lightest: #f4f4f4
+    lightest: #f4f4f4,
   ),
   contextual: (
     success: #4caf50,
@@ -28,8 +28,8 @@ $colors: (
     error: #f44336,
     error-light: #ffcdd2,
     info: #4b68b3,
-    info-light: #e5eef9
-  )
+    info-light: #e5eef9,
+  ),
 );
 
 /**
@@ -65,7 +65,7 @@ $heading-font-family: $font-family;
 
 $typescale: (
   min: 1.125,
-  max: 1.2
+  max: 1.2,
 );
 
 /**
@@ -97,23 +97,23 @@ $border-radius: 0.25em;
 $screens: (
   xs: (
     base: 28em,
-    max: 35em - 0.01em
+    max: 35em - 0.01em,
   ),
   sm: (
     base: 35em,
-    max: 48em - 0.01em
+    max: 48em - 0.01em,
   ),
   md: (
     base: 48em,
-    max: 62em - 0.01em
+    max: 62em - 0.01em,
   ),
   lg: (
     base: 62em,
-    max: 82em - 0.01em
+    max: 82em - 0.01em,
   ),
   xl: (
-    base: 82em
-  )
+    base: 82em,
+  ),
 );
 
 /**
@@ -127,7 +127,7 @@ $spacing: (
   sm: 0.75em,
   lg: 1.3em,
   xl: 1.8em,
-  xxl: 2.5em
+  xxl: 2.5em,
 );
 
 /**

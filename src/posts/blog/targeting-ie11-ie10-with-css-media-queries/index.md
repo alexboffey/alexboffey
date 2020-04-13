@@ -1,9 +1,9 @@
 ---
-title: 'Targeting IE10 & IE11 with CSS'
-subtitle: 'Using CSS media queries to target only IE10 and IE11.'
-date: '2018-06-22T00:00:00.000Z'
-post_type: 'blog'
-tags: 'target,ie11,ie10,css,media query'
+title: "Targeting IE10 & IE11 with CSS"
+subtitle: "Using CSS media queries to target only IE10 and IE11."
+date: "2018-06-22T00:00:00.000Z"
+post_type: "blog"
+tags: "target,ie11,ie10,css,media query"
 published: true
 ---
 
@@ -16,8 +16,9 @@ Another potential use case for this would be to implement a fallback when primar
 Fortunately, as both IE10 and IE11 support the `-ms-high-contrast` media query, we can use it to target them and apply specific styles to work around any styling issues that come up.
 
 ## Snippet
+
 ```css
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    /* Some CSS */
+  /* Some CSS */
 }
 ```

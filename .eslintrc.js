@@ -7,12 +7,13 @@ module.exports = {
     "prettier/@typescript-eslint",
     "plugin:react/recommended",
   ],
-  // parser: "@typescript-eslint/parser",
+  parser: "@typescript-eslint/parser",
   plugins: [
     "@typescript-eslint",
     "import",
     "json",
     "simple-import-sort",
+    "node",
     "react",
     "react-hooks",
   ],
@@ -30,4 +31,4 @@ module.exports = {
       },
     },
   ],
-};
+}

@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Alex Boffey"
+    title: "Alex Boffey",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -15,28 +15,36 @@ module.exports = {
       options: {
         trackingId: "UA-74503764-1",
         anonymize: true,
-        head: false
-      }
+        head: false,
+      },
     },
     {
       resolve: "gatsby-transformer-remark",
       options: {
-        plugins: ["gatsby-remark-prismjs"]
-      }
+        plugins: ["gatsby-remark-prismjs"],
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/posts`,
-        name: "pages"
-      }
+        name: "pages",
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/img`,
-        name: "images"
-      }
-    }
-  ]
-};
+        name: "images",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-typescript",
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: "jsx", // defaults to "React"
+        allExtensions: true, // defaults to false
+      },
+    },
+  ],
+}

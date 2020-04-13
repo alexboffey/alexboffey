@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
+import React from "react"
 
 const Hero = ({ title, subtitle, hasBorder }) => (
   <header className={`hero u-container-lg ${subtitle ? "has-subtitle" : ""}`}>
@@ -12,12 +12,12 @@ const Hero = ({ title, subtitle, hasBorder }) => (
       {subtitle && <h2 className="subtitle h1">{subtitle}</h2>}
     </div>
   </header>
-);
+)
 
 Hero.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
-  hasBorder: PropTypes.bool
-};
+  hasBorder: PropTypes.bool,
+}
 
-export default Hero;
+export default Hero
