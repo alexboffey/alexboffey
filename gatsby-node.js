@@ -77,7 +77,7 @@ function createPageByPostType(
     .filter(
       ({ node }) =>
         node.frontmatter.post_type === frontmatterString &&
-        node.frontmatter.published === "true"
+        node.frontmatter.published
     )
     .forEach(({ node }, index, filteredPosts) => {
       // Create blog / work post pages

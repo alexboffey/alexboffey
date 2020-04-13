@@ -4,7 +4,7 @@ subtitle: 'A practical guide to SCSS features.'
 date: '2019-02-15T00:00:00.000Z'
 post_type: 'blog'
 tags: 'SCSS,CSS,Cheatsheet,front end development'
-published: 'true'
+published: true
 ---
 
 This article aims to provide a list of the features of SCSS and show some of their use cases, limitations and how they could be used in practice. To go along with this article is a [Codepen project](https://codepen.io/alexboffey/project/editor/ZorbKG#) which further demonstrates these features in a practical environment.

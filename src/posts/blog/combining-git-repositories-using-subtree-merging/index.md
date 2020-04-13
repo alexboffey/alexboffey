@@ -4,7 +4,7 @@ subtitle: 'Subtree Merging is a Git feature that allows the merging of multiple 
 date: '2019-01-23T00:00:00.000Z'
 post_type: 'blog'
 tags: 'git,subtree merging,software development'
-published: 'true'
+published: true
 ---
 There are multiple tools at our disposal when it comes to combining git repositories, but today were going to be looking at **subtree-merge** and how it can be used to combine multiple repositories into a different single repository while retaining the git histories of each of the combined repositories.
 

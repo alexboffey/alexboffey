@@ -6,7 +6,7 @@ post_type: 'work'
 featured_image: './featured.jpg'
 thumb: './thumb.jpg'
 tags: 'JavaScript,CSS,React,Calculator,Web Development'
-published: 'true'
+published: true
 ---
 
 ## Simple calculator application.

@@ -6,7 +6,7 @@ post_type: 'work'
 featured_image: './featured.jpg'
 thumb: './thumb.jpg'
 tags: 'React,GraphQL,Node js,JavaScript,CSS,Application,Web Development'
-published: 'true'
+published: true
 ---
 
 ## Full stack Application with React and GraphQL

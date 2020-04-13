@@ -6,7 +6,7 @@ post_type: 'work'
 featured_image: './featured.jpg'
 thumb: './thumb.jpg'
 tags: 'Node js,JavaScript,CSS,Application,Web Development'
-published: 'true'
+published: true
 ---
 
 ## Full stack Node JS Application

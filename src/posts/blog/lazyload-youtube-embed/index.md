@@ -4,7 +4,7 @@ subtitle: 'A technique for cleaner, more user-friendly YouTube embeds.'
 date: '2017-12-15T00:00:00.000Z'
 post_type: 'blog'
 tags: 'JavaScript,YouTube,jQuery'
-published: 'true'
+published: true
 ---
 Replace the typical iframe which is used to embed a YouTube video with a div with a data-id attribute. This attribute will contain the embed code for the iframe which is injected into the div.
 ## HTML

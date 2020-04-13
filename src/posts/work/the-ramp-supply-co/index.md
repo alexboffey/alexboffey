@@ -5,7 +5,7 @@ date: '2018-04-16T00:30:00.000Z'
 post_type: 'work'
 featured_image: './featured.jpg'
 thumb: './thumb.jpg'
-# published: 'true'
+published: false
 ---
 
 ## Simple calculator application.

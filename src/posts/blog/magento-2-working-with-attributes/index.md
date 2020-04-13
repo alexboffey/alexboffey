@@ -4,7 +4,7 @@ subtitle: 'How attributes can be used to construct complex product views.'
 date: '2017-12-03T00:00:00.000Z'
 post_type: 'blog'
 tags: 'Magento,Magento 2,Attributes,layout XML,phtml template'
-published: 'true'
+published: true
 ---
 
 Attributes are used in Magento as individual pieces of meta data that apply to a product or set of products. They're especially useful for filtering and comparing products; allowing users to refine their selection of products against a specified set of conditions.

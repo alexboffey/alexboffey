@@ -4,7 +4,7 @@ subtitle: 'Using CSS media queries to target only IE10 and IE11.'
 date: '2018-06-22T00:00:00.000Z'
 post_type: 'blog'
 tags: 'target,ie11,ie10,css,media query'
-published: 'true'
+published: true
 ---
 
 Supporting legacy browsers will always be a pain point for the developers who are unfortunate enough to have to support them.

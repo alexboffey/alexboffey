@@ -6,7 +6,7 @@ post_type: 'work'
 featured_image: './featured.jpg'
 thumb: './thumb.jpg'
 tags: 'JavaScript,CSS,Travel,Application,Web Development'
-published: 'true'
+published: true
 ---
 
 ## Real-time travel guide.

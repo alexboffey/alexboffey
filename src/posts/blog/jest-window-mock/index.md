@@ -4,7 +4,7 @@ subtitle: 'A collection of code snippets to help when mocking window properties 
 date: '2020-04-12T00:00:00.000Z'
 post_type: 'blog'
 tags: 'javascript,typescript,testing,jest,react,react testing library,react hooks,software development'
-published: 'true'
+published: true
 ---
 Hey there 👋
 

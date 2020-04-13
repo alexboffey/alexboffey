@@ -51,7 +51,7 @@ export const pageQuery = graphql`
   query WorkListQuery($limit: Int!, $skip: Int!) {
     allMarkdownRemark(
       filter: {
-        frontmatter: { post_type: { eq: "work" }, published: { eq: "true" } }
+        frontmatter: { post_type: { eq: "work" }, published: { eq: true } }
       }
       sort: { order: DESC, fields: [frontmatter___date] }
       limit: $limit
