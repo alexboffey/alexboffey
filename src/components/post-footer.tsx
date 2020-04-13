@@ -1,10 +1,21 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
 
 import { Tag } from "../style"
 
-const PostFooter = ({ previous, next, post, title }) => (
+interface PostFooterProps {
+  previous: any // for now
+  next: any // for now
+  post: any // for now
+  title: string
+}
+
+const PostFooter: React.FC<PostFooterProps> = ({
+  previous,
+  next,
+  post,
+  title,
+}) => (
   <footer className="post-footer card">
     <section>
       <header className="post-footer__header">
@@ -49,12 +60,5 @@ const PostFooter = ({ previous, next, post, title }) => (
     )}
   </footer>
 )
-
-PostFooter.propTypes = {
-  previous: PropTypes.object,
-  next: PropTypes.object,
-  post: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
-}
 
 export default PostFooter

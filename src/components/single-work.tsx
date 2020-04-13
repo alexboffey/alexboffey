@@ -1,9 +1,20 @@
 import { Link } from "gatsby"
-import Img from "gatsby-image"
-import PropTypes from "prop-types"
+import Img, { FluidObject } from "gatsby-image"
 import React from "react"
 
-const SingleWork = ({ title, subtitle, slug, thumb }) => (
+interface SingleWorkProps {
+  slug: string
+  title: string
+  subtitle: string
+  thumb: FluidObject
+}
+
+const SingleWork: React.FC<SingleWorkProps> = ({
+  title,
+  subtitle,
+  slug,
+  thumb,
+}) => (
   <article className="work__single card u-block-xl u-section-sm-bottom">
     <header className="work__header u-section-xs-bottom">
       <Link to={slug} className="u-link-unstyled">
@@ -25,12 +36,5 @@ const SingleWork = ({ title, subtitle, slug, thumb }) => (
     </footer>
   </article>
 )
-
-SingleWork.propTypes = {
-  slug: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  thumb: PropTypes.object.isRequired,
-}
 
 export default SingleWork
