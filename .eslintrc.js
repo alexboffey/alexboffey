@@ -34,6 +34,7 @@ module.exports = {
     "import/order": "off",
     "simple-import-sort/sort": "error",
     "sort-imports": "off",
+    "react/prop-types": "off",
   },
   overrides: [
     {
