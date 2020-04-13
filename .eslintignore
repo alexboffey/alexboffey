@@ -62,3 +62,14 @@ public
 yarn-error.log
 .DS_Store
 yarn.lock
+
+# not worth linting
+*.scss
+*.md
+
+*.jpg
+*.png
+*.svg
+*.gif
+*.jpeg
+*.webp
