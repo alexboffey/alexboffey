@@ -1,10 +1,10 @@
 import PropTypes from "prop-types"
 import React from "react"
 
-import codepen from "../img/vector/social/codepen.svg"
-import github from "../img/vector/social/github.svg"
-import linkedin from "../img/vector/social/linkedin.svg"
-import twitter from "../img/vector/social/twitter.svg"
+import { ReactComponent as Codepen } from "../img/vector/social/codepen.svg"
+import { ReactComponent as Github } from "../img/vector/social/github.svg"
+import { ReactComponent as LinkedIn } from "../img/vector/social/linkedin.svg"
+import { ReactComponent as Twitter } from "../img/vector/social/twitter.svg"
 
 const Social = (
   <span>
@@ -15,9 +15,7 @@ const Social = (
       rel="noopener noreferrer"
       className="icon icon--hover"
     >
-      <object alt="Twitter" data={twitter} type="image/svg+xml">
-        Twitter
-      </object>
+      <Twitter />
     </a>
     <a
       title="LinkedIn"
@@ -26,9 +24,7 @@ const Social = (
       rel="noopener noreferrer"
       className="icon icon--hover"
     >
-      <object alt="LinkedIn" data={linkedin} type="image/svg+xml">
-        LinkedIn
-      </object>
+      <LinkedIn />
     </a>
   </span>
 )
@@ -46,9 +42,7 @@ const SocialIcons = ({ hasSocials }) => {
         rel="noopener noreferrer"
         className="icon icon--hover"
       >
-        <object alt="Github" data={github} type="image/svg+xml">
-          Github
-        </object>
+        <Github />
       </a>
       <a
         title="Codepen"
@@ -57,9 +51,7 @@ const SocialIcons = ({ hasSocials }) => {
         rel="noopener noreferrer"
         className="icon icon--hover"
       >
-        <object alt="Codepen" data={codepen} type="image/svg+xml">
-          Codepen
-        </object>
+        <Codepen />
       </a>
     </div>
   )
