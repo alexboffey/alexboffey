@@ -16,7 +16,7 @@ const NotFound = ({ location }) => (
 
     <Content>
       <p>
-        Here's a link back to the <Link to="/">front page</Link>.
+        Here&apos;s a link back to the <Link to="/">front page</Link>.
       </p>
     </Content>
   </Layout>

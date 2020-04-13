@@ -32,6 +32,12 @@ const WrappedLink = ({ disabled = false, children, className, ...props }) => (
   </React.Fragment>
 )
 
+WrappedLink.propTypes = {
+  disabled: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
+
 const ListPagination = ({ numberOfPages, currentPage, path, blog = false }) =>
   numberOfPages > 1 ? (
     <footer className="list-pagination card u-block-xl">
@@ -83,6 +89,7 @@ ListPagination.propTypes = {
   numberOfPages: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
   path: PropTypes.string.isRequired,
+  blog: PropTypes.bool,
 }
 
 export default ListPagination

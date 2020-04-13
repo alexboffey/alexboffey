@@ -14,7 +14,7 @@ const AboutPage = ({ data, location }) => (
     <Content>
       <header>
         <h2 className="h1">
-          Hi, I'm Alex.{" "}
+          Hi, I&apos;m Alex.{" "}
           <span role="img" aria-label="Waving emoji.">
             👋
           </span>
@@ -23,7 +23,7 @@ const AboutPage = ({ data, location }) => (
       <section>
         <p>Thanks for checking out my blog!</p>
         <p>
-          I'm Currently working at{" "}
+          I&apos;m Currently working at{" "}
           <a
             target="_blank"
             rel="noopener noreferrer"

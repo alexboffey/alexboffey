@@ -46,11 +46,20 @@ const LayoutQuery = graphql`
   }
 `
 
-export default ({ children, location }) => (
+const WrappedLayout = ({ children, location }) => (
   <StaticQuery
     query={LayoutQuery}
     render={(data) => (
-      <Layout data={data} children={children} location={location} />
+      <Layout data={data} location={location}>
+        {children}
+      </Layout>
     )}
   />
 )
+
+WrappedLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+  location: PropTypes.object.isRequired,
+}
+
+export default WrappedLayout

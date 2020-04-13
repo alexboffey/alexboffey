@@ -1,57 +1,6 @@
 const path = require("path")
 const { createFilePath } = require("gatsby-source-filesystem")
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `posts` })
-
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug,
-    })
-  }
-}
-
-exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions
-  const Blog = path.resolve("src/templates/blog.jsx")
-  const Work = path.resolve("src/templates/work.jsx")
-  const BlogList = path.resolve("src/templates/blog-list.jsx")
-  const WorkList = path.resolve("src/templates/work-list.jsx")
-
-  const result = await graphql(`
-    {
-      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-        edges {
-          node {
-            html
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              post_type
-              title
-              published
-              date(formatString: "DD-MM-YYYY")
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  const posts = result.data.allMarkdownRemark.edges
-
-  createPageByPostType(posts, Work, "work", createPage, WorkList, "/work", 6)
-  createPageByPostType(posts, Blog, "blog", createPage, BlogList, "/blog", 4)
-
-  return result
-}
-
 /**
  * Helper to create pages by post type
  *
@@ -64,6 +13,7 @@ exports.createPages = async ({ actions, graphql }) => {
  * @param {Number} postsPerPage
  * @returns {Null}
  */
+
 function createPageByPostType(
   posts,
   postTemplate,
@@ -120,4 +70,55 @@ function createPageByPostType(
         })
       })
     })
+}
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `posts` })
+
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
+}
+
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions
+  const Blog = path.resolve("src/templates/blog.jsx")
+  const Work = path.resolve("src/templates/work.jsx")
+  const BlogList = path.resolve("src/templates/blog-list.jsx")
+  const WorkList = path.resolve("src/templates/work-list.jsx")
+
+  const result = await graphql(`
+    {
+      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+        edges {
+          node {
+            html
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              post_type
+              title
+              published
+              date(formatString: "DD-MM-YYYY")
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const posts = result.data.allMarkdownRemark.edges
+
+  createPageByPostType(posts, Work, "work", createPage, WorkList, "/work", 6)
+  createPageByPostType(posts, Blog, "blog", createPage, BlogList, "/blog", 4)
+
+  return result
 }
