@@ -21,10 +21,10 @@ $ git remote add -f some-repo <REPOSITORY_URL>
 
 ### Merge in history of target repository
 
-In this step you may need to use the _--allow-unrelated-histories_ flag as git may not want to combine the history of the repositories without it. Also note the use of the _--no-commit_ flag. This allows us to perform some more actions before making the merge commit.
+In this step you may need to use the `--allow-unrelated-histories` flag as git may not want to combine the history of the repositories without it. Also note the use of the `--no-commit` flag. This allows us to perform some more actions before making the merge commit.
 
 ```bash
-$ git merge -s ours --no-commit some-repo/some-branch
+$ git merge -s ours --no-commit --allow-unrelated-histories some-repo/some-branch
 ```
 
 ### Pull in files from target repository
