@@ -7,7 +7,11 @@ tags: "SCSS,CSS,Cheatsheet,front end development"
 published: true
 ---
 
-This article aims to provide a list of the features of SCSS and show some of their use cases, limitations and how they could be used in practice. To go along with this article is a [Codepen project](https://codepen.io/alexboffey/project/editor/ZorbKG#) which further demonstrates these features in a practical environment.
+This article aims to provide a list of the features of SCSS and show some of their use cases, limitations and how they could be used in practice.
+
+To go along with this article is a [Codepen project](https://codepen.io/alexboffey/project/editor/ZorbKG#) which further demonstrates these features in a practical environment.
+
+Also, much of this usage style can be attributed to [ChopChop](https://github.com/getchopchop/chopchop) where you can find more great scss usage examples as well as being where I learned about all of this 🙏.
 
 ## Variables
 
@@ -219,7 +223,7 @@ body {
 }
 ```
 
-### Class and placeholder generation from colour map map
+### Class and placeholder generation from colour map
 
 We can use the `@each` directive to iterate over each value within a map. Also note the use of the `@if` and `@else` directives to conditionally build the class / placeholder name.
 
