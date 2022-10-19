@@ -22,17 +22,16 @@ const AboutPage = ({ data, location }) => (
       </header>
       <section>
         <p>
-          Thanks for checking out my blog!
           <br />
           I&apos;m currently working at{" "}
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.concentra.co.uk/"
+            href="https://www.geeiq.com/"
           >
-            Concentra Analytics
+            GEEIQ
           </a>{" "}
-          in London as a JavaScript Developer.
+          in London as a Senior Frontend Developer.
         </p>
       </section>
       <footer className="u-section-xs-top">
