@@ -1,0 +1,570 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-06T17:00:00.000Z",
+  "title": "Design System: alexboffey.co.uk",
+  "extensions": {
+    "colorMeta": {
+      "void": {
+        "role": "neutral",
+        "displayName": "Void",
+        "canonical": "#080d18",
+        "tonalRamp": [
+          "#131f39",
+          "#223765",
+          "#304e91",
+          "#3f66bd",
+          "#4d7ee8",
+          "#5c95ff",
+          "#6badff",
+          "#79c5ff"
+        ]
+      },
+      "abyss": {
+        "role": "neutral",
+        "displayName": "Abyss",
+        "canonical": "#0c1322",
+        "tonalRamp": [
+          "#142039",
+          "#233864",
+          "#32508f",
+          "#4268ba",
+          "#5180e5",
+          "#6098ff",
+          "#6fb0ff",
+          "#7ec8ff"
+        ]
+      },
+      "echo": {
+        "role": "neutral",
+        "displayName": "Echo",
+        "canonical": "#16203a",
+        "tonalRamp": [
+          "#151f37",
+          "#253662",
+          "#354d8c",
+          "#4565b6",
+          "#557ce0",
+          "#6593ff",
+          "#75aaff",
+          "#85c2ff"
+        ]
+      },
+      "glimmer": {
+        "role": "neutral",
+        "displayName": "Glimmer",
+        "canonical": "#3a4e7a",
+        "tonalRamp": [
+          "#192134",
+          "#2b3a5b",
+          "#3e5483",
+          "#516daa",
+          "#6486d2",
+          "#779ff9",
+          "#89b9ff",
+          "#9cd2ff"
+        ]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Mist",
+        "canonical": "#a6b4cc",
+        "tonalRamp": [
+          "#22252a",
+          "#3c424a",
+          "#575e6a",
+          "#717a8b",
+          "#8b97ab",
+          "#a5b3cb",
+          "#bfcfeb",
+          "#d9ecff"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cold Paper",
+        "canonical": "#eaeff7",
+        "tonalRamp": [
+          "#252627",
+          "#424345",
+          "#5e6063",
+          "#7a7d81",
+          "#979a9f",
+          "#b3b7bd",
+          "#cfd4db",
+          "#ecf1f9"
+        ]
+      },
+      "incandescent": {
+        "role": "primary",
+        "displayName": "Incandescent Orange",
+        "canonical": "#f59333",
+        "tonalRamp": [
+          "#3f260d",
+          "#704317",
+          "#a06021",
+          "#d07d2b",
+          "#ff9a35",
+          "#ffb73f",
+          "#ffd449",
+          "#fff153"
+        ]
+      },
+      "ember": {
+        "role": "primary",
+        "displayName": "Ember",
+        "canonical": "#ffc08a",
+        "tonalRamp": [
+          "#32251b",
+          "#57422f",
+          "#7d5e44",
+          "#a37b58",
+          "#c9976d",
+          "#efb481",
+          "#ffd096",
+          "#ffedaa"
+        ]
+      },
+      "text-secondary": {
+        "role": "neutral",
+        "displayName": "Secondary Slate",
+        "canonical": "#8fa0be",
+        "tonalRamp": [
+          "#21252c",
+          "#3a414d",
+          "#535d6e",
+          "#6c798f",
+          "#8595b1",
+          "#9eb1d2",
+          "#b7cdf3",
+          "#d0e9ff"
+        ]
+      },
+      "text-label": {
+        "role": "neutral",
+        "displayName": "Label Slate",
+        "canonical": "#7c90b4",
+        "tonalRamp": [
+          "#1f242d",
+          "#374050",
+          "#4f5b72",
+          "#677795",
+          "#7e93b7",
+          "#96aeda",
+          "#aecafc",
+          "#c6e6ff"
+        ]
+      },
+      "print-ink": {
+        "role": "tertiary",
+        "displayName": "Print Ink",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#000000",
+          "#000000",
+          "#000000",
+          "#000000",
+          "#000000",
+          "#000000",
+          "#000000",
+          "#000000"
+        ]
+      },
+      "print-text": {
+        "role": "tertiary",
+        "displayName": "Print Text",
+        "canonical": "#222222",
+        "tonalRamp": [
+          "#262626",
+          "#434343",
+          "#616161",
+          "#7e7e7e",
+          "#9b9b9b",
+          "#b8b8b8",
+          "#d5d5d5",
+          "#f2f2f2"
+        ]
+      },
+      "print-rule": {
+        "role": "tertiary",
+        "displayName": "Print Rule",
+        "canonical": "#666666",
+        "tonalRamp": [
+          "#262626",
+          "#434343",
+          "#616161",
+          "#7e7e7e",
+          "#9b9b9b",
+          "#b8b8b8",
+          "#d5d5d5",
+          "#f2f2f2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "monument": {
+        "displayName": "Monument",
+        "purpose": "The surname in the first viewport and the 404 code. Viewport-bound so it fills the measure by construction."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page and section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Reading-surface titles and the footer's closing line."
+      },
+      "row-lg": {
+        "displayName": "Row Large",
+        "purpose": "CV organisation names and the practice strands."
+      },
+      "row": {
+        "displayName": "Row",
+        "purpose": "Index row titles on work and writing."
+      },
+      "row-sm": {
+        "displayName": "Row Small",
+        "purpose": "Dense index rows."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The positioning sentence and every standfirst. Capped at 46ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text. Prose capped at 68ch."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Supporting copy, summaries, chips."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Navigation, actions, field labels. Display face, uppercase, 0.3em tracked."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Rails, row metadata, narrow-viewport navigation."
+      }
+    },
+    "shadows": [],
+    "shadowPhilosophy": "None. There is not one box-shadow in the build. Depth comes from the lattice's atmospheric fog, tonal grounds mixed in oklab, and 1px hairlines derived from --glimmer.",
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing curve in the system. Exponential ease-out, on everything."
+      },
+      {
+        "name": "dur-fast",
+        "value": "180ms",
+        "purpose": "Colour transitions."
+      },
+      {
+        "name": "dur",
+        "value": "420ms",
+        "purpose": "Transforms, hairline growth, disclosure markers."
+      },
+      {
+        "name": "dur-slow",
+        "value": "900ms",
+        "purpose": "Ambient loops."
+      },
+      {
+        "name": "dur-enter",
+        "value": "1200ms",
+        "purpose": "The canvas fade-in once the shader is live."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "1ms",
+        "purpose": "All four durations collapse to 1ms under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "nav-compact",
+        "value": "34rem"
+      },
+      {
+        "name": "split",
+        "value": "46rem"
+      },
+      {
+        "name": "rows",
+        "value": "52rem"
+      },
+      {
+        "name": "about-split",
+        "value": "62rem"
+      },
+      {
+        "name": "rails",
+        "value": "1180px"
+      }
+    ],
+    "stations": [
+      {
+        "name": "portal",
+        "character": "Establishing shot: even cubes, balanced",
+        "presence": 0.58,
+        "scale": 1,
+        "cell": 1,
+        "aspect": 1,
+        "hue": 0,
+        "edge": 1,
+        "heat": 0,
+        "warm": 0.1,
+        "position": 0
+      },
+      {
+        "name": "work",
+        "character": "A skyline: tall towers, tighter grid, warm",
+        "presence": 0.5,
+        "scale": 1.05,
+        "cell": 1.18,
+        "aspect": 2.6,
+        "hue": -0.16,
+        "edge": 1.35,
+        "heat": 0.06,
+        "warm": 0.34,
+        "position": 26
+      },
+      {
+        "name": "writing",
+        "character": "A plain: wide-spaced flat plates, cool",
+        "presence": 0.68,
+        "scale": 0.9,
+        "cell": 1.55,
+        "aspect": 0.3,
+        "hue": 0.3,
+        "edge": 0.75,
+        "heat": -0.04,
+        "warm": 0,
+        "position": 54
+      },
+      {
+        "name": "about",
+        "character": "Close and warm: dense small cubes",
+        "presence": 0.46,
+        "scale": 0.82,
+        "cell": 0.72,
+        "aspect": 1,
+        "hue": -0.34,
+        "edge": 1.1,
+        "heat": 0.16,
+        "warm": 0.6,
+        "position": 82
+      },
+      {
+        "name": "reading",
+        "character": "Almost empty, very flat, very far",
+        "presence": 0.84,
+        "scale": 0.7,
+        "cell": 1.9,
+        "aspect": 0.22,
+        "hue": 0.16,
+        "edge": 0.5,
+        "heat": -0.06,
+        "warm": 0.05,
+        "position": 108
+      },
+      {
+        "name": "lost",
+        "character": "The lattice comes apart into shards",
+        "presence": 0.86,
+        "scale": 0.5,
+        "cell": 0.68,
+        "aspect": 1.6,
+        "hue": 0.62,
+        "edge": 1.7,
+        "heat": 0.35,
+        "warm": 0.45,
+        "position": 140
+      }
+    ],
+    "degradation": [
+      {
+        "condition": "No WebGL2",
+        "behaviour": "The canvas never mounts. The CSS gradient ground stands in and nothing else is lost."
+      },
+      {
+        "condition": "prefers-reduced-motion",
+        "behaviour": "One frame, then stop. No loop, no travel burst, no pointer warp, no trailing cursor."
+      },
+      {
+        "condition": "Coarse pointer / narrow / <=4 cores",
+        "behaviour": "48 march steps at 0.62 render scale, versus 96 at full."
+      },
+      {
+        "condition": "Tab hidden or canvas offscreen",
+        "behaviour": "Frames stop entirely."
+      },
+      {
+        "condition": "No JavaScript",
+        "behaviour": "Every route renders and reads in full. The CV serves all roles open and all bullets visible."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "refersTo": "action-primary",
+      "description": "The one filled action per surface. Never more than one.",
+      "html": "<a class=\"ds-action ds-action--primary\" href=\"#\">Read the CV</a>",
+      "css": ".ds-action{--edge:var(--rule-strong,#3a4e7acc);position:relative;display:inline-flex;align-items:center;gap:.7em;padding:.85em 1.35em;border:1px solid var(--edge);font-family:\"Anybody Variable\",Arial Narrow,system-ui,sans-serif;font-size:.6875rem;font-stretch:88%;font-weight:500;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;color:var(--paper,#eaeff7);background:color-mix(in oklab,var(--void,#080d18) 45%,transparent);transition:border-color 180ms cubic-bezier(.16,1,.3,1),background-color 180ms cubic-bezier(.16,1,.3,1),color 180ms cubic-bezier(.16,1,.3,1),transform 180ms cubic-bezier(.16,1,.3,1)}.ds-action::after{content:\"\";width:5px;height:5px;border:1px solid currentColor;transform:rotate(45deg);transition:transform 420ms cubic-bezier(.16,1,.3,1)}.ds-action--primary{--edge:var(--incandescent,#f59333);background:var(--incandescent,#f59333);color:var(--void,#080d18)}.ds-action--primary:hover,.ds-action--primary:focus-visible{background:var(--ember,#ffc08a);color:var(--void,#080d18)}.ds-action:hover::after,.ds-action:focus-visible::after{transform:rotate(45deg) translate(2px,-2px)}.ds-action:active{transform:translateY(1px)}"
+    },
+    {
+      "name": "Secondary Action",
+      "kind": "button",
+      "refersTo": "action",
+      "description": "The framed instrument switch. Frame only at rest, accent on interaction.",
+      "html": "<a class=\"ds-action2\" href=\"#\">Email me</a>",
+      "css": ".ds-action2{--edge:var(--rule-strong,#3a4e7acc);position:relative;display:inline-flex;align-items:center;gap:.7em;padding:.85em 1.35em;border:1px solid var(--edge);font-family:\"Anybody Variable\",Arial Narrow,system-ui,sans-serif;font-size:.6875rem;font-stretch:88%;font-weight:500;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;color:var(--paper,#eaeff7);background:color-mix(in oklab,var(--void,#080d18) 45%,transparent);transition:border-color 180ms cubic-bezier(.16,1,.3,1),background-color 180ms cubic-bezier(.16,1,.3,1),color 180ms cubic-bezier(.16,1,.3,1)}.ds-action2::after{content:\"\";width:5px;height:5px;border:1px solid currentColor;transform:rotate(45deg);transition:transform 420ms cubic-bezier(.16,1,.3,1)}.ds-action2:hover,.ds-action2:focus-visible{--edge:var(--incandescent,#f59333);color:var(--ember,#ffc08a);background:color-mix(in oklab,var(--incandescent,#f59333) 12%,transparent)}.ds-action2:hover::after,.ds-action2:focus-visible::after{transform:rotate(45deg) translate(2px,-2px)}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Thin corner links. The active route takes the isometric diamond, never an underline.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav__link is-active\" href=\"#\" aria-current=\"page\">Work</a><a class=\"ds-nav__link\" href=\"#\">Writing</a><a class=\"ds-nav__link\" href=\"#\">About</a><a class=\"ds-nav__link ds-nav__link--action\" href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:2rem}.ds-nav__link{position:relative;font-family:\"Anybody Variable\",Arial Narrow,system-ui,sans-serif;font-size:.6875rem;font-stretch:88%;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--text-label,#7c90b4);text-decoration:none;transition:color 180ms cubic-bezier(.16,1,.3,1)}.ds-nav__link:hover,.ds-nav__link:focus-visible,.ds-nav__link.is-active{color:var(--paper,#eaeff7)}.ds-nav__link.is-active::before{content:\"\";position:absolute;top:50%;left:-.5rem;width:4px;height:4px;background:var(--incandescent,#f59333);transform:translateY(-50%) rotate(45deg)}.ds-nav__link--action{padding:.5em .9em;border:1px solid var(--rule-strong,#3a4e7acc);color:var(--paper,#eaeff7)}.ds-nav__link--action:hover,.ds-nav__link--action:focus-visible{border-color:var(--incandescent,#f59333);background:color-mix(in oklab,var(--incandescent,#f59333) 14%,transparent);color:var(--ember,#ffc08a)}"
+    },
+    {
+      "name": "Index Row",
+      "kind": "custom",
+      "refersTo": "index-row",
+      "description": "The signature list component, and the reason there are no cards. Hover translates the row along the isometric axis and heats its rule.",
+      "html": "<ul class=\"ds-entries\"><li class=\"ds-entry\"><a class=\"ds-entry__link\" href=\"#\"><span class=\"ds-entry__rule\"></span><span class=\"ds-entry__main\"><span class=\"ds-entry__title\">Secondary root elements in React 18</span><span class=\"ds-entry__summary\">Managing rendering of secondary root elements.</span></span><span class=\"ds-entry__meta\">Sep 2024</span></a></li></ul>",
+      "css": ".ds-entries{padding:0;margin:0;list-style:none}.ds-entry{border-bottom:1px solid var(--rule,#3a4e7a73)}.ds-entry__link{position:relative;display:grid;grid-template-columns:1fr minmax(8rem,18%);align-items:baseline;gap:.5rem 2rem;padding:2rem 1.25rem;margin-inline:-1.25rem;background:color-mix(in oklab,var(--void,#080d18) 82%,transparent);text-decoration:none;color:inherit;transition:transform 420ms cubic-bezier(.16,1,.3,1),background-color 180ms cubic-bezier(.16,1,.3,1)}.ds-entry__rule{position:absolute;bottom:-1px;left:0;width:100%;height:1px;background:var(--incandescent,#f59333);transform:scaleX(0);transform-origin:left;transition:transform 420ms cubic-bezier(.16,1,.3,1)}.ds-entry__main{display:grid;gap:.25rem}.ds-entry__title{font-family:\"Anybody Variable\",Arial Narrow,system-ui,sans-serif;font-size:clamp(1.375rem,2.8vw,2.125rem);font-stretch:88%;font-weight:600;line-height:1.06;letter-spacing:-.03em;color:var(--paper,#eaeff7);transition:color 180ms cubic-bezier(.16,1,.3,1)}.ds-entry__summary{font-family:\"Archivo Variable\",system-ui,sans-serif;font-size:.875rem;line-height:1.5;color:var(--text-secondary,#8fa0be)}.ds-entry__meta{justify-self:end;font-family:\"Anybody Variable\",Arial Narrow,system-ui,sans-serif;font-size:.625rem;font-stretch:88%;letter-spacing:.3em;text-transform:uppercase;color:var(--text-label,#7c90b4)}.ds-entry__link:hover,.ds-entry__link:focus-visible{transform:translateX(6px);background:color-mix(in oklab,var(--abyss,#0c1322) 92%,transparent)}.ds-entry__link:hover .ds-entry__title{color:var(--ember,#ffc08a)}.ds-entry__link:hover .ds-entry__rule{transform:scaleX(1)}@media (prefers-reduced-motion:reduce){.ds-entry__link:hover{transform:none}}"
+    },
+    {
+      "name": "Filter Input",
+      "kind": "input",
+      "refersTo": "filter-input",
+      "description": "Hard-cornered field on an abyss ground. Focus takes the frame to the accent.",
+      "html": "<input class=\"ds-input\" type=\"search\" placeholder=\"Playwright, design system, D3…\" aria-label=\"Highlight a technology\" />",
+      "css": ".ds-input{width:100%;max-width:26rem;padding:.7em .9em;border:1px solid var(--rule-strong,#3a4e7acc);border-radius:0;background:color-mix(in oklab,var(--abyss,#0c1322) 70%,transparent);color:var(--paper,#eaeff7);font-family:\"Archivo Variable\",system-ui,sans-serif;font-size:.875rem}.ds-input::placeholder{color:var(--text-label,#7c90b4)}.ds-input:focus-visible{border-color:var(--incandescent,#f59333);outline:2px solid var(--incandescent,#f59333);outline-offset:3px}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Squared outline holding a technology name. Matching a filter heats the frame; non-matching dims to 0.55, the floor that holds 4.5:1.",
+      "html": "<ul class=\"ds-chips\"><li class=\"ds-chip is-match\">Playwright</li><li class=\"ds-chip\">TypeScript</li></ul>",
+      "css": ".ds-chips{display:flex;flex-wrap:wrap;gap:.25rem .5rem;padding:0;margin:0;list-style:none}.ds-chip{padding:.25em .55em;border:1px solid var(--rule,#3a4e7a73);font-family:\"Archivo Variable\",system-ui,sans-serif;font-size:.875rem;color:var(--text-secondary,#8fa0be);transition:border-color 180ms cubic-bezier(.16,1,.3,1),color 180ms cubic-bezier(.16,1,.3,1),opacity 180ms cubic-bezier(.16,1,.3,1)}.ds-chip.is-match{border-color:var(--incandescent,#f59333);color:var(--ember,#ffc08a)}"
+    },
+    {
+      "name": "Disclosure Row",
+      "kind": "custom",
+      "refersTo": "disclosure-row",
+      "description": "Native details with the marker replaced by the isometric diamond, which rotates to a filled square when open. Ships open; the script collapses.",
+      "html": "<details class=\"ds-disc\" open><summary class=\"ds-disc__summary\"><span class=\"ds-disc__mark\"></span><span class=\"ds-disc__ident\"><span class=\"ds-disc__org\">GEEIQ</span><span class=\"ds-disc__meta\">London, UK · Jun 2022 – Present</span></span></summary><div class=\"ds-disc__body\"><ul class=\"ds-disc__bullets\"><li class=\"ds-disc__bullet\">Led the rebuild of the core platform from Ember.js to React.</li></ul></div></details>",
+      "css": ".ds-disc{border-bottom:1px solid var(--rule,#3a4e7a73)}.ds-disc__summary{display:grid;grid-template-columns:auto 1fr;gap:.5rem 2rem;padding:2rem 0;cursor:pointer;list-style:none}.ds-disc__summary::-webkit-details-marker{display:none}.ds-disc__mark{width:7px;height:7px;margin-top:.7em;border:1px solid var(--incandescent,#f59333);transform:rotate(45deg);transition:transform 420ms cubic-bezier(.16,1,.3,1)}.ds-disc[open] .ds-disc__mark{background:var(--incandescent,#f59333);transform:rotate(0)}.ds-disc__ident{display:grid;gap:.25rem}.ds-disc__org{font-family:\"Anybody Variable\",Arial Narrow,system-ui,sans-serif;font-size:clamp(1.5rem,3.1vw,2.375rem);font-stretch:88%;font-weight:600;line-height:1.04;letter-spacing:-.03em;color:var(--paper,#eaeff7);transition:color 180ms cubic-bezier(.16,1,.3,1)}.ds-disc__summary:hover .ds-disc__org{color:var(--ember,#ffc08a)}.ds-disc__meta{font-family:\"Anybody Variable\",Arial Narrow,system-ui,sans-serif;font-size:.625rem;font-stretch:88%;letter-spacing:.3em;text-transform:uppercase;color:var(--text-label,#7c90b4)}.ds-disc__body{padding-bottom:2rem}.ds-disc__bullets{display:grid;gap:.75rem;padding:0;margin:0;list-style:none}.ds-disc__bullet{position:relative;padding-left:1.25rem;font-family:\"Archivo Variable\",system-ui,sans-serif;color:var(--text-secondary,#8fa0be)}.ds-disc__bullet::before{content:\"\";position:absolute;top:.62em;left:0;width:4px;height:4px;border:1px solid var(--glimmer,#3a4e7a);transform:rotate(45deg)}"
+    },
+    {
+      "name": "Label",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The system's connective tissue: display face, uppercase, 0.3em tracked, so small type reads as an instrument legend.",
+      "html": "<span class=\"ds-label\">Software engineer</span>",
+      "css": ".ds-label{display:block;font-family:\"Anybody Variable\",Arial Narrow,system-ui,sans-serif;font-size:.6875rem;font-stretch:88%;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--text-label,#7c90b4)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Lattice Portal",
+    "overview": "One field, seen from one angle, travelled through rather than navigated. The whole site is a full-bleed window onto a live isometric block lattice, raymarched in a single fragment shader, and the interface is a set of thin drawn marks laid over it. The projection the field holds is the projection the logo mark is already drawn in, so the field is not decoration around the identity: it is the identity, extended past the mark and into the entire page.\n\nThe register is cold, hued and industrial. Nothing here is neutral grey, nothing is neutral black, and there is exactly one warm colour in the system. Density is deliberately uneven: monumental type against hairline legends, a full viewport of atmosphere against a tight ruled list. Every surface reads as drawn rather than boxed, which is why there is not a single shadow, radius above 3px, or card anywhere in the build.\n\nTwo directions were rejected and both remain anti-references. Brutalist and Swiss poster treatments were ruled out by the client. Near-black plus a single neon accent with glowing edges was ruled out on craft grounds: it is what every engineer portfolio ships, and this ground is a genuinely hued blue-slate for exactly that reason.",
+    "keyCharacteristics": [
+      "A live WebGL lattice as the persistent ground of every route",
+      "A fixed 30 degree axonometric projection, inherited from the logo mark",
+      "Exactly one accent colour, the brand orange, used sparingly enough to mean something",
+      "One variable display face driven on its width axis instead of extra weights",
+      "Hairlines and tonal grounds only: no shadows, no cards, no filled containers",
+      "The rotated square as the system's only decorative glyph",
+      "Degradation designed as a first-class behaviour, not a fallback"
+    ],
+    "rules": [
+      {
+        "name": "The One Source Rule",
+        "section": "colors",
+        "body": "src/styles/tokens.css owns the palette for the DOM and the GPU. tokenRgb() reads --void, --echo, --glimmer, --mist, --incandescent and --ember back off the document element at mount and feeds them to the shader as vec3 uniforms. Those six tokens must stay plain six-digit hex, and no palette value may be defined anywhere but tokens.css."
+      },
+      {
+        "name": "The One Hot Colour Rule",
+        "section": "colors",
+        "body": "There is exactly one accent and it is orange. No second accent, no semantic colour set. If a state needs marking, it is marked with the accent, with a hairline, or with opacity, never with a new hue."
+      },
+      {
+        "name": "The Hued Ground Rule",
+        "section": "colors",
+        "body": "Nothing in this system is neutral grey or neutral black. Every dark value carries the ground's blue-slate hue and every light value is a cooled descendant of the mark's warm grey. Mixing happens in oklab."
+      },
+      {
+        "name": "The Width Axis Rule",
+        "section": "typography",
+        "body": "When display type needs a different feel, change font-stretch, not the weight and not the family. Every display element sets an explicit width from the named scale, 72% through 92%. Never ship a second display face or an extra static weight to solve something the axis can solve."
+      },
+      {
+        "name": "The Legend Rule",
+        "section": "typography",
+        "body": "Small type is never just small. Anything at label or micro size is set in the display face, uppercased, and tracked to 0.3em, so it reads as an instrument legend rather than shrunken body copy."
+      },
+      {
+        "name": "The Ramp Follows the Component Rule",
+        "section": "typography",
+        "body": "The row and sub-heading steps exist because the components arrived at those sizes first and the ramp was written afterwards. When a component genuinely needs a step the ramp lacks, widen the ramp and name the step. Do not leave a bare literal in a component, and do not snap a considered size to a nearby token just to satisfy a linter."
+      },
+      {
+        "name": "The Local Ground Rule",
+        "section": "elevation",
+        "body": "The scrim is not always enough. Five components carry their own ground because measured contrast failed over the field, and each is load-bearing rather than decorative. Do not remove these to clean up the styling, and add one when new text lands in the right half of a wide viewport. Composite the alpha against a bright cube face before trusting it: 62% was not enough and became 88%."
+      },
+      {
+        "name": "The No Shadow Rule",
+        "section": "elevation",
+        "body": "If something needs to separate from what is behind it, give it a tonal ground and a hairline. Never a shadow, never a glow border, never a gradient stroke."
+      },
+      {
+        "name": "The No Cards Rule",
+        "section": "shapes",
+        "body": "There are no cards in this world, and this has been enforced twice against drift. If a block needs to be set apart, give it a hairline and a heading. Do not reintroduce a bordered, padded, radiused container."
+      },
+      {
+        "name": "The Diamond-Only Rule",
+        "section": "shapes",
+        "body": "The rotated square is the only decorative glyph. No chevrons, no arrows, no icon set, no bullets from a font. If a marker is needed, it is a diamond."
+      }
+    ],
+    "dos": [
+      "Do define every palette value in src/styles/tokens.css and nowhere else, as plain six-digit hex for the six tokens the shader reads.",
+      "Do reach for font-stretch from the named width scale before a weight, and never before a second family.",
+      "Do set small type in the display face, uppercased, tracked to 0.3em.",
+      "Do give any new text in the right half of a wide viewport its own tonal ground, and composite the alpha against a bright cube face before trusting it.",
+      "Do separate surfaces with a 1px --rule hairline and a tonal ground.",
+      "Do use the rotated square when a marker is needed.",
+      "Do keep composition left-weighted, so the scrim's horizontal pass keeps working.",
+      "Do add a station when you add a route, with an unused position value.",
+      "Do make new interactive state fail open, the way the CV does: serve the readable state and let the script narrow it.",
+      "Do widen the type ramp and name the step when a component needs a size it lacks."
+    ],
+    "donts": [
+      "Don't add a shadow. There are none, and depth comes from fog, tone and hairlines.",
+      "Don't add a card, a filled bordered container, or a radius above 3px.",
+      "Don't introduce a second accent or a semantic colour set. One hot colour.",
+      "Don't use a neutral grey or a neutral black anywhere outside the print palette.",
+      "Don't make the lattice camera perspective, or rotate its view direction.",
+      "Don't remove the shader's ambient floor, or raise a block dimension past FILL without redoing the step-clamp arithmetic.",
+      "Don't use a chevron, an arrow, or an icon font. The diamond is the glyph.",
+      "Don't ship a second display face or an extra static weight.",
+      "Don't leave a bare font-size or colour literal in a component.",
+      "Don't claim the shader as a hand-written work sample; it is art direction, and docs/lattice.md is its handover."
+    ]
+  },
+  "knownInconsistencies": [
+    "The styling layer is mid-migration: six components on CSS Modules, EntryList, Lattice and all page-level blocks still on Astro scoped styles. Astro-specific blocker: a <script> block cannot see the hashed names, so every JS-touched class needs :global().",
+    "Local grounds have no rule distinguishing --void from --abyss. Five surfaces, five alphas, two base tokens, all arrived at by measurement.",
+    "nav__link--action is a third action treatment, against 'one shape, two weights'. Different padding, no diamond.",
+    "The webfont is 89.7 KB for two faces at full axis range across the whole latin subset, where five widths and three weights are used. Subsetting would return 40-50 KB.",
+    "No visual regression coverage. 28 Playwright tests cover behaviour, degradation and content truth, but nothing covers appearance. Snapshots need the canvas masked."
+  ]
+}

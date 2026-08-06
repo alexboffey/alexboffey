@@ -1,0 +1,44 @@
+---
+import Mark from "./Mark.astro"
+
+const year = new Date().getFullYear()
+
+const channels = [
+  { href: "mailto:alex@alexboffey.co.uk", label: "alex@alexboffey.co.uk" },
+  { href: "https://www.linkedin.com/in/alexboffey/", label: "LinkedIn" },
+  { href: "https://github.com/alexboffey", label: "GitHub" },
+  { href: "https://www.twitter.com/alexboffey", label: "Twitter" },
+]
+import styles from "./Footer.module.css"
+---
+
+<footer class={styles.foot}>
+  <div class:list={["shell", styles.foot__inner]}>
+    <div class={styles.foot__lead}>
+      <Mark size={34} />
+      <p class={styles.foot__say}>
+        Hiring, or want to talk about something you are building? <a
+          href="mailto:alex@alexboffey.co.uk">Send me an email</a
+        >.
+      </p>
+    </div>
+
+    <ul class={styles.foot__channels}>
+      {
+        channels.map((channel) => (
+          <li>
+            <a
+              class={styles.foot__channel}
+              href={channel.href}
+              rel={channel.href.startsWith("http") ? "me noopener" : undefined}
+            >
+              {channel.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class:list={["label", styles.foot__meta]}>&copy; {year} Alex Boffey</p>
+  </div>
+</footer>

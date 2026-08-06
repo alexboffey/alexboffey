@@ -1,0 +1,50 @@
+# Netlify build configuration.
+#
+# This is pinned in the repo deliberately. The site was ported from Gatsby to
+# Astro, and Netlify's stored UI settings were still `gatsby build` publishing
+# `public/`. Both are wrong now: the command changed, and `public/` is Astro's
+# *source* static directory rather than a build output, so publishing it would
+# have deployed a folder of fonts and a favicon with no HTML.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Matches .nvmrc. Astro 7 requires >=20.19.
+  NODE_VERSION = "20.19.0"
+  NPM_FLAGS = "--include=dev"
+
+# Deploy previews and branch builds run the same command.
+[context.deploy-preview]
+  command = "npm run build"
+
+[context.branch-deploy]
+  command = "npm run build"
+
+# Everything this site loads is self-hosted: no CDN, no external fonts, no
+# analytics, no third-party scripts. So the policy can be genuinely strict.
+# style-src needs 'unsafe-inline' because Astro inlines the stylesheet
+# (build.inlineStylesheets = "always"); every script is an external hashed
+# module, so script-src does not.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'none'"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    X-Frame-Options = "DENY"
+
+# Self-hosted subset fonts are immutable and preloaded; cache them hard.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Astro emits content-hashed asset filenames.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

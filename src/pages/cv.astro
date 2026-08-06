@@ -1,0 +1,753 @@
+---
+import {
+  education,
+  interests,
+  positions,
+  summary,
+  unattributedStack,
+  yearsOfExperience,
+} from "../lib/cv"
+import { site, social } from "../lib/site"
+import Root from "../layouts/Root.astro"
+
+/**
+ * The CV.
+ *
+ * Two readers, one page. A recruiter wants thirty seconds and the shape of a
+ * career; an engineer wants the whole thing and will read every bullet. So the
+ * page ships headline depth by default with a density control that reveals the
+ * rest, roles collapse with native <details> rather than scripted accordions,
+ * and a filter marks every mention of a given technology so "does he actually
+ * know Playwright" is one click rather than a scroll.
+ *
+ * There is a print stylesheet, because the single most likely thing a recruiter
+ * does with a CV page is save it as a PDF and attach it to an email.
+ */
+
+const totalBullets = positions.reduce((n, p) => n + p.bullets.length, 0)
+const years = yearsOfExperience()
+const allSkills = [
+  ...positions.flatMap((position) => position.stack),
+  ...unattributedStack,
+]
+---
+
+<Root
+  title="CV"
+  description="The CV of Alex Boffey: full stack software engineer, 9 years across frontend, backend services and infrastructure, currently at GEEIQ in London."
+  scene="about"
+  quiet
+>
+  <div class="cv shell is-full">
+    <header class="cv__head">
+      <h1 class="cv__title">Curriculum vitae</h1>
+      <p class="lead cv__summary">{summary}</p>
+
+      <dl class="cv__facts">
+        <div class="cv__fact">
+          <dt class="label">Experience</dt>
+          <dd>{years} years</dd>
+        </div>
+        <div class="cv__fact">
+          <dt class="label">Now</dt>
+          <dd>{positions[0].roles[0].title}, {positions[0].org}</dd>
+        </div>
+        <div class="cv__fact">
+          <dt class="label">Based</dt>
+          <dd>{site.location}</dd>
+        </div>
+        <div class="cv__fact">
+          <dt class="label">Contact</dt>
+          <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+        </div>
+      </dl>
+
+      <div class="cv__controls" data-cv-controls>
+        <div class="cv__control">
+          <button class="action" type="button" data-density aria-pressed="true">
+            <span data-density-label>Show headlines only</span>
+          </button>
+          <p class="cv__hint" data-density-hint>
+            Showing all {totalBullets} bullets.
+          </p>
+        </div>
+
+        <div class="cv__control cv__control--filter">
+          <label class="label" for="cv-filter">Highlight a technology</label>
+          <input
+            class="cv__filter"
+            id="cv-filter"
+            type="search"
+            list="cv-skills"
+            placeholder="Playwright, design system, D3…"
+            autocomplete="off"
+            data-filter
+          />
+          <datalist id="cv-skills">
+            {allSkills.map((skill) => <option value={skill} />)}
+          </datalist>
+          <p
+            class="cv__hint"
+            data-filter-status
+            role="status"
+            aria-live="polite"
+          >
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <section class="cv__section" aria-labelledby="cv-experience">
+      <h2 class="cv__heading" id="cv-experience">Experience</h2>
+
+      <ol class="roles">
+        {
+          positions.map((position) => (
+            <li class="role">
+              <details class="role__box" open>
+                <summary class="role__summary">
+                  <span class="role__mark" aria-hidden="true" />
+                  <span class="role__ident">
+                    <span class="role__org">{position.org}</span>
+                    <span class="role__meta">
+                      {position.location} &middot; {position.span}
+                    </span>
+                  </span>
+                  <span class="role__titles">
+                    {position.roles.map((role) => (
+                      <span class="role__title">
+                        {role.title}
+                        <span class="role__title-span">{role.span}</span>
+                      </span>
+                    ))}
+                  </span>
+                </summary>
+
+                <div class="role__body">
+                  {position.context && (
+                    <p class="role__context">{position.context}</p>
+                  )}
+                  <ul class="role__bullets">
+                    {position.bullets.map((bullet) => (
+                      <li
+                        class:list={[
+                          "role__bullet",
+                          { "is-detail": bullet.detail },
+                        ]}
+                        data-text={bullet.text}
+                      >
+                        {bullet.text}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div class="role__stack">
+                    <h4 class="role__stack-label label">Used here</h4>
+                    <ul class="role__stack-items">
+                      {position.stack.map((item) => (
+                        <li class="skill" data-skill={item.toLowerCase()}>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </details>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="cv__section" aria-labelledby="cv-also">
+      <h2 class="cv__heading" id="cv-also">Also works with</h2>
+      <p class="cv__plain cv__also-note">
+        These are real, but the CV does not tie them to a particular job, so
+        they sit here rather than under an employer.
+      </p>
+      <ul class="skillgroup__items">
+        {
+          unattributedStack.map((item) => (
+            <li class="skill" data-skill={item.toLowerCase()}>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="cv__section cv__section--split">
+      <div>
+        <h2 class="cv__heading" id="cv-education">Education</h2>
+        <p class="cv__plain">
+          <strong>{education.institution}</strong><br />
+          {education.award}<br />
+          <span class="cv__span">{education.span}</span>
+        </p>
+      </div>
+      <div>
+        <h2 class="cv__heading" id="cv-interests">Interests</h2>
+        <p class="cv__plain">{interests}</p>
+      </div>
+    </section>
+
+    <footer class="cv__foot">
+      <a class="action action--primary" href={`mailto:${site.email}`}>
+        Email me
+      </a>
+      <a class="action" href={social.linkedin} rel="me noopener">LinkedIn</a>
+      <a class="action" href={social.github} rel="me noopener">GitHub</a>
+    </footer>
+  </div>
+</Root>
+
+<script>
+  /**
+   * Density and filter. No framework, no state library: two booleans and a
+   * string, held in the DOM where they already live.
+   */
+  function boot() {
+    const found = document.querySelector<HTMLElement>(".cv")
+    if (!found) return
+    // Re-bound as non-null: setDensity below is a hoisted declaration and cannot
+    // rely on narrowing from the guard above.
+    const root: HTMLElement = found
+    // astro:page-load fires on the first load as well as after every client
+    // navigation, so without this guard every control ends up double-bound and
+    // a toggle fires twice, cancelling itself out.
+    if (root.dataset.bound === "true") return
+    root.dataset.bound = "true"
+
+    // --- density ----------------------------------------------------------
+    const densityBtn = root.querySelector<HTMLButtonElement>("[data-density]")
+    const densityLabel = root.querySelector<HTMLElement>("[data-density-label]")
+
+    // Served full so the no-JS render is complete; collapse to headlines here,
+    // which also makes the toggle idempotent (it only ever touches bullets, never
+    // the disclosure state of a role).
+    setDensity(false)
+
+    function setDensity(full: boolean) {
+      root.classList.toggle("is-full", full)
+      densityBtn?.setAttribute("aria-pressed", String(full))
+      if (densityLabel) {
+        densityLabel.textContent = full
+          ? "Show headlines only"
+          : "Show full detail"
+      }
+      const hint = root.querySelector<HTMLElement>("[data-density-hint]")
+      if (hint) {
+        const shown = root.querySelectorAll(
+          full ? ".role__bullet" : ".role__bullet:not(.is-detail)",
+        ).length
+        hint.textContent = full
+          ? `Showing all ${shown} bullets.`
+          : `Showing ${shown} headlines. Toggle for the rest.`
+      }
+    }
+
+    densityBtn?.addEventListener("click", () => {
+      setDensity(!root.classList.contains("is-full"))
+    })
+
+    // --- filter -----------------------------------------------------------
+    const filter = root.querySelector<HTMLInputElement>("[data-filter]")
+    const status = root.querySelector<HTMLElement>("[data-filter-status]")
+    const bullets = Array.from(
+      root.querySelectorAll<HTMLElement>(".role__bullet"),
+    )
+    const skillTags = Array.from(root.querySelectorAll<HTMLElement>(".skill"))
+
+    const clear = () => {
+      root.classList.remove("is-filtering")
+      bullets.forEach((b) => b.classList.remove("is-match"))
+      skillTags.forEach((s) => s.classList.remove("is-match"))
+      if (status) status.textContent = ""
+    }
+
+    filter?.addEventListener("input", () => {
+      const term = filter.value.trim().toLowerCase()
+      if (term.length < 2) {
+        clear()
+        return
+      }
+
+      root.classList.add("is-filtering")
+      let hits = 0
+
+      for (const bullet of bullets) {
+        const match = (bullet.dataset.text ?? "").toLowerCase().includes(term)
+        bullet.classList.toggle("is-match", match)
+        if (match) {
+          hits += 1
+          // A match hidden inside a closed role is a match nobody can see.
+          const box = bullet.closest<HTMLDetailsElement>("details.role__box")
+          if (box) box.open = true
+        }
+      }
+
+      let skillHits = 0
+      for (const tag of skillTags) {
+        const match = (tag.dataset.skill ?? "").includes(term)
+        tag.classList.toggle("is-match", match)
+        if (match) skillHits += 1
+      }
+
+      if (status) {
+        const parts: string[] = []
+        parts.push(
+          `${hits} ${hits === 1 ? "mention" : "mentions"} in experience`,
+        )
+        if (skillHits) parts.push(`${skillHits} in skills`)
+        status.textContent =
+          hits + skillHits === 0
+            ? "No mention of that."
+            : parts.join(", ") + "."
+      }
+    })
+
+    filter?.addEventListener("search", () => {
+      if (!filter.value) clear()
+    })
+  }
+
+  boot()
+  document.addEventListener("astro:page-load", boot)
+</script>
+
+<style>
+  .cv {
+    padding-block: var(--space-2xl) var(--space-3xl);
+  }
+
+  .cv__head {
+    display: grid;
+    gap: var(--space-md);
+    max-width: 74ch;
+  }
+
+  .cv__title {
+    font-size: var(--size-display);
+    font-stretch: var(--wdth-display);
+    font-weight: 700;
+    color: var(--paper);
+  }
+
+  .cv__summary {
+    max-width: 68ch;
+  }
+
+  .cv__facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: var(--space-md);
+    margin: var(--space-sm) 0 0;
+    padding-block: var(--space-md);
+    border-block: 1px solid var(--rule);
+  }
+
+  .cv__fact dd {
+    margin: 0;
+    font-size: var(--size-small);
+    color: var(--paper);
+  }
+
+  .cv__fact a {
+    color: var(--incandescent);
+  }
+
+  .cv__controls {
+    display: grid;
+    gap: var(--space-lg);
+    margin-top: var(--space-xs);
+  }
+
+  @media (min-width: 46rem) {
+    .cv__controls {
+      grid-template-columns: auto 1fr;
+      align-items: start;
+      gap: var(--space-2xl);
+    }
+  }
+
+  .cv__control {
+    display: grid;
+    gap: var(--space-xs);
+    align-content: start;
+  }
+
+  .cv__control .action {
+    justify-self: start;
+  }
+
+  .cv__hint {
+    font-size: var(--size-small);
+    color: var(--text-label);
+    min-height: 1.5em;
+  }
+
+  .cv__filter {
+    width: 100%;
+    max-width: 26rem;
+    padding: 0.7em 0.9em;
+    border: 1px solid var(--rule-strong);
+    border-radius: 0;
+    background: color-mix(in oklab, var(--abyss) 70%, transparent);
+    color: var(--paper);
+    font: inherit;
+    font-size: var(--size-small);
+  }
+
+  .cv__filter::placeholder {
+    color: var(--text-label);
+  }
+
+  .cv__filter:focus-visible {
+    border-color: var(--incandescent);
+  }
+
+  .cv__section {
+    margin-top: var(--space-2xl);
+  }
+
+  .cv__section--split {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 46rem) {
+    .cv__section--split {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  .cv__heading {
+    padding-bottom: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--rule);
+    font-size: var(--size-title);
+    font-stretch: 86%;
+    color: var(--paper);
+  }
+
+  .cv__plain {
+    max-width: 54ch;
+    color: var(--text-secondary);
+  }
+
+  .cv__plain strong {
+    color: var(--paper);
+    font-weight: 600;
+  }
+
+  .cv__span {
+    color: var(--text-label);
+  }
+
+  /* --- roles ------------------------------------------------------------- */
+
+  .roles {
+    display: grid;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .role {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .role__summary {
+    display: grid;
+    gap: var(--space-xs) var(--space-lg);
+    padding-block: var(--space-lg);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .role__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .role__summary:hover .role__org,
+  .role__summary:focus-visible .role__org {
+    color: var(--ember);
+  }
+
+  /* The disclosure marker is the mark's diamond, rotating as it opens. */
+  .role__mark {
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--incandescent);
+    transform: rotate(45deg);
+    transition: transform var(--dur) var(--ease);
+  }
+
+  details[open] .role__mark {
+    background: var(--incandescent);
+    transform: rotate(0deg);
+  }
+
+  .role__ident {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .role__org {
+    font-family: var(--font-display);
+    font-size: var(--size-row-lg);
+    font-stretch: 84%;
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: var(--track-tight);
+    color: var(--paper);
+    transition: color var(--dur-fast) var(--ease);
+  }
+
+  .role__meta {
+    font-family: var(--font-display);
+    font-size: var(--size-micro);
+    font-stretch: 88%;
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-label);
+  }
+
+  .role__titles {
+    display: grid;
+    gap: var(--space-2xs);
+    align-content: start;
+  }
+
+  .role__title {
+    display: grid;
+    font-size: var(--size-small);
+    color: var(--paper);
+  }
+
+  .role__title-span {
+    font-family: var(--font-display);
+    font-size: var(--size-micro);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-label);
+  }
+
+  @media (min-width: 52rem) {
+    .role__summary {
+      grid-template-columns: auto minmax(0, 1fr) minmax(14rem, 30%);
+      align-items: start;
+    }
+
+    .role__mark {
+      margin-top: 0.7em;
+    }
+  }
+
+  .role__body {
+    padding-bottom: var(--space-lg);
+    max-width: 78ch;
+  }
+
+  @media (min-width: 52rem) {
+    .role__body {
+      padding-left: calc(7px + var(--space-lg));
+    }
+  }
+
+  .role__context {
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid var(--rule);
+    font-size: var(--size-small);
+    color: var(--text-label);
+  }
+
+  .role__bullets {
+    display: grid;
+    gap: var(--space-sm);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .role__bullet {
+    position: relative;
+    padding-left: var(--space-md);
+    color: var(--text-secondary);
+    transition:
+      color var(--dur-fast) var(--ease),
+      opacity var(--dur-fast) var(--ease);
+  }
+
+  .role__bullet::before {
+    content: "";
+    position: absolute;
+    top: 0.62em;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    border: 1px solid var(--glimmer);
+    transform: rotate(45deg);
+    transition: background-color var(--dur-fast) var(--ease);
+  }
+
+  /* Density: depth bullets are present in the DOM from the start, so a filter
+     can find them and a print can include them, but hidden until asked for. */
+  .role__bullet.is-detail {
+    display: none;
+  }
+
+  .cv.is-full .role__bullet.is-detail {
+    display: block;
+  }
+
+  /* Filtering dims everything that is not a hit rather than removing it, so the
+     shape of the CV stays legible while you scan. */
+  /* Dimmed, not disabled: non-matching bullets are still context a reader may
+     want, so this stays above the 4.5:1 floor rather than going as faint as it
+     looks like it could. */
+  .cv.is-filtering .role__bullet {
+    opacity: 0.6;
+  }
+
+  .cv.is-filtering .role__bullet.is-match {
+    opacity: 1;
+    color: var(--paper);
+  }
+
+  .cv.is-filtering .role__bullet.is-match::before {
+    background: var(--incandescent);
+    border-color: var(--incandescent);
+  }
+
+  /* A match inside a hidden depth bullet has to become visible to count. */
+  .cv.is-filtering .role__bullet.is-detail.is-match {
+    display: block;
+  }
+
+  /* --- skills ------------------------------------------------------------ */
+
+  /* The stack sits inside the role it belongs to, so a reader sees what was used
+     where instead of a detached wall of keywords. */
+  .role__stack {
+    display: grid;
+    gap: var(--space-xs);
+    padding-top: var(--space-md);
+    margin-top: var(--space-md);
+    border-top: 1px solid var(--rule);
+  }
+
+  .role__stack-label {
+    color: var(--text-label);
+  }
+
+  .role__stack-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-xs);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .cv__also-note {
+    margin-bottom: var(--space-md);
+    font-size: var(--size-small);
+    color: var(--text-label);
+  }
+
+  .skillgroup__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-xs);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .skill {
+    padding: 0.25em 0.55em;
+    border: 1px solid var(--rule);
+    font-size: var(--size-small);
+    color: var(--text-secondary);
+    transition:
+      border-color var(--dur-fast) var(--ease),
+      color var(--dur-fast) var(--ease),
+      opacity var(--dur-fast) var(--ease);
+  }
+
+  .cv.is-filtering .skill {
+    opacity: 0.55;
+  }
+
+  .cv.is-filtering .skill.is-match {
+    opacity: 1;
+    border-color: var(--incandescent);
+    color: var(--ember);
+  }
+
+  .cv__foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-md);
+    padding-top: var(--space-lg);
+    margin-top: var(--space-2xl);
+    border-top: 1px solid var(--rule);
+  }
+
+  /* --- print ------------------------------------------------------------- */
+
+  /**
+   * The most likely thing a recruiter does with this page is save it as a PDF.
+   * Print gets everything: full detail regardless of the density control, every
+   * role open, no field, no controls, ink-friendly values.
+   */
+  @media print {
+    .cv__controls,
+    .cv__foot {
+      display: none;
+    }
+
+    .cv {
+      padding: 0;
+      color: var(--print-base);
+    }
+
+    .cv__title,
+    .cv__heading,
+    .role__org,
+    .cv__plain strong,
+    .cv__fact dd {
+      color: var(--print-ink);
+    }
+
+    .cv__summary,
+    .role__bullet,
+    .cv__plain,
+    .skill {
+      color: var(--print-text) !important;
+      opacity: 1 !important;
+    }
+
+    .role__bullet.is-detail {
+      display: block !important;
+    }
+
+    .role__mark,
+    .role__bullet::before {
+      border-color: var(--print-rule);
+      background: none;
+    }
+
+    .role {
+      break-inside: avoid;
+    }
+
+    .skill {
+      border-color: var(--print-hairline);
+    }
+  }
+</style>

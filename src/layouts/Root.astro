@@ -1,0 +1,208 @@
+---
+import { ClientRouter } from "astro:transitions"
+
+import Footer from "../components/Footer.astro"
+import Lattice from "../components/Lattice.astro"
+import Nav from "../components/Nav.astro"
+import Rails from "../components/Rails.astro"
+import "../styles/tokens.css"
+import "../styles/base.css"
+
+interface Props {
+  title: string
+  description: string
+  /** Reading surfaces damp the field down so the measure stays comfortable. */
+  quiet?: boolean
+  /**
+   * Which station in the lattice this route occupies. See SCENES in
+   * scripts/lattice.ts; the shader lerps between stations on navigation, so this
+   * is what makes each route's field genuinely different rather than tinted.
+   */
+  scene?: "portal" | "work" | "writing" | "about" | "reading" | "lost"
+}
+
+const { title, description, quiet = false, scene = "portal" } = Astro.props
+const path = Astro.url.pathname
+const canonical = new URL(path, Astro.site ?? "https://alexboffey.co.uk")
+const fullTitle =
+  path === "/"
+    ? "Alex Boffey · Full stack software engineer"
+    : `${title} · Alex Boffey`
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <link
+      rel="preload"
+      href="/fonts/anybody-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/archivo-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@alexboffey" />
+    <meta name="theme-color" content="#080d18" />
+
+    <ClientRouter />
+  </head>
+
+  <body class:list={{ "is-quiet": quiet }} data-scene={scene}>
+    <!--
+      THESIS: A full-bleed portal whose living pixels are the logo's own
+      geometry; it refuses the centred-hero-over-project-cards template that
+      every engineer portfolio ships.
+      OWN-WORLD: Deep hued blue-slate ground (#080d18) under a raymarched
+      orthographic isometric block lattice; brand orange #f59333 as the single
+      incandescent accent; Anybody variable grotesk driven on its width axis;
+      hairline rules, film grain, no cards anywhere.
+      STORY: A hiring manager learns in seconds that Alex is a full stack
+      software engineer, deepest in the frontend, and contacts him. (Revised
+      2026-08-06: the positioning was rebalanced away from design systems, and
+      the site no longer claims its own build as his work sample.)
+      FIRST VIEWPORT: BOFFEY at monument scale low-left over the live lattice,
+      positioning stated in flow beneath it and echoed in the fixed edge rails,
+      contact as the one framed action.
+      FORM: WebGL shader portal, a dealt challenger the user took over assigned
+      grounded candidate 7 (axonometric plate); seed key 3cf70a0a.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with
+      the finish review, the verdict, and DESIGN.md
+    -->
+    <a class="skip" href="#main">Skip to content</a>
+
+    <Lattice />
+    <Rails />
+
+    <div class="frame">
+      <Nav path={path} />
+      <main id="main" class="frame__main">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+
+    <div class="trail" data-trail aria-hidden="true"></div>
+
+    <script>
+      // The trailing diamond. The world calls for a custom cursor; the native
+      // cursor stays visible regardless, because taking it away costs more in
+      // usability than the effect returns.
+      const trail = document.querySelector<HTMLElement>("[data-trail]")
+      const fine = window.matchMedia("(pointer: fine)")
+      const still = window.matchMedia("(prefers-reduced-motion: reduce)")
+
+      if (trail && fine.matches && !still.matches) {
+        let x = window.innerWidth / 2
+        let y = window.innerHeight / 2
+        let tx = x
+        let ty = y
+        let raf = 0
+
+        const step = () => {
+          x += (tx - x) * 0.16
+          y += (ty - y) * 0.16
+          trail.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(45deg)`
+          raf =
+            Math.abs(tx - x) + Math.abs(ty - y) > 0.4
+              ? requestAnimationFrame(step)
+              : 0
+        }
+
+        window.addEventListener(
+          "pointermove",
+          (event) => {
+            tx = event.clientX
+            ty = event.clientY
+            trail.dataset.live = "true"
+            if (!raf) raf = requestAnimationFrame(step)
+          },
+          { passive: true },
+        )
+
+        window.addEventListener("pointerdown", () => {
+          trail.dataset.press = "true"
+          window.setTimeout(() => delete trail.dataset.press, 260)
+        })
+      }
+    </script>
+
+    <style>
+      .frame {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        min-height: 100svh;
+      }
+
+      .frame__main {
+        flex: 1;
+      }
+
+      /* Reading surfaces pull the field back so long text is not competing
+         with a moving background. */
+      body.is-quiet :global(.lattice__scrim) {
+        background: linear-gradient(
+          to bottom,
+          color-mix(in oklab, var(--void) 86%, transparent) 0%,
+          color-mix(in oklab, var(--void) 94%, transparent) 45%,
+          color-mix(in oklab, var(--void) 97%, transparent) 100%
+        );
+      }
+
+      .trail {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 90;
+        width: 7px;
+        height: 7px;
+        margin: -3.5px 0 0 -3.5px;
+        border: 1px solid var(--incandescent);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity var(--dur) var(--ease),
+          width var(--dur-fast) var(--ease),
+          height var(--dur-fast) var(--ease);
+      }
+
+      .trail[data-live="true"] {
+        opacity: 0.85;
+      }
+
+      .trail[data-press="true"] {
+        width: 16px;
+        height: 16px;
+        margin: -8px 0 0 -8px;
+      }
+
+      @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+        .trail {
+          display: none;
+        }
+      }
+    </style>
+  </body>
+</html>

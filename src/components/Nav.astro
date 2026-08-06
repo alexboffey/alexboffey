@@ -1,0 +1,48 @@
+---
+import Mark from "./Mark.astro"
+
+/**
+ * Thin corner links, per the world's own topology. No pill nav, no underline
+ * bar: the active route is marked with the same isometric diamond the lattice
+ * uses for a hot block.
+ */
+const { path } = Astro.props as { path: string }
+
+const links = [
+  { href: "/cv/", label: "CV" },
+  { href: "/work/", label: "Work" },
+  { href: "/writing/", label: "Writing" },
+  { href: "/about/", label: "About" },
+]
+
+const isActive = (href: string) => path === href || path.startsWith(href)
+import styles from "./Nav.module.css"
+---
+
+<header class={styles.nav}>
+  <a class={styles.nav__brand} href="/" aria-label="Alex Boffey, home">
+    <Mark size={26} />
+    <span class={styles.nav__wordmark}>Alex Boffey</span>
+  </a>
+
+  <nav class={styles.nav__links} aria-label="Main">
+    {
+      links.map((link) => (
+        <a
+          class:list={[
+            styles.nav__link,
+            { [styles["is-active"]]: isActive(link.href) },
+          ]}
+          href={link.href}
+          aria-current={isActive(link.href) ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+    <a
+      class:list={[styles.nav__link, styles["nav__link--action"]]}
+      href="/about/#contact">Contact</a
+    >
+  </nav>
+</header>

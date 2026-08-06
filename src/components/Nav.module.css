@@ -1,0 +1,150 @@
+.nav {
+  position: relative;
+  z-index: 4;
+  /* The nav sits exactly where both scrim passes are weakest, so 11px labels
+       were landing on bright cube faces. Its own short gradient fixes that
+       without darkening the whole top of the field. */
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding: var(--space-md) var(--gutter);
+}
+
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: -0.5rem calc(-1 * var(--gutter)) -1.25rem;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--void) 88%, transparent) 0%,
+    color-mix(in oklab, var(--void) 62%, transparent) 60%,
+    transparent 100%
+  );
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  text-decoration: none;
+}
+
+.nav__wordmark {
+  font-family: var(--font-display);
+  font-size: var(--size-label);
+  font-stretch: 82%;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--paper);
+}
+
+/* Mid widths: the full name plus four destinations is tight, so the name keeps
+     its place and the destinations close up first. */
+@media (max-width: 52rem) {
+  .nav__wordmark {
+    letter-spacing: 0.14em;
+  }
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--space-sm), 2.5vw, var(--space-lg));
+}
+
+.nav__link {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: var(--size-label);
+  font-stretch: 88%;
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-label);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--paper);
+}
+
+.nav__link.is-active {
+  color: var(--paper);
+}
+
+/* The active mark: the lattice's hot-block diamond, not an underline. */
+.nav__link.is-active::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(-1 * var(--space-xs));
+  width: 4px;
+  height: 4px;
+  background: var(--incandescent);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.nav__link--action {
+  padding: 0.5em 0.9em;
+  border: 1px solid var(--rule-strong);
+  color: var(--paper);
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease);
+}
+
+.nav__link--action:hover,
+.nav__link--action:focus-visible {
+  border-color: var(--incandescent);
+  background: color-mix(in oklab, var(--incandescent) 14%, transparent);
+  color: var(--ember);
+}
+
+/* Narrow: the wordmark goes (the mark carries it), the tracking closes up and
+     the row still holds all four destinations on one line. Contact stays,
+     because it is the action the whole site exists for. */
+@media (max-width: 34rem) {
+  .nav {
+    padding-inline: var(--space-md);
+  }
+
+  .nav__wordmark {
+    display: none;
+  }
+
+  .nav__links {
+    gap: var(--space-xs);
+  }
+
+  .nav__link {
+    font-size: var(--size-micro);
+    letter-spacing: 0.16em;
+  }
+
+  /* Narrow: the marker moves under the label and centres, because to the left
+       of a tightly-spaced row it collides with the previous link. */
+  .nav__link.is-active::before {
+    top: auto;
+    bottom: -6px;
+    left: 50%;
+    width: 3px;
+    height: 3px;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .nav__link--action {
+    padding: 0.5em 0.65em;
+  }
+}

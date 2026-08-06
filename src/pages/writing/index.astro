@@ -1,0 +1,38 @@
+---
+import EntryList from "../../components/EntryList.astro"
+import {
+  type Entry,
+  formatDate,
+  getWriting,
+  readingTime,
+} from "../../lib/entries"
+import Root from "../../layouts/Root.astro"
+
+const writing = await getWriting()
+
+const entries: Entry[] = writing.map((entry) => ({
+  href: `/writing/${entry.id}/`,
+  title: entry.data.title,
+  summary: entry.data.subtitle,
+  meta: [formatDate(entry.data.date), `${readingTime(entry.body)} min`],
+}))
+
+const years = new Set(writing.map((entry) => entry.data.date.getFullYear()))
+---
+
+<Root
+  scene="writing"
+  title="Writing"
+  description="Technical notes by Alex Boffey on React, testing, CSS, git and Magento."
+>
+  <section class="section shell" aria-labelledby="writing">
+    <div class="section__head">
+      <h1 class="section__title" id="writing">Writing</h1>
+      <p class="section__aside">
+        {writing.length} posts across {years.size} years. Mostly things I had to work
+        out and could not find written down anywhere.
+      </p>
+    </div>
+    <EntryList entries={entries} />
+  </section>
+</Root>

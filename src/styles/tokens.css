@@ -1,0 +1,119 @@
+/**
+ * The portal's token layer.
+ *
+ * Palette roles come from the world: a deep hued ground carrying the whole
+ * surface, and exactly one incandescent accent. The accent is the brand orange
+ * from the logo mark, unchanged, because it is real equity and because the
+ * world's grammar had a slot for precisely one hot colour.
+ *
+ * The hex values are read back by the shader (see scripts/lattice.ts), so CSS
+ * is the single source of truth for the palette in both the DOM and the GPU.
+ */
+
+:root {
+  /* Ground. Hued blue-slate, never neutral black. */
+  --void: #080d18;
+  --abyss: #0c1322;
+  --echo: #16203a;
+  --glimmer: #3a4e7a;
+
+  /* Light. Cooled descendants of the mark's warm grey. */
+  --mist: #a6b4cc;
+  --paper: #eaeff7;
+
+  /* The one accent. */
+  --incandescent: #f59333;
+  --ember: #ffc08a;
+
+  /* Text roles, tinted from the ground's hue rather than greyed. */
+  --text: var(--paper);
+  --text-secondary: #8fa0be;
+  --text-label: #7c90b4;
+
+  /* Lines. Hairlines only; this world draws, it does not box things in. */
+  --rule: color-mix(in oklab, var(--glimmer) 45%, transparent);
+  --rule-strong: color-mix(in oklab, var(--glimmer) 80%, transparent);
+
+  /* Type. Two families: a variable grotesk with a width axis for display, and
+     a workhorse grotesk for everything read at length. */
+  --font-display: "Anybody Variable", "Arial Narrow", system-ui, sans-serif;
+  --font-text: "Archivo Variable", system-ui, -apple-system, sans-serif;
+  --font-code: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+  /* Display sizes are viewport-bound so the name fits by construction at every
+     width instead of being clamped after the fact. */
+  /* The mobile coefficient is deliberately high: the name should fill the
+     measure on a phone, not float in the middle of it. */
+  --size-monument: clamp(4rem, 15.5vw, 15rem);
+  --size-display: clamp(2.4rem, 7vw, 6rem);
+  --size-title: clamp(1.75rem, 3.6vw, 3rem);
+  --size-lead: clamp(1.0625rem, 1.5vw, 1.375rem);
+  --size-body: clamp(1rem, 0.98rem + 0.15vw, 1.0625rem);
+  /* Row and sub-heading steps. These are real, deliberate sizes that the
+     components arrived at first; the ramp was written afterwards and missed
+     them, so the ramp widened rather than the components snapping. */
+  --size-row-lg: clamp(1.5rem, 3.1vw, 2.375rem);
+  --size-row: clamp(1.375rem, 2.8vw, 2.125rem);
+  --size-row-sm: clamp(1.125rem, 2vw, 1.5rem);
+  --size-given: clamp(1.25rem, 3.2vw, 2.25rem);
+  --size-sub: 1.5rem;
+  --size-sub-sm: 1.25rem;
+
+  --size-small: 0.875rem;
+  --size-label: 0.6875rem;
+  --size-micro: 0.625rem;
+
+  /* The width axis, named. Anybody is driven on wdth rather than shipping extra
+     weights, which makes these as load-bearing as the type scale. */
+  --wdth-monument: 72%;
+  --wdth-display: 82%;
+  --wdth-title: 88%;
+  --wdth-label: 88%;
+  --wdth-prose: 92%;
+
+  --track-label: 0.3em;
+  --track-tight: -0.03em;
+  --track-monument: -0.045em;
+
+  /* Rhythm. A single spacing scale, used everywhere. */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3.25rem;
+  --space-2xl: 5.25rem;
+  --space-3xl: clamp(5rem, 12vh, 9rem);
+  --space-section: clamp(6rem, 16vh, 12rem);
+
+  /* The rails sit in this gutter on wide screens and collapse below it. */
+  --rail: 2.75rem;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --measure: 68ch;
+  --shell: 82rem;
+
+  /* Motion. One exponential ease-out, used for everything that moves. */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur: 420ms;
+  --dur-slow: 900ms;
+  --dur-enter: 1200ms;
+
+  /* Print. The only place this system uses ink values rather than the field's
+     palette, because paper has no field to sit on. Referenced solely inside
+     `@media print`. */
+  --print-base: #111;
+  --print-ink: #000;
+  --print-text: #222;
+  --print-rule: #666;
+  --print-hairline: #bbb;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 1ms;
+    --dur: 1ms;
+    --dur-slow: 1ms;
+    --dur-enter: 1ms;
+  }
+}

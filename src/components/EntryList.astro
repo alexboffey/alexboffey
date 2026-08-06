@@ -1,0 +1,183 @@
+---
+/**
+ * The index row, shared by work and writing.
+ *
+ * One row per entry, hairline-ruled, with the title at display scale and the
+ * metadata tracked out small. On hover the whole row shifts along the
+ * isometric axis and its rule runs hot, which is the same gesture the lattice
+ * makes and the reason this does not need a card to signal that it is clickable.
+ */
+import type { Entry } from "../lib/entries"
+
+const { entries, dense = false } = Astro.props as {
+  entries: Entry[]
+  dense?: boolean
+}
+---
+
+<ul class:list={["entries", { "entries--dense": dense }]}>
+  {
+    entries.map((entry) => (
+      <li class="entry">
+        <a class="entry__link" href={entry.href}>
+          <span class="entry__rule" aria-hidden="true" />
+          <span class="entry__main">
+            <span class="entry__title">{entry.title}</span>
+            {entry.summary && (
+              <span class="entry__summary">{entry.summary}</span>
+            )}
+          </span>
+          {entry.meta && entry.meta.length > 0 && (
+            <span class="entry__meta">
+              {entry.meta.map((item) => (
+                <span class="entry__metaitem">{item}</span>
+              ))}
+            </span>
+          )}
+          {entry.placeholder && (
+            <span class="entry__flag">Placeholder copy</span>
+          )}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .entries {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .entry {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* Rows carry their own ground: the meta column sits in the right-edge zone
+     where the horizontal scrim has run out, and on the denser stations the field
+     there was taking small text down to about 2:1. */
+  .entry__link {
+    position: relative;
+    display: grid;
+    gap: var(--space-xs) var(--space-lg);
+    padding: var(--space-lg) var(--space-md);
+    margin-inline: calc(-1 * var(--space-md));
+    background: color-mix(in oklab, var(--void) 82%, transparent);
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform var(--dur) var(--ease),
+      background-color var(--dur-fast) var(--ease);
+  }
+
+  .entry__link:hover,
+  .entry__link:focus-visible {
+    background: color-mix(in oklab, var(--abyss) 92%, transparent);
+  }
+
+  .entries--dense .entry__link {
+    padding-block: var(--space-md);
+  }
+
+  /* The hot rule. Grows from the left as the row is read. */
+  .entry__rule {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--incandescent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur) var(--ease);
+  }
+
+  .entry__main {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .entry__title {
+    font-family: var(--font-display);
+    font-size: var(--size-row);
+    font-stretch: 86%;
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: var(--track-tight);
+    color: var(--paper);
+    transition: color var(--dur-fast) var(--ease);
+  }
+
+  .entries--dense .entry__title {
+    font-size: var(--size-row-sm);
+  }
+
+  .entry__summary {
+    max-width: 58ch;
+    font-size: var(--size-small);
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  .entry__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md);
+    align-items: center;
+  }
+
+  .entry__metaitem {
+    font-family: var(--font-display);
+    font-size: var(--size-micro);
+    font-stretch: 88%;
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-label);
+  }
+
+  .entry__flag {
+    justify-self: start;
+    padding: 0.3em 0.6em;
+    border: 1px solid color-mix(in oklab, var(--incandescent) 55%, transparent);
+    font-family: var(--font-display);
+    font-size: var(--size-micro);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--incandescent);
+  }
+
+  @media (min-width: 52rem) {
+    .entry__link {
+      grid-template-columns: 1fr minmax(8rem, 18%);
+      align-items: baseline;
+    }
+
+    .entry__meta {
+      justify-content: flex-end;
+      text-align: right;
+    }
+  }
+
+  .entry__link:hover,
+  .entry__link:focus-visible {
+    transform: translateX(6px);
+  }
+
+  .entry__link:hover .entry__title,
+  .entry__link:focus-visible .entry__title {
+    color: var(--ember);
+  }
+
+  .entry__link:hover .entry__rule,
+  .entry__link:focus-visible .entry__rule {
+    transform: scaleX(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .entry__link:hover,
+    .entry__link:focus-visible {
+      transform: none;
+    }
+  }
+</style>

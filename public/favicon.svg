@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!--
+    Favicon, not the logo.
+    The five-parallelogram mark turns to mush at 16px, so this is one bold
+    isometric cube: the mark's own geometry and its three face values, drawn at
+    a weight that survives a browser tab. Transparent ground so it sits on any
+    tab colour.
+  -->
+  <polygon fill="#f59333" points="16,2 30,10 16,18 2,10"/>
+  <polygon fill="#8496b4" points="2,10 16,18 16,31 2,23"/>
+  <polygon fill="#4a5f8a" points="30,10 30,23 16,31 16,18"/>
+</svg>

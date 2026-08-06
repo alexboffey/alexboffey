@@ -1,0 +1,35 @@
+---
+import { strands } from "../lib/site"
+
+/**
+ * The practice, as three rows rather than three cards.
+ *
+ * Rows because the three strands are not peers of equal weight to a reader
+ * scanning for fit: they want to be read in order, and a row can give its
+ * heading display scale where a card would flatten all three to the same
+ * emphasis. The hot rule on the left edge is the lattice's block-runs-hot
+ * signal, reused as an interaction state.
+ */
+import styles from "./Strands.module.css"
+---
+
+<section class="section shell" aria-labelledby="practice">
+  <div class="section__head">
+    <h2 class="section__title" id="practice">What I actually do</h2>
+    <p class="section__aside">
+      Three strands, one job. The first two are where most of the last few years
+      have gone.
+    </p>
+  </div>
+
+  <dl class={styles.strands}>
+    {
+      strands.map((strand) => (
+        <div class={styles.strand}>
+          <dt class={styles.strand__name}>{strand.name}</dt>
+          <dd class={styles.strand__summary}>{strand.summary}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>

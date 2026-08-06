@@ -1,0 +1,45 @@
+.rails {
+  display: none;
+}
+
+@media (min-width: 1180px) {
+  .rails {
+    display: block;
+  }
+
+  .rails__side {
+    position: fixed;
+    top: 50%;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-family: var(--font-display);
+    font-size: var(--size-micro);
+    font-stretch: 88%;
+    font-weight: 500;
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-label);
+    white-space: nowrap;
+  }
+
+  .rails__side--left {
+    left: 0;
+    transform-origin: center;
+    transform: translate(calc(-50% + var(--rail)), -50%) rotate(-90deg);
+  }
+
+  .rails__side--right {
+    right: 0;
+    transform-origin: center;
+    transform: translate(calc(50% - var(--rail)), -50%) rotate(90deg);
+  }
+
+  .rails__dot {
+    width: 3px;
+    height: 3px;
+    background: var(--incandescent);
+    transform: rotate(45deg);
+  }
+}

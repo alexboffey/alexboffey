@@ -1,0 +1,157 @@
+.portal {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(92svh, 60rem);
+  padding-block: var(--space-3xl) var(--space-2xl);
+}
+
+.portal__inner {
+  display: grid;
+  gap: var(--space-lg);
+  width: 100%;
+}
+
+.portal__name {
+  display: grid;
+  margin: 0;
+}
+
+.portal__given {
+  font-family: var(--font-display);
+  font-size: var(--size-given);
+  font-stretch: 76%;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--incandescent);
+  padding-left: 0.2em;
+}
+
+/* Monument scale. The size is viewport-bound and the width axis is pulled in
+     to 78%, so the word fills the measure at every breakpoint without a single
+     media query and without ever overflowing. */
+.portal__surname {
+  font-family: var(--font-display);
+  font-size: var(--size-monument);
+  font-stretch: 78%;
+  font-weight: 700;
+  line-height: 0.84;
+  letter-spacing: var(--track-monument);
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.portal__body {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 52ch;
+  /* The positioning sentence is the one thing in the first viewport that has
+       to be read, so it does not rely on the scrim alone. */
+  padding: var(--space-md) var(--space-md) var(--space-md) 0;
+  background: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--void) 86%, transparent) 0%,
+    color-mix(in oklab, var(--void) 78%, transparent) 70%,
+    transparent 100%
+  );
+}
+
+.portal__positioning {
+  font-size: var(--size-lead);
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.portal__positioning strong {
+  font-weight: 500;
+  color: var(--paper);
+}
+
+.portal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+  align-items: center;
+}
+
+.portal__status {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-display);
+  font-size: var(--size-label);
+  font-stretch: 88%;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-label);
+}
+
+.portal__pip {
+  width: 5px;
+  height: 5px;
+  background: var(--incandescent);
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portal__pip {
+    animation: pip 3.4s var(--ease) infinite;
+  }
+}
+
+@keyframes pip {
+  0%,
+  72%,
+  100% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 0.25;
+  }
+}
+
+.portal__sep {
+  color: var(--glimmer);
+}
+
+.portal__cue {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--space-2xl);
+  display: none;
+}
+
+@media (min-width: 60rem) {
+  .portal__cue {
+    display: block;
+    width: 1px;
+    height: 5.5rem;
+    overflow: hidden;
+    background: var(--rule);
+  }
+
+  .portal__cue-line {
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: var(--incandescent);
+    transform: translateY(-100%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .portal__cue-line {
+      animation: cue 2.8s var(--ease) infinite;
+    }
+  }
+}
+
+@keyframes cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  55%,
+  100% {
+    transform: translateY(100%);
+  }
+}

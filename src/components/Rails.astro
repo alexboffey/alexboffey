@@ -1,0 +1,27 @@
+---
+/**
+ * The margin rails.
+ *
+ * The world sets its interface as thin tracked type at the edges of the frame,
+ * so that is where the standing facts live. They are reinforcement, not the
+ * record: the same positioning is stated in flowing content on every page, and
+ * these are aria-hidden so a screen reader hears it once. They collapse below
+ * the width where a vertical rail would start eating the measure.
+ */
+import styles from "./Rails.module.css"
+---
+
+<div class={styles.rails} aria-hidden="true">
+  <div class:list={[styles.rails__side, styles["rails__side--left"]]}>
+    <span class="rails__text">Software engineer</span>
+    <span class={styles.rails__dot}></span>
+    <span class="rails__text">Full stack</span>
+    <span class={styles.rails__dot}></span>
+    <span class="rails__text">Design systems</span>
+  </div>
+  <div class:list={[styles.rails__side, styles["rails__side--right"]]}>
+    <span class="rails__text">London</span>
+    <span class={styles.rails__dot}></span>
+    <span class="rails__text">alexboffey.co.uk</span>
+  </div>
+</div>

@@ -1,0 +1,240 @@
+---
+import Mark from "../components/Mark.astro"
+import { site, social, strands } from "../lib/site"
+import Root from "../layouts/Root.astro"
+
+const channels = [
+  { href: `mailto:${site.email}`, label: "Email", value: site.email },
+  { href: social.linkedin, label: "LinkedIn", value: "in/alexboffey" },
+  { href: social.github, label: "GitHub", value: "alexboffey" },
+  { href: social.twitter, label: "Twitter", value: "@alexboffey" },
+]
+---
+
+<Root title="About" description={site.description} quiet scene="about">
+  <div class="about shell">
+    <header class="about__head">
+      <h1 class="about__title">
+        Software engineer,<br />
+        <span class="about__accent">across the stack</span>
+      </h1>
+      <p class="lead about__lead">
+        I am {site.role} at <a href="https://www.geeiq.com/">{site.employer}</a
+        >{" "}
+        in {site.location}. The title says frontend and that is where I am
+        deepest, but the work runs past it: API and service repositories,
+        Postgres, Kubernetes jobs, and the CI/CD that ships them.
+      </p>
+    </header>
+
+    <div class="about__grid">
+      <section class="about__col prose" aria-labelledby="how">
+        <h2 id="how">How I work</h2>
+        <p>
+          I like the part of the job where an intent meets what the machine will
+          actually do, and someone has to decide which one moves. Usually that
+          means building the thing properly once so forty features do not each
+          solve it badly, whether that thing is a component or a service.
+        </p>
+        <p>
+          Accessibility and performance are not a later pass. They are cheaper
+          at the primitive than at the feature, which is the entire argument for
+          having a system in the first place.
+        </p>
+        <p>
+          I write when something took a day to work out and could not be found
+          written down. That is what the <a href="/writing/">writing</a> is.
+        </p>
+
+        <h2>The three strands</h2>
+        <dl class="about__strands">
+          {
+            strands.map((strand) => (
+              <>
+                <dt class="about__strand-name">{strand.name}</dt>
+                <dd class="about__strand-body">{strand.summary}</dd>
+              </>
+            ))
+          }
+        </dl>
+      </section>
+
+      <aside class="about__side" id="contact">
+        <div class="about__card">
+          <Mark size={40} />
+          <h2 class="about__card-title">Get in touch</h2>
+          <p class="about__card-body">
+            If you are hiring, or you want to argue about design tokens, email
+            is the fastest way to reach me.
+          </p>
+
+          <dl class="channels">
+            {
+              channels.map((channel) => (
+                <div class="channel">
+                  <dt class="channel__label">{channel.label}</dt>
+                  <dd class="channel__value">
+                    <a
+                      href={channel.href}
+                      rel={
+                        channel.href.startsWith("http")
+                          ? "me noopener"
+                          : undefined
+                      }
+                    >
+                      {channel.value}
+                    </a>
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+
+          <a
+            class="action action--primary about__cta"
+            href={`mailto:${site.email}`}
+          >
+            Email me
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Root>
+
+<style>
+  .about {
+    padding-block: var(--space-2xl) var(--space-3xl);
+  }
+
+  .about__head {
+    display: grid;
+    gap: var(--space-md);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .about__title {
+    font-size: var(--size-display);
+    font-stretch: var(--wdth-display);
+    font-weight: 700;
+    line-height: 0.96;
+    color: var(--paper);
+  }
+
+  .about__accent {
+    color: var(--incandescent);
+  }
+
+  .about__lead {
+    max-width: 54ch;
+  }
+
+  .about__lead a {
+    color: var(--incandescent);
+  }
+
+  .about__grid {
+    display: grid;
+    gap: var(--space-2xl);
+    margin-top: var(--space-xl);
+  }
+
+  @media (min-width: 62rem) {
+    .about__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+      gap: var(--space-3xl);
+      align-items: start;
+    }
+
+    .about__side {
+      position: sticky;
+      top: var(--space-lg);
+    }
+  }
+
+  .about__strands {
+    display: grid;
+    gap: var(--space-xs);
+    margin: 0;
+  }
+
+  .about__strand-name {
+    font-family: var(--font-display);
+    font-size: var(--size-label);
+    font-stretch: 88%;
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--incandescent);
+  }
+
+  .about__strand-body {
+    margin: 0 0 var(--space-md);
+    color: var(--text-secondary);
+  }
+
+  /* Not a card. A hairline above, the mark, and the channel rows sitting on the
+     page's own ground: the contract says no cards anywhere and meant it. */
+  .about__card {
+    display: grid;
+    gap: var(--space-md);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--incandescent);
+  }
+
+  .about__card-title {
+    font-size: var(--size-sub);
+    font-stretch: var(--wdth-title);
+    color: var(--paper);
+  }
+
+  .about__card-body {
+    font-size: var(--size-small);
+    color: var(--text-secondary);
+  }
+
+  .channels {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .channel {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-block: var(--space-sm);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .channel__label {
+    font-family: var(--font-display);
+    font-size: var(--size-micro);
+    font-stretch: 88%;
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-label);
+  }
+
+  .channel__value {
+    margin: 0;
+    font-size: var(--size-small);
+    text-align: right;
+  }
+
+  .channel__value a {
+    text-decoration: none;
+    color: var(--paper);
+  }
+
+  .channel__value a:hover,
+  .channel__value a:focus-visible {
+    color: var(--incandescent);
+  }
+
+  .about__cta {
+    justify-self: start;
+  }
+</style>

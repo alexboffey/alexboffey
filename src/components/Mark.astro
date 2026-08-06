@@ -1,0 +1,42 @@
+---
+/**
+ * The mark, redrawn from the original logo.svg as inline geometry so it can
+ * take the palette tokens and animate its faces. Same five parallelograms in
+ * the same axonometric arrangement; the greys are now the cool --mist so the
+ * mark sits in this ground rather than on it.
+ */
+interface Props {
+  size?: number
+  class?: string
+  title?: string
+}
+
+const { size = 28, class: className, title } = Astro.props
+import styles from "./Mark.module.css"
+---
+
+<svg
+  class:list={[styles.mark, className]}
+  width={size}
+  height={size}
+  viewBox="0 0 750 750"
+  role={title ? "img" : "presentation"}
+  aria-label={title}
+  aria-hidden={title ? undefined : "true"}
+>
+  <polygon
+    class:list={[styles.face, styles["face--top"]]}
+    points="487.1,576.7 263.7,706.5 38.9,576.7 262.3,446.9"></polygon>
+  <polygon
+    class:list={[styles.face, styles["face--hot"]]}
+    points="488.5,309.9 487.7,568.2 262.9,438.4 263.7,180.1"></polygon>
+  <polygon
+    class:list={[styles.face, styles["face--top"]]}
+    points="254.3,183.3 255,441.6 30.2,571.4 29.5,313.1"></polygon>
+  <polygon
+    class:list={[styles.face, styles["face--hot"]]}
+    points="715.8,173.3 492.4,303.1 267.6,173.3 491,43.5"></polygon>
+  <polygon
+    class:list={[styles.face, styles["face--hot"]]}
+    points="719.8,180.1 720.5,438.4 495.7,568.2 495,309.9"></polygon>
+</svg>

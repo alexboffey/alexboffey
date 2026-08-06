@@ -1,0 +1,74 @@
+---
+import EntryList from "../components/EntryList.astro"
+import Portal from "../components/Portal.astro"
+import Strands from "../components/Strands.astro"
+import { type Entry, formatDate, getWork, getWriting } from "../lib/entries"
+import { site } from "../lib/site"
+import Root from "../layouts/Root.astro"
+
+const work = await getWork()
+const writing = await getWriting()
+
+const workEntries: Entry[] = work.slice(0, 4).map((entry) => ({
+  href: `/work/${entry.id}/`,
+  title: entry.data.title,
+  summary: entry.data.subtitle,
+  meta: [formatDate(entry.data.date)],
+  placeholder: entry.data.placeholder,
+}))
+
+const writingEntries: Entry[] = writing.slice(0, 4).map((entry) => ({
+  href: `/writing/${entry.id}/`,
+  title: entry.data.title,
+  meta: [formatDate(entry.data.date)],
+}))
+---
+
+<Root title="Full stack engineer" description={site.description}>
+  <Portal />
+  <Strands />
+
+  <section class="section shell" aria-labelledby="work">
+    <div class="section__head">
+      <h2 class="section__title" id="work">Selected work</h2>
+      <p class="section__aside">
+        Personal and early-career projects, kept because they are honest about
+        where the practice started. The commercial work since is on the <a
+          href="/cv/">CV</a
+        >.
+      </p>
+    </div>
+    <EntryList entries={workEntries} />
+    <p class="more">
+      <a class="action" href="/work/">All work</a>
+      <a class="action" href="/cv/">Full CV</a>
+    </p>
+  </section>
+
+  <section class="section shell" aria-labelledby="writing">
+    <div class="section__head">
+      <h2 class="section__title" id="writing">Writing</h2>
+      <p class="section__aside">
+        Notes from actual problems, mostly the kind that took a day to work out
+        and five minutes to explain.
+      </p>
+    </div>
+    <EntryList entries={writingEntries} dense />
+    <p class="more">
+      <a class="action" href="/writing/">All writing</a>
+    </p>
+  </section>
+</Root>
+
+<style>
+  .more {
+    margin-top: var(--space-xl);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-md);
+  }
+
+  .section__aside a {
+    color: var(--incandescent);
+  }
+</style>
