@@ -27,11 +27,11 @@ That is why the whole thing costs one draw call and no geometry.
 
 ## 2. Why there are two files
 
-| File | Language | Runs on | Job |
-|---|---|---|---|
-| `src/shaders/lattice.vert` | GLSL | GPU | Puts one triangle over the screen. You will never need to touch this. |
-| `src/shaders/lattice.frag` | GLSL | GPU, once per pixel | Works out the colour of that pixel. This is the actual design. |
-| `src/scripts/lattice.ts` | TypeScript | CPU, once per frame | Feeds the fragment shader its inputs, and holds all the per-route state. |
+| File                       | Language   | Runs on             | Job                                                                      |
+| -------------------------- | ---------- | ------------------- | ------------------------------------------------------------------------ |
+| `src/shaders/lattice.vert` | GLSL       | GPU                 | Puts one triangle over the screen. You will never need to touch this.    |
+| `src/shaders/lattice.frag` | GLSL       | GPU, once per pixel | Works out the colour of that pixel. This is the actual design.           |
+| `src/scripts/lattice.ts`   | TypeScript | CPU, once per frame | Feeds the fragment shader its inputs, and holds all the per-route state. |
 
 The split matters: **anything that needs to know about routes, scroll,
 preferences or the DOM lives in the `.ts` file.** The `.frag` file knows nothing
@@ -249,23 +249,23 @@ const SCENES: Record<string, Scene> = {
 }
 ```
 
-| Field | Effect | Try |
-|---|---|---|
-| `presence` | Block threshold. **Higher is sparser.** | `0.9` for nearly empty |
-| `scale` | Block size multiplier | `1.4` for chunky |
-| `cell` | Grid spacing. Higher spreads blocks apart | `2` for a wide plain |
-| `aspect` | Height / width. `1` cube, `>1` tower, `<1` plate | `4` for a skyline |
-| `hue` | Hue rotation in **radians** | `0.5` for a big shift |
-| `edge` | Hairline strength | `0` to remove edges |
-| `heat` | How readily blocks take the orange | `0.3` for lots |
-| `warm` | Bends lit faces toward ember | `1` for very warm |
-| `station` | Position along the field. Should be unique per route | any distinct number |
+| Field      | Effect                                               | Try                    |
+| ---------- | ---------------------------------------------------- | ---------------------- |
+| `presence` | Block threshold. **Higher is sparser.**              | `0.9` for nearly empty |
+| `scale`    | Block size multiplier                                | `1.4` for chunky       |
+| `cell`     | Grid spacing. Higher spreads blocks apart            | `2` for a wide plain   |
+| `aspect`   | Height / width. `1` cube, `>1` tower, `<1` plate     | `4` for a skyline      |
+| `hue`      | Hue rotation in **radians**                          | `0.5` for a big shift  |
+| `edge`     | Hairline strength                                    | `0` to remove edges    |
+| `heat`     | How readily blocks take the orange                   | `0.3` for lots         |
+| `warm`     | Bends lit faces toward ember                         | `1` for very warm      |
+| `station`  | Position along the field. Should be unique per route | any distinct number    |
 
 A route picks one via the `scene` prop on `Root.astro`, which becomes
 `data-scene` on `<body>`:
 
 ```astro
-<Root title="Work" scene="work" description="...">
+<Root title="Work" scene="work" description="..." />
 ```
 
 ### Adding a route
@@ -282,11 +282,11 @@ change read as travel rather than a reload.
 
 ```ts
 document.addEventListener("astro:before-preparation", () => {
-  state.travelTarget = 1        // leaving: camera rushes, lattice thins
+  state.travelTarget = 1 // leaving: camera rushes, lattice thins
 })
 document.addEventListener("astro:after-swap", () => {
-  state.sceneTarget = readScene()  // arriving: retarget the new station
-  state.travelTarget = 0           // and coast back down
+  state.sceneTarget = readScene() // arriving: retarget the new station
+  state.travelTarget = 0 // and coast back down
 })
 ```
 
@@ -307,7 +307,7 @@ Deliberate, and worth keeping. All of it is in `lattice.ts`.
 ```ts
 function tier() {
   if (coarse || narrow || cores <= 4) return { steps: 48, scale: 0.62 }
-  if (cores <= 8)                     return { steps: 72, scale: 0.85 }
+  if (cores <= 8) return { steps: 72, scale: 0.85 }
   return { steps: 96, scale: 1 }
 }
 ```
@@ -315,13 +315,13 @@ function tier() {
 - `steps` is the ray iteration budget. The main quality and cost dial.
 - `scale` is the render resolution multiplier. `0.62` renders at 62% and upscales.
 
-| Condition | Behaviour |
-|---|---|
-| No WebGL2 | Canvas never mounts. The CSS gradient ground in `Lattice.astro` is what you see. Nothing else is lost. |
-| `prefers-reduced-motion` | One frame, then stop. No loop, no travel burst, no pointer warp, no cursor. |
-| Coarse pointer / narrow / few cores | Fewer steps, lower resolution. |
-| Tab hidden | `visibilitychange` stops the loop. |
-| Canvas offscreen | `IntersectionObserver` stops the loop. |
+| Condition                           | Behaviour                                                                                              |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| No WebGL2                           | Canvas never mounts. The CSS gradient ground in `Lattice.astro` is what you see. Nothing else is lost. |
+| `prefers-reduced-motion`            | One frame, then stop. No loop, no travel burst, no pointer warp, no cursor.                            |
+| Coarse pointer / narrow / few cores | Fewer steps, lower resolution.                                                                         |
+| Tab hidden                          | `visibilitychange` stops the loop.                                                                     |
+| Canvas offscreen                    | `IntersectionObserver` stops the loop.                                                                 |
 
 **The palette is not duplicated.** `tokenRgb()` reads the CSS custom properties
 off `:root` and feeds them in as uniforms, so `tokens.css` is the only place

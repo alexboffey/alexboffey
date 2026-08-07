@@ -1,0 +1,30 @@
+{
+  // Cloudflare Workers Static Assets.
+  //
+  // The site is fully pre-rendered, so there is no `main` entry point: Cloudflare
+  // serves `dist/` directly. Workers Sites is deprecated and Pages is superseded,
+  // so static assets on Workers is the current path.
+  //
+  // Deployed from CI (.github/workflows/ci.yml), not from a Git connection, so
+  // Cloudflare never needs read access to this private repository.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "alexboffey",
+  "compatibility_date": "2026-08-07",
+
+  "assets": {
+    "directory": "./dist",
+    // The build emits real 404.html; serve it rather than falling back to index.
+    "not_found_handling": "404-page"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+
+  // Custom domain. Uncomment once the zone is on Cloudflare and DNS has moved,
+  // or attach the domain in the dashboard instead (Workers > Settings > Domains).
+  // "routes": [
+  //   { "pattern": "alexboffey.co.uk", "custom_domain": true },
+  //   { "pattern": "www.alexboffey.co.uk", "custom_domain": true }
+  // ]
+}

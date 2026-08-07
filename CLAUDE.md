@@ -14,7 +14,11 @@ yarn fix      # prettier --write
 
 Node 20.19+ (`.nvmrc`), npm. No test suite exists.
 
-Deployment: Netlify today, Cloudflare planned (see `TODO.md`).
+Deployment: **currently broken.** Netlify still serves the old Gatsby build. Making the repo private cut its read access (legacy webhook integration, no deploy keys), so it accepts the push webhook and then cannot clone.
+
+The replacement is scaffolded: `wrangler.jsonc` configures Cloudflare Workers Static Assets, and the `deploy` job in `.github/workflows/ci.yml` pushes the verified `dist/` artifact using `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Deploying from CI rather than a Git connection means Cloudflare never needs to read the private repo. Both secrets are unset, so the job is inert. See `TODO.md` for the hook-up steps, and note GitHub Actions itself is not currently getting a runner on this private repo.
+
+Response headers live in `public/_headers` (copied into `dist/` by Astro and read by Workers). `netlify.toml` is kept only as a fallback until the Cloudflare cutover lands.
 
 ## Architecture
 
@@ -30,9 +34,10 @@ Routes: `/` (portal), `/cv/`, `/work/`, `/work/<slug>/`, `/writing/`, `/writing/
 
 **The lattice is the design.** `src/shaders/lattice.frag` raymarches an orthographic isometric block field; `src/scripts/lattice.ts` drives it against raw WebGL2, one fullscreen triangle, one draw call, no three.js.
 
-The governing idea: an orthographic camera looking down the (1,1,1) diagonal of a cube grid produces exactly the projection in the logo mark, so the mark's three flat face values *are* the shading model. Do not replace this with a perspective camera or a particle field; the brand motif is the geometry.
+The governing idea: an orthographic camera looking down the (1,1,1) diagonal of a cube grid produces exactly the projection in the logo mark, so the mark's three flat face values _are_ the shading model. Do not replace this with a perspective camera or a particle field; the brand motif is the geometry.
 
 Things that will bite you in the shader:
+
 - Empty cells collapse their box to a point (a valid SDF). Combined with `STEP_CLAMP` being below the minimum inter-block gap, this is what stops rays tunnelling through blocks. If you change `CELL` or the max block size, recheck that relationship.
 - Every face needs the ambient floor. Without it, warped normals with no positive axis component render as black triangles punched in the field.
 - The palette is read out of CSS custom properties by `tokenRgb()`, so `src/styles/tokens.css` is the single source of truth for colour in both the DOM and the GPU.

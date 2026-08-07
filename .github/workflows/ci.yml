@@ -4,16 +4,22 @@ on:
   push:
     branches: [master, main]
   pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   verify:
+    name: Lint, typecheck, build, test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: npm
 
       - run: npm ci
@@ -34,6 +40,13 @@ jobs:
             exit 1
           fi
 
+      - name: Assert the phone number never ships
+        run: |
+          if grep -rn "7850 260 974" dist/ docs/ 2>/dev/null; then
+            echo "::error::Alex's phone number reached a published file"
+            exit 1
+          fi
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
@@ -46,3 +59,43 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 7
+
+      # Hand the verified build to the deploy job rather than rebuilding it.
+      - uses: actions/upload-artifact@v4
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        with:
+          name: dist
+          path: dist/
+          retention-days: 1
+
+  deploy:
+    name: Deploy to Cloudflare
+    needs: verify
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    # Nothing deploys unless the secrets exist, so this is inert until hooked up.
+    environment:
+      name: production
+      url: https://alexboffey.co.uk
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Fetch the build that passed verification
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy

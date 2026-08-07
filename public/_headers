@@ -1,0 +1,25 @@
+# Response headers, ported from netlify.toml so they survive the move to
+# Cloudflare. This file is copied verbatim into dist/ by Astro and read by
+# Workers Static Assets.
+#
+# Everything this site loads is self-hosted: no CDN, no external fonts, no
+# analytics, no third-party scripts. So the policy can be genuinely strict.
+# style-src needs 'unsafe-inline' because Astro inlines the stylesheet
+# (build.inlineStylesheets = "always"); every script is an external hashed
+# module, so script-src does not.
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'none'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: DENY
+
+# Self-hosted subset fonts are immutable and preloaded.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Astro emits content-hashed asset filenames.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

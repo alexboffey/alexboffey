@@ -5,20 +5,20 @@ measured against this repository, not inferred.
 
 ## Measured state
 
-| Check | Result | Budget (your rules) | Verdict |
-|---|---|---|---|
-| Lighthouse accessibility (mobile) | **100**, 0 failed audits | n/a | pass |
-| Lighthouse best practices | **100** | n/a | pass |
-| Lighthouse SEO | **100** | n/a | pass |
-| LCP | 75 ms local, 4 ms TTFB, 72 ms render delay | < 2.5 s | pass with room |
-| CLS | **0.00** | < 0.1 | pass |
-| JS shipped | 27 KB uncompressed (ClientRouter 16 KB + lattice 11 KB) | < 80 KB microsite | pass |
-| Home page HTML | 9.5 KB gzipped, CSS fully inlined, zero CSS requests | n/a | pass |
-| Webfont | 89.7 KB, two latin-subset variable faces, preloaded | n/a | acceptable, see F4 |
-| `astro check` | 0 errors / 0 warnings / 0 hints | n/a | pass |
-| Playwright smoke | 28/28 on desktop + mobile | n/a | pass |
-| Design detector | 12 findings, all `advisory`, all one class | n/a | see F1 |
-| Runtime dependencies | 2 (`astro`, `@astrojs/sitemap`) | n/a | pass |
+| Check                             | Result                                                  | Budget (your rules) | Verdict            |
+| --------------------------------- | ------------------------------------------------------- | ------------------- | ------------------ |
+| Lighthouse accessibility (mobile) | **100**, 0 failed audits                                | n/a                 | pass               |
+| Lighthouse best practices         | **100**                                                 | n/a                 | pass               |
+| Lighthouse SEO                    | **100**                                                 | n/a                 | pass               |
+| LCP                               | 75 ms local, 4 ms TTFB, 72 ms render delay              | < 2.5 s             | pass with room     |
+| CLS                               | **0.00**                                                | < 0.1               | pass               |
+| JS shipped                        | 27 KB uncompressed (ClientRouter 16 KB + lattice 11 KB) | < 80 KB microsite   | pass               |
+| Home page HTML                    | 9.5 KB gzipped, CSS fully inlined, zero CSS requests    | n/a                 | pass               |
+| Webfont                           | 89.7 KB, two latin-subset variable faces, preloaded     | n/a                 | acceptable, see F4 |
+| `astro check`                     | 0 errors / 0 warnings / 0 hints                         | n/a                 | pass               |
+| Playwright smoke                  | 28/28 on desktop + mobile                               | n/a                 | pass               |
+| Design detector                   | 12 findings, all `advisory`, all one class              | n/a                 | see F1             |
+| Runtime dependencies              | 2 (`astro`, `@astrojs/sitemap`)                         | n/a                 | pass               |
 
 Note LCP and TTFB are from a local preview with no network throttling. The
 render-delay component (72 ms) and CLS (0.00) are real; the transfer numbers are
@@ -114,7 +114,7 @@ or the snapshots will never be stable). Masking the canvas is the whole trick.
 - **Content survived the port unedited.** The collection schema matches the old
   Gatsby frontmatter, including normalising the comma-separated `tags` string.
 - **The CV fails open.** All roles and all bullets are served visible; the script
-  *collapses*. A script failure degrades to more information, not less.
+  _collapses_. A script failure degrades to more information, not less.
 - **CI enforces content truth as well as types.** The workflow greps `dist/` for claims
   `PRODUCT.md` forbids and fails the build if one reappears.
 

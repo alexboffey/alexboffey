@@ -251,7 +251,7 @@ for headings, **Print Text** (`{colors.print-text}`) for body, and **Print Rule*
 ### Named Rules
 
 **The One Source Rule.** `src/styles/tokens.css` owns the palette for the DOM
-*and* the GPU. `tokenRgb()` in `src/scripts/lattice.ts` reads `--void`, `--echo`,
+_and_ the GPU. `tokenRgb()` in `src/scripts/lattice.ts` reads `--void`, `--echo`,
 `--glimmer`, `--mist`, `--incandescent` and `--ember` back off
 `document.documentElement` at mount and feeds them to the shader as `vec3`
 uniforms. Changing a hex in `tokens.css` recolours the 3D scene. Two consequences
@@ -381,7 +381,7 @@ measure never competes with motion.
 ### Named Rules
 
 **The Local Ground Rule.** The scrim is not always enough. Five components carry
-their own ground *because measured contrast failed over the field*, and each is
+their own ground _because measured contrast failed over the field_, and each is
 load-bearing rather than decorative: `.nav::before` (a short gradient exactly
 where both scrim passes are weakest, because 11px labels were landing on bright
 cube faces at about 2:1), `.entry__link` (its metadata column sits in the
@@ -497,7 +497,7 @@ scene graph, no geometry, no 3D library, one draw call.
 
 The governing coupling: an orthographic camera looking down the `(1,1,1)` diagonal
 of a cube grid produces exactly the 2:1 isometric projection the logo mark is
-drawn in, so the mark's three flat face values *are* the shading model. `+Y` faces
+drawn in, so the mark's three flat face values _are_ the shading model. `+Y` faces
 take mist, `+X` takes glimmer, `+Z` takes echo, and the rare hot blocks take the
 accent. Never make the camera perspective and never rotate the view direction; the
 identity is the projection.
@@ -513,19 +513,19 @@ away from all three lit axes and the weighted colour then divides to black.
 
 ### Per-route stations
 
-Each route occupies a different *place* in the same lattice, selected by the
+Each route occupies a different _place_ in the same lattice, selected by the
 `scene` prop on the root layout, which becomes `data-scene` on `<body>`. Presence
 is a threshold, so higher is sparser; aspect is height over width, so above 1 is a
 tower and below 1 is a plate; hue is a rotation in radians about the grey axis.
 
-| Station | Character | presence | scale | cell | aspect | hue | edge | heat | warm | position |
-|---|---|---|---|---|---|---|---|---|---|---|
-| `portal` | Establishing shot: even cubes, balanced | 0.58 | 1 | 1 | 1 | 0 | 1 | 0 | 0.1 | 0 |
-| `work` | A skyline: tall towers, tighter grid, warm | 0.5 | 1.05 | 1.18 | 2.6 | −0.16 | 1.35 | 0.06 | 0.34 | 26 |
-| `writing` | A plain: wide-spaced flat plates, cool | 0.68 | 0.9 | 1.55 | 0.3 | 0.3 | 0.75 | −0.04 | 0 | 54 |
-| `about` | Close and warm: dense small cubes | 0.46 | 0.82 | 0.72 | 1 | −0.34 | 1.1 | 0.16 | 0.6 | 82 |
-| `reading` | Almost empty, very flat, very far | 0.84 | 0.7 | 1.9 | 0.22 | 0.16 | 0.5 | −0.06 | 0.05 | 108 |
-| `lost` | The lattice comes apart into shards | 0.86 | 0.5 | 0.68 | 1.6 | 0.62 | 1.7 | 0.35 | 0.45 | 140 |
+| Station   | Character                                  | presence | scale | cell | aspect | hue   | edge | heat  | warm | position |
+| --------- | ------------------------------------------ | -------- | ----- | ---- | ------ | ----- | ---- | ----- | ---- | -------- |
+| `portal`  | Establishing shot: even cubes, balanced    | 0.58     | 1     | 1    | 1      | 0     | 1    | 0     | 0.1  | 0        |
+| `work`    | A skyline: tall towers, tighter grid, warm | 0.5      | 1.05  | 1.18 | 2.6    | −0.16 | 1.35 | 0.06  | 0.34 | 26       |
+| `writing` | A plain: wide-spaced flat plates, cool     | 0.68     | 0.9   | 1.55 | 0.3    | 0.3   | 0.75 | −0.04 | 0    | 54       |
+| `about`   | Close and warm: dense small cubes          | 0.46     | 0.82  | 0.72 | 1      | −0.34 | 1.1  | 0.16  | 0.6  | 82       |
+| `reading` | Almost empty, very flat, very far          | 0.84     | 0.7   | 1.9  | 0.22   | 0.16  | 0.5  | −0.06 | 0.05 | 108      |
+| `lost`    | The lattice comes apart into shards        | 0.86     | 0.5   | 0.68 | 1.6    | 0.62  | 1.7  | 0.35  | 0.45 | 140      |
 
 Adding a route means adding a station with an unused position value. If `cell` or
 `FILL` changes, redo the step-clamp arithmetic above.
@@ -547,13 +547,13 @@ model.
 
 ### Degradation (these are system rules, not footnotes)
 
-| Condition | Behaviour |
-|---|---|
-| No WebGL2 | The canvas never mounts. The CSS gradient ground stands in, and nothing else is lost. |
-| `prefers-reduced-motion` | One frame, then stop. No loop, no travel burst, no pointer warp, no trailing cursor. |
-| Coarse pointer / narrow / ≤4 cores | 48 march steps at 0.62 render scale, versus 96 at full. |
-| Tab hidden or canvas offscreen | Frames stop entirely. |
-| No JavaScript | Every route renders and reads in full. The CV serves all roles open and all bullets visible. |
+| Condition                          | Behaviour                                                                                    |
+| ---------------------------------- | -------------------------------------------------------------------------------------------- |
+| No WebGL2                          | The canvas never mounts. The CSS gradient ground stands in, and nothing else is lost.        |
+| `prefers-reduced-motion`           | One frame, then stop. No loop, no travel burst, no pointer warp, no trailing cursor.         |
+| Coarse pointer / narrow / ≤4 cores | 48 march steps at 0.62 render scale, versus 96 at full.                                      |
+| Tab hidden or canvas offscreen     | Frames stop entirely.                                                                        |
+| No JavaScript                      | Every route renders and reads in full. The CV serves all roles open and all bullets visible. |
 
 ## Do's and Don'ts
 
