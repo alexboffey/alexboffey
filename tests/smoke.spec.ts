@@ -28,13 +28,17 @@ for (const route of ROUTES) {
   })
 }
 
-test("the direction contract survives the production build", async ({ page }) => {
+test("the direction contract survives the production build", async ({
+  page,
+}) => {
   await page.goto("/")
   const html = await page.content()
   expect(html).toContain("3cf70a0a")
 })
 
-test("every route reaches contact without leaving the site", async ({ page }) => {
+test("every route reaches contact without leaving the site", async ({
+  page,
+}) => {
   for (const route of ROUTES) {
     await page.goto(route)
     const mailto = page.locator('a[href^="mailto:"]').first()
@@ -88,7 +92,9 @@ test.describe("CV", () => {
   })
 })
 
-test("the lattice canvas survives a client-side navigation", async ({ page }) => {
+test("the lattice canvas survives a client-side navigation", async ({
+  page,
+}) => {
   await page.goto("/")
   await page.evaluate(() => {
     const c = document.querySelector("[data-lattice]") as HTMLElement & {
@@ -102,9 +108,11 @@ test("the lattice canvas survives a client-side navigation", async ({ page }) =>
 
   const persisted = await page.evaluate(
     () =>
-      (document.querySelector("[data-lattice]") as HTMLElement & {
-        __marker?: string
-      })?.__marker,
+      (
+        document.querySelector("[data-lattice]") as HTMLElement & {
+          __marker?: string
+        }
+      )?.__marker,
   )
   expect(persisted).toBe("persisted")
 })
