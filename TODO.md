@@ -11,12 +11,17 @@ Everything below is scaffolded and inert until the secrets exist. Deploying from
 CI rather than a Git connection means Cloudflare never needs read access to the
 private repo, which is what broke Netlify.
 
-- [ ] **Fix GitHub Actions first, or nothing runs.** The CI run for the rebuild
-      sat queued 15 minutes and was cancelled with zero steps, which is what
-      happens when a private repo has no Actions minutes available. Check
-      Settings > Billing > Spending limit, and whether the plan includes minutes
-      for private repos. Nothing else in this list works until a job can get a
-      runner.
+- [x] ~~Fix GitHub Actions~~ **Done 2026-08-10, and it was not a billing
+      problem.** Every run was failing in `astro check` with "Please upgrade
+      Node.js to a supported version: >=22.12.0", because `.nvmrc` pinned
+      20.19.0 while Astro 7 requires 22.12+. Fixed in `78e4ccc`. CI is green:
+      lint, typecheck, build, the three content assertions and 28 Playwright
+      tests all pass on a runner.
+- [ ] **Quickest path to a live site, if you want it up before wiring CI:** run
+      `npx wrangler login` (opens a browser for OAuth), then `npm run build && npx wrangler deploy`.
+      That publishes from your machine and needs no repo secrets at all. Do this
+      first if you want to see it live today; the CI hook-up below is still worth
+      finishing so pushes deploy themselves.
 - [ ] **Create a Cloudflare API token.** My Profile > API Tokens > Create Token,
       using the _Edit Cloudflare Workers_ template. Scope it to the one account.
 - [ ] **Find the account ID.** Any zone's overview page, right-hand column, or
