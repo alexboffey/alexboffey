@@ -73,27 +73,48 @@ jobs:
     needs: verify
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     runs-on: ubuntu-latest
-    # Nothing deploys unless the secrets exist, so this is inert until hooked up.
     environment:
       name: production
       url: https://alexboffey.co.uk
     steps:
+      # The secrets context cannot be read in a job-level `if`, so the guard
+      # lives here. Without it a repo with no Cloudflare secrets shows a red X
+      # on every push, which trains you to ignore the one signal that matters.
+      - name: Are the Cloudflare secrets present
+        id: creds
+        env:
+          TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -n "$TOKEN" ] && [ -n "$ACCOUNT" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipping deploy: set CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID (see TODO.md)"
+          fi
+
       - uses: actions/checkout@v4
+        if: steps.creds.outputs.ready == 'true'
 
       - uses: actions/setup-node@v4
+        if: steps.creds.outputs.ready == 'true'
         with:
           node-version-file: .nvmrc
           cache: npm
 
-      - run: npm ci
+      - name: Install the pinned wrangler
+        if: steps.creds.outputs.ready == 'true'
+        run: npm ci
 
       - name: Fetch the build that passed verification
+        if: steps.creds.outputs.ready == 'true'
         uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist
 
       - name: Deploy
+        if: steps.creds.outputs.ready == 'true'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

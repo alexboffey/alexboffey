@@ -5,14 +5,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-yarn dev      # astro dev (localhost:4321)
-yarn build    # astro build -> dist/
-yarn preview  # serve the production build
-yarn lint     # prettier --check + astro check
-yarn fix      # prettier --write
+npm run dev      # astro dev (localhost:4321)
+npm run build    # astro build -> dist/
+npm run preview  # serve the production build
+npm run lint     # prettier --check + astro check
+npm run fix      # prettier --write
+npm test         # playwright, 28 smoke tests
 ```
 
-Node 20.19+ (`.nvmrc`), npm. No test suite exists.
+**npm, not yarn.** The lockfile is `package-lock.json` and there is no `yarn.lock`. The scripts used to shell out to `yarn`, which broke `npm run lint` on any machine without yarn installed.
+
+Node 22.12+ (`.nvmrc` pins 22.16.0). This is a hard floor, not a preference: Astro 7 declares `engines.node >= 22.12.0` and `astro check` refuses to run below it. Pinning 20.19.0 here is what broke CI.
 
 Deployment: **currently broken.** Netlify still serves the old Gatsby build. Making the repo private cut its read access (legacy webhook integration, no deploy keys), so it accepts the push webhook and then cannot clone.
 
@@ -61,4 +64,4 @@ Degradation is deliberate and should stay: no WebGL2 keeps the CSS ground, `pref
 - Prettier: no semicolons, trailing commas. `prettier-plugin-astro` handles `.astro`.
 - Two font families, self-hosted in `public/fonts` as latin-subset variable woff2: Anybody (display, driven on its **width** axis rather than shipping extra weights) and Archivo (text). Provenance is the two `@fontsource-variable` devDependencies.
 - Favicon is a simplified single cube, not the five-parallelogram mark, which turns to mush at 16px.
-- `yarn fix` before committing; `astro check` must be clean.
+- `npm run fix` before committing; `astro check` must be clean.
