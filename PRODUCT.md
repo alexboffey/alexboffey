@@ -33,6 +33,12 @@ Alex is a **full stack software engineer**. He is deepest in the frontend, and d
 
 **Revised 2026-08-06 on the user's instruction.** An earlier version of this record led with design systems and design engineering; the user judged that too design-heavy and asked to be presented as a full stack / software engineer. Design systems now sits as one strand of three rather than two of three. Do not re-weight the copy back toward design without the user asking.
 
+**Revised 2026-08-10 on the user's instruction.** The frontend depth is now stated as **client-side architecture** rather than offset by breadth. The previous sentence ("deepest in the frontend, with real work in backend services...") treated frontend as a limitation being compensated for; the CV evidences the opposite. Client-side architecture means state, caching, data orchestration, build and release, which is what the 40+ component library across 296 files, the 130+ test Playwright suite with 6-way CI sharding, and the Ember-to-React rebuild at parity in six months actually are.
+
+The full stack claim stands unchanged and still traces to the API/service/database contributions and the Kubernetes, Fastify, Elasticsearch and AWS work. This revision changed how the frontend half is framed, not what is claimed. Nothing new was asserted.
+
+Two things deliberately not on the site: the iceberg metaphor (a visual metaphor written out as prose reads as a pitch deck, and the site's job is to show rather than argue) and the traced-user-action walkthrough (good material, but it belongs in a writing post rather than in copy a recruiter skims).
+
 ## Operating Context
 
 - Evaluated in a browser tab alongside competing candidates, frequently on a phone.

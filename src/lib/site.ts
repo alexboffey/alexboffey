@@ -14,7 +14,7 @@ export const site = {
   email: "alex@alexboffey.co.uk",
   years: 9,
   positioning:
-    "Full stack software engineer. Deepest in the frontend, with real work in backend services, infrastructure and databases.",
+    "Full stack software engineer. The depth is client-side architecture: state, caching, data orchestration, build and release. Backend services, infrastructure and databases are part of the same job.",
   description:
     "Alex Boffey is a full stack software engineer in London: nine years across frontend, backend services and infrastructure.",
 } as const
@@ -27,14 +27,18 @@ export const social = {
 
 /**
  * The three strands of the practice, weighted the way the CV actually is:
- * product engineering first, backend and infrastructure second, design systems
- * as the specialism rather than the headline.
+ * client-side architecture first, backend and infrastructure second, design
+ * systems as the specialism rather than the headline.
+ *
+ * The first strand was called "Product engineering" until 2026-08-10. The label
+ * was vague while its summary was already describing systems work, so the
+ * heading now claims what the evidence underneath it supports.
  */
 export const strands = [
   {
-    name: "Product engineering",
+    name: "Client-side architecture",
     summary:
-      "Shipping production software, not prototypes. Leading a platform rebuild to feature parity, then the unglamorous work that keeps it habitable: rendering, state, build pipelines, performance budgets, and a testing strategy that someone will still trust in a year.",
+      "Leading a platform rebuild to feature parity, then the unglamorous work that keeps it habitable: rendering strategy, state and cache, build pipelines, performance budgets, and a testing strategy that someone will still trust in a year.",
   },
   {
     name: "Backend & infrastructure",
