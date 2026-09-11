@@ -28,7 +28,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "sirv-cli": "^3.0.1",
     "typescript": "^5.9.2",
-    "wrangler": "^4.119.0"
+    "wrangler": "^4.131.0"
   },
   "engines": {
     "node": ">=22.12.0"
