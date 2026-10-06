@@ -37,13 +37,25 @@ const channels = [
           solve it badly, whether that thing is a component or a service.
         </p>
         <p>
+          Simple, small, contained, easy to change beats complex and
+          over-engineered every time. Code that does one thing is easy to
+          change; code that does seven is not. You will have to change it next
+          month, and that is the whole case for keeping it small.
+        </p>
+        <p>
+          CI does the checks. Let engineers work the way they work; enforce at
+          the PR rather than at save-time or on every commit. A gate that is one
+          thing in one place is a gate people trust.
+        </p>
+        <p>
+          The e2e tests worth having drive the full system the way a real user
+          would. Happy-path assertions are easy to write and often add little. A
+          green suite can be entirely consistent with a broken feature.
+        </p>
+        <p>
           Accessibility and performance are not a later pass. They are cheaper
           at the primitive than at the feature, which is the entire argument for
           having a system in the first place.
-        </p>
-        <p>
-          I write when something took a day to work out and could not be found
-          written down. That is what the <a href="/writing/">writing</a> is.
         </p>
 
         <h2>The three strands</h2>
@@ -57,6 +69,26 @@ const channels = [
             ))
           }
         </dl>
+
+        <h2>Music &amp; audio</h2>
+        <p>
+          I play in a band and own the technical side of it: demos, sound
+          design, synthesis, sampling, and the live rig. The parts that need an
+          audio engineer get one. I collaborate rather than fake it.
+        </p>
+        <p>
+          The live rig is a hardware setup that takes production tracks and
+          breaks them down into a form the band can play against: stems,
+          playable effects, and a cue system that runs the show. On the side I
+          have been experimenting with MIDI-synced visuals through OBS driven
+          off the same hardware, and with sequencers and set-prep utilities in
+          the production workflow. None of that is in the live rig yet.
+        </p>
+        <p>
+          The two sides inform each other, mostly in one direction: software
+          habits travel into the music tech. Don't trust it until it is tested.
+          Use compute efficiently. Keep it simple.
+        </p>
       </section>
 
       <aside class="about__side" id="contact">

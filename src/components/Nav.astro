@@ -8,12 +8,7 @@ import Mark from "./Mark.astro"
  */
 const { path } = Astro.props as { path: string }
 
-const links = [
-  { href: "/cv/", label: "CV" },
-  { href: "/work/", label: "Work" },
-  { href: "/writing/", label: "Writing" },
-  { href: "/about/", label: "About" },
-]
+const links = [{ href: "/about/", label: "About" }]
 
 const isActive = (href: string) => path === href || path.startsWith(href)
 import styles from "./Nav.module.css"

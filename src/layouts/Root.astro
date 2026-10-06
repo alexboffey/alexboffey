@@ -25,9 +25,7 @@ const { title, description, quiet = false, scene = "portal" } = Astro.props
 const path = Astro.url.pathname
 const canonical = new URL(path, Astro.site ?? "https://alexboffey.co.uk")
 const fullTitle =
-  path === "/"
-    ? "Alex Boffey · Full stack software engineer"
-    : `${title} · Alex Boffey`
+  path === "/" ? `Alex Boffey · ${title}` : `${title} · Alex Boffey`
 ---
 
 <!doctype html>

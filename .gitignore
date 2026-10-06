@@ -31,3 +31,5 @@ blob-report/
 
 # Impeccable decision-page logs are session scratch.
 .impeccable/questions/
+.netlify
+.claude

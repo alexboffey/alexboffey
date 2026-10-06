@@ -13,10 +13,9 @@ export const site = {
   location: "London",
   email: "alex@alexboffey.co.uk",
   years: 9,
-  positioning:
-    "Full stack software engineer. The depth is client-side architecture: state, caching, data orchestration, build and release. Backend services, infrastructure and databases are part of the same job.",
+  positioning: "Full stack engineer, frontend-deep.",
   description:
-    "Alex Boffey is a full stack software engineer in London: nine years across frontend, backend services and infrastructure.",
+    "Alex Boffey is a full stack engineer in London, frontend-deep, with nine years across frontend, backend services and infrastructure.",
 } as const
 
 export const social = {
