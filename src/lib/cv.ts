@@ -1,16 +1,16 @@
 /**
- * The CV, transcribed from the vault with nothing added. Both sources are copied
- * into `docs/cv-sources/` as provenance: the April 2026 CV is the primary, and the
- * 2022 archive supplies the OrgVue and iWeb detail that the 2026 compression
- * dropped (company context, the Gizmo ETL work, the Staffordshire sessions).
+ * The CV, transcribed from the vault with nothing added. The current source is
+ * `docs/cv-sources/cv-2026-10.md` (October 2026); the April 2026 and 2022
+ * archive files alongside it are kept as provenance for anything the newer
+ * compressions dropped.
  *
  * Deliberately omitted from this file: the phone number on line 1 of the source.
  * It belongs on a CV sent to a named recipient, not on a public web page that
  * scrapers read. Email and LinkedIn already serve the contact job here.
  *
  * `detail: true` marks a bullet as depth rather than headline, which is what the
- * density control on the page toggles. Every bullet is real; the split is only
- * about how much a given reader wants at once.
+ * density control on the page toggles. The source markdown is flat; the split
+ * here is editorial and preserved across source updates. Every bullet is real.
  */
 
 export interface Bullet {
@@ -73,17 +73,17 @@ export const positions: Position[] = [
         text: "Built an internal design system of 40+ components using shadcn/ui and Radix UI, adopted across 296 files, with full Storybook documentation. Delivered two company rebrands through it, proving its flexibility.",
       },
       {
-        text: "Built and maintained the testing strategy across unit, integration, E2E (Playwright) and visual regression (Chromatic). The E2E suite grew to 130+ tests covering core user journeys, sharded across parallel CI workers via GitHub Actions.",
+        text: "Built and maintained the testing strategy across unit, integration, E2E (Playwright), and visual regression (Chromatic). The E2E suite grew to 130+ tests covering core user journeys, sharded across parallel CI workers via GitHub Actions.",
       },
       {
-        text: "Built the platform's data visualisation layer using Chart.js, D3 and Nivo. Wrote an RFC for the v2 chart library, presented it to the CTO, EM and Architect, then planned the full project in Linear.",
+        text: "Built the platform's data visualisation layer using Chart.js, D3, and Nivo. Wrote an RFC for the v2 chart library, presented it to the CTO, EM, and Architect, then planned the full project in Linear.",
       },
       {
         text: "Led the migration from Cypress to Playwright, introducing parallel execution and 6-way sharding in CI to keep test runs under 10 minutes.",
         detail: true,
       },
       {
-        text: "Onboarded engineers from a team of ~20 into React best practices, the design system and testing patterns through pairing sessions.",
+        text: "Onboarded engineers into React best practices, the design system, and testing patterns.",
         detail: true,
       },
       {
@@ -91,15 +91,15 @@ export const positions: Position[] = [
         detail: true,
       },
       {
-        text: "Contributed beyond the frontend remit to API, service and database repositories. Established the frontend as a monorepo with DX standards including TypeScript strict mode, ESLint, Husky and CI/CD quality gates on every PR.",
+        text: "Contributed beyond the frontend remit to API, service, and database repositories. Established the frontend as a monorepo with DX standards including TypeScript strict mode, ESLint, Husky, and CI/CD quality gates on every PR.",
         detail: true,
       },
       {
-        text: "Integrated observability tooling including Sentry error tracking, Elastic APM and Web Vitals monitoring.",
+        text: "Integrated observability tooling including Sentry error tracking, Elastic APM, and Web Vitals monitoring.",
         detail: true,
       },
       {
-        text: "Early adopter of AI-assisted development: engineered the codebase with structured rules for Claude and Codex, set up git worktree workflows for parallel agents, and built automation scripts for PR creation, codebase analysis and Linear project setup.",
+        text: "Early adopter of AI-assisted development: engineered the codebase with structured rules for Claude and Codex, set up git worktree workflows for parallel agents, and built automation scripts for PR creation, codebase analysis, and Linear project setup.",
         detail: true,
       },
       {
@@ -107,29 +107,22 @@ export const positions: Position[] = [
         detail: true,
       },
       {
-        text: "Ongoing contributor to nudge-agent, GEEIQ's internal engineering agent: given a Linear ticket labelled ai-eligible, it runs a Claude Code agent in a per-ticket Kubernetes Job that investigates, plans and opens a PR, with engineers re-entering at review.",
+        text: "Ongoing contributor to nudge-agent, an internal AI engineering agent that autonomously handles Linear tickets.",
       },
       {
-        text: "Shipped that agent's in-cluster Fastify webhook receiver (“switchbox”), which creates Kubernetes Jobs directly via ServiceAccount RBAC and replaced an external n8n and GitHub Actions dispatch chain. Added per-ticket deduplication so a burst of label events cannot fan out into duplicate Jobs, and constrained triggering to label-add events only.",
+        text: "Shipped the agent's in-cluster Fastify webhook receiver (“switchbox”) that creates Kubernetes Jobs directly via ServiceAccount RBAC, replacing an external n8n and GitHub Actions dispatch chain; the Linear Agent OAuth trigger path with HMAC-verified webhook and GraphQL session and activity writeback; and a daily Slack standup of AI-handled tickets as a Kubernetes CronJob aggregating from Elasticsearch with Linear and GitHub enrichment.",
         detail: true,
       },
       {
-        text: "Built the dual-trigger architecture on top of it: the Linear Agent OAuth path alongside the label webhook, with HMAC-verified webhooks and GraphQL session and activity writeback, documented with ADRs and sequence diagrams.",
+        text: "Built the Kibana observability dashboard for the agent (KPI tiles, live runs, outcomes donut, completed runs log) over the structured trace envelope emitted by both the switchbox and the agent Jobs.",
         detail: true,
       },
       {
-        text: "Built the agent's observability: a Kibana dashboard (KPI tiles, live runs, outcomes donut, completed runs log) over a structured trace envelope emitted by both the switchbox and the agent Jobs, plus a daily Slack standup of AI-handled tickets as a Kubernetes CronJob aggregating from Elasticsearch with Linear and GitHub enrichment.",
+        text: "Migrated the agent's MCP credentials into a dedicated AWS Secrets Manager group, synced to Kubernetes via External Secrets Operator.",
         detail: true,
       },
       {
-        text: "Migrated the agent's MCP credentials into a dedicated AWS Secrets Manager group, synced into Kubernetes via External Secrets Operator.",
-        detail: true,
-      },
-      {
-        text: "Owned Linear release signalling for the frontend: the contract that decides when CI tells Linear a release shipped. Built a dedicated test harness reproducing production's job graph so the semantics could be broken safely, and pinned down the three properties that actually break it: full clone depth (a shallow clone silently computes the wrong commit set), signalling gated on deploy success rather than tests passing, and sync and complete being two ordered calls rather than one.",
-      },
-      {
-        text: "Designed the preview pipeline that surfaces per-PR preview builds in Linear. Deliberately modelled a preview as a label plus a commented URL rather than as a release, because Linear releases cannot be deleted and a preview-as-release would outlive its own environment as a dead link; teardown removes the label on close or merge, and the ticket then flows into the beta release as normal.",
+        text: "Contributed to the Linear agent system that enables dispatching of headless Claude sessions via Kubernetes to execute agentic development tasks, guided by Linear ticket content, custom agent skills, development standards documentation, and MCP integrations for external services.",
         detail: true,
       },
     ],
@@ -220,14 +213,6 @@ export const positions: Position[] = [
         text: "Consolidated multiple existing repositories into a monorepo to improve developer experience.",
         detail: true,
       },
-      {
-        text: "Started on Gizmo, a JavaScript-like ETL tool, building and contributing to several small and mid-sized projects. The hard part was not the tool: knowledge was siloed, documentation was thin, and third-party resources like GitHub and Stack Overflow could not be used.",
-        detail: true,
-      },
-      {
-        text: "Ran sprint rituals, reviewed code, and onboarded developers hired through an external contracting agency as well as product owners and engineering managers. Assisted in hiring and interview processes.",
-        detail: true,
-      },
     ],
     stack: [
       "React",
@@ -256,10 +241,10 @@ export const positions: Position[] = [
       "A small agency building ecommerce for clients across B2C and B2B markets, on Magento and WordPress. Mostly implementing UI designs in markup, styling, JavaScript and PHP, which is where the CSS came from.",
     bullets: [
       {
-        text: "Built UIs across multiple ecommerce and marketing sites, with some CMS development, using Magento and WordPress.",
+        text: "Mostly built UIs across multiple ecommerce and marketing sites, with some CMS development, using Magento and WordPress.",
       },
       {
-        text: "Helped run two design sessions with undergraduate web development and design students at Staffordshire University in September 2017, assisting lecturers in evaluating their work, and took part in a Q&A about working in tech.",
+        text: "Assisted university lecturers in running design sessions and evaluating undergraduate students' work.",
         detail: true,
       },
     ],
