@@ -11,8 +11,8 @@
   publish = "dist"
 
 [build.environment]
-  # Matches .nvmrc. Astro 7 requires >=20.19.
-  NODE_VERSION = "20.19.0"
+  # Matches .nvmrc. Astro 7 requires >=22.12.
+  NODE_VERSION = "22.16.0"
   NPM_FLAGS = "--include=dev"
 
 # Deploy previews and branch builds run the same command.
