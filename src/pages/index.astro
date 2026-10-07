@@ -2,6 +2,7 @@
 import {
   education,
   interests,
+  pillars,
   positions,
   summary,
   unattributedStack,
@@ -35,6 +36,17 @@ const allSkills = [
       <h1 class="cv__title">{site.name}</h1>
       <p class="cv__tagline">{site.positioning}</p>
       <p class="lead cv__summary">{summary}</p>
+
+      <dl class="cv__pillars">
+        {
+          pillars.map((pillar) => (
+            <div class="cv__pillar">
+              <dt class="label cv__pillar-label">{pillar.label}</dt>
+              <dd class="cv__pillar-body">{pillar.text}</dd>
+            </div>
+          ))
+        }
+      </dl>
 
       <dl class="cv__facts">
         <div class="cv__fact">
@@ -324,11 +336,42 @@ const allSkills = [
     max-width: 68ch;
   }
 
+  .cv__pillars {
+    display: grid;
+    gap: var(--space-sm);
+    margin: var(--space-sm) 0 0;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--rule);
+    max-width: 74ch;
+  }
+
+  .cv__pillar {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .cv__pillar-label {
+    color: var(--incandescent);
+  }
+
+  .cv__pillar-body {
+    margin: 0;
+    color: var(--text-secondary);
+  }
+
+  @media (min-width: 46rem) {
+    .cv__pillar {
+      grid-template-columns: 10rem minmax(0, 1fr);
+      gap: var(--space-md);
+      align-items: baseline;
+    }
+  }
+
   .cv__facts {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
     gap: var(--space-md);
-    margin: var(--space-sm) 0 0;
+    margin: 0;
     padding-block: var(--space-md);
     border-block: 1px solid var(--rule);
   }

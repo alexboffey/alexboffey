@@ -52,7 +52,32 @@ export function yearsOfExperience(now: Date = new Date()) {
 }
 
 export const summary =
-  "Full stack engineer, deepest in client-side architecture, with 9 years across frontend, backend services and infrastructure. Led the Ember.js to React port at feature parity in 6 months. Built the design system (40+ components across 296 files, two rebrands shipped through it) and the Playwright suite (130+ tests, 6-way sharded CI under 10 minutes). Also ship through the API, services, Postgres and Kubernetes jobs when a feature needs it. The codebase is the context AI agents work within; strict types, tests and CI gates are what make their output reviewable at a glance."
+  "Full stack engineer, deepest in client-side architecture, with 9 years across frontend, backend services and infrastructure."
+
+/**
+ * The three pillars of the practice, from the Positioning and Talking Points
+ * vault note. Rendered on `/` as a labelled dl under the summary lead so each
+ * line reads as its own anchor rather than hiding inside a dense paragraph.
+ */
+export interface Pillar {
+  label: string
+  text: string
+}
+
+export const pillars: Pillar[] = [
+  {
+    label: "Specialisms",
+    text: "Design systems, state and data orchestration, testing and CI.",
+  },
+  {
+    label: "Breadth",
+    text: "Also work in the API, services, Postgres and the Kubernetes jobs that back the frontend.",
+  },
+  {
+    label: "Agents",
+    text: "A tidy codebase is the context AI agents work within; strict types and tests do the review for you.",
+  },
+]
 
 export const positions: Position[] = [
   {
