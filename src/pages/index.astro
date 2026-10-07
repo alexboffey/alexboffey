@@ -4,7 +4,6 @@ import {
   interests,
   pillars,
   positions,
-  summary,
   unattributedStack,
   yearsOfExperience,
 } from "../lib/cv"
@@ -35,7 +34,6 @@ const allSkills = [
     <header class="cv__head">
       <h1 class="cv__title">{site.name}</h1>
       <p class="cv__tagline">{site.positioning}</p>
-      <p class="lead cv__summary">{summary}</p>
 
       <dl class="cv__pillars">
         {
@@ -339,9 +337,7 @@ const allSkills = [
   .cv__pillars {
     display: grid;
     gap: var(--space-sm);
-    margin: var(--space-sm) 0 0;
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--rule);
+    margin: var(--space-md) 0 0;
     max-width: 74ch;
   }
 
