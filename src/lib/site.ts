@@ -15,7 +15,7 @@ export const site = {
   years: 9,
   positioning: "Full stack engineer, deepest in client-side architecture.",
   description:
-    "Alex Boffey is a full stack engineer in London, deepest in client-side architecture, with nine years across frontend, backend services and infrastructure. Treats a well-structured codebase as the context AI agents work within.",
+    "Alex Boffey is a full stack engineer in London, deepest in client-side architecture, with nine years across frontend, backend services and infrastructure. He builds the codebase so engineers and AI agents can both ship from it.",
 } as const
 
 export const social = {
@@ -39,7 +39,7 @@ export const strands = [
   {
     name: "Client-side architecture",
     summary:
-      "Leading a platform rebuild to feature parity, then the unglamorous work that keeps it habitable: rendering strategy, state and cache, build pipelines, performance budgets, a design system that absorbs rebrands, and a testing strategy someone will still trust in a year.",
+      "Led the Ember.js to React port at feature parity in 6 months, then the work that keeps it running: rendering strategy, state and cache, build pipelines, performance budgets, a design system that absorbs rebrands (40+ components across 296 files), and a Playwright suite under 10 minutes on 6-way sharded CI.",
   },
   {
     name: "End-to-end delivery",
@@ -49,6 +49,6 @@ export const strands = [
   {
     name: "AI engineering",
     summary:
-      "On top of the work above, not instead. Context engineering across the codebase so agents produce consistent output; harness design and observability around them; custom agent skills and MCP integrations. nudge-agent, GEEIQ's autonomous coding agent, dispatches headless Claude sessions to pick up Linear tickets and ship PRs, with a Kibana dashboard over the trace envelope.",
+      "On top of the work above, not instead. Structured rules in the repo for Claude and Codex, custom agent skills, MCP integrations, git worktrees for parallel agents, and a harness around them. nudge-agent, GEEIQ's autonomous coding agent, dispatches headless Claude sessions to pick up Linear tickets and ship PRs; a Kibana dashboard over its trace envelope is how you see what each run cost and whether it worked.",
   },
 ] as const
