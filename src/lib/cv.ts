@@ -52,7 +52,7 @@ export function yearsOfExperience(now: Date = new Date()) {
 }
 
 export const summary =
-  "Senior software engineer specialising in web application frontend development. Have led platform rebuilds, built design systems, and set engineering standards across teams. Comfortable working across the full stack, with direct contributions to backend services, infrastructure, and databases. Views AI as an amplifier: strong fundamentals and a well structured codebase let you get the most out of it and move faster."
+  "Full stack engineer, deepest in client-side architecture, with 9 years across frontend, backend services and infrastructure. Led an Ember.js to React platform rebuild to feature parity in 6 months, built the design system (40+ components, 296 files, two rebrands) and the Playwright suite (130+ tests, 6-way sharded CI) around it, and ship features end to end through API, services, Postgres and Kubernetes jobs. Treat a well-structured codebase, strict types, tests and CI gates as the context AI agents work within; that is what makes their output consistent and verifiable."
 
 export const positions: Position[] = [
   {
@@ -67,54 +67,42 @@ export const positions: Position[] = [
       "GEEIQ is a data and analytics platform for brands operating in gaming and virtual worlds. Joined as the company was transitioning from its original Ember.js application to a modern React stack.",
     bullets: [
       {
-        text: "Led the rebuild of the core platform from Ember.js to React, reaching feature parity within 6 months.",
+        text: "Led the Ember.js to React platform rebuild to feature parity in 6 months.",
       },
       {
-        text: "Built an internal design system of 40+ components using shadcn/ui and Radix UI, adopted across 296 files, with full Storybook documentation. Delivered two company rebrands through it, proving its flexibility.",
+        text: "Built the design system of 40+ components on shadcn/ui and Radix UI, adopted across 296 files with full Storybook documentation. Delivered two company rebrands through it, proving its flexibility.",
       },
       {
-        text: "Built and maintained the testing strategy across unit, integration, E2E (Playwright), and visual regression (Chromatic). The E2E suite grew to 130+ tests covering core user journeys, sharded across parallel CI workers via GitHub Actions.",
+        text: "Built and maintain the testing strategy across unit, integration, Playwright E2E (130+ tests on core journeys) and Chromatic visual regression. Migrated from Cypress to Playwright with 6-way sharded CI, keeping suites under 10 minutes.",
       },
       {
-        text: "Built the platform's data visualisation layer using Chart.js, D3, and Nivo. Wrote an RFC for the v2 chart library, presented it to the CTO, EM, and Architect, then planned the full project in Linear.",
+        text: "Shaped the frontend engineering practice: TypeScript strict, ESLint, Husky, squash-merge releases and CI gates on every PR, in a monorepo so the gates apply once.",
       },
       {
-        text: "Led the migration from Cypress to Playwright, introducing parallel execution and 6-way sharding in CI to keep test runs under 10 minutes.",
+        text: "Ongoing contributor to nudge-agent, GEEIQ's autonomous coding agent that picks up Linear tickets and ships PRs.",
+      },
+      {
+        text: "Contribute beyond the frontend remit to API, service and database repositories (Prisma, tRPC, Postgres), with recent additions including Zod-validated API boundaries with deduped Sentry reporting.",
         detail: true,
       },
       {
-        text: "Onboarded engineers into React best practices, the design system, and testing patterns.",
+        text: "Built the data visualisation layer on Chart.js, D3 and Nivo. Wrote the RFC for the v2 chart library, presented it to the CTO, EM and Architect, then planned the full project in Linear.",
         detail: true,
       },
       {
-        text: "Heavily involved in recruitment: interviewed engineers and product candidates, ran culture interviews, and designed technical tests and whiteboarding sessions.",
+        text: "Integrated observability: Sentry error tracking, Elastic APM and Web Vitals.",
         detail: true,
       },
       {
-        text: "Contributed beyond the frontend remit to API, service, and database repositories. Established the frontend as a monorepo with DX standards including TypeScript strict mode, ESLint, Husky, and CI/CD quality gates on every PR.",
+        text: 'Shipped the agent\'s in-cluster Fastify webhook receiver ("switchbox"), creating Kubernetes Jobs directly via ServiceAccount RBAC and replacing an external n8n and GitHub Actions dispatch chain. Added the Linear Agent OAuth trigger path with HMAC-verified webhook and GraphQL session and activity writeback.',
         detail: true,
       },
       {
-        text: "Integrated observability tooling including Sentry error tracking, Elastic APM, and Web Vitals monitoring.",
+        text: "Built a daily Slack standup of AI-handled tickets as a Kubernetes CronJob aggregating from Elasticsearch with Linear and GitHub enrichment.",
         detail: true,
       },
       {
-        text: "Early adopter of AI-assisted development: engineered the codebase with structured rules for Claude and Codex, set up git worktree workflows for parallel agents, and built automation scripts for PR creation, codebase analysis, and Linear project setup.",
-        detail: true,
-      },
-      {
-        text: "Participated in an internal AI committee, helping non-engineering teams understand and adopt AI tools.",
-        detail: true,
-      },
-      {
-        text: "Ongoing contributor to nudge-agent, an internal AI engineering agent that autonomously handles Linear tickets.",
-      },
-      {
-        text: "Shipped the agent's in-cluster Fastify webhook receiver (“switchbox”) that creates Kubernetes Jobs directly via ServiceAccount RBAC, replacing an external n8n and GitHub Actions dispatch chain; the Linear Agent OAuth trigger path with HMAC-verified webhook and GraphQL session and activity writeback; and a daily Slack standup of AI-handled tickets as a Kubernetes CronJob aggregating from Elasticsearch with Linear and GitHub enrichment.",
-        detail: true,
-      },
-      {
-        text: "Built the Kibana observability dashboard for the agent (KPI tiles, live runs, outcomes donut, completed runs log) over the structured trace envelope emitted by both the switchbox and the agent Jobs.",
+        text: "Built the Kibana observability dashboard for the agent (KPI tiles, live runs, outcomes donut, completed runs log) over a structured trace envelope emitted by both the switchbox and the agent Jobs.",
         detail: true,
       },
       {
@@ -122,7 +110,23 @@ export const positions: Position[] = [
         detail: true,
       },
       {
-        text: "Contributed to the Linear agent system that enables dispatching of headless Claude sessions via Kubernetes to execute agentic development tasks, guided by Linear ticket content, custom agent skills, development standards documentation, and MCP integrations for external services.",
+        text: "Context engineering across the GEEIQ codebase: structured rules for Claude and Codex, git worktree workflows for parallel agents, custom agent skills and MCP integrations. The design system, state patterns, strict types, tests and CI gates act as the context those sessions work within.",
+        detail: true,
+      },
+      {
+        text: "Built /visual-qa-sweep, a cross-environment visual QA skill that screenshots every main app page on a test build against baseline and publishes a draggable comparison artifact. Used it to clear a shared component change across 23 routes before merge.",
+        detail: true,
+      },
+      {
+        text: "Ran an agent-driven sprint delivery day: parallel git worktrees per Linear ticket, personal verification before push. Three ENG-level tickets In Review with deploy previews by close of day.",
+        detail: true,
+      },
+      {
+        text: "Participated in an internal AI committee, helping non-engineering teams understand and adopt AI tools.",
+        detail: true,
+      },
+      {
+        text: "Onboarded engineers into React best practices, the design system and testing patterns. Heavily involved in recruitment: interviewed engineers and product candidates, ran culture interviews, and designed technical tests and whiteboarding sessions.",
         detail: true,
       },
     ],

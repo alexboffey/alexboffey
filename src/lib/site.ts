@@ -13,9 +13,9 @@ export const site = {
   location: "London",
   email: "alex@alexboffey.co.uk",
   years: 9,
-  positioning: "Full stack engineer, frontend-deep.",
+  positioning: "Full stack engineer, deepest in client-side architecture.",
   description:
-    "Alex Boffey is a full stack engineer in London, frontend-deep, with nine years across frontend, backend services and infrastructure.",
+    "Alex Boffey is a full stack engineer in London, deepest in client-side architecture, with nine years across frontend, backend services and infrastructure. Treats a well-structured codebase as the context AI agents work within.",
 } as const
 
 export const social = {
@@ -25,28 +25,30 @@ export const social = {
 } as const
 
 /**
- * The three strands of the practice, weighted the way the CV actually is:
- * client-side architecture first, backend and infrastructure second, design
- * systems as the specialism rather than the headline.
+ * The three strands of the practice, aligned to the pillars in the
+ * "Positioning and Talking Points" vault note (2026-10-07): client-side
+ * architecture as the core, end-to-end delivery as the breadth, AI engineering
+ * on top of both.
  *
- * The first strand was called "Product engineering" until 2026-08-10. The label
- * was vague while its summary was already describing systems work, so the
- * heading now claims what the evidence underneath it supports.
+ * The first strand was called "Product engineering" until 2026-08-10 and
+ * "Design systems" rode as the third until 2026-10-07; design-system work now
+ * sits inside the client-side architecture strand, since the Positioning doc
+ * treats it as evidence under that pillar rather than its own headline.
  */
 export const strands = [
   {
     name: "Client-side architecture",
     summary:
-      "Leading a platform rebuild to feature parity, then the unglamorous work that keeps it habitable: rendering strategy, state and cache, build pipelines, performance budgets, and a testing strategy that someone will still trust in a year.",
+      "Leading a platform rebuild to feature parity, then the unglamorous work that keeps it habitable: rendering strategy, state and cache, build pipelines, performance budgets, a design system that absorbs rebrands, and a testing strategy someone will still trust in a year.",
   },
   {
-    name: "Backend & infrastructure",
+    name: "End-to-end delivery",
     summary:
       "Past the frontend remit and into the API, service and database repositories. Node and Fastify services, Postgres, GraphQL, Kubernetes jobs and RBAC, Elasticsearch, secrets management, and the CI/CD that ships all of it.",
   },
   {
-    name: "Design systems",
+    name: "AI engineering",
     summary:
-      "The specialism rather than the whole job. A component library and the rules around it: tokens, variants, and accessibility built into the primitive rather than bolted onto each feature. The interesting problems are the ones about change over time.",
+      "On top of the work above, not instead. Context engineering across the codebase so agents produce consistent output; harness design and observability around them; custom agent skills and MCP integrations. nudge-agent, GEEIQ's autonomous coding agent, dispatches headless Claude sessions to pick up Linear tickets and ship PRs, with a Kibana dashboard over the trace envelope.",
   },
 ] as const
