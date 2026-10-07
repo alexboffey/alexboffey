@@ -14,6 +14,8 @@ export const site = {
   email: "alex@alexboffey.co.uk",
   years: 9,
   positioning: "Full stack engineer, deepest in client-side architecture.",
+  taglineBody:
+    "I build frontends that are fast to ship on, for people and for AI agents, and I own features end to end, through the API and database.",
   description:
     "Alex Boffey is a full stack engineer in London, deepest in client-side architecture, with nine years across frontend, backend services and infrastructure. He builds the codebase so engineers and AI agents can both ship from it.",
 } as const
