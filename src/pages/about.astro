@@ -3,6 +3,10 @@ import Mark from "../components/Mark.astro"
 import { site, social, strands } from "../lib/site"
 import Root from "../layouts/Root.astro"
 
+const now = new Date()
+const stamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}-${String(now.getHours()).padStart(2, "0")}${String(now.getMinutes()).padStart(2, "0")}`
+const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
+
 const channels = [
   { href: `mailto:${site.email}`, label: "Email", value: site.email },
   { href: social.linkedin, label: "LinkedIn", value: "in/alexboffey" },
@@ -128,7 +132,11 @@ const channels = [
             <a class="action action--primary" href={`mailto:${site.email}`}>
               Email me
             </a>
-            <a class="action" href="/alex-boffey-cv.pdf" download>
+            <a
+              class="action"
+              href="/alex-boffey-cv.pdf"
+              download={cvDownloadName}
+            >
               Download CV
             </a>
           </div>
