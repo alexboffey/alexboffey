@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "cv": "node scripts/cv-pdf.mjs docs/cv-sources/cv-2026-10.md public/alex-boffey-cv.pdf",
-    "prebuild": "npm run cv",
+    "prebuild": "npx playwright install && npm run cv",
     "build": "astro build",
     "preview": "astro preview",
     "lint": "npm run lint:prettier && npm run lint:astro",
