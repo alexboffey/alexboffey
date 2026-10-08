@@ -51,6 +51,6 @@ export const strands = [
   {
     name: "AI engineering",
     summary:
-      "On top of the work above, not instead. Structured rules in the repo for Claude and Codex, custom agent skills, MCP integrations, git worktrees for parallel agents, and a harness around them. nudge-agent, GEEIQ's autonomous coding agent, dispatches headless Claude sessions to pick up Linear tickets and ship PRs; a Kibana dashboard over its trace envelope is how you see what each run cost and whether it worked.",
+      "On top of the work above, not instead. Structured rules in the repo for Claude and Codex, custom agent skills, MCP integrations (including design-to-code MCPs so component work starts from the Figma source rather than screenshots), git worktrees for parallel agents, and a harness around them. nudge-agent, GEEIQ's autonomous coding agent, dispatches headless Claude sessions to pick up Linear tickets and ship PRs; a Kibana dashboard over its trace envelope is how you see what each run cost and whether it worked.",
   },
 ] as const

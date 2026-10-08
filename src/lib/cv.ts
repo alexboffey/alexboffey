@@ -116,6 +116,9 @@ export const positions: Position[] = [
             text: "Built custom Claude Code skills merged into the frontend repo for the whole team to aid the dev cycle: /visual-qa-sweep (pre-merge screenshot QA across every main app page vs baseline), /check-and-fix-sentry-errors (automated production error triage with a PR per fix) and /prefer-semantic-tokens (design-token migration sweep).",
           },
           {
+            text: "Wired design-to-code MCPs (Figma) into the agent harness so component work starts from the design-system source of truth rather than screenshots, cutting the Figma-to-PR loop.",
+          },
+          {
             text: "Core contributor to nudge-agent, GEEIQ's autonomous coding agent that picks up Linear tickets and ships PRs. Built the in-cluster Fastify service that dispatches agent runs as Kubernetes Jobs, replacing an external n8n and GitHub Actions chain.",
           },
           {
