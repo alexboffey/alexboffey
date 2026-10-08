@@ -2,8 +2,8 @@
 import {
   education,
   interests,
-  pillars,
   positions,
+  profile,
   unattributedStack,
   yearsOfExperience,
 } from "../lib/cv"
@@ -31,16 +31,7 @@ const years = yearsOfExperience()
       <p class="cv__tagline">{site.positioning}</p>
       <p class="lead cv__summary">{site.taglineBody}</p>
 
-      <dl class="cv__pillars">
-        {
-          pillars.map((pillar) => (
-            <div class="cv__pillar">
-              <dt class="label cv__pillar-label">{pillar.label}</dt>
-              <dd class="cv__pillar-body">{pillar.text}</dd>
-            </div>
-          ))
-        }
-      </dl>
+      <p class="cv__profile">{profile}</p>
 
       <dl class="cv__facts">
         <div class="cv__fact">
@@ -92,11 +83,20 @@ const years = yearsOfExperience()
                   {position.context && (
                     <p class="role__context">{position.context}</p>
                   )}
-                  <ul class="role__bullets">
-                    {position.bullets.map((bullet) => (
-                      <li class="role__bullet">{bullet.text}</li>
-                    ))}
-                  </ul>
+                  {position.groups.map((group) => (
+                    <div class="role__group">
+                      {group.heading && (
+                        <h4 class="role__group-heading label">
+                          {group.heading}
+                        </h4>
+                      )}
+                      <ul class="role__bullets">
+                        {group.bullets.map((bullet) => (
+                          <li class="role__bullet">{bullet.text}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
 
                   <div class="role__stack">
                     <h4 class="role__stack-label label">Used here</h4>
@@ -144,6 +144,7 @@ const years = yearsOfExperience()
       <a class="action action--primary" href={`mailto:${site.email}`}>
         Email me
       </a>
+      <a class="action" href="/alex-boffey-cv.pdf" download>Download CV</a>
       <a class="action" href={social.linkedin} rel="me noopener">LinkedIn</a>
       <a class="action" href={social.github} rel="me noopener">GitHub</a>
     </footer>
@@ -177,33 +178,10 @@ const years = yearsOfExperience()
     max-width: 68ch;
   }
 
-  .cv__pillars {
-    display: grid;
-    gap: var(--space-sm);
+  .cv__profile {
     margin: var(--space-md) 0 0;
     max-width: 74ch;
-  }
-
-  .cv__pillar {
-    display: grid;
-    gap: var(--space-2xs);
-  }
-
-  .cv__pillar-label {
-    color: var(--incandescent);
-  }
-
-  .cv__pillar-body {
-    margin: 0;
     color: var(--text-secondary);
-  }
-
-  @media (min-width: 46rem) {
-    .cv__pillar {
-      grid-template-columns: 10rem minmax(0, 1fr);
-      gap: var(--space-md);
-      align-items: baseline;
-    }
   }
 
   .cv__facts {
@@ -379,6 +357,15 @@ const years = yearsOfExperience()
     border-bottom: 1px solid var(--rule);
     font-size: var(--size-small);
     color: var(--text-label);
+  }
+
+  .role__group + .role__group {
+    margin-top: var(--space-lg);
+  }
+
+  .role__group-heading {
+    margin: 0 0 var(--space-sm);
+    color: var(--incandescent);
   }
 
   .role__bullets {

@@ -8,7 +8,7 @@ export const site = {
   name: "Alex Boffey",
   surname: "Boffey",
   url: "https://alexboffey.co.uk",
-  role: "Senior Frontend Engineer II",
+  role: "Senior Frontend Engineer",
   employer: "GEEIQ",
   location: "London",
   email: "alex@alexboffey.co.uk",

@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "cv": "node scripts/cv-pdf.mjs docs/cv-sources/cv-2026-10.md public/alex-boffey-cv.pdf",
+    "prebuild": "npm run cv",
     "build": "astro build",
     "preview": "astro preview",
     "lint": "npm run lint:prettier && npm run lint:astro",
@@ -13,7 +15,8 @@
     "lint:astro": "astro check",
     "fix": "prettier --write \"**/*.{astro,ts,js,css,md,json}\"",
     "test": "playwright test",
-    "test:ui": "playwright test --ui"
+    "test:ui": "playwright test --ui",
+    "cv:pdf": "node scripts/cv-pdf.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",

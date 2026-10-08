@@ -1,21 +1,21 @@
 /**
  * The CV, transcribed from the vault with nothing added. The current source is
- * `docs/cv-sources/cv-2026-10.md` (October 2026); the April 2026 and 2022
- * archive files alongside it are kept as provenance for anything the newer
- * compressions dropped.
+ * `docs/cv-sources/cv-2026-10.md` (October 2026, v3-based structure); the
+ * earlier archive files alongside it are provenance only.
  *
- * Deliberately omitted from this file: the phone number on line 1 of the source.
- * It belongs on a CV sent to a named recipient, not on a public web page that
- * scrapers read. Email and LinkedIn already serve the contact job here.
- *
- * `detail: true` marks a bullet as depth rather than headline, which is what the
- * density control on the page toggles. The source markdown is flat; the split
- * here is editorial and preserved across source updates. Every bullet is real.
+ * Deliberately omitted from this file: the phone number on line 1 of the
+ * source. It belongs on a CV sent to a named recipient, not on a public web
+ * page that scrapers read. Email and LinkedIn already serve the contact job.
  */
 
 export interface Bullet {
   text: string
-  detail?: boolean
+}
+
+export interface BulletGroup {
+  /** Optional subheading above a cluster of bullets (e.g. "Platform and architecture"). */
+  heading?: string
+  bullets: Bullet[]
 }
 
 export interface Role {
@@ -30,7 +30,8 @@ export interface Position {
   /** Multiple titles where the role was promoted within one organisation. */
   roles: Role[]
   context?: string
-  bullets: Bullet[]
+  /** One or more clusters; a single group with no heading reads as a flat list. */
+  groups: BulletGroup[]
   /**
    * What was actually used in this role, rather than a detached keyword list.
    * Only technologies evidenced by this position's own bullets or by the source
@@ -51,33 +52,13 @@ export function yearsOfExperience(now: Date = new Date()) {
   return Math.floor(months / 12)
 }
 
-export const summary =
-  "Full stack engineer, deepest in client-side architecture, with 9 years across frontend, backend services and infrastructure."
-
 /**
- * The three pillars of the practice, from the Positioning and Talking Points
- * vault note. Rendered on `/` as a labelled dl under the summary lead so each
- * line reads as its own anchor rather than hiding inside a dense paragraph.
+ * The Profile paragraph from the October 2026 v3 draft. Replaces the three
+ * labelled pillars that used to sit under the hero tagline, so the same
+ * elevator pitch is on the site, in the PDF and in the markdown.
  */
-export interface Pillar {
-  label: string
-  text: string
-}
-
-export const pillars: Pillar[] = [
-  {
-    label: "Specialisms",
-    text: "Design systems, state and data orchestration, testing and CI.",
-  },
-  {
-    label: "Breadth",
-    text: "Also work in the API, services, Postgres and the Kubernetes jobs that back the frontend.",
-  },
-  {
-    label: "Agents",
-    text: "A tidy codebase is the context AI agents work within; strict types and tests do the review for you.",
-  },
-]
+export const profile =
+  "Full stack engineer with 9 years' experience, deepest in client-side architecture: design systems, state and data orchestration, testing and CI. Led the rebuild of GEEIQ's analytics platform in React and built the design system and test suite it runs on. Also work in the API, Postgres and the Kubernetes services behind the frontend, and structure codebases so AI agents ship consistent, tested code. Looking for a frontend or product engineering role owning features end to end."
 
 export const positions: Position[] = [
   {
@@ -89,70 +70,72 @@ export const positions: Position[] = [
       { title: "Senior Frontend Engineer", span: "Jun 2022 – Aug 2025" },
     ],
     context:
-      "GEEIQ is a data and analytics platform for brands operating in gaming and virtual worlds. Joined as the company was transitioning from its original Ember.js application to a modern React stack.",
-    bullets: [
+      "Data and analytics platform used by 20 to 30 brands in gaming and virtual worlds, each with multiple users. Joined as the company moved from its original Ember.js application to React.",
+    groups: [
       {
-        text: "Led the rebuild of the primary client-facing application in React, at feature parity in 6 months.",
+        heading: "Platform and architecture",
+        bullets: [
+          {
+            text: "Led a team of 4 rebuilding the primary client-facing application in React, reaching feature parity in 6 months.",
+          },
+          {
+            text: "Built the design system: 40+ components on Radix UI and shadcn/ui, adopted across 296 files and documented in Storybook. Shipped two company rebrands through it, each implemented within a week.",
+          },
+          {
+            text: "Set the frontend practice: monorepo, TypeScript strict mode, ESLint, pre-commit hooks and CI gates on every PR.",
+          },
+          {
+            text: "Built the data visualisation layer on D3, Chart.js and Nivo, and wrote the RFC for the v2 chart library.",
+          },
+          {
+            text: "Led the component build for Dashboard Views: rebuilt the core Card component across 67 call sites with no breaking changes, made Tabs fully keyboard accessible across 51 navigation items, and built a drag-and-resize widget grid with keyboard support.",
+          },
+          {
+            text: "Added Zod-validated API boundaries with deduplicated Sentry reporting, alongside Elastic APM and Web Vitals monitoring.",
+          },
+        ],
       },
       {
-        text: "Built the design system: 40+ components on shadcn/ui and Radix UI, adopted across 296 files, Storybook docs. Two company rebrands shipped through it.",
+        heading: "Testing and quality",
+        bullets: [
+          {
+            text: "Built and maintain the test suite across unit, integration, Playwright E2E (130+ tests on core journeys) and Chromatic visual regression.",
+          },
+          {
+            text: "Moved from Cypress to Playwright and sharded CI 6 ways, cutting full test runs from 15 to 20 minutes down to 5 to 10.",
+          },
+        ],
       },
       {
-        text: "Built and maintain the test suite: unit, integration, Playwright E2E (130+ tests on core journeys), Chromatic visual regression. Moved from Cypress to Playwright and sharded CI 6 ways; the suite stays under 10 minutes.",
+        heading: "AI engineering and fullstack",
+        bullets: [
+          {
+            text: "Context engineering across the codebase: rules for Claude and Codex, custom agent skills, MCP integrations and git worktrees for parallel agents. Ran a sprint's remaining tickets as a parallel agent loop, getting 3 into review with previews in one day.",
+          },
+          {
+            text: "Built custom Claude Code skills merged into the frontend repo for the whole team to aid the dev cycle: /visual-qa-sweep (pre-merge screenshot QA across every main app page vs baseline), /check-and-fix-sentry-errors (automated production error triage with a PR per fix) and /prefer-semantic-tokens (design-token migration sweep).",
+          },
+          {
+            text: "Core contributor to nudge-agent, GEEIQ's autonomous coding agent that picks up Linear tickets and ships PRs. Built the in-cluster Fastify service that dispatches agent runs as Kubernetes Jobs, replacing an external n8n and GitHub Actions chain.",
+          },
+          {
+            text: "Added the agent's Linear integration (OAuth, signed webhooks), a daily Slack standup of AI-handled tickets from Elasticsearch, and a Kibana dashboard tracking runs and outcomes.",
+          },
+          {
+            text: "Work in the Next.js admin tool and the API, service and database repos (Prisma, tRPC, PostgreSQL).",
+          },
+        ],
       },
       {
-        text: "Set the frontend practice: TypeScript strict, ESLint, Husky, squash-merge releases, CI gates on every PR. Monorepo so the gates apply once.",
-      },
-      {
-        text: "Ongoing contributor to nudge-agent, GEEIQ's autonomous coding agent that picks up Linear tickets and ships PRs.",
-      },
-      {
-        text: "Also work in the Next.js admin tool and the API, service and database repos (Prisma, tRPC, Postgres). Recent: Zod-validated API boundaries with deduped Sentry reporting.",
-        detail: true,
-      },
-      {
-        text: "Built the data visualisation layer on Chart.js, D3 and Nivo. Wrote the RFC for the v2 chart library.",
-        detail: true,
-      },
-      {
-        text: "Wired up observability: Sentry, Elastic APM, Web Vitals.",
-        detail: true,
-      },
-      {
-        text: "Shipped an in-cluster Fastify webhook receiver that creates Kubernetes Jobs via ServiceAccount RBAC. Replaced an external n8n + GitHub Actions dispatch chain. Added the Linear Agent OAuth trigger path with HMAC-verified webhook and GraphQL session/activity writeback.",
-        detail: true,
-      },
-      {
-        text: "Built a daily Slack standup of AI-handled tickets as a Kubernetes CronJob aggregating from Elasticsearch with Linear and GitHub enrichment.",
-        detail: true,
-      },
-      {
-        text: "Built the agent's Kibana dashboard (KPI tiles, live runs, outcomes donut, completed runs log) on top of a structured trace envelope the webhook receiver and the agent Jobs both emit.",
-        detail: true,
-      },
-      {
-        text: "Moved the agent's MCP credentials into an AWS Secrets Manager group, synced to Kubernetes via External Secrets Operator.",
-        detail: true,
-      },
-      {
-        text: "Context engineering across the GEEIQ codebase: structured rules for Claude and Codex, git worktrees for parallel agents, custom agent skills, MCP integrations. The design system, state patterns, strict types, tests and CI gates are the context those sessions work within.",
-        detail: true,
-      },
-      {
-        text: "Built custom Claude Code skills merged into the frontend repo for the whole team to aid the dev cycle: /visual-qa-sweep (pre-merge screenshot QA across every main app page vs baseline), /check-and-fix-sentry-errors (automated production error triage with a PR per fix) and /prefer-semantic-tokens (design-token migration sweep).",
-        detail: true,
-      },
-      {
-        text: "Ran a sprint delivery day with the agent in parallel: one git worktree per Linear ticket, personal verification before push. Three tickets In Review with deploy previews by end of day.",
-        detail: true,
-      },
-      {
-        text: "On the internal AI committee, helping non-engineering teams pick up AI tools.",
-        detail: true,
-      },
-      {
-        text: "Onboarded engineers into React, the design system and the testing patterns. Also in recruitment: ran engineering and product interviews, culture interviews, and designed the technical test and whiteboarding sessions.",
-        detail: true,
+        heading: "Leadership",
+        bullets: [
+          {
+            text: "Ran 10+ engineering, product and culture interviews, designed the technical test and whiteboarding sessions, and onboarded engineers into React, the design system and testing.",
+          },
+          {
+            text: "On the AI committee, helping non-engineering teams adopt AI tools.",
+          },
+        ],
       },
     ],
     stack: [
@@ -216,34 +199,25 @@ export const positions: Position[] = [
       { title: "Software Developer", span: "Apr 2019 – Jun 2021" },
       { title: "Junior Developer", span: "Oct 2018 – Apr 2019" },
     ],
-    context:
-      "OrgVue is a SaaS business in org design, HR tooling and workforce planning. During my time there it moved from bespoke consulting services to a recurring-revenue SaaS model. Aside from internal tooling, I worked on the applications for administering and taking surveys.",
-    bullets: [
+    groups: [
       {
-        text: "Led frontend development and technical specification of a job description generation application while mentoring a junior engineer.",
-      },
-      {
-        text: "Built a dynamic branding system for surveys with a preview feature rendering one application inside another.",
-      },
-      {
-        text: "Developed a Node CLI tool for creating and updating data store schemas used in survey applications, integrated into the CI pipeline.",
-        detail: true,
-      },
-      {
-        text: "Built a data migration tool in Node for transitioning legacy data structures to a new schema via REST API.",
-        detail: true,
-      },
-      {
-        text: "Optimised performance bottlenecks that surfaced when working with large datasets.",
-        detail: true,
-      },
-      {
-        text: "Migrated an application to a new data service, refactoring downstream changes across the entire codebase.",
-        detail: true,
-      },
-      {
-        text: "Consolidated multiple existing repositories into a monorepo to improve developer experience.",
-        detail: true,
+        bullets: [
+          {
+            text: "Led frontend development and technical specification of a job description generation application, mentoring a junior engineer.",
+          },
+          {
+            text: "Consolidated multiple repositories into a monorepo to improve developer experience.",
+          },
+          {
+            text: "Built Node tooling: a CLI for creating and updating survey data store schemas, run in CI, and a tool migrating legacy data to a new schema via REST API.",
+          },
+          {
+            text: "Built a dynamic branding system for surveys, with a live preview rendering one application inside another.",
+          },
+          {
+            text: "Fixed performance bottlenecks in large dataset handling and migrated an application to a new data service across the codebase.",
+          },
+        ],
       },
     ],
     stack: [
@@ -269,15 +243,13 @@ export const positions: Position[] = [
     location: "Stafford, UK",
     span: "May 2017 – Oct 2018",
     roles: [{ title: "Front End Developer", span: "May 2017 – Oct 2018" }],
-    context:
-      "A small agency building ecommerce for clients across B2C and B2B markets, on Magento and WordPress. Mostly implementing UI designs in markup, styling, JavaScript and PHP, which is where the CSS came from.",
-    bullets: [
+    groups: [
       {
-        text: "Mostly built UIs across multiple ecommerce and marketing sites, with some CMS development, using Magento and WordPress.",
-      },
-      {
-        text: "Assisted university lecturers in running design sessions and evaluating undergraduate students' work.",
-        detail: true,
+        bullets: [
+          {
+            text: "Built UIs for ecommerce and marketing sites on Magento and WordPress.",
+          },
+        ],
       },
     ],
     stack: ["HTML", "CSS", "JavaScript", "Magento", "WordPress", "PHP"],
@@ -293,15 +265,12 @@ export const positions: Position[] = [
  * claim about that employer's codebase.
  */
 export const unattributedStack = [
-  "Next.js",
   "Svelte",
-  "Prisma",
-  "tRPC",
+  "Express",
   "PostgreSQL",
   "SQL",
   "Python",
   "Flask",
-  "Express",
   "Firebase",
   "Cloudflare Workers",
   "AWS S3",
@@ -315,4 +284,4 @@ export const education = {
 }
 
 export const interests =
-  "Music production, audio engineering, graphic design, motion design and branding, developed through coordinating and producing creative work for a band project."
+  "Music production, audio engineering, graphic design, motion design and branding, developed producing creative work for a band project."

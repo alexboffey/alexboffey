@@ -120,12 +120,14 @@ const channels = [
             }
           </dl>
 
-          <a
-            class="action action--primary about__cta"
-            href={`mailto:${site.email}`}
-          >
-            Email me
-          </a>
+          <div class="about__ctas">
+            <a class="action action--primary" href={`mailto:${site.email}`}>
+              Email me
+            </a>
+            <a class="action" href="/alex-boffey-cv.pdf" download>
+              Download CV
+            </a>
+          </div>
         </div>
       </aside>
     </div>
@@ -263,7 +265,10 @@ const channels = [
     color: var(--incandescent);
   }
 
-  .about__cta {
+  .about__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
     justify-self: start;
   }
 </style>
