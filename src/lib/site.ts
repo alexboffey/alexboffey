@@ -41,7 +41,7 @@ export const strands = [
   {
     name: "Client-side architecture",
     summary:
-      "Led the Ember.js to React port at feature parity in 6 months, then the work that keeps it running: rendering strategy, state and cache, build pipelines, performance budgets, a design system that absorbs rebrands (40+ components across 296 files), and a Playwright suite under 10 minutes on 6-way sharded CI.",
+      "Led the rebuild of the primary client-facing application in React at feature parity in 6 months, then the work that keeps it running: rendering strategy, state and cache, build pipelines, performance budgets, a design system that absorbs rebrands (40+ components across 296 files), and a Playwright suite under 10 minutes on 6-way sharded CI.",
   },
   {
     name: "End-to-end delivery",

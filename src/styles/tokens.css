@@ -117,3 +117,11 @@
     --dur-enter: 1ms;
   }
 }
+
+/* Rails show at 1180px; bump the shell gutter so content clears the rotated
+   rail text that sits in the margin. */
+@media (min-width: 1180px) {
+  :root {
+    --gutter: 5.5rem;
+  }
+}

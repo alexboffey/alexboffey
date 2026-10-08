@@ -7,7 +7,6 @@ const channels = [
   { href: `mailto:${site.email}`, label: "Email", value: site.email },
   { href: social.linkedin, label: "LinkedIn", value: "in/alexboffey" },
   { href: social.github, label: "GitHub", value: "alexboffey" },
-  { href: social.twitter, label: "Twitter", value: "@alexboffey" },
 ]
 ---
 
@@ -19,12 +18,10 @@ const channels = [
         <span class="about__accent">deepest in client-side architecture</span>
       </h1>
       <p class="lead about__lead">
-        I am {site.role} at <a href="https://www.geeiq.com/">{site.employer}</a
-        >{" "}
-        in {site.location}, nine years in. Frontend is where I am deepest. What
-        I spend most of my time on at the moment is the harness side of AI
-        engineering: nudge-agent, custom Claude Code skills, the Kibana
-        dashboard that tells you whether each run was worth the money.
+        Hi, I'm Alex. London-based software engineer, nine years in. Started on
+        the frontend and that's still where I'm deepest. These days I'll follow
+        a feature through the API, the database and the infrastructure that runs
+        it, which is how I ended up calling myself full stack.
       </p>
     </header>
 
@@ -83,7 +80,7 @@ const channels = [
           playable effects, and a cue system that runs the show. On the side I
           have been experimenting with MIDI-synced visuals through OBS driven
           off the same hardware, and with sequencers and set-prep utilities in
-          the production workflow. None of that is in the live rig yet.
+          the production workflow.
         </p>
         <p>
           The two sides inform each other, mostly in one direction: software
@@ -189,7 +186,6 @@ const channels = [
   .about__strands {
     display: grid;
     gap: var(--space-xs);
-    margin: 0;
   }
 
   .about__strand-name {

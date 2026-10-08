@@ -16,12 +16,7 @@ import Root from "../layouts/Root.astro"
  * facts, roles. The lattice behind it is brand mood, not the stage.
  */
 
-const totalBullets = positions.reduce((n, p) => n + p.bullets.length, 0)
 const years = yearsOfExperience()
-const allSkills = [
-  ...positions.flatMap((position) => position.stack),
-  ...unattributedStack,
-]
 ---
 
 <Root
@@ -30,7 +25,7 @@ const allSkills = [
   scene="about"
   quiet
 >
-  <div class="cv shell is-full">
+  <div class="cv shell">
     <header class="cv__head">
       <h1 class="cv__title">{site.name}</h1>
       <p class="cv__tagline">{site.positioning}</p>
@@ -65,40 +60,6 @@ const allSkills = [
           <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
         </div>
       </dl>
-
-      <div class="cv__controls" data-cv-controls>
-        <div class="cv__control">
-          <button class="action" type="button" data-density aria-pressed="true">
-            <span data-density-label>Show headlines only</span>
-          </button>
-          <p class="cv__hint" data-density-hint>
-            Showing all {totalBullets} bullets.
-          </p>
-        </div>
-
-        <div class="cv__control cv__control--filter">
-          <label class="label" for="cv-filter">Highlight a technology</label>
-          <input
-            class="cv__filter"
-            id="cv-filter"
-            type="search"
-            list="cv-skills"
-            placeholder="Playwright, design system, D3…"
-            autocomplete="off"
-            data-filter
-          />
-          <datalist id="cv-skills">
-            {allSkills.map((skill) => <option value={skill} />)}
-          </datalist>
-          <p
-            class="cv__hint"
-            data-filter-status
-            role="status"
-            aria-live="polite"
-          >
-          </p>
-        </div>
-      </div>
     </header>
 
     <section class="cv__section" aria-labelledby="cv-experience">
@@ -133,15 +94,7 @@ const allSkills = [
                   )}
                   <ul class="role__bullets">
                     {position.bullets.map((bullet) => (
-                      <li
-                        class:list={[
-                          "role__bullet",
-                          { "is-detail": bullet.detail },
-                        ]}
-                        data-text={bullet.text}
-                      >
-                        {bullet.text}
-                      </li>
+                      <li class="role__bullet">{bullet.text}</li>
                     ))}
                   </ul>
 
@@ -149,9 +102,7 @@ const allSkills = [
                     <h4 class="role__stack-label label">Used here</h4>
                     <ul class="role__stack-items">
                       {position.stack.map((item) => (
-                        <li class="skill" data-skill={item.toLowerCase()}>
-                          {item}
-                        </li>
+                        <li class="skill">{item}</li>
                       ))}
                     </ul>
                   </div>
@@ -170,13 +121,7 @@ const allSkills = [
         they sit here rather than under an employer.
       </p>
       <ul class="skillgroup__items">
-        {
-          unattributedStack.map((item) => (
-            <li class="skill" data-skill={item.toLowerCase()}>
-              {item}
-            </li>
-          ))
-        }
+        {unattributedStack.map((item) => <li class="skill">{item}</li>)}
       </ul>
     </section>
 
@@ -195,7 +140,7 @@ const allSkills = [
       </div>
     </section>
 
-    <footer class="cv__foot">
+    <footer class="cv__foot" id="contact">
       <a class="action action--primary" href={`mailto:${site.email}`}>
         Email me
       </a>
@@ -204,109 +149,6 @@ const allSkills = [
     </footer>
   </div>
 </Root>
-
-<script>
-  /**
-   * Density and filter. No framework, no state library: two booleans and a
-   * string, held in the DOM where they already live.
-   */
-  function boot() {
-    const found = document.querySelector<HTMLElement>(".cv")
-    if (!found) return
-    const root: HTMLElement = found
-    if (root.dataset.bound === "true") return
-    root.dataset.bound = "true"
-
-    const densityBtn = root.querySelector<HTMLButtonElement>("[data-density]")
-    const densityLabel = root.querySelector<HTMLElement>("[data-density-label]")
-
-    setDensity(false)
-
-    function setDensity(full: boolean) {
-      root.classList.toggle("is-full", full)
-      densityBtn?.setAttribute("aria-pressed", String(full))
-      if (densityLabel) {
-        densityLabel.textContent = full
-          ? "Show headlines only"
-          : "Show full detail"
-      }
-      const hint = root.querySelector<HTMLElement>("[data-density-hint]")
-      if (hint) {
-        const shown = root.querySelectorAll(
-          full ? ".role__bullet" : ".role__bullet:not(.is-detail)",
-        ).length
-        hint.textContent = full
-          ? `Showing all ${shown} bullets.`
-          : `Showing ${shown} headlines. Toggle for the rest.`
-      }
-    }
-
-    densityBtn?.addEventListener("click", () => {
-      setDensity(!root.classList.contains("is-full"))
-    })
-
-    const filter = root.querySelector<HTMLInputElement>("[data-filter]")
-    const status = root.querySelector<HTMLElement>("[data-filter-status]")
-    const bullets = Array.from(
-      root.querySelectorAll<HTMLElement>(".role__bullet"),
-    )
-    const skillTags = Array.from(root.querySelectorAll<HTMLElement>(".skill"))
-
-    const clear = () => {
-      root.classList.remove("is-filtering")
-      bullets.forEach((b) => b.classList.remove("is-match"))
-      skillTags.forEach((s) => s.classList.remove("is-match"))
-      if (status) status.textContent = ""
-    }
-
-    filter?.addEventListener("input", () => {
-      const term = filter.value.trim().toLowerCase()
-      if (term.length < 2) {
-        clear()
-        return
-      }
-
-      root.classList.add("is-filtering")
-      let hits = 0
-
-      for (const bullet of bullets) {
-        const match = (bullet.dataset.text ?? "").toLowerCase().includes(term)
-        bullet.classList.toggle("is-match", match)
-        if (match) {
-          hits += 1
-          const box = bullet.closest<HTMLDetailsElement>("details.role__box")
-          if (box) box.open = true
-        }
-      }
-
-      let skillHits = 0
-      for (const tag of skillTags) {
-        const match = (tag.dataset.skill ?? "").includes(term)
-        tag.classList.toggle("is-match", match)
-        if (match) skillHits += 1
-      }
-
-      if (status) {
-        const parts: string[] = []
-        parts.push(
-          `${hits} ${hits === 1 ? "mention" : "mentions"} in experience`,
-        )
-        if (skillHits) parts.push(`${skillHits} in skills`)
-        status.textContent =
-          hits + skillHits === 0
-            ? "No mention of that."
-            : parts.join(", ") + "."
-      }
-    })
-
-    filter?.addEventListener("search", () => {
-      if (!filter.value) clear()
-    })
-  }
-
-  boot()
-  document.addEventListener("astro:page-load", boot)
-</script>
 
 <style>
   .cv {
@@ -381,56 +223,6 @@ const allSkills = [
 
   .cv__fact a {
     color: var(--incandescent);
-  }
-
-  .cv__controls {
-    display: grid;
-    gap: var(--space-lg);
-    margin-top: var(--space-xs);
-  }
-
-  @media (min-width: 46rem) {
-    .cv__controls {
-      grid-template-columns: auto 1fr;
-      align-items: start;
-      gap: var(--space-2xl);
-    }
-  }
-
-  .cv__control {
-    display: grid;
-    gap: var(--space-xs);
-    align-content: start;
-  }
-
-  .cv__control .action {
-    justify-self: start;
-  }
-
-  .cv__hint {
-    font-size: var(--size-small);
-    color: var(--text-label);
-    min-height: 1.5em;
-  }
-
-  .cv__filter {
-    width: 100%;
-    max-width: 26rem;
-    padding: 0.7em 0.9em;
-    border: 1px solid var(--rule-strong);
-    border-radius: 0;
-    background: color-mix(in oklab, var(--abyss) 70%, transparent);
-    color: var(--paper);
-    font: inherit;
-    font-size: var(--size-small);
-  }
-
-  .cv__filter::placeholder {
-    color: var(--text-label);
-  }
-
-  .cv__filter:focus-visible {
-    border-color: var(--incandescent);
   }
 
   .cv__section {
@@ -561,7 +353,7 @@ const allSkills = [
 
   @media (min-width: 52rem) {
     .role__summary {
-      grid-template-columns: auto minmax(0, 1fr) minmax(14rem, 30%);
+      grid-template-columns: auto auto minmax(0, 1fr);
       align-items: start;
     }
 
@@ -601,9 +393,6 @@ const allSkills = [
     position: relative;
     padding-left: var(--space-md);
     color: var(--text-secondary);
-    transition:
-      color var(--dur-fast) var(--ease),
-      opacity var(--dur-fast) var(--ease);
   }
 
   .role__bullet::before {
@@ -615,33 +404,6 @@ const allSkills = [
     height: 4px;
     border: 1px solid var(--glimmer);
     transform: rotate(45deg);
-    transition: background-color var(--dur-fast) var(--ease);
-  }
-
-  .role__bullet.is-detail {
-    display: none;
-  }
-
-  .cv.is-full .role__bullet.is-detail {
-    display: block;
-  }
-
-  .cv.is-filtering .role__bullet {
-    opacity: 0.6;
-  }
-
-  .cv.is-filtering .role__bullet.is-match {
-    opacity: 1;
-    color: var(--paper);
-  }
-
-  .cv.is-filtering .role__bullet.is-match::before {
-    background: var(--incandescent);
-    border-color: var(--incandescent);
-  }
-
-  .cv.is-filtering .role__bullet.is-detail.is-match {
-    display: block;
   }
 
   .role__stack {
@@ -685,20 +447,6 @@ const allSkills = [
     border: 1px solid var(--rule);
     font-size: var(--size-small);
     color: var(--text-secondary);
-    transition:
-      border-color var(--dur-fast) var(--ease),
-      color var(--dur-fast) var(--ease),
-      opacity var(--dur-fast) var(--ease);
-  }
-
-  .cv.is-filtering .skill {
-    opacity: 0.55;
-  }
-
-  .cv.is-filtering .skill.is-match {
-    opacity: 1;
-    border-color: var(--incandescent);
-    color: var(--ember);
   }
 
   .cv__foot {
@@ -711,7 +459,6 @@ const allSkills = [
   }
 
   @media print {
-    .cv__controls,
     .cv__foot {
       display: none;
     }
@@ -735,10 +482,6 @@ const allSkills = [
     .skill {
       color: var(--print-text) !important;
       opacity: 1 !important;
-    }
-
-    .role__bullet.is-detail {
-      display: block !important;
     }
 
     .role__mark,

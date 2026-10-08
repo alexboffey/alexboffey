@@ -19,7 +19,7 @@ Node 22.12+ (`.nvmrc` pins 22.16.0). This is a hard floor, not a preference: Ast
 
 Deployment: **currently broken.** Netlify still serves the old Gatsby build. Making the repo private cut its read access (legacy webhook integration, no deploy keys), so it accepts the push webhook and then cannot clone.
 
-The replacement is scaffolded: `wrangler.jsonc` configures Cloudflare Workers Static Assets, and the `deploy` job in `.github/workflows/ci.yml` pushes the verified `dist/` artifact using `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Deploying from CI rather than a Git connection means Cloudflare never needs to read the private repo. Both secrets are unset, so the deploy job skips itself with a notice and the run still passes. See `TODO.md` for the hook-up steps.
+The replacement is scaffolded: `wrangler.jsonc` configures Cloudflare Workers Static Assets, and the `deploy` job in `.github/workflows/ci.yml` pushes the verified `dist/` artifact using `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Deploying from CI rather than a Git connection means Cloudflare never needs to read the private repo. Both secrets are unset, so the deploy job skips itself with a notice and the run still passes.
 
 CI is green as of `78e4ccc`. It was red on every run before that because `.nvmrc` pinned Node 20.19.0 against Astro 7's `>=22.12.0` floor. If a run fails on setup, check that first.
 

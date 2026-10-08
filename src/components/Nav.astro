@@ -11,6 +11,7 @@ const { path } = Astro.props as { path: string }
 const links = [{ href: "/about/", label: "About" }]
 
 const isActive = (href: string) => path === href || path.startsWith(href)
+const contactHref = path === "/" ? "#contact" : "/about/#contact"
 import styles from "./Nav.module.css"
 ---
 
@@ -37,7 +38,7 @@ import styles from "./Nav.module.css"
     }
     <a
       class:list={[styles.nav__link, styles["nav__link--action"]]}
-      href="/about/#contact">Contact</a
+      href={contactHref}>Contact</a
     >
   </nav>
 </header>

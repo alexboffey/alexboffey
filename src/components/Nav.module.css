@@ -97,6 +97,7 @@
 
 .nav__link--action {
   padding: 0.5em 0.9em;
+  text-indent: var(--track-label);
   border: 1px solid var(--rule-strong);
   color: var(--paper);
   transition:

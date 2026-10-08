@@ -92,7 +92,7 @@ export const positions: Position[] = [
       "GEEIQ is a data and analytics platform for brands operating in gaming and virtual worlds. Joined as the company was transitioning from its original Ember.js application to a modern React stack.",
     bullets: [
       {
-        text: "Led the Ember.js to React port at feature parity in 6 months.",
+        text: "Led the rebuild of the primary client-facing application in React, at feature parity in 6 months.",
       },
       {
         text: "Built the design system: 40+ components on shadcn/ui and Radix UI, adopted across 296 files, Storybook docs. Two company rebrands shipped through it.",
@@ -107,11 +107,11 @@ export const positions: Position[] = [
         text: "Ongoing contributor to nudge-agent, GEEIQ's autonomous coding agent that picks up Linear tickets and ships PRs.",
       },
       {
-        text: "Also work in the API, service and database repos (Prisma, tRPC, Postgres). Recent: Zod-validated API boundaries with deduped Sentry reporting.",
+        text: "Also work in the Next.js admin tool and the API, service and database repos (Prisma, tRPC, Postgres). Recent: Zod-validated API boundaries with deduped Sentry reporting.",
         detail: true,
       },
       {
-        text: "Built the data visualisation layer on Chart.js, D3 and Nivo. Wrote the RFC for the v2 chart library, presented it to the CTO, EM and Architect, then planned the project in Linear.",
+        text: "Built the data visualisation layer on Chart.js, D3 and Nivo. Wrote the RFC for the v2 chart library.",
         detail: true,
       },
       {
@@ -119,7 +119,7 @@ export const positions: Position[] = [
         detail: true,
       },
       {
-        text: "Shipped switchbox, an in-cluster Fastify webhook receiver that creates Kubernetes Jobs via ServiceAccount RBAC. Replaced an external n8n + GitHub Actions dispatch chain. Added the Linear Agent OAuth trigger path with HMAC-verified webhook and GraphQL session/activity writeback.",
+        text: "Shipped an in-cluster Fastify webhook receiver that creates Kubernetes Jobs via ServiceAccount RBAC. Replaced an external n8n + GitHub Actions dispatch chain. Added the Linear Agent OAuth trigger path with HMAC-verified webhook and GraphQL session/activity writeback.",
         detail: true,
       },
       {
@@ -127,7 +127,7 @@ export const positions: Position[] = [
         detail: true,
       },
       {
-        text: "Built the agent's Kibana dashboard (KPI tiles, live runs, outcomes donut, completed runs log) on top of a structured trace envelope the switchbox and the agent Jobs both emit.",
+        text: "Built the agent's Kibana dashboard (KPI tiles, live runs, outcomes donut, completed runs log) on top of a structured trace envelope the webhook receiver and the agent Jobs both emit.",
         detail: true,
       },
       {
@@ -139,7 +139,7 @@ export const positions: Position[] = [
         detail: true,
       },
       {
-        text: "Built /visual-qa-sweep, a Claude Code skill that screenshots every main app page on a test build vs baseline and posts a draggable comparison. Used it to clear a shared component change across 23 routes before merge.",
+        text: "Built custom Claude Code skills merged into the frontend repo for the whole team to aid the dev cycle: /visual-qa-sweep (pre-merge screenshot QA across every main app page vs baseline), /check-and-fix-sentry-errors (automated production error triage with a PR per fix) and /prefer-semantic-tokens (design-token migration sweep).",
         detail: true,
       },
       {
@@ -158,6 +158,7 @@ export const positions: Position[] = [
     stack: [
       "React",
       "TypeScript",
+      "Next.js",
       "Tailwind CSS",
       "shadcn/ui",
       "Radix UI",
@@ -177,6 +178,8 @@ export const positions: Position[] = [
       "React Testing Library",
       "MSW",
       "Chromatic",
+      "tRPC",
+      "Prisma",
       "GraphQL",
       "Node.js",
       "Fastify",
