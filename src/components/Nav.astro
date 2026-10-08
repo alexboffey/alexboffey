@@ -12,6 +12,11 @@ const links = [{ href: "/about/", label: "About" }]
 
 const isActive = (href: string) => path === href || path.startsWith(href)
 const contactHref = path === "/" ? "#contact" : "/about/#contact"
+
+const now = new Date()
+const stamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}-${String(now.getHours()).padStart(2, "0")}${String(now.getMinutes()).padStart(2, "0")}`
+const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
+
 import styles from "./Nav.module.css"
 ---
 
@@ -39,6 +44,11 @@ import styles from "./Nav.module.css"
     <a
       class:list={[styles.nav__link, styles["nav__link--action"]]}
       href={contactHref}>Contact</a
+    >
+    <a
+      class:list={[styles.nav__link, styles["nav__link--action"]]}
+      href="/alex-boffey-cv.pdf"
+      download={cvDownloadName}>Download CV</a
     >
   </nav>
 </header>
