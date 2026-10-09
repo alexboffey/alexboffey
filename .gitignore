@@ -17,6 +17,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# locally-rendered cover letter PDFs
+out/
+
 # Playwright
 test-results/
 playwright-report/

@@ -16,7 +16,8 @@
     "fix": "prettier --write \"**/*.{astro,ts,js,css,md,json}\"",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "cv:pdf": "node scripts/cv-pdf.mjs"
+    "cv:pdf": "node scripts/cv-pdf.mjs",
+    "letter": "node scripts/letter-pdf.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",

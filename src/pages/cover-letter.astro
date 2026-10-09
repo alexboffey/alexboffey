@@ -1,0 +1,158 @@
+---
+import { readFile } from "node:fs/promises"
+import { resolve } from "node:path"
+import { site } from "../lib/site"
+import Root from "../layouts/Root.astro"
+
+/**
+ * The generic cover letter, rendered from `docs/cover-letters/_generic.md` at
+ * build time. Not linked from the nav and not offered as a download: this is
+ * the written-up version of the profile, available for anyone who follows a
+ * direct link but kept out of the main flow. Tailored letters live alongside
+ * the generic in the same folder and never render to the site.
+ */
+
+const source = await readFile(
+  resolve(process.cwd(), "docs/cover-letters/_generic.md"),
+  "utf8",
+)
+
+const letterMatch = source.match(/^##\s+The letter\s*$([\s\S]*?)(?=^##\s)/m)
+const body = (letterMatch?.[1] ?? source).trim()
+
+interface Block {
+  kind: "name" | "contact" | "paragraph"
+  lines: string[]
+}
+
+const blocks: Block[] = body
+  .split(/\n\s*\n/)
+  .map((block) => block.trim())
+  .filter(Boolean)
+  .map((block, index, all) => {
+    const heading = block.match(/^#\s+(.+)$/)
+    if (heading) {
+      return { kind: "name" as const, lines: [heading[1]] }
+    }
+    const prev = all[index - 1]
+    const prevIsName = typeof prev === "string" && /^#\s+/.test(prev)
+    return {
+      kind: prevIsName ? ("contact" as const) : ("paragraph" as const),
+      lines: block.split("\n").map((line) => line.trim()).filter(Boolean),
+    }
+  })
+---
+
+<Root title="Cover letter" description={site.description} quiet scene="about">
+  <article class="letter shell">
+    <header class="letter__head">
+      <h1 class="letter__title">Cover letter</h1>
+      <p class="letter__note">
+        The generic version. Specific applications get the opening and closing
+        tailored to the role, kept to one page.
+      </p>
+    </header>
+
+    <div class="letter__body">
+      {
+        blocks.map((block) => {
+          if (block.kind === "name") {
+            return <h2 class="letter__name">{block.lines[0]}</h2>
+          }
+          if (block.kind === "contact") {
+            return (
+              <address class="letter__contact">{block.lines.join(" · ")}</address>
+            )
+          }
+          return (
+            <p class="letter__paragraph">
+              {block.lines.map((line, i) => (
+                <>
+                  {line}
+                  {i < block.lines.length - 1 && <br />}
+                </>
+              ))}
+            </p>
+          )
+        })
+      }
+    </div>
+  </article>
+</Root>
+
+<style>
+  .letter {
+    padding-block: var(--space-2xl) var(--space-3xl);
+    max-width: 72ch;
+  }
+
+  .letter__head {
+    display: grid;
+    gap: var(--space-sm);
+    padding-bottom: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .letter__title {
+    font-size: var(--size-display);
+    font-stretch: var(--wdth-display);
+    font-weight: 700;
+    color: var(--paper);
+  }
+
+  .letter__note {
+    max-width: 60ch;
+    color: var(--text-label);
+    font-size: var(--size-small);
+  }
+
+  .letter__body {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .letter__name {
+    font-family: var(--font-display);
+    font-size: var(--size-title);
+    font-stretch: var(--wdth-title);
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--paper);
+    margin: 0;
+  }
+
+  .letter__contact {
+    font-style: normal;
+    font-size: var(--size-small);
+    color: var(--text-label);
+    margin: 0 0 var(--space-md);
+  }
+
+  .letter__contact a {
+    color: inherit;
+  }
+
+  .letter__paragraph {
+    margin: 0;
+    color: var(--text-secondary);
+    max-width: 64ch;
+  }
+
+  @media print {
+    .letter {
+      padding: 0;
+      color: var(--print-base);
+    }
+
+    .letter__title,
+    .letter__contact {
+      color: var(--print-ink);
+    }
+
+    .letter__paragraph {
+      color: var(--print-text) !important;
+    }
+  }
+</style>
