@@ -41,8 +41,18 @@ const channels = [
         <p>
           Simple, small, contained, easy to change beats complex and
           over-engineered every time. Code that does one thing is easy to
-          change; code that does seven is not. You will have to change it next
-          month, and that is the whole case for keeping it small.
+          change; code that does seven is not. Most of the complexity in a
+          codebase is accidental, piled on by poor interfaces and things that
+          should have stayed separate but didn't. The real problem is rarely
+          the thing fighting you.
+        </p>
+        <p>
+          The payoff lands on three sides at once. Something simple is easier
+          to run, with fewer surprises in production and clearer signals when
+          it misbehaves. It's easier to change next month, because the shape
+          doesn't fight new requirements. And the two feed each other: a
+          system you can see into tells you what needs to move, and a system
+          you can move keeps giving you useful signals as it does.
         </p>
         <p>
           CI does the checks. Let engineers work the way they work; enforce at
