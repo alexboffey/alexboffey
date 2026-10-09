@@ -5,18 +5,15 @@ import {
   positions,
   profile,
   unattributedStack,
-  yearsOfExperience,
 } from "../lib/cv"
-import { site, social } from "../lib/site"
+import { site, social, strands } from "../lib/site"
 import Root from "../layouts/Root.astro"
 
 /**
  * The home page is the CV. A visitor who follows the link in the PDF should
  * land on the same information in the same shape: name, tagline, summary,
- * facts, roles. The lattice behind it is brand mood, not the stage.
+ * strands, roles. The lattice behind it is brand mood, not the stage.
  */
-
-const years = yearsOfExperience()
 
 const now = new Date()
 const stamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}-${String(now.getHours()).padStart(2, "0")}${String(now.getMinutes()).padStart(2, "0")}`
@@ -33,29 +30,23 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     <header class="cv__head">
       <h1 class="cv__title">{site.name}</h1>
       <p class="cv__tagline">{site.positioning}</p>
-      <p class="lead cv__summary">{site.taglineBody}</p>
 
-      <p class="cv__profile">{profile}</p>
-
-      <dl class="cv__facts">
-        <div class="cv__fact">
-          <dt class="label">Experience</dt>
-          <dd>{years} years</dd>
-        </div>
-        <div class="cv__fact">
-          <dt class="label">Now</dt>
-          <dd>{positions[0].roles[0].title}, {positions[0].org}</dd>
-        </div>
-        <div class="cv__fact">
-          <dt class="label">Based</dt>
-          <dd>{site.location}</dd>
-        </div>
-        <div class="cv__fact">
-          <dt class="label">Contact</dt>
-          <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
-        </div>
-      </dl>
+      <p class="lead cv__profile">{profile}</p>
     </header>
+
+    <section class="cv__section" aria-labelledby="cv-strands">
+      <h2 class="cv__heading" id="cv-strands">What I do</h2>
+      <dl class="strands">
+        {
+          strands.map((strand) => (
+            <div class="strands__row">
+              <dt class="strands__name">{strand.name}</dt>
+              <dd class="strands__body">{strand.summary}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
 
     <section class="cv__section" aria-labelledby="cv-experience">
       <h2 class="cv__heading" id="cv-experience">Experience</h2>
@@ -173,6 +164,22 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     font-stretch: var(--wdth-display);
     font-weight: 700;
     color: var(--paper);
+    transition:
+      font-stretch 900ms var(--ease),
+      opacity 600ms var(--ease);
+  }
+
+  @starting-style {
+    .cv__title {
+      font-stretch: 62%;
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cv__title {
+      transition: none;
+    }
   }
 
   .cv__tagline {
@@ -180,33 +187,60 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     color: var(--incandescent);
   }
 
-  .cv__summary {
-    max-width: 68ch;
-  }
-
   .cv__profile {
-    margin: var(--space-md) 0 0;
-    max-width: 74ch;
+    margin: 0;
+    max-width: 68ch;
     color: var(--text-secondary);
   }
 
-  .cv__facts {
+  .strands {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-    gap: var(--space-md);
+    gap: var(--space-lg);
     margin: 0;
-    padding-block: var(--space-md);
-    border-block: 1px solid var(--rule);
+    padding: 0;
+    max-width: 78ch;
   }
 
-  .cv__fact dd {
-    margin: 0;
-    font-size: var(--size-small);
-    color: var(--paper);
+  .strands__row {
+    display: grid;
+    gap: var(--space-xs);
+    opacity: 1;
   }
 
-  .cv__fact a {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .strands__row {
+        animation: strand-rise linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 25%;
+      }
+
+      @keyframes strand-rise {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .strands__name {
+    font-family: var(--font-display);
+    font-size: var(--size-label);
+    font-stretch: 88%;
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
     color: var(--incandescent);
+  }
+
+  .strands__body {
+    margin: 0;
+    color: var(--text-secondary);
+    max-width: 72ch;
   }
 
   .cv__section {
@@ -464,8 +498,7 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     .cv__title,
     .cv__heading,
     .role__org,
-    .cv__plain strong,
-    .cv__fact dd {
+    .cv__plain strong {
       color: var(--print-ink);
     }
 

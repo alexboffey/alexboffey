@@ -11,7 +11,7 @@ const { path } = Astro.props as { path: string }
 const links = [{ href: "/about/", label: "About" }]
 
 const isActive = (href: string) => path === href || path.startsWith(href)
-const contactHref = path === "/" ? "#contact" : "/about/#contact"
+const contactHref = path === "/" ? "#contact" : "/#contact"
 
 const now = new Date()
 const stamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}-${String(now.getHours()).padStart(2, "0")}${String(now.getMinutes()).padStart(2, "0")}`

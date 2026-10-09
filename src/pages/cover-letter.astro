@@ -99,6 +99,22 @@ const blocks: Block[] = body
     font-stretch: var(--wdth-display);
     font-weight: 700;
     color: var(--paper);
+    transition:
+      font-stretch 900ms var(--ease),
+      opacity 600ms var(--ease);
+  }
+
+  @starting-style {
+    .letter__title {
+      font-stretch: 62%;
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .letter__title {
+      transition: none;
+    }
   }
 
   .letter__note {

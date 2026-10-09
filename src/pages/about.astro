@@ -1,6 +1,6 @@
 ---
 import Mark from "../components/Mark.astro"
-import { site, social, strands } from "../lib/site"
+import { site, social } from "../lib/site"
 import Root from "../layouts/Root.astro"
 
 const now = new Date()
@@ -17,142 +17,107 @@ const channels = [
 <Root title="About" description={site.description} quiet scene="about">
   <div class="about shell">
     <header class="about__head">
+      <p class="about__name">Alex Boffey</p>
       <h1 class="about__title">
         Product engineer,<br />
         <span class="about__accent">with deep frontend roots</span>
       </h1>
       <p class="lead about__lead">
-        Hi, I'm Alex. Software engineer in London, nine years in. I started on
-        the frontend and it's still where I'm strongest. The work I enjoy most
-        is owning a feature the whole way: working out the problem, then the
-        API, the data model and the UI.
+        Hi, Alex here. Some people call me Boff. It's a running joke that I
+        get referred to by my last name even though I've never introduced
+        myself with it.
+      </p>
+      <p class="about__lead">
+        The CV is on the <a href="/">home page</a>. This is how I think about
+        the work, and what I spend my time on outside it.
       </p>
     </header>
 
-    <div class="about__grid">
-      <section class="about__col prose" aria-labelledby="how">
-        <h2 id="how">How I work</h2>
-        <p>
-          I like the part of the job where an intent meets what the machine will
-          actually do, and someone has to decide which one moves. Usually that
-          means building the thing properly once so forty features do not each
-          solve it badly, whether that thing is a component or a service.
-        </p>
-        <p>
-          Simple, small, contained, easy to change beats complex and
-          over-engineered every time. Code that does one thing is easy to
-          change; code that does seven is not. Most of the complexity in a
-          codebase is accidental, piled on by poor interfaces and things that
-          should have stayed separate but didn't. The real problem is rarely
-          the thing fighting you.
-        </p>
-        <p>
-          The payoff lands on three sides at once. Something simple is easier
-          to run, with fewer surprises in production and clearer signals when
-          it misbehaves. It's easier to change next month, because the shape
-          doesn't fight new requirements. And the two feed each other: a
-          system you can see into tells you what needs to move, and a system
-          you can move keeps giving you useful signals as it does.
-        </p>
-        <p>
-          CI does the checks. Let engineers work the way they work; enforce at
-          the PR rather than at save-time or on every commit. A gate that is one
-          thing in one place is a gate people trust.
-        </p>
-        <p>
-          The e2e tests worth having drive the full system the way a real user
-          would. Happy-path assertions are easy to write and often add little. A
-          green suite can be entirely consistent with a broken feature.
-        </p>
-        <p>
-          Accessibility and performance are not a later pass. They are cheaper
-          at the primitive than at the feature, which is the entire argument for
-          having a system in the first place.
-        </p>
+    <section class="about__col prose" aria-labelledby="how">
+      <h2 id="how">How I work</h2>
+      <p>
+        I like the part of the job where an intent meets what the machine will
+        actually do, and someone has to decide which one moves. Usually that
+        means building the thing properly once so forty features do not each
+        solve it badly, whether that thing is a component or a service.
+      </p>
+      <p>
+        Simple, small, contained, easy to change beats complex and
+        over-engineered every time. Code that does one thing is easy to change;
+        code that does seven is not. Most of the complexity in a codebase is
+        accidental, piled on by poor interfaces and things that should have
+        stayed separate. The payoff for cutting it lands on three sides at
+        once: a simple system is easier to run, easier to change next month,
+        and the two feed each other. A system you can see into tells you what
+        needs to move; a system you can move keeps giving you useful signals
+        as it does.
+      </p>
+      <p>
+        The e2e tests worth having drive the full system the way a real user
+        would. Happy-path assertions are easy to write and often add little. A
+        green suite can be entirely consistent with a broken feature.
+      </p>
 
-        <h2>The three strands</h2>
-        <dl class="about__strands">
-          {
-            strands.map((strand) => (
-              <>
-                <dt class="about__strand-name">{strand.name}</dt>
-                <dd class="about__strand-body">{strand.summary}</dd>
-              </>
-            ))
-          }
-        </dl>
+      <h2>Music &amp; audio</h2>
+      <p>
+        Lifelong guitar player, mostly electric and I love effects, with some
+        classical on the side. I play in a band and own the technical side:
+        demos, sound design, synthesis, sampling, and the live rig. The parts
+        that need an audio engineer get one. I collaborate rather than fake it.
+      </p>
+      <p>
+        The live rig is hardware that takes production tracks and breaks them
+        down into something the band can play against: stems, playable effects,
+        a cue system that runs the show. The two worlds inform each other,
+        mostly in one direction: software habits travel into the music tech.
+        Don't trust it until it is tested. Use compute efficiently. Keep it
+        simple.
+      </p>
+    </section>
 
-        <h2>Music &amp; audio</h2>
-        <p>
-          Lifelong guitar player, mostly electric and I love effects, with some
-          classical on the side.
-        </p>
-        <p>
-          I play in a band and own the technical side of it: demos, sound
-          design, synthesis, sampling, and the live rig. The parts that need an
-          audio engineer get one. I collaborate rather than fake it.
-        </p>
-        <p>
-          The live rig is a hardware setup that takes production tracks and
-          breaks them down into a form the band can play against: stems,
-          playable effects, and a cue system that runs the show. On the side I
-          have been experimenting with MIDI-synced visuals through OBS driven
-          off the same hardware, and with sequencers and set-prep utilities in
-          the production workflow.
-        </p>
-        <p>
-          The two sides inform each other, mostly in one direction: software
-          habits travel into the music tech. Don't trust it until it is tested.
-          Use compute efficiently. Keep it simple.
-        </p>
-      </section>
+    <section class="about__contact" id="contact" aria-labelledby="contact-h">
+      <a
+        class="about__contact-head"
+        href={`mailto:${site.email}`}
+        aria-label="Email Alex"
+      >
+        <Mark size={28} />
+        <h2 class="about__contact-title" id="contact-h">Get in touch</h2>
+      </a>
+      <p class="about__contact-body">
+        If you are hiring, or you want to argue about design tokens, email is
+        the fastest way to reach me.
+      </p>
 
-      <aside class="about__side" id="contact">
-        <div class="about__card">
-          <Mark size={40} />
-          <h2 class="about__card-title">Get in touch</h2>
-          <p class="about__card-body">
-            If you are hiring, or you want to argue about design tokens, email
-            is the fastest way to reach me.
-          </p>
+      <dl class="channels">
+        {
+          channels.map((channel) => (
+            <div class="channel">
+              <dt class="channel__label">{channel.label}</dt>
+              <dd class="channel__value">
+                <a
+                  href={channel.href}
+                  rel={
+                    channel.href.startsWith("http") ? "me noopener" : undefined
+                  }
+                >
+                  {channel.value}
+                </a>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
 
-          <dl class="channels">
-            {
-              channels.map((channel) => (
-                <div class="channel">
-                  <dt class="channel__label">{channel.label}</dt>
-                  <dd class="channel__value">
-                    <a
-                      href={channel.href}
-                      rel={
-                        channel.href.startsWith("http")
-                          ? "me noopener"
-                          : undefined
-                      }
-                    >
-                      {channel.value}
-                    </a>
-                  </dd>
-                </div>
-              ))
-            }
-          </dl>
-
-          <div class="about__ctas">
-            <a class="action action--primary" href={`mailto:${site.email}`}>
-              Email me
-            </a>
-            <a
-              class="action"
-              href="/alex-boffey-cv.pdf"
-              download={cvDownloadName}
-            >
-              Download CV
-            </a>
-          </div>
-        </div>
-      </aside>
-    </div>
+      <div class="about__ctas">
+        <a class="action action--primary" href={`mailto:${site.email}`}>
+          Email me
+        </a>
+        <a class="action" href="/alex-boffey-cv.pdf" download={cvDownloadName}>
+          Download CV
+        </a>
+      </div>
+    </section>
   </div>
 </Root>
 
@@ -174,6 +139,32 @@ const channels = [
     font-weight: 700;
     line-height: 0.96;
     color: var(--paper);
+    transition:
+      font-stretch 900ms var(--ease),
+      opacity 600ms var(--ease);
+  }
+
+  @starting-style {
+    .about__title {
+      font-stretch: 62%;
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about__title {
+      transition: none;
+    }
+  }
+
+  .about__name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--size-label);
+    font-stretch: 88%;
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-label);
   }
 
   .about__accent {
@@ -188,60 +179,42 @@ const channels = [
     color: var(--incandescent);
   }
 
-  .about__grid {
-    display: grid;
-    gap: var(--space-2xl);
+  .about__col {
     margin-top: var(--space-xl);
+    max-width: 68ch;
   }
 
-  @media (min-width: 62rem) {
-    .about__grid {
-      grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
-      gap: var(--space-3xl);
-      align-items: start;
-    }
-
-    .about__side {
-      position: sticky;
-      top: var(--space-lg);
-    }
-  }
-
-  .about__strands {
-    display: grid;
-    gap: var(--space-xs);
-  }
-
-  .about__strand-name {
-    font-family: var(--font-display);
-    font-size: var(--size-label);
-    font-stretch: 88%;
-    letter-spacing: var(--track-label);
-    text-transform: uppercase;
-    color: var(--incandescent);
-  }
-
-  .about__strand-body {
-    margin: 0 0 var(--space-md);
-    color: var(--text-secondary);
-  }
-
-  /* Not a card. A hairline above, the mark, and the channel rows sitting on the
-     page's own ground: the contract says no cards anywhere and meant it. */
-  .about__card {
+  .about__contact {
+    margin-top: var(--space-2xl);
     display: grid;
     gap: var(--space-md);
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--incandescent);
+    max-width: 68ch;
   }
 
-  .about__card-title {
+  .about__contact-head {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
+    color: inherit;
+    width: fit-content;
+  }
+
+  .about__contact-title {
+    margin: 0;
     font-size: var(--size-sub);
     font-stretch: var(--wdth-title);
     color: var(--paper);
+    transition: color var(--dur-fast) var(--ease);
   }
 
-  .about__card-body {
+  .about__contact-head:hover .about__contact-title,
+  .about__contact-head:focus-visible .about__contact-title {
+    color: var(--incandescent);
+  }
+
+  .about__contact-body {
+    margin: 0;
     font-size: var(--size-small);
     color: var(--text-secondary);
   }
@@ -291,6 +264,6 @@ const channels = [
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
-    justify-self: start;
+    margin-top: var(--space-sm);
   }
 </style>

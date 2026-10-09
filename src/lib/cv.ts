@@ -58,7 +58,7 @@ export function yearsOfExperience(now: Date = new Date()) {
  * pitch is on the site, in the PDF and in the vault CV.
  */
 export const profile =
-  "Product engineer with 9 years' experience and deep frontend roots. Led the rebuild of GEEIQ's analytics platform in React and built the design system and test suite it runs on. Work across the stack in the API, Postgres and the Kubernetes services behind the product, and set up codebases so AI agents ship consistent, tested code. Looking for a product or full stack role, owning features from the problem through to production."
+  "Product engineer with 9 years' experience and deep frontend roots. Led the rebuild of GEEIQ's analytics platform in React and built the design system and test suite it runs on. Work across the stack in the API, Postgres and the services behind the product, and set up codebases so AI agents ship consistent, tested code."
 
 export const positions: Position[] = [
   {
