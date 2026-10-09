@@ -13,11 +13,11 @@ export const site = {
   location: "London",
   email: "alex@alexboffey.co.uk",
   years: 9,
-  positioning: "Full stack engineer, deepest in client-side architecture.",
+  positioning: "Product engineer with deep frontend roots.",
   taglineBody:
-    "I build frontends that are fast to ship on, for people and for AI agents, and I own features end to end, through the API and database.",
+    "I own features end to end, from working out the problem to the API, the data model and the UI. I also set up codebases so AI agents ship work that's consistent and tested.",
   description:
-    "Alex Boffey is a full stack engineer in London, deepest in client-side architecture, with nine years across frontend, backend services and infrastructure. He builds the codebase so engineers and AI agents can both ship from it.",
+    "Alex Boffey is a product engineer in London with nine years' experience. He's strongest on the frontend and owns features end to end, through the API, the database and the services behind them.",
 } as const
 
 export const social = {
@@ -28,9 +28,9 @@ export const social = {
 
 /**
  * The three strands of the practice, aligned to the pillars in the
- * "Positioning and Talking Points" vault note (2026-10-07): client-side
- * architecture as the core, end-to-end delivery as the breadth, AI engineering
- * on top of both.
+ * "Positioning and Talking Points" vault note. Since 2026-10-08 end-to-end
+ * delivery leads (the product engineer framing), client-side architecture is
+ * the depth, and AI engineering sits on top of both.
  *
  * The first strand was called "Product engineering" until 2026-08-10 and
  * "Design systems" rode as the third until 2026-10-07; design-system work now
@@ -39,18 +39,18 @@ export const social = {
  */
 export const strands = [
   {
-    name: "Client-side architecture",
-    summary:
-      "Led the rebuild of the primary client-facing application in React at feature parity in 6 months, then the work that keeps it running: rendering strategy, state and cache, build pipelines, performance budgets, a design system that absorbs rebrands (40+ components across 296 files), and a Playwright suite under 10 minutes on 6-way sharded CI.",
-  },
-  {
     name: "End-to-end delivery",
     summary:
-      "Past the frontend remit and into the API, service and database repositories. Node and Fastify services, Postgres, GraphQL, Kubernetes jobs and RBAC, Elasticsearch, secrets management, and the CI/CD that ships all of it.",
+      "I follow a feature past the frontend into the API, service and database repos. At GEEIQ that meant Postgres through Prisma and tRPC, Node and Fastify services, GraphQL, Kubernetes jobs and RBAC, Elasticsearch, secrets management and the CI/CD that ships it.",
+  },
+  {
+    name: "Client-side architecture",
+    summary:
+      "Where I'm deepest. I led the rebuild of GEEIQ's main client app in React, reaching feature parity in 6 months, then kept it healthy: state and cache, build pipelines, performance budgets, a design system that has carried two rebrands (40+ components across 296 files), and a Playwright suite that runs in under 10 minutes on 6-way sharded CI.",
   },
   {
     name: "AI engineering",
     summary:
-      "On top of the work above, not instead. Structured rules in the repo for Claude and Codex, custom agent skills, MCP integrations (including design-to-code MCPs so component work starts from the Figma source rather than screenshots), git worktrees for parallel agents, and a harness around them. nudge-agent, GEEIQ's autonomous coding agent, dispatches headless Claude sessions to pick up Linear tickets and ship PRs; a Kibana dashboard over its trace envelope is how you see what each run cost and whether it worked.",
+      "This sits on top of the other two. The repo has rules for Claude and Codex, custom agent skills, MCP integrations (Figma included, so component work starts from the design source rather than screenshots) and git worktrees for running agents in parallel. I also worked on nudge-agent, GEEIQ's autonomous coding agent, which picks up Linear tickets and ships PRs. A Kibana dashboard over its traces shows what each run cost and whether it worked.",
   },
 ] as const

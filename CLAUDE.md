@@ -61,7 +61,7 @@ Degradation is deliberate and should stay: no WebGL2 keeps the CSS ground, `pref
 
 `src/lib/cv.ts` is transcribed from `~/Documents/Obsidian Vault/ab/life/CVs & Cover Letters/Alex Boffey CV October 2026 v2.md` (current source). Earlier CVs in that folder plus `docs/cv-sources/cv-2022.md` and `docs/cv-sources/cv-2026-04.md` are kept as provenance only. The phone number in the vault source is deliberately excluded from the site and must stay excluded. `src/lib/site.ts` holds standing facts (title, employer, contact channels) so copy does not drift between routes.
 
-The copy is written to the one-liner in `~/Documents/Obsidian Vault/ab/life/Job Search/Positioning and Talking Points.md`: "Full stack engineer, deepest in client-side architecture." That doc is the canonical positioning; `PRODUCT.md`, `cv.ts`, `site.ts`, the strand summaries and the sidebar rails all pull from it. Change the positioning there first, then propagate.
+The copy is written to the one-liner in `~/Documents/Obsidian Vault/ab/life/Job Search/Positioning and Talking Points.md`: "Product engineer with deep frontend roots." (changed from "Full stack engineer, deepest in client-side architecture." on 2026-10-08). That doc is the canonical positioning; `PRODUCT.md`, `cv.ts`, `site.ts`, the strand summaries and the sidebar rails all pull from it. Change the positioning there first, then propagate.
 
 ## Conventions
 

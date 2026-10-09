@@ -53,12 +53,12 @@ export function yearsOfExperience(now: Date = new Date()) {
 }
 
 /**
- * The Profile paragraph from the October 2026 v3 draft. Replaces the three
- * labelled pillars that used to sit under the hero tagline, so the same
- * elevator pitch is on the site, in the PDF and in the markdown.
+ * The Profile paragraph from `docs/cv-sources/cv-2026-10.md` (product
+ * engineer framing, 2026-10-08). Keep it identical to the markdown so the same
+ * pitch is on the site, in the PDF and in the vault CV.
  */
 export const profile =
-  "Full stack engineer with 9 years' experience, deepest in client-side architecture: design systems, state and data orchestration, testing and CI. Led the rebuild of GEEIQ's analytics platform in React and built the design system and test suite it runs on. Also work in the API, Postgres and the Kubernetes services behind the frontend, and structure codebases so AI agents ship consistent, tested code. Looking for a frontend or product engineering role owning features end to end."
+  "Product engineer with 9 years' experience and deep frontend roots. Led the rebuild of GEEIQ's analytics platform in React and built the design system and test suite it runs on. Work across the stack in the API, Postgres and the Kubernetes services behind the product, and set up codebases so AI agents ship consistent, tested code. Looking for a product or full stack role, owning features from the problem through to production."
 
 export const positions: Position[] = [
   {
