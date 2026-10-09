@@ -13,7 +13,7 @@ export const site = {
   location: "London",
   email: "alex@alexboffey.co.uk",
   years: 9,
-  positioning: "Product engineer with deep frontend roots.",
+  positioning: "Product engineer, with deep frontend roots.",
   taglineBody:
     "I own features end to end, from working out the problem to the API, the data model and the UI. I also set up codebases so AI agents ship work that's consistent and tested.",
   description:

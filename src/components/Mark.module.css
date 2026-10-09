@@ -4,8 +4,8 @@
 
 .face {
   transition:
-    fill var(--dur) var(--ease),
-    transform var(--dur) var(--ease);
+    fill var(--mark-dur, var(--dur)) var(--ease),
+    transform var(--mark-dur, var(--dur)) var(--ease);
   transform-origin: 50% 50%;
 }
 

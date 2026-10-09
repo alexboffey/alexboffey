@@ -19,21 +19,23 @@ const channels = [
     <header class="about__head">
       <p class="about__name">Alex Boffey</p>
       <h1 class="about__title">
-        Product engineer,<br />
-        <span class="about__accent">with deep frontend roots</span>
+        <span class="about__title-layer about__title-base">
+          Product engineer,<br />
+          <span class="about__accent">with deep frontend roots</span>
+        </span>
+        <span class="about__title-layer about__title-swap" aria-hidden="true">
+          Product engineer,<br />
+          <span class="about__accent-swap">with deep frontend roots</span>
+        </span>
       </h1>
       <p class="lead about__lead">
-        Hi, Alex here. Some people call me Boff. It's a running joke that I
-        get referred to by my last name even though I've never introduced
-        myself with it.
-      </p>
-      <p class="about__lead">
-        The CV is on the <a href="/">home page</a>. This is how I think about
-        the work, and what I spend my time on outside it.
+        Hi, Alex here. Some people call me Boff. Software engineer in London,
+        nine years in. Also a lifelong musician.
       </p>
     </header>
 
-    <section class="about__col prose" aria-labelledby="how">
+    <div class="about__grid">
+      <section class="about__col prose" aria-labelledby="how">
       <h2 id="how">How I work</h2>
       <p>
         I like the part of the job where an intent meets what the machine will
@@ -73,9 +75,9 @@ const channels = [
         Don't trust it until it is tested. Use compute efficiently. Keep it
         simple.
       </p>
-    </section>
+      </section>
 
-    <section class="about__contact" id="contact" aria-labelledby="contact-h">
+      <aside class="about__side" id="contact" aria-labelledby="contact-h">
       <a
         class="about__contact-head"
         href={`mailto:${site.email}`}
@@ -117,7 +119,8 @@ const channels = [
           Download CV
         </a>
       </div>
-    </section>
+      </aside>
+    </div>
   </div>
 </Root>
 
@@ -129,11 +132,10 @@ const channels = [
   .about__head {
     display: grid;
     gap: var(--space-md);
-    padding-bottom: var(--space-xl);
-    border-bottom: 1px solid var(--rule);
   }
 
   .about__title {
+    position: relative;
     font-size: var(--size-display);
     font-stretch: var(--wdth-display);
     font-weight: 700;
@@ -144,6 +146,38 @@ const channels = [
       opacity 600ms var(--ease);
   }
 
+  .about__title-layer {
+    display: block;
+  }
+
+  .about__title-swap {
+    position: absolute;
+    inset: 0;
+    color: var(--incandescent);
+    pointer-events: none;
+    --mask-size: 320px;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 750 750'><polygon points='487.1,576.7 263.7,706.5 38.9,576.7 262.3,446.9' fill='black'/><polygon points='488.5,309.9 487.7,568.2 262.9,438.4 263.7,180.1' fill='black'/><polygon points='254.3,183.3 255,441.6 30.2,571.4 29.5,313.1' fill='black'/><polygon points='715.8,173.3 492.4,303.1 267.6,173.3 491,43.5' fill='black'/><polygon points='719.8,180.1 720.5,438.4 495.7,568.2 495,309.9' fill='black'/></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 750 750'><polygon points='487.1,576.7 263.7,706.5 38.9,576.7 262.3,446.9' fill='black'/><polygon points='488.5,309.9 487.7,568.2 262.9,438.4 263.7,180.1' fill='black'/><polygon points='254.3,183.3 255,441.6 30.2,571.4 29.5,313.1' fill='black'/><polygon points='715.8,173.3 492.4,303.1 267.6,173.3 491,43.5' fill='black'/><polygon points='719.8,180.1 720.5,438.4 495.7,568.2 495,309.9' fill='black'/></svg>");
+    -webkit-mask-size: var(--mask-size) var(--mask-size);
+    mask-size: var(--mask-size) var(--mask-size);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: calc(var(--mx, -600px) - var(--mask-size) / 2)
+      calc(var(--my, -600px) - var(--mask-size) / 2);
+    mask-position: calc(var(--mx, -600px) - var(--mask-size) / 2)
+      calc(var(--my, -600px) - var(--mask-size) / 2);
+  }
+
+  .about__accent-swap {
+    color: var(--paper);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about__title-swap {
+      display: none;
+    }
+  }
+
   @starting-style {
     .about__title {
       font-stretch: 62%;
@@ -151,9 +185,27 @@ const channels = [
     }
   }
 
+  .about__title:hover {
+    animation: title-breathe 3s ease-in-out infinite;
+  }
+
+  @keyframes title-breathe {
+    0%,
+    100% {
+      font-stretch: var(--wdth-display);
+    }
+    50% {
+      font-stretch: 94%;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .about__title {
       transition: none;
+      animation: none;
+    }
+    .about__title:hover {
+      animation: none;
     }
   }
 
@@ -179,16 +231,32 @@ const channels = [
     color: var(--incandescent);
   }
 
-  .about__col {
+  .about__grid {
+    display: grid;
+    gap: var(--space-2xl);
     margin-top: var(--space-xl);
+  }
+
+  @media (min-width: 62rem) {
+    .about__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+      gap: var(--space-3xl);
+      align-items: start;
+    }
+
+    .about__side {
+      position: sticky;
+      top: var(--space-lg);
+    }
+  }
+
+  .about__col {
     max-width: 68ch;
   }
 
-  .about__contact {
-    margin-top: var(--space-2xl);
+  .about__side {
     display: grid;
     gap: var(--space-md);
-    max-width: 68ch;
   }
 
   .about__contact-head {
@@ -198,6 +266,7 @@ const channels = [
     text-decoration: none;
     color: inherit;
     width: fit-content;
+    --mark-dur: 700ms;
   }
 
   .about__contact-title {
@@ -267,3 +336,24 @@ const channels = [
     margin-top: var(--space-sm);
   }
 </style>
+
+<script>
+  // Cursor-follow colour swap on the About hero. Two layered copies of the
+  // title: the base layer is normal, the swap layer sits on top with the two
+  // colours inverted and a circular mask around the pointer. --mx and --my
+  // start off-canvas so the mask reveals nothing until the pointer enters.
+  const title = document.querySelector<HTMLElement>(".about__title")
+  if (title && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const update = (event: PointerEvent) => {
+      const rect = title.getBoundingClientRect()
+      title.style.setProperty("--mx", `${event.clientX - rect.left}px`)
+      title.style.setProperty("--my", `${event.clientY - rect.top}px`)
+    }
+    const reset = () => {
+      title.style.removeProperty("--mx")
+      title.style.removeProperty("--my")
+    }
+    title.addEventListener("pointermove", update)
+    title.addEventListener("pointerleave", reset)
+  }
+</script>

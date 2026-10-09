@@ -28,8 +28,17 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
 >
   <div class="cv shell">
     <header class="cv__head">
-      <h1 class="cv__title">{site.name}</h1>
-      <p class="cv__tagline">{site.positioning}</p>
+      <p class="cv__name">{site.name}</p>
+      <h1 class="cv__title">
+        <span class="cv__title-layer cv__title-base">
+          Product engineer,<br />
+          <span class="cv__accent">with deep frontend roots</span>
+        </span>
+        <span class="cv__title-layer cv__title-swap" aria-hidden="true">
+          Product engineer,<br />
+          <span class="cv__accent-swap">with deep frontend roots</span>
+        </span>
+      </h1>
 
       <p class="lead cv__profile">{profile}</p>
     </header>
@@ -156,13 +165,24 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
   .cv__head {
     display: grid;
     gap: var(--space-md);
-    max-width: 74ch;
+  }
+
+  .cv__name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--size-label);
+    font-stretch: 88%;
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-label);
   }
 
   .cv__title {
+    position: relative;
     font-size: var(--size-display);
     font-stretch: var(--wdth-display);
     font-weight: 700;
+    line-height: 0.96;
     color: var(--paper);
     transition:
       font-stretch 900ms var(--ease),
@@ -176,15 +196,64 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .cv__title {
-      transition: none;
+  .cv__title:hover {
+    animation: title-breathe 3s ease-in-out infinite;
+  }
+
+  @keyframes title-breathe {
+    0%,
+    100% {
+      font-stretch: var(--wdth-display);
+    }
+    50% {
+      font-stretch: 94%;
     }
   }
 
-  .cv__tagline {
-    font-size: var(--size-lead);
+  @media (prefers-reduced-motion: reduce) {
+    .cv__title {
+      transition: none;
+      animation: none;
+    }
+    .cv__title:hover {
+      animation: none;
+    }
+  }
+
+  .cv__accent {
     color: var(--incandescent);
+  }
+
+  .cv__title-layer {
+    display: block;
+  }
+
+  .cv__title-swap {
+    position: absolute;
+    inset: 0;
+    color: var(--incandescent);
+    pointer-events: none;
+    --mask-size: 320px;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 750 750'><polygon points='487.1,576.7 263.7,706.5 38.9,576.7 262.3,446.9' fill='black'/><polygon points='488.5,309.9 487.7,568.2 262.9,438.4 263.7,180.1' fill='black'/><polygon points='254.3,183.3 255,441.6 30.2,571.4 29.5,313.1' fill='black'/><polygon points='715.8,173.3 492.4,303.1 267.6,173.3 491,43.5' fill='black'/><polygon points='719.8,180.1 720.5,438.4 495.7,568.2 495,309.9' fill='black'/></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 750 750'><polygon points='487.1,576.7 263.7,706.5 38.9,576.7 262.3,446.9' fill='black'/><polygon points='488.5,309.9 487.7,568.2 262.9,438.4 263.7,180.1' fill='black'/><polygon points='254.3,183.3 255,441.6 30.2,571.4 29.5,313.1' fill='black'/><polygon points='715.8,173.3 492.4,303.1 267.6,173.3 491,43.5' fill='black'/><polygon points='719.8,180.1 720.5,438.4 495.7,568.2 495,309.9' fill='black'/></svg>");
+    -webkit-mask-size: var(--mask-size) var(--mask-size);
+    mask-size: var(--mask-size) var(--mask-size);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: calc(var(--mx, -600px) - var(--mask-size) / 2)
+      calc(var(--my, -600px) - var(--mask-size) / 2);
+    mask-position: calc(var(--mx, -600px) - var(--mask-size) / 2)
+      calc(var(--my, -600px) - var(--mask-size) / 2);
+  }
+
+  .cv__accent-swap {
+    color: var(--paper);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cv__title-swap {
+      display: none;
+    }
   }
 
   .cv__profile {
@@ -260,9 +329,7 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
   }
 
   .cv__heading {
-    padding-bottom: var(--space-sm);
     margin-bottom: var(--space-lg);
-    border-bottom: 1px solid var(--rule);
     font-size: var(--size-title);
     font-stretch: 86%;
     color: var(--paper);
@@ -490,6 +557,10 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
       display: none;
     }
 
+    .cv__title-swap {
+      display: none;
+    }
+
     .cv {
       padding: 0;
       color: var(--print-base);
@@ -525,3 +596,23 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     }
   }
 </style>
+
+<script>
+  // Cursor-follow colour swap on the home hero. Two layered copies of the
+  // title: base is the normal palette, swap sits on top with the colours
+  // inverted and a circular mask around the pointer.
+  const title = document.querySelector<HTMLElement>(".cv__title")
+  if (title && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const update = (event: PointerEvent) => {
+      const rect = title.getBoundingClientRect()
+      title.style.setProperty("--mx", `${event.clientX - rect.left}px`)
+      title.style.setProperty("--my", `${event.clientY - rect.top}px`)
+    }
+    const reset = () => {
+      title.style.removeProperty("--mx")
+      title.style.removeProperty("--my")
+    }
+    title.addEventListener("pointermove", update)
+    title.addEventListener("pointerleave", reset)
+  }
+</script>
