@@ -35,8 +35,7 @@ export interface Position {
   /**
    * What was actually used in this role, rather than a detached keyword list.
    * Only technologies evidenced by this position's own bullets or by the source
-   * CV's account of that period appear here; anything that could not be tied to
-   * a named employer lives in `unattributedStack` instead of being guessed at.
+   * CV's account of that period appear here.
    */
   stack: string[]
 }
@@ -257,27 +256,6 @@ export const positions: Position[] = [
     ],
     stack: ["HTML", "CSS", "JavaScript", "Magento", "WordPress", "PHP"],
   },
-]
-
-/**
- * The remainder.
- *
- * Real skills from the source CV that its account does not tie to a named
- * employer. They sit here as one short line rather than being distributed across
- * positions on a guess, because putting a technology under an employer is a
- * claim about that employer's codebase.
- */
-export const unattributedStack = [
-  "Svelte",
-  "Express",
-  "PostgreSQL",
-  "SQL",
-  "Python",
-  "Flask",
-  "Firebase",
-  "Cloudflare Workers",
-  "AWS S3",
-  "Webpack",
 ]
 
 export const education = {

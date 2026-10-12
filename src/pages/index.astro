@@ -1,11 +1,5 @@
 ---
-import {
-  education,
-  interests,
-  positions,
-  profile,
-  unattributedStack,
-} from "../lib/cv"
+import { education, interests, positions, profile } from "../lib/cv"
 import { site, social, strands } from "../lib/site"
 import Root from "../layouts/Root.astro"
 
@@ -116,17 +110,6 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
           ))
         }
       </ol>
-    </section>
-
-    <section class="cv__section" aria-labelledby="cv-also">
-      <h2 class="cv__heading" id="cv-also">Also works with</h2>
-      <p class="cv__plain cv__also-note">
-        These are real, but the CV does not tie them to a particular job, so
-        they sit here rather than under an employer.
-      </p>
-      <ul class="skillgroup__items">
-        {unattributedStack.map((item) => <li class="skill">{item}</li>)}
-      </ul>
     </section>
 
     <section class="cv__section cv__section--split">
@@ -513,21 +496,6 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
   }
 
   .role__stack-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2xs) var(--space-xs);
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .cv__also-note {
-    margin-bottom: var(--space-md);
-    font-size: var(--size-small);
-    color: var(--text-label);
-  }
-
-  .skillgroup__items {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-2xs) var(--space-xs);
