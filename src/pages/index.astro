@@ -179,26 +179,9 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     }
   }
 
-  .cv__title:hover {
-    animation: title-breathe 3s ease-in-out infinite;
-  }
-
-  @keyframes title-breathe {
-    0%,
-    100% {
-      font-stretch: var(--wdth-display);
-    }
-    50% {
-      font-stretch: 94%;
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .cv__title {
       transition: none;
-      animation: none;
-    }
-    .cv__title:hover {
       animation: none;
     }
   }

@@ -185,26 +185,9 @@ const channels = [
     }
   }
 
-  .about__title:hover {
-    animation: title-breathe 3s ease-in-out infinite;
-  }
-
-  @keyframes title-breathe {
-    0%,
-    100% {
-      font-stretch: var(--wdth-display);
-    }
-    50% {
-      font-stretch: 94%;
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .about__title {
       transition: none;
-      animation: none;
-    }
-    .about__title:hover {
       animation: none;
     }
   }
