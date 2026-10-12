@@ -38,7 +38,10 @@ const blocks: Block[] = body
     const prevIsName = typeof prev === "string" && /^#\s+/.test(prev)
     return {
       kind: prevIsName ? ("contact" as const) : ("paragraph" as const),
-      lines: block.split("\n").map((line) => line.trim()).filter(Boolean),
+      lines: block
+        .split("\n")
+        .map((line) => line.trim())
+        .filter(Boolean),
     }
   })
 ---
@@ -61,7 +64,9 @@ const blocks: Block[] = body
           }
           if (block.kind === "contact") {
             return (
-              <address class="letter__contact">{block.lines.join(" · ")}</address>
+              <address class="letter__contact">
+                {block.lines.join(" · ")}
+              </address>
             )
           }
           return (

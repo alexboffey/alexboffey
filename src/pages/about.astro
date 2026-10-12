@@ -36,89 +36,96 @@ const channels = [
 
     <div class="about__grid">
       <section class="about__col prose" aria-labelledby="how">
-      <h2 id="how">How I work</h2>
-      <p>
-        I like the part of the job where an intent meets what the machine will
-        actually do, and someone has to decide which one moves. Usually that
-        means building the thing properly once so forty features do not each
-        solve it badly, whether that thing is a component or a service.
-      </p>
-      <p>
-        Simple, small, contained, easy to change beats complex and
-        over-engineered every time. Code that does one thing is easy to change;
-        code that does seven is not. Most of the complexity in a codebase is
-        accidental, piled on by poor interfaces and things that should have
-        stayed separate. The payoff for cutting it lands on three sides at
-        once: a simple system is easier to run, easier to change next month,
-        and the two feed each other. A system you can see into tells you what
-        needs to move; a system you can move keeps giving you useful signals
-        as it does.
-      </p>
-      <p>
-        The e2e tests worth having drive the full system the way a real user
-        would. Happy-path assertions are easy to write and often add little. A
-        green suite can be entirely consistent with a broken feature.
-      </p>
+        <h2 id="how">How I work</h2>
+        <p>
+          I like the part of the job where an intent meets what the machine will
+          actually do, and someone has to decide which one moves. Usually that
+          means building the thing properly once so forty features do not each
+          solve it badly, whether that thing is a component or a service.
+        </p>
+        <p>
+          Simple, small, contained, easy to change beats complex and
+          over-engineered every time. Code that does one thing is easy to
+          change; code that does seven is not. Most of the complexity in a
+          codebase is accidental, piled on by poor interfaces and things that
+          should have stayed separate. The payoff for cutting it lands on three
+          sides at once: a simple system is easier to run, easier to change next
+          month, and the two feed each other. A system you can see into tells
+          you what needs to move; a system you can move keeps giving you useful
+          signals as it does.
+        </p>
+        <p>
+          The e2e tests worth having drive the full system the way a real user
+          would. Happy-path assertions are easy to write and often add little. A
+          green suite can be entirely consistent with a broken feature.
+        </p>
 
-      <h2>Music &amp; audio</h2>
-      <p>
-        Lifelong guitar player, mostly electric and I love effects, with some
-        classical on the side. I play in a band and own the technical side:
-        demos, sound design, synthesis, sampling, and the live rig. The parts
-        that need an audio engineer get one. I collaborate rather than fake it.
-      </p>
-      <p>
-        The live rig is hardware that takes production tracks and breaks them
-        down into something the band can play against: stems, playable effects,
-        a cue system that runs the show. The two worlds inform each other,
-        mostly in one direction: software habits travel into the music tech.
-        Don't trust it until it is tested. Use compute efficiently. Keep it
-        simple.
-      </p>
+        <h2>Music &amp; audio</h2>
+        <p>
+          Lifelong guitar player, mostly electric and I love effects, with some
+          classical on the side. I play in a band and own the technical side:
+          demos, sound design, synthesis, sampling, and the live rig. The parts
+          that need an audio engineer get one. I collaborate rather than fake
+          it.
+        </p>
+        <p>
+          The live rig is hardware that takes production tracks and breaks them
+          down into something the band can play against: stems, playable
+          effects, a cue system that runs the show. The two worlds inform each
+          other, mostly in one direction: software habits travel into the music
+          tech. Don't trust it until it is tested. Use compute efficiently. Keep
+          it simple.
+        </p>
       </section>
 
       <aside class="about__side" id="contact" aria-labelledby="contact-h">
-      <a
-        class="about__contact-head"
-        href={`mailto:${site.email}`}
-        aria-label="Email Alex"
-      >
-        <Mark size={28} />
-        <h2 class="about__contact-title" id="contact-h">Get in touch</h2>
-      </a>
-      <p class="about__contact-body">
-        If you are hiring, or you want to argue about design tokens, email is
-        the fastest way to reach me.
-      </p>
-
-      <dl class="channels">
-        {
-          channels.map((channel) => (
-            <div class="channel">
-              <dt class="channel__label">{channel.label}</dt>
-              <dd class="channel__value">
-                <a
-                  href={channel.href}
-                  rel={
-                    channel.href.startsWith("http") ? "me noopener" : undefined
-                  }
-                >
-                  {channel.value}
-                </a>
-              </dd>
-            </div>
-          ))
-        }
-      </dl>
-
-      <div class="about__ctas">
-        <a class="action action--primary" href={`mailto:${site.email}`}>
-          Email me
+        <a
+          class="about__contact-head"
+          href={`mailto:${site.email}`}
+          aria-label="Email Alex"
+        >
+          <Mark size={28} />
+          <h2 class="about__contact-title" id="contact-h">Get in touch</h2>
         </a>
-        <a class="action" href="/alex-boffey-cv.pdf" download={cvDownloadName}>
-          Download CV
-        </a>
-      </div>
+        <p class="about__contact-body">
+          If you are hiring, or you want to argue about design tokens, email is
+          the fastest way to reach me.
+        </p>
+
+        <dl class="channels">
+          {
+            channels.map((channel) => (
+              <div class="channel">
+                <dt class="channel__label">{channel.label}</dt>
+                <dd class="channel__value">
+                  <a
+                    href={channel.href}
+                    rel={
+                      channel.href.startsWith("http")
+                        ? "me noopener"
+                        : undefined
+                    }
+                  >
+                    {channel.value}
+                  </a>
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+
+        <div class="about__ctas">
+          <a class="action action--primary" href={`mailto:${site.email}`}>
+            Email me
+          </a>
+          <a
+            class="action"
+            href="/alex-boffey-cv.pdf"
+            download={cvDownloadName}
+          >
+            Download CV
+          </a>
+        </div>
       </aside>
     </div>
   </div>
