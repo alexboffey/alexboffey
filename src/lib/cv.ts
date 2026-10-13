@@ -242,7 +242,7 @@ export const positions: Position[] = [
   },
   {
     org: "iWeb Solutions",
-    location: "Stafford, UK",
+    location: "Staffordshire, UK",
     span: "May 2017 – Oct 2018",
     roles: [{ title: "Front End Developer", span: "May 2017 – Oct 2018" }],
     groups: [
