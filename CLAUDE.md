@@ -10,7 +10,7 @@ npm run build    # astro build -> dist/
 npm run preview  # serve the production build
 npm run lint     # prettier --check + astro check
 npm run fix      # prettier --write
-npm test         # playwright, 28 smoke tests
+npm test         # playwright, 20 smoke tests
 ```
 
 **npm, not yarn.** The lockfile is `package-lock.json` and there is no `yarn.lock`. The scripts used to shell out to `yarn`, which broke `npm run lint` on any machine without yarn installed.
@@ -35,7 +35,7 @@ Astro 5-era static site (Astro 7). Ported from Gatsby v2 in 2026-08; nothing Gat
 
 **Content pipeline.** `src/content/{writing,work}/<slug>/index.md`, loaded by content collections in `src/content.config.ts`. Frontmatter keeps the shape the old Gatsby files used, so ported posts needed no edits: `title`, `subtitle`, `date`, `tags` (comma-separated string, normalised to an array in the schema), `published`. `published: false` never reaches a route, gated in `src/lib/entries.ts`. The `writing` collection sets `retainBody: true` because reading time is counted off the raw markdown.
 
-Routes: `/` (portal), `/cv/`, `/work/`, `/work/<slug>/`, `/writing/`, `/writing/<slug>/`, `/about/`, 404. Detail pages use `src/layouts/Reading.astro` (Read mode) rather than `Root.astro` directly.
+Routes: `/` (CV), `/about/`, `/cover-letter/` (unlinked), 404. The `work` and `writing` collections still exist on disk but no route renders them.
 
 **The lattice is the design.** `src/shaders/lattice.frag` raymarches an orthographic isometric block field; `src/scripts/lattice.ts` drives it against raw WebGL2, one fullscreen triangle, one draw call, no three.js.
 

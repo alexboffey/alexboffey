@@ -24,7 +24,7 @@ Rules:
 
 # Alex Boffey
 
-alex@alexboffey.co.uk · +44 (0) 7850 260 974 · alexboffey.co.uk
+alex@alexboffey.co.uk · alexboffey.co.uk
 
 [DATE]
 

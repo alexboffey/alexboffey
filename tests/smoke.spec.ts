@@ -5,14 +5,12 @@ import { expect, test } from "@playwright/test"
  * restating that pages return 200:
  *  - the CV must be fully readable with JS disabled (it was not; 15 of 22
  *    bullets were hidden behind a click handler)
- *  - controls must not be double-bound (astro:page-load fires on first load,
- *    which silently cancelled every toggle)
  *  - the lattice canvas must survive a client-side navigation, since the whole
  *    transition idea depends on the scene never being torn down
  *  - no claim may appear on a page that PRODUCT.md forbids
  */
 
-const ROUTES = ["/", "/cv/", "/work/", "/writing/", "/about/"]
+const ROUTES = ["/", "/about/", "/cover-letter/"]
 
 for (const route of ROUTES) {
   test(`${route} renders its heading and has no console errors`, async ({
@@ -46,50 +44,20 @@ test("every route reaches contact without leaving the site", async ({
   }
 })
 
-test.describe("CV", () => {
-  test("is fully readable with JavaScript disabled", async ({ browser }) => {
-    const context = await browser.newContext({ javaScriptEnabled: false })
-    const page = await context.newPage()
-    await page.goto("/cv/")
+test("the CV is fully readable with JavaScript disabled", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({ javaScriptEnabled: false })
+  const page = await context.newPage()
+  await page.goto("/")
 
-    // Fail-open: all bullets served visible, script collapses rather than reveals.
-    const bullets = page.locator("[data-text]")
-    const total = await bullets.count()
-    expect(total).toBeGreaterThan(20)
-    for (let i = 0; i < total; i++) {
-      await expect(bullets.nth(i)).toBeVisible()
-    }
-    await context.close()
-  })
-
-  test("density toggle is bound exactly once", async ({ page }) => {
-    await page.goto("/cv/")
-    const button = page.getByRole("button", { name: /headlines|full detail/i })
-    const visible = () => page.locator("[data-text]:visible").count()
-
-    const before = await visible()
-    await button.click()
-    const after = await visible()
-    // A double-bound handler toggles twice and lands back where it started.
-    expect(after).not.toBe(before)
-
-    await button.click()
-    expect(await visible()).toBe(before)
-  })
-
-  test("the highlight filter finds real content and reports misses", async ({
-    page,
-  }) => {
-    await page.goto("/cv/")
-    const filter = page.getByLabel(/highlight a technology/i)
-    const status = page.locator("[data-filter-status]")
-
-    await filter.fill("playwright")
-    await expect(status).toContainText(/mention/i)
-
-    await filter.fill("cobol")
-    await expect(status).toContainText(/no mention/i)
-  })
+  const bullets = page.locator(".role__bullet")
+  const total = await bullets.count()
+  expect(total).toBeGreaterThan(20)
+  for (let i = 0; i < total; i++) {
+    await expect(bullets.nth(i)).toBeVisible()
+  }
+  await context.close()
 })
 
 test("the lattice canvas survives a client-side navigation", async ({
@@ -103,8 +71,8 @@ test("the lattice canvas survives a client-side navigation", async ({
     if (c) c.__marker = "persisted"
   })
 
-  await page.getByRole("link", { name: "Writing", exact: true }).click()
-  await expect(page).toHaveURL(/\/writing\//)
+  await page.getByRole("link", { name: "About", exact: true }).click()
+  await expect(page).toHaveURL(/\/about\//)
 
   const persisted = await page.evaluate(
     () =>
@@ -119,10 +87,9 @@ test("the lattice canvas survives a client-side navigation", async ({
 
 test("each route declares its own lattice station", async ({ page }) => {
   const expected: Record<string, string> = {
-    "/": "portal",
-    "/work/": "work",
-    "/writing/": "writing",
+    "/": "about",
     "/about/": "about",
+    "/404/": "lost",
   }
   for (const [route, scene] of Object.entries(expected)) {
     await page.goto(route)
