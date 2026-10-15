@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs"
 import { expect, test } from "@playwright/test"
 
 /**
@@ -51,9 +52,19 @@ test("the CV is fully readable with JavaScript disabled", async ({
   const page = await context.newPage()
   await page.goto("/")
 
+  // Every Experience bullet in the source markdown, so trimming the CV cannot
+  // pass by hiding bullets.
+  const cv = readFileSync("docs/cv-sources/cv-2026-10.md", "utf8")
+  const experience = cv.slice(
+    cv.indexOf("## Experience"),
+    cv.indexOf("## Education"),
+  )
+  const expected = experience.match(/^- /gm)?.length ?? 0
+
   const bullets = page.locator(".role__bullet")
   const total = await bullets.count()
-  expect(total).toBeGreaterThan(20)
+  expect(expected).toBeGreaterThan(0)
+  expect(total).toBe(expected)
   for (let i = 0; i < total; i++) {
     await expect(bullets.nth(i)).toBeVisible()
   }

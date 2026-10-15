@@ -6,13 +6,7 @@
 
 export const site = {
   name: "Alex Boffey",
-  surname: "Boffey",
-  url: "https://alexboffey.co.uk",
-  role: "Senior Frontend Engineer",
-  employer: "GEEIQ",
-  location: "London",
   email: "alex@alexboffey.co.uk",
-  years: 9,
   positioning: "Product engineer, with deep frontend roots.",
   description:
     "Alex Boffey is a product engineer in London with nine years' experience. He owns features end to end, from the problem through the API and data model to the UI, and his deepest experience is on the frontend.",
@@ -44,7 +38,7 @@ export const strands = [
   {
     name: "Client-side architecture",
     summary:
-      "Where I'm deepest, and the reason I can move quickly everywhere else. I led a team of 4 moving GEEIQ's main app from Ember.js to React, and the old app was gone in 6 months. Since then I've kept it healthy: the design system (40+ components across 296 files, through two rebrands), state and caching patterns, the build pipeline, and a Playwright suite that runs in under 10 minutes across 6 CI shards.",
+      "Where I'm deepest, and the reason I can move quickly everywhere else. I led a team of 4 moving GEEIQ's main app from Ember.js to React, and the old app was gone in 6 months. Since then I've kept it healthy: the design system (40+ components across 296 files, through two rebrands), the frontend standards every PR is checked against, and a Playwright suite that runs in under 10 minutes across 6 CI shards.",
   },
   {
     name: "AI engineering",
