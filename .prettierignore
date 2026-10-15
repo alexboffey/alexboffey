@@ -3,3 +3,6 @@ node_modules
 public/fonts
 .impeccable
 .netlify
+.agents
+.claude/skills/*
+!.claude/skills/tailor-cover-letter
