@@ -18,17 +18,15 @@ npm run skills:link  # symlink .agents/skills into .claude/skills
 
 Node 22.12+ (`.nvmrc` pins 22.16.0). This is a hard floor, not a preference: Astro 7 declares `engines.node >= 22.12.0` and `astro check` refuses to run below it. Pinning 20.19.0 here is what broke CI.
 
-Deployment: two hosts, one build, while DNS moves. After `verify` passes on master, `deploy-cloudflare` and `deploy-netlify` in `.github/workflows/ci.yml` ship the same `dist/` artifact in parallel. Netlify keeps alexboffey.co.uk until DNS moves; Cloudflare is checked at https://alexboffey.alexboffey5.workers.dev. Both deploy from CI rather than a Git connection, because Netlify's legacy Git integration lost read access when the repo went private and still serves the old Gatsby build until the Netlify job runs once.
+Deployment: after `verify` passes on master, `deploy-cloudflare` in `.github/workflows/ci.yml` ships the tested `dist/` artifact to the `alexboffey` Worker (static assets, no entry point), which serves alexboffey.co.uk and www as custom domains (`routes` in `wrangler.jsonc`). It deploys from CI rather than a Git connection, so Cloudflare never needs read access to the private repo. Moved off Netlify on 2026-10-15; the workers.dev URL still works as a fallback check.
 
-Secrets: `CLOUDFLARE_ACCOUNT_ID` is set. Still needed: `CLOUDFLARE_API_TOKEN` (dashboard, "Edit Cloudflare Workers" template), `NETLIFY_AUTH_TOKEN` (Netlify user settings, personal access token) and `NETLIFY_SITE_ID` (site configuration, Site ID). A job with missing secrets skips itself with a notice, so the run stays green.
-
-Cutover: delete the Netlify apex and www records in Cloudflare DNS, uncomment `routes` in `wrangler.jsonc`, push. Then remove `deploy-netlify` and `netlify.toml`.
+Secrets: `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` ("Edit Cloudflare Workers" template, with the alexboffey.co.uk zone in scope so the custom domains attach). Without them the job skips itself with a notice, so the run stays green.
 
 Inline scripts are off (`assetsInlineLimit: 0` in `astro.config.mjs`) because the CSP is `script-src 'self'`; an inlined script is silently blocked.
 
 CI is green as of `05c9391`. Two past causes of red: `.nvmrc` pinning Node below Astro 7's `>=22.12.0` floor (fails on setup), and the phone-number guard in the workflow catching the number in `docs/`.
 
-Response headers live in `public/_headers` (copied into `dist/` by Astro and read by Workers). `netlify.toml` carries the same headers for Netlify until the cutover lands; keep the two in step.
+Response headers live in `public/_headers` (copied into `dist/` by Astro and read by Workers).
 
 ## Architecture
 

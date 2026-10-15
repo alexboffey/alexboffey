@@ -1,7 +1,7 @@
 # alexboffey.co.uk
 
-Personal blog / portfolio built with Gatsby.
+Personal site built with Astro.
 
 ## Deployment
 
-Deployment is automated from pushes to `master` on Netlify!
+Pushes to `master` deploy to Cloudflare Workers from CI once `verify` passes.

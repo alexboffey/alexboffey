@@ -50,7 +50,7 @@ Two things deliberately not on the site: the iceberg metaphor (a visual metaphor
 - Evaluated in a browser tab alongside competing candidates, frequently on a phone.
 - Reached from LinkedIn, a CV, or a direct link, so it must stand alone without a referring pitch.
 - Blog posts are also reached cold from search, detached from the homepage narrative.
-- Deployed as a static site. Netlify today, with a planned migration to Cloudflare.
+- Deployed as a static site on Cloudflare Workers (moved from Netlify on 2026-10-15).
 
 ## Capabilities and Constraints
 
