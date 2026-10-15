@@ -19,8 +19,11 @@ export default defineConfig({
   },
   vite: {
     build: {
-      // The lattice shader is a string import; keep it out of the CSS graph.
-      assetsInlineLimit: 2048,
+      // Never inline: Astro inlines any script under this size, and the CSP in
+      // public/_headers (script-src 'self') blocks inline scripts, which killed
+      // the trailing cursor on Cloudflare. The shader is a ?raw import, so it is
+      // unaffected.
+      assetsInlineLimit: 0,
     },
   },
 })

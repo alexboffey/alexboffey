@@ -4,7 +4,10 @@
   font-weight: 100 900;
   font-stretch: 50% 150%;
   font-style: normal;
-  font-display: swap;
+  /* Block, not swap: no fallback shares Anybody's narrow width axis, so a
+     swapped-in headline reflowed visibly on a cold visit. It is preloaded and
+     lands in about 200ms; body text (Archivo) still swaps. */
+  font-display: block;
   /* Latin subset only. */
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
