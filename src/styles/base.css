@@ -50,6 +50,11 @@ html {
   }
 }
 
+/* Anchor jumps clear the sticky nav. */
+html {
+  scroll-padding-top: 5rem;
+}
+
 body {
   min-height: 100svh;
   margin: 0;
@@ -295,6 +300,76 @@ li {
   outline-offset: 2px;
 }
 
+/* --- entrance ------------------------------------------------------------ */
+
+/* Page-load rise for hero blocks; set --i on each to stagger. Reduced motion
+   keeps the fade and drops the movement. */
+.rise {
+  animation: rise 560ms var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation-name: fade;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Scroll reveal, Apple product-page style: blocks blur and rise into focus as
+   they enter the viewport. Scroll-driven, so it runs off the main thread and
+   tracks the scroll exactly. Browsers without view timelines, and reduced
+   motion, get the content in place. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal,
+    .reveal-children > * {
+      animation-name: reveal;
+      animation-timing-function: var(--ease);
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+
+    /* The hero sinks back as the page scrolls over it. */
+    .recede {
+      animation-name: recede;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 90%;
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+    filter: blur(6px);
+  }
+}
+
+@keyframes recede {
+  to {
+    opacity: 0.25;
+    transform: translateY(-3%) scale(0.97);
+    filter: blur(4px);
+  }
+}
+
 /* --- actions ------------------------------------------------------------- */
 
 /**
@@ -323,7 +398,7 @@ li {
     border-color var(--dur-fast) var(--ease),
     background-color var(--dur-fast) var(--ease),
     color var(--dur-fast) var(--ease),
-    transform var(--dur-fast) var(--ease);
+    transform var(--dur) var(--ease);
 }
 
 /* The isometric diamond, carried from the mark, as the action's own pointer. */
@@ -348,8 +423,18 @@ li {
   transform: rotate(45deg) translate(2px, -2px);
 }
 
+/* Pointer lift, after iPadOS: hovered actions rise a pixel. No glow:
+   the system has no shadows. Pointer only, since touch fires hover on tap. */
+@media (hover: hover) and (pointer: fine) {
+  .action:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* Press answers on pointer-down and faster than the lift. */
 .action:active {
-  transform: translateY(1px);
+  transform: scale(0.97);
+  transition-duration: var(--dur-fast);
 }
 
 .action--primary {

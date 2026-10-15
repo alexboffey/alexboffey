@@ -32,7 +32,7 @@ Hi [NAME / the [COMPANY] team],
 
 I'm applying for the [ROLE] role at [COMPANY]. [ONE SPECIFIC REASON. Something about the product, how the team works, or a line from the job description that matches owning features end to end. One or two sentences, no flattery.]
 
-I've spent nine years building web products, most recently as a Senior Frontend Engineer at GEEIQ, an analytics platform for brands in gaming. I joined as the company moved off Ember.js. I led a team of four rebuilding the main client app in React, hitting feature parity in six months. I built the design system it runs on (40+ components across 296 files, two rebrands each shipped in a week) and the test setup around it (130+ Playwright tests sharded six ways in CI).
+I've spent nine years building web products, most recently as a Senior Frontend Engineer at GEEIQ, an analytics platform for brands in gaming. I joined as the company moved off Ember.js. I led a team of four moving the main app to React, and the old one was gone in six months. I built the design system it runs on (40+ components across 296 files, two rebrands each shipped in a week) and the test setup around it (130+ Playwright tests sharded six ways in CI).
 
 Over the last 18 months my work moved across the stack. Schema and API changes in Postgres through Prisma and tRPC. A Fastify service that runs our autonomous coding agent as Kubernetes jobs off signed webhooks, with a Kibana dashboard tracking each run. I also set the codebase up for the agents themselves (rules, custom skills, MCP integrations), so their output follows the same patterns and passes the same CI as the team's.
 

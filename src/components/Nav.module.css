@@ -1,10 +1,11 @@
 .nav {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 4;
-  /* The nav sits exactly where both scrim passes are weakest, so 11px labels
-       were landing on bright cube faces. Its own short gradient fixes that
-       without darkening the whole top of the field. */
   isolation: isolate;
+  /* No ground at rest. The labels sit where the scrim is weakest, over bright
+     cube faces, so a soft shadow carries their contrast instead of a strip. */
+  text-shadow: 0 1px 10px color-mix(in oklab, var(--void) 90%, transparent);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,18 +16,42 @@
   padding: var(--space-md) var(--gutter);
 }
 
-.nav::before {
+/* The material. A full-bleed frosted bar that materialises over the first
+   120px of scroll, so the nav floats bare over the lattice at rest and reads as
+   glass once content passes under it. Without scroll timelines it is simply
+   on. html clips overflow-x, so the 100vw bleed cannot cause a sideways scroll. */
+.nav::after {
   content: "";
   position: absolute;
-  inset: -0.5rem 0 -1.25rem;
+  inset: 0 calc(50% - 50vw);
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    color-mix(in oklab, var(--void) 88%, transparent) 0%,
-    color-mix(in oklab, var(--void) 62%, transparent) 60%,
-    transparent 100%
-  );
+  background: color-mix(in oklab, var(--void) 62%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid var(--rule);
+}
+
+@supports (animation-timeline: scroll()) {
+  .nav::after {
+    animation-name: nav-material;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root);
+    animation-range: 0 120px;
+  }
+}
+
+@keyframes nav-material {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .nav::after {
+    background: var(--void);
+    backdrop-filter: none;
+  }
 }
 
 .nav__brand {
@@ -103,7 +128,20 @@
   transition:
     border-color var(--dur-fast) var(--ease),
     color var(--dur-fast) var(--ease),
-    background-color var(--dur-fast) var(--ease);
+    background-color var(--dur-fast) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+/* Same pointer lift as .action in base.css. */
+@media (hover: hover) and (pointer: fine) {
+  .nav__link--action:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.nav__link--action:active {
+  transform: scale(0.97);
+  transition-duration: var(--dur-fast);
 }
 
 .nav__link--action:hover,

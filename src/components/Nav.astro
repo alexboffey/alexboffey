@@ -20,13 +20,20 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
 import styles from "./Nav.module.css"
 ---
 
+<!-- No view-transition-name on the header itself: it would become the
+     backdrop root and the glass would have nothing behind it to blur. -->
 <header class={styles.nav}>
-  <a class={styles.nav__brand} href="/" aria-label="Alex Boffey, home">
+  <a
+    class={styles.nav__brand}
+    href="/"
+    aria-label="Alex Boffey, home"
+    transition:animate="none"
+  >
     <Mark size={26} />
     <span class={styles.nav__wordmark}>Alex Boffey</span>
   </a>
 
-  <nav class={styles.nav__links} aria-label="Main">
+  <nav class={styles.nav__links} aria-label="Main" transition:animate="none">
     {
       links.map((link) => (
         <a

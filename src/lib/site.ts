@@ -14,10 +14,8 @@ export const site = {
   email: "alex@alexboffey.co.uk",
   years: 9,
   positioning: "Product engineer, with deep frontend roots.",
-  taglineBody:
-    "I own features end to end, from working out the problem to the API, the data model and the UI. I also set up codebases so AI agents ship work that's consistent and tested.",
   description:
-    "Alex Boffey is a product engineer in London with nine years' experience. He's strongest on the frontend and owns features end to end, through the API, the database and the services behind them.",
+    "Alex Boffey is a product engineer in London with nine years' experience. He owns features end to end, from the problem through the API and data model to the UI, and his deepest experience is on the frontend.",
 } as const
 
 export const social = {
@@ -41,16 +39,16 @@ export const strands = [
   {
     name: "End-to-end delivery",
     summary:
-      "I follow a feature past the frontend into the API, service and database repos. At GEEIQ that meant Postgres through Prisma and tRPC, Node and Fastify services, GraphQL, Kubernetes jobs and RBAC, Elasticsearch, secrets management and the CI/CD that ships it.",
+      "I take a feature from the problem to production, and that usually means going past the frontend into the API, service and database repos. At GEEIQ that's been Postgres through Prisma and tRPC, Node and Fastify services, Kubernetes jobs, Elasticsearch, and the CI/CD that ships it all.",
   },
   {
     name: "Client-side architecture",
     summary:
-      "Where I'm deepest. I led the rebuild of GEEIQ's main client app in React, reaching feature parity in 6 months, then kept it healthy: state and cache, build pipelines, performance budgets, a design system that has carried two rebrands (40+ components across 296 files), and a Playwright suite that runs in under 10 minutes on 6-way sharded CI.",
+      "Where I'm deepest, and the reason I can move quickly everywhere else. I led a team of 4 moving GEEIQ's main app from Ember.js to React, and the old app was gone in 6 months. Since then I've kept it healthy: the design system (40+ components across 296 files, through two rebrands), state and caching patterns, the build pipeline, and a Playwright suite that runs in under 10 minutes across 6 CI shards.",
   },
   {
     name: "AI engineering",
     summary:
-      "This sits on top of the other two. The repo has rules for Claude and Codex, custom agent skills, MCP integrations (Figma included, so component work starts from the design source rather than screenshots) and git worktrees for running agents in parallel. I also worked on nudge-agent, GEEIQ's autonomous coding agent, which picks up Linear tickets and ships PRs. A Kibana dashboard over its traces shows what each run cost and whether it worked.",
+      "This sits on top of the other two. An agent copies whatever patterns it finds, so I set our codebase up for it: rules for Claude and Codex, custom skills, MCP integrations (Figma included, so component work starts from the design files) and git worktrees for running agents in parallel. I'm also a core contributor to GEEIQ's autonomous coding agent, which picks up Linear tickets and opens PRs, and I built the Kibana dashboard that tracks every run.",
   },
 ] as const

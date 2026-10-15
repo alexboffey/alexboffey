@@ -457,6 +457,11 @@ blocks still use Astro's scoped `<style>`. Shared primitives (`.action`,
 - **Mobile (below 34rem):** the wordmark drops, tracking closes to 0.16em, sizes go
   to micro, and the active diamond moves below its label to avoid colliding with
   the previous link. Contact never drops.
+- **Scroll:** the nav is sticky. At rest it has no ground, only a soft void
+  text-shadow for contrast over the lattice (the one shadow in the system, and it
+  is for legibility, not depth). Over the first 120px of scroll a full-bleed
+  frosted bar fades in on a scroll timeline. Keep any view-transition-name off the
+  `<header>` itself, or it becomes the backdrop root and the blur sees nothing.
 
 ### Index Rows (the signature list component)
 
@@ -478,8 +483,9 @@ tracked out small on the right, optional summary beneath.
 
 ### Chips
 
-Squared 1px `--rule` outlines holding small text. Used for the per-role CV stack
-and the unattributed stack. Matching a filter takes the frame to the accent and the
+Squared 1px `--rule` outlines holding small text. Used for the per-role CV stack,
+capped at the dozen or so technologies that define the role and named in its own
+bullets. A long chip wall reads as a keyword dump. Matching a filter takes the frame to the accent and the
 text to ember; non-matching chips dim to 0.55 opacity, which is the floor that
 keeps them above 4.5:1.
 
@@ -489,6 +495,12 @@ Native `<details>` with the marker suppressed and replaced by the isometric
 diamond, which rotates to a square and fills with the accent when open. Every role
 ships `open`; the script collapses rather than reveals, so a script failure leaves
 the whole CV readable.
+
+The role hangs off one indent (`--role-indent`): the diamond takes its own column,
+and the org, the promotion ladder and the body share the next edge. The ladder is a
+two-column grid of title and dates from 34rem up, stacked below it. The body is
+capped at `--measure`. Where supported, opening and closing animates the height of
+`::details-content`.
 
 ### The Lattice (the signature component)
 
@@ -536,6 +548,14 @@ One easing curve, `--ease` (`cubic-bezier(0.16, 1, 0.3, 1)`), on everything, at
 four durations: `--dur-fast` (180ms) for colour, `--dur` (420ms) for transforms
 and rules, `--dur-slow` (900ms), and `--dur-enter` (1200ms) for the canvas fade.
 All four collapse to 1ms under reduced motion.
+
+Page motion is CSS only. Hero blocks rise in once on load (`.rise`, staggered by
+`--i`). On scroll, content blocks blur and rise into focus (`.reveal`,
+`.reveal-children`) and the hero recedes as it leaves (`.recede`), all on view
+timelines, so browsers without them and reduced motion get static content. Write
+those animations as longhands: the minifier folds `animation-timeline` into the
+shorthand, where browsers reject it. Actions lift 1px on pointer hover and scale to
+0.97 on press.
 
 The one authored moment is the route transition. The canvas is
 `transition:persist`, so the client router never destroys it: leaving spins the

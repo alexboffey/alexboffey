@@ -11,6 +11,7 @@ npm run preview  # serve the production build
 npm run lint     # prettier --check + astro check
 npm run fix      # prettier --write
 npm test         # playwright, 20 smoke tests
+npm run skills:link  # symlink .agents/skills into .claude/skills
 ```
 
 **npm, not yarn.** The lockfile is `package-lock.json` and there is no `yarn.lock`. The scripts used to shell out to `yarn`, which broke `npm run lint` on any machine without yarn installed.
@@ -21,7 +22,7 @@ Deployment: **currently broken.** Netlify still serves the old Gatsby build. Mak
 
 The replacement is scaffolded: `wrangler.jsonc` configures Cloudflare Workers Static Assets, and the `deploy` job in `.github/workflows/ci.yml` pushes the verified `dist/` artifact using `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Deploying from CI rather than a Git connection means Cloudflare never needs to read the private repo. Both secrets are unset, so the deploy job skips itself with a notice and the run still passes.
 
-CI is green as of `78e4ccc`. It was red on every run before that because `.nvmrc` pinned Node 20.19.0 against Astro 7's `>=22.12.0` floor. If a run fails on setup, check that first.
+CI is green as of `05c9391`. Two past causes of red: `.nvmrc` pinning Node below Astro 7's `>=22.12.0` floor (fails on setup), and the phone-number guard in the workflow catching the number in `docs/`.
 
 Response headers live in `public/_headers` (copied into `dist/` by Astro and read by Workers). `netlify.toml` is kept only as a fallback until the Cloudflare cutover lands.
 
@@ -59,9 +60,9 @@ Degradation is deliberate and should stay: no WebGL2 keeps the CSS ground, `pref
 
 `PRODUCT.md` holds confirmed product truth and an explicit list of things that must not be fabricated. The site previously shipped invented commercial detail and it had to be cut, so: **no claim on a page unless it traces to `PRODUCT.md`, `src/lib/cv.ts`, or the markdown content.**
 
-`src/lib/cv.ts` is transcribed from `~/Documents/Obsidian Vault/ab/life/CVs & Cover Letters/Alex Boffey CV October 2026 v2.md` (current source). Earlier CVs in that folder plus `docs/cv-sources/cv-2022.md` and `docs/cv-sources/cv-2026-04.md` are kept as provenance only. The phone number in the vault source is deliberately excluded from the site and must stay excluded. `src/lib/site.ts` holds standing facts (title, employer, contact channels) so copy does not drift between routes.
+`src/lib/cv.ts` mirrors `docs/cv-sources/cv-2026-10.md`, which builds the PDF; keep the two word for word. The markdown was rewritten on 2026-10-15 and is now ahead of the vault copy (`~/Documents/Obsidian Vault/ab/career/CVs & Cover Letters/Alex Boffey CV October 2026 v2.md`). Earlier CVs in that folder plus `docs/cv-sources/cv-2022.md` and `docs/cv-sources/cv-2026-04.md` are kept as provenance only. The phone number in the vault source is deliberately excluded from the site and must stay excluded. `src/lib/site.ts` holds standing facts (title, employer, contact channels) so copy does not drift between routes.
 
-The copy is written to the one-liner in `~/Documents/Obsidian Vault/ab/life/Job Search/Positioning and Talking Points.md`: "Product engineer with deep frontend roots." (changed from "Full stack engineer, deepest in client-side architecture." on 2026-10-08). That doc is the canonical positioning; `PRODUCT.md`, `cv.ts`, `site.ts`, the strand summaries and the sidebar rails all pull from it. Change the positioning there first, then propagate.
+The copy is written to the one-liner in `~/Documents/Obsidian Vault/ab/career/Job Search/Positioning and Talking Points.md`: "Product engineer with deep frontend roots." (changed from "Full stack engineer, deepest in client-side architecture." on 2026-10-08). That doc is the canonical positioning; `PRODUCT.md`, `cv.ts`, `site.ts`, the strand summaries and the sidebar rails all pull from it. Change the positioning there first, then propagate.
 
 ## Conventions
 

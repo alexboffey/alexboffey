@@ -16,69 +16,68 @@ const channels = [
 
 <Root title="About" description={site.description} quiet scene="about">
   <div class="about shell">
-    <header class="about__head">
-      <p class="about__name">Alex Boffey</p>
-      <h1 class="about__title">
-        <span class="about__title-layer about__title-base">
-          Product engineer,<br />
-          <span class="about__accent">with deep frontend roots</span>
-        </span>
-        <span class="about__title-layer about__title-swap" aria-hidden="true">
-          Product engineer,<br />
-          <span class="about__accent-swap">with deep frontend roots</span>
-        </span>
+    <header class="about__head recede">
+      <p class="about__name rise">Alex Boffey</p>
+      <h1 class="about__title rise" style="--i: 1">
+        Product engineer,<br />
+        <span class="about__accent">with deep frontend roots</span>
       </h1>
-      <p class="lead about__lead">
-        Hi, Alex here. Some people call me Boff. Software engineer in London,
-        nine years in. Also a lifelong musician.
+      <p class="lead about__lead rise" style="--i: 2">
+        Hi, I'm Alex (some people call me Boff). I'm a product engineer in
+        London, nine years in, and a lifelong musician.
       </p>
     </header>
 
     <div class="about__grid">
-      <section class="about__col prose" aria-labelledby="how">
+      <section class="about__col prose reveal-children" aria-labelledby="how">
         <h2 id="how">How I work</h2>
         <p>
-          I like the part of the job where an intent meets what the machine will
-          actually do, and someone has to decide which one moves. Usually that
-          means building the thing properly once so forty features do not each
-          solve it badly, whether that thing is a component or a service.
+          I like owning a feature the whole way through: working out what the
+          problem really is, then the data model, the API and the UI on top.
+          Nine years of frontend means the UI is where I'm fastest, which leaves
+          more time for the parts that decide whether the feature works.
         </p>
         <p>
-          Simple, small, contained, easy to change beats complex and
-          over-engineered every time. Code that does one thing is easy to
-          change; code that does seven is not. Most of the complexity in a
-          codebase is accidental, piled on by poor interfaces and things that
-          should have stayed separate. The payoff for cutting it lands on three
-          sides at once: a simple system is easier to run, easier to change next
-          month, and the two feed each other. A system you can see into tells
-          you what needs to move; a system you can move keeps giving you useful
-          signals as it does.
+          I'd rather build something small and easy to change than something
+          clever. Code that does one thing is easy to change. Code that does
+          seven isn't. Most of the complexity I've had to untangle was
+          accidental: a bad interface, or two things that should have stayed
+          separate. Cutting it pays off twice, because a simpler system is
+          easier to run and easier to change next month.
         </p>
         <p>
-          The e2e tests worth having drive the full system the way a real user
-          would. Happy-path assertions are easy to write and often add little. A
-          green suite can be entirely consistent with a broken feature.
+          The same goes for AI agents. An agent copies whatever patterns it
+          finds, so a codebase with one design system, clear state patterns,
+          strict types and CI checks gets consistent work out of it. That's most
+          of what I mean by setting a codebase up for agents.
+        </p>
+        <p>
+          The end-to-end tests worth having drive the whole system the way a
+          user would. Happy-path assertions are easy to write and often prove
+          very little. A suite can be green while the feature is broken.
         </p>
 
         <h2>Music &amp; audio</h2>
         <p>
-          Lifelong guitar player, mostly electric and I love effects, with some
-          classical on the side. I play in a band and own the technical side:
-          demos, sound design, synthesis, sampling, and the live rig. The parts
-          that need an audio engineer get one. I collaborate rather than fake
-          it.
+          I've played guitar my whole life, mostly electric, with some classical
+          on the side, and I love effects. In the band I handle the technical
+          side: demos, sound design, synthesis, sampling and the live rig. When
+          something needs a proper audio engineer, we get one.
         </p>
         <p>
-          The live rig is hardware that takes production tracks and breaks them
-          down into something the band can play against: stems, playable
-          effects, a cue system that runs the show. The two worlds inform each
-          other, mostly in one direction: software habits travel into the music
-          tech. Don't trust it until it is tested. Use compute efficiently. Keep
-          it simple.
+          The live rig takes our production tracks and breaks them down into
+          something the band can play against: stems, effects we can play live,
+          and a cue system that runs the show. Software habits carry over. I
+          don't trust a patch until I've tested it, and I keep it as simple as
+          it'll go.
         </p>
       </section>
 
-      <aside class="about__side" id="contact" aria-labelledby="contact-h">
+      <aside
+        class="about__side reveal"
+        id="contact"
+        aria-labelledby="contact-h"
+      >
         <a
           class="about__contact-head"
           href={`mailto:${site.email}`}
@@ -88,7 +87,7 @@ const channels = [
           <h2 class="about__contact-title" id="contact-h">Get in touch</h2>
         </a>
         <p class="about__contact-body">
-          If you are hiring, or you want to argue about design tokens, email is
+          If you're hiring, or you want to argue about design tokens, email is
           the fastest way to reach me.
         </p>
 
@@ -148,55 +147,6 @@ const channels = [
     font-weight: 700;
     line-height: 0.96;
     color: var(--paper);
-    transition:
-      font-stretch 900ms var(--ease),
-      opacity 600ms var(--ease);
-  }
-
-  .about__title-layer {
-    display: block;
-  }
-
-  .about__title-swap {
-    position: absolute;
-    inset: 0;
-    color: var(--incandescent);
-    pointer-events: none;
-    --mask-size: 320px;
-    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 750 750'><polygon points='487.1,576.7 263.7,706.5 38.9,576.7 262.3,446.9' fill='black'/><polygon points='488.5,309.9 487.7,568.2 262.9,438.4 263.7,180.1' fill='black'/><polygon points='254.3,183.3 255,441.6 30.2,571.4 29.5,313.1' fill='black'/><polygon points='715.8,173.3 492.4,303.1 267.6,173.3 491,43.5' fill='black'/><polygon points='719.8,180.1 720.5,438.4 495.7,568.2 495,309.9' fill='black'/></svg>");
-    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 750 750'><polygon points='487.1,576.7 263.7,706.5 38.9,576.7 262.3,446.9' fill='black'/><polygon points='488.5,309.9 487.7,568.2 262.9,438.4 263.7,180.1' fill='black'/><polygon points='254.3,183.3 255,441.6 30.2,571.4 29.5,313.1' fill='black'/><polygon points='715.8,173.3 492.4,303.1 267.6,173.3 491,43.5' fill='black'/><polygon points='719.8,180.1 720.5,438.4 495.7,568.2 495,309.9' fill='black'/></svg>");
-    -webkit-mask-size: var(--mask-size) var(--mask-size);
-    mask-size: var(--mask-size) var(--mask-size);
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: calc(var(--mx, -600px) - var(--mask-size) / 2)
-      calc(var(--my, -600px) - var(--mask-size) / 2);
-    mask-position: calc(var(--mx, -600px) - var(--mask-size) / 2)
-      calc(var(--my, -600px) - var(--mask-size) / 2);
-  }
-
-  .about__accent-swap {
-    color: var(--paper);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .about__title-swap {
-      display: none;
-    }
-  }
-
-  @starting-style {
-    .about__title {
-      font-stretch: 62%;
-      opacity: 0;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .about__title {
-      transition: none;
-      animation: none;
-    }
   }
 
   .about__name {
@@ -236,7 +186,8 @@ const channels = [
 
     .about__side {
       position: sticky;
-      top: var(--space-lg);
+      /* Clears the sticky nav. */
+      top: calc(var(--space-lg) + 4.5rem);
     }
   }
 
@@ -326,24 +277,3 @@ const channels = [
     margin-top: var(--space-sm);
   }
 </style>
-
-<script>
-  // Cursor-follow colour swap on the About hero. Two layered copies of the
-  // title: the base layer is normal, the swap layer sits on top with the two
-  // colours inverted and a circular mask around the pointer. --mx and --my
-  // start off-canvas so the mask reveals nothing until the pointer enters.
-  const title = document.querySelector<HTMLElement>(".about__title")
-  if (title && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const update = (event: PointerEvent) => {
-      const rect = title.getBoundingClientRect()
-      title.style.setProperty("--mx", `${event.clientX - rect.left}px`)
-      title.style.setProperty("--my", `${event.clientY - rect.top}px`)
-    }
-    const reset = () => {
-      title.style.removeProperty("--mx")
-      title.style.removeProperty("--my")
-    }
-    title.addEventListener("pointermove", update)
-    title.addEventListener("pointerleave", reset)
-  }
-</script>

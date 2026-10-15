@@ -21,28 +21,22 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
   quiet
 >
   <div class="cv shell">
-    <header class="cv__head">
-      <p class="cv__name">{site.name}</p>
-      <h1 class="cv__title">
-        <span class="cv__title-layer cv__title-base">
-          Product engineer,<br />
-          <span class="cv__accent">with deep frontend roots</span>
-        </span>
-        <span class="cv__title-layer cv__title-swap" aria-hidden="true">
-          Product engineer,<br />
-          <span class="cv__accent-swap">with deep frontend roots</span>
-        </span>
+    <header class="cv__head recede">
+      <p class="cv__name rise">{site.name}</p>
+      <h1 class="cv__title rise" style="--i: 1">
+        Product engineer,<br />
+        <span class="cv__accent">with deep frontend roots</span>
       </h1>
 
-      <p class="lead cv__profile">{profile}</p>
+      <p class="lead cv__profile rise" style="--i: 2">{profile}</p>
     </header>
 
     <section class="cv__section" aria-labelledby="cv-strands">
-      <h2 class="cv__heading" id="cv-strands">What I do</h2>
+      <h2 class="cv__heading reveal" id="cv-strands">What I do</h2>
       <dl class="strands">
         {
           strands.map((strand) => (
-            <div class="strands__row">
+            <div class="strands__row reveal">
               <dt class="strands__name">{strand.name}</dt>
               <dd class="strands__body">{strand.summary}</dd>
             </div>
@@ -52,12 +46,12 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     </section>
 
     <section class="cv__section" aria-labelledby="cv-experience">
-      <h2 class="cv__heading" id="cv-experience">Experience</h2>
+      <h2 class="cv__heading reveal" id="cv-experience">Experience</h2>
 
       <ol class="roles">
         {
           positions.map((position) => (
-            <li class="role">
+            <li class="role reveal">
               <details class="role__box" open>
                 <summary class="role__summary">
                   <span class="role__mark" aria-hidden="true" />
@@ -70,7 +64,7 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
                   <span class="role__titles">
                     {position.roles.map((role) => (
                       <span class="role__title">
-                        {role.title}
+                        <span class="role__title-name">{role.title}</span>
                         <span class="role__title-span">{role.span}</span>
                       </span>
                     ))}
@@ -112,7 +106,7 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
       </ol>
     </section>
 
-    <section class="cv__section cv__section--split">
+    <section class="cv__section cv__section--split reveal-children">
       <div>
         <h2 class="cv__heading" id="cv-education">Education</h2>
         <p class="cv__plain">
@@ -127,7 +121,7 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
       </div>
     </section>
 
-    <footer class="cv__foot" id="contact">
+    <footer class="cv__foot reveal" id="contact">
       <a class="action action--primary" href={`mailto:${site.email}`}>
         Email me
       </a>
@@ -167,59 +161,10 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     font-weight: 700;
     line-height: 0.96;
     color: var(--paper);
-    transition:
-      font-stretch 900ms var(--ease),
-      opacity 600ms var(--ease);
-  }
-
-  @starting-style {
-    .cv__title {
-      font-stretch: 62%;
-      opacity: 0;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .cv__title {
-      transition: none;
-      animation: none;
-    }
   }
 
   .cv__accent {
     color: var(--incandescent);
-  }
-
-  .cv__title-layer {
-    display: block;
-  }
-
-  .cv__title-swap {
-    position: absolute;
-    inset: 0;
-    color: var(--incandescent);
-    pointer-events: none;
-    --mask-size: 320px;
-    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 750 750'><polygon points='487.1,576.7 263.7,706.5 38.9,576.7 262.3,446.9' fill='black'/><polygon points='488.5,309.9 487.7,568.2 262.9,438.4 263.7,180.1' fill='black'/><polygon points='254.3,183.3 255,441.6 30.2,571.4 29.5,313.1' fill='black'/><polygon points='715.8,173.3 492.4,303.1 267.6,173.3 491,43.5' fill='black'/><polygon points='719.8,180.1 720.5,438.4 495.7,568.2 495,309.9' fill='black'/></svg>");
-    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 750 750'><polygon points='487.1,576.7 263.7,706.5 38.9,576.7 262.3,446.9' fill='black'/><polygon points='488.5,309.9 487.7,568.2 262.9,438.4 263.7,180.1' fill='black'/><polygon points='254.3,183.3 255,441.6 30.2,571.4 29.5,313.1' fill='black'/><polygon points='715.8,173.3 492.4,303.1 267.6,173.3 491,43.5' fill='black'/><polygon points='719.8,180.1 720.5,438.4 495.7,568.2 495,309.9' fill='black'/></svg>");
-    -webkit-mask-size: var(--mask-size) var(--mask-size);
-    mask-size: var(--mask-size) var(--mask-size);
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: calc(var(--mx, -600px) - var(--mask-size) / 2)
-      calc(var(--my, -600px) - var(--mask-size) / 2);
-    mask-position: calc(var(--mx, -600px) - var(--mask-size) / 2)
-      calc(var(--my, -600px) - var(--mask-size) / 2);
-  }
-
-  .cv__accent-swap {
-    color: var(--paper);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .cv__title-swap {
-      display: none;
-    }
   }
 
   .cv__profile {
@@ -240,27 +185,6 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     display: grid;
     gap: var(--space-xs);
     opacity: 1;
-  }
-
-  @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-      .strands__row {
-        animation: strand-rise linear both;
-        animation-timeline: view();
-        animation-range: entry 10% cover 25%;
-      }
-
-      @keyframes strand-rise {
-        from {
-          opacity: 0;
-          transform: translateY(6px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    }
   }
 
   .strands__name {
@@ -327,9 +251,23 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     border-bottom: 1px solid var(--rule);
   }
 
+  /* One indent for the whole role: the mark sits in its own column and the
+     org, the title ladder and the body all hang off the same left edge. */
+  .role {
+    --role-gap: var(--space-md);
+    --role-indent: calc(7px + var(--role-gap));
+  }
+
+  @media (min-width: 52rem) {
+    .role {
+      --role-gap: var(--space-lg);
+    }
+  }
+
   .role__summary {
     display: grid;
-    gap: var(--space-xs) var(--space-lg);
+    grid-template-columns: 7px minmax(0, 1fr);
+    gap: var(--space-sm) var(--role-gap);
     padding-block: var(--space-lg);
     cursor: pointer;
     list-style: none;
@@ -347,9 +285,33 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
   .role__mark {
     width: 7px;
     height: 7px;
+    margin-top: 0.7em;
     border: 1px solid var(--incandescent);
     transform: rotate(45deg);
     transition: transform var(--dur) var(--ease);
+  }
+
+  /* Progressive: browsers without ::details-content or interpolate-size snap
+     open and shut, as before. */
+  @media (prefers-reduced-motion: no-preference) {
+    .role__box {
+      interpolate-size: allow-keywords;
+    }
+
+    .role__box::details-content {
+      height: 0;
+      overflow: clip;
+      opacity: 0;
+      transition:
+        height var(--dur) var(--ease),
+        opacity var(--dur) var(--ease),
+        content-visibility var(--dur) allow-discrete;
+    }
+
+    .role__box[open]::details-content {
+      height: auto;
+      opacity: 1;
+    }
   }
 
   details[open] .role__mark {
@@ -382,16 +344,31 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     color: var(--text-label);
   }
 
+  /* The promotion ladder, newest first, hanging off the org rather than
+     floating in a column of its own. */
   .role__titles {
+    grid-column: 2;
     display: grid;
-    gap: var(--space-2xs);
-    align-content: start;
+    gap: var(--space-xs);
   }
 
   .role__title {
     display: grid;
     font-size: var(--size-small);
     color: var(--paper);
+  }
+
+  /* Wider: dates line up in their own column beside the longest title. */
+  @media (min-width: 34rem) {
+    .role__titles {
+      grid-template-columns: max-content max-content;
+      align-items: baseline;
+      gap: var(--space-2xs) var(--space-lg);
+    }
+
+    .role__title {
+      display: contents;
+    }
   }
 
   .role__title-span {
@@ -402,26 +379,9 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     color: var(--text-label);
   }
 
-  @media (min-width: 52rem) {
-    .role__summary {
-      grid-template-columns: auto auto minmax(0, 1fr);
-      align-items: start;
-    }
-
-    .role__mark {
-      margin-top: 0.7em;
-    }
-  }
-
   .role__body {
-    padding-bottom: var(--space-lg);
-    max-width: 78ch;
-  }
-
-  @media (min-width: 52rem) {
-    .role__body {
-      padding-left: calc(7px + var(--space-lg));
-    }
+    padding: 0 0 var(--space-lg) var(--role-indent);
+    max-width: calc(var(--measure) + var(--role-indent));
   }
 
   .role__context {
@@ -508,10 +468,6 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
       display: none;
     }
 
-    .cv__title-swap {
-      display: none;
-    }
-
     .cv {
       padding: 0;
       color: var(--print-base);
@@ -547,23 +503,3 @@ const cvDownloadName = `alex-boffey-cv-${stamp}.pdf`
     }
   }
 </style>
-
-<script>
-  // Cursor-follow colour swap on the home hero. Two layered copies of the
-  // title: base is the normal palette, swap sits on top with the colours
-  // inverted and a circular mask around the pointer.
-  const title = document.querySelector<HTMLElement>(".cv__title")
-  if (title && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const update = (event: PointerEvent) => {
-      const rect = title.getBoundingClientRect()
-      title.style.setProperty("--mx", `${event.clientX - rect.left}px`)
-      title.style.setProperty("--my", `${event.clientY - rect.top}px`)
-    }
-    const reset = () => {
-      title.style.removeProperty("--mx")
-      title.style.removeProperty("--my")
-    }
-    title.addEventListener("pointermove", update)
-    title.addEventListener("pointerleave", reset)
-  }
-</script>

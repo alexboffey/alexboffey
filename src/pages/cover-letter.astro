@@ -49,14 +49,14 @@ const blocks: Block[] = body
 <Root title="Cover letter" description={site.description} quiet scene="about">
   <article class="letter shell">
     <header class="letter__head">
-      <h1 class="letter__title">Cover letter</h1>
-      <p class="letter__note">
+      <h1 class="letter__title rise">Cover letter</h1>
+      <p class="letter__note rise" style="--i: 1">
         The generic version. Specific applications get the opening and closing
         tailored to the role, kept to one page.
       </p>
     </header>
 
-    <div class="letter__body">
+    <div class="letter__body reveal-children">
       {
         blocks.map((block) => {
           if (block.kind === "name") {
@@ -104,22 +104,6 @@ const blocks: Block[] = body
     font-stretch: var(--wdth-display);
     font-weight: 700;
     color: var(--paper);
-    transition:
-      font-stretch 900ms var(--ease),
-      opacity 600ms var(--ease);
-  }
-
-  @starting-style {
-    .letter__title {
-      font-stretch: 62%;
-      opacity: 0;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .letter__title {
-      transition: none;
-    }
   }
 
   .letter__note {
