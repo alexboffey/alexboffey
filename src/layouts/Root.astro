@@ -146,6 +146,18 @@ const fullTitle =
           window.setTimeout(() => delete trail.dataset.press, 260)
         })
       }
+
+      // Stamp the CV filename with the visitor's local time at click, not the
+      // build server's clock. Delegated so it survives client-side navigation.
+      document.addEventListener("click", (event) => {
+        const link = (event.target as Element).closest<HTMLAnchorElement>(
+          'a[href="/alex-boffey-cv.pdf"]',
+        )
+        if (!link) return
+        const now = new Date()
+        const pad = (n: number) => String(n).padStart(2, "0")
+        link.download = `alex-boffey-cv-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}.pdf`
+      })
     </script>
 
     <style>
